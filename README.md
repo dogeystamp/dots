@@ -8,5 +8,9 @@ You don't need .git, and you probably don't need my scripts in .local/bin (like 
 
 You should install [my dwm](https://github.com/dogeystamp/dwm) and [st](https://github.com/dogeystamp/st) builds as well as this.
 
+### Note
+
+The xinitrc provides changes I like, such as swapping escape and caps lock, which you should remove if you don't need.
+
 **Desktop Preview**
 ![preview](https://raw.githubusercontent.com/DogeyStamp/dots/main/preview.png)
