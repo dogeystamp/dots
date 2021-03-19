@@ -1,6 +1,5 @@
 [global]
-    font = Liberation Sans 9
-
+    font = Liberation Sans 9 
     # allow a small subset of html markup:
     # <b>bold</b>
     # <i>italic</i>
@@ -183,4 +182,4 @@
 
 [play_sound]
     summary = "*"
-    script = /home/dogeystamp/dox/scr/notification-sound.sh
+    script = /home/dogeystamp/.local/bin/notification-sound.sh
