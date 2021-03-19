@@ -15,3 +15,4 @@ The xinitrc provides changes I like, such as swapping escape and caps lock, whic
 
 **Desktop Preview**
 ![preview](https://raw.githubusercontent.com/DogeyStamp/dots/main/preview.png)
+![preview](https://raw.githubusercontent.com/DogeyStamp/dots/main/preview2.png)
