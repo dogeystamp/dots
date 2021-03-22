@@ -5,6 +5,8 @@ xset r rate 300 50
 mon-on
 picom &
 xwallpaper --center .config/wall.png
+xautolock -time 12 -locker "systemctl suspend" -detectsleep &
+xss-lock -- slock &
 dunst &
 
 while true; do

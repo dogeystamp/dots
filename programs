@@ -17,7 +17,6 @@ cmatrix
 cups
 cups-pdf
 dbus-python
-dmenu
 dunst
 efibootmgr
 element-desktop
@@ -88,7 +87,6 @@ python-pip
 remmina
 screen
 sed
-slock
 sof-firmware
 sudo
 termdown
@@ -101,7 +99,9 @@ usbutils
 vim
 wget
 which
+whois
 wireless_tools
+xautolock
 xf86-video-intel
 xf86-video-vesa
 xorg-bdftopcf
@@ -149,6 +149,7 @@ xorg-xwd
 xorg-xwininfo
 xorg-xwud
 xsel
+xss-lock
 xwallpaper
 youtube-dl
 zathura
