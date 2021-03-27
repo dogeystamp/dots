@@ -10,7 +10,7 @@ xss-lock -- slock &
 dunst &
 
 while true; do
-    xsetroot -name "$(date) $(acpi | cut -d',' -f2)"
+    xsetroot -name "$(mpc -f %title% | head -n 1) $(mpc status | awk '/^\[playing\]/ { sub(/\/.+/,"",$4); print $3 }') | $(date) $(acpi | cut -d',' -f2)"
 	sleep 2
 done &
 
