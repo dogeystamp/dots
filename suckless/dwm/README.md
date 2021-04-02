@@ -3,7 +3,7 @@ My build of dwm.
 ## Patches
 center
 
-instant
+swallow
 ## Installation
 Clone the repo.
 
