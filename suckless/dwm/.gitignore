@@ -3,4 +3,4 @@
 *.o
 *.tar.gz
 *.diff
-dmenu
+dwm
