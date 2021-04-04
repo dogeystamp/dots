@@ -4,6 +4,10 @@ My build of dwm.
 center
 
 swallow
+
+combo
+
+blank tags (my own edit)
 ## Installation
 Clone the repo.
 
