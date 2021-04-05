@@ -7,10 +7,11 @@ picom &
 xwallpaper --center .config/wall.png
 xautolock -time 12 -locker "systemctl suspend" -detectsleep &
 xss-lock -- slock &
-dunst &
+#dunst crashes X for some reason on my device so I put it in screen to prevent that
+screen -dm dunst notifs
 
 while true; do
-    xsetroot -name "$(mpc -f %title% | head -n 1) $(mpc status | awk '/^\[playing\]/ { sub(/\/.+/,"",$4); print $3 }') | $(date) $(acpi | cut -d',' -f2)"
+    xsetroot -name "$(mpc -f %title% | head -n 1) $(mpc status | awk '/^\[playing\]/ { sub(/\/.+/,"",$4); print $3 }') | $(date) | $(acpi | cut -d',' -f2)"
 	sleep 2
 done &
 
