@@ -4,3 +4,4 @@
 *.tar.gz
 *.diff
 dwm
+config.h
