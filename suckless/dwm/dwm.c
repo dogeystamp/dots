@@ -510,7 +510,7 @@ buttonpress(XEvent *e)
 	if (ev->window == selmon->barwin) {
 		i = x = 0;
 		do
-			x += (drw->fonts->h / 6 + 2)*4;
+			x += bh;
 		while (ev->x >= x && ++i < LENGTH(tags));
 		if (i < LENGTH(tags)) {
 			click = ClkTagBar;
@@ -801,11 +801,11 @@ drawbar(Monitor *m)
 	}
 	x = 0;
 	for (i = 0; i < LENGTH(tags); i++) {
-		w = boxw*4;
+		w = bh;
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeHigh]);
-		drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
+		drw_text(drw, x, 0, bh, bh, 0, "", urg & 1 << i);
 		if (occ & 1 << i)
-			drw_rect(drw, x+boxw,boxw*1, w-boxw*2, w-boxw*2,
+			drw_rect(drw, x+boxw,boxw, w-boxw*2, w-boxw*2,
 				m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
 				urg & 1 << i);
 		x += w;

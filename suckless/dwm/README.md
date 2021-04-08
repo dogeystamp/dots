@@ -7,7 +7,7 @@ swallow
 
 combo
 
-blank tags (my own edit)
+blanktags
 
 alpha
 ## Installation
