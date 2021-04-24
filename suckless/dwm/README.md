@@ -12,6 +12,8 @@ blanktags
 alpha
 
 rearrangebar
+
+warp
 ## Installation
 Clone the repo.
 
