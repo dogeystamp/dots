@@ -12,7 +12,7 @@ You should install [my dwm](https://github.com/dogeystamp/dwm), [dmenu](https://
 ### Note
 
 The xinitrc provides changes I like, such as swapping escape and caps lock, which you should remove if you don't need.
+Also, the aesthetic is very minimal, so consider adding a wallpaper, configuring picom to use blur, and add transparency to your applications if you desire.
 
 **Desktop Preview**
 ![preview](https://raw.githubusercontent.com/DogeyStamp/dots/main/preview.png)
-![preview](https://raw.githubusercontent.com/DogeyStamp/dots/main/preview2.png)
