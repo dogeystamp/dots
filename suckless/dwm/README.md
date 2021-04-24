@@ -10,6 +10,8 @@ combo
 blanktags
 
 alpha
+
+rearrangebar
 ## Installation
 Clone the repo.
 
