@@ -76,7 +76,6 @@ pacman
 pass
 pass-otp
 patch
-picom
 pkgconf
 playerctl
 progress
