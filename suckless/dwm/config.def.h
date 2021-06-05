@@ -9,6 +9,7 @@ static const unsigned int gappiv    = 10;       /* vert inner gap between window
 static const unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov    = 30;       /* vert outer gap between windows and screen edge */
 static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
+static       int passthrough        = 0;        /* 1 means to ignore most shortcuts */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
@@ -68,9 +69,21 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, "-n", NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *suspendcmd[]  = { "systemctl", "suspend", NULL };
+static const char *browsercmd[]  = { "qutebrowser", NULL };
+static const char *scrotcmd[]  = {".local/bin/screenshot.sh"};
+static const char *scrotscmd[]  = {".local/bin/screenshot-save.sh"};
+static const char *lockcmd[]  = { "slock" };
+static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
+static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
+static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
+static const char *play[] = { "mpc", "toggle",  NULL };
+static const char *next[] = { "mpc", "next",  NULL };
+static const char *prev[] = { "mpc", "prev",  NULL };
+static const char *stopcmd[] = { "mpc", "stop",  NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
+	{ Mod4Mask,                     XK_p,      togglepass,     {0} },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = suspendcmd } },
