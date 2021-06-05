@@ -807,7 +807,7 @@ drawbar(Monitor *m)
 	x = 0;
 	for (i = 0; i < LENGTH(tags); i++) {
 		w = bh;
-		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeHigh]);
+		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
 		drw_text(drw, x, 0, bh, bh, 0, "", urg & 1 << i);
 		if (occ & 1 << i)
 			drw_rect(drw, x+boxw,boxw, w-boxw*2, w-boxw*2,
