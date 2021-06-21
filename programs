@@ -4,6 +4,8 @@ ncmpcpp
 dunst
 zathura
 zsh
+zsh-syntax-highlighting
+zsh-autosuggestions
 xorg-setxkbmap
 xorg-xrandr
 xorg-xset
