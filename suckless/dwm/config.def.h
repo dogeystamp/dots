@@ -20,15 +20,15 @@ static const char col_gray1[]       = "#000000";
 static const char col_gray2[]       = "#eeeeee";
 static const char col_gray3[]       = "#dddddd";
 static const char col_gray4[]       = "#eeeeee";
-static const char col_gray5[]       = "#151515";
+static const char col_gray5[]       = "#454545";
 static const char col_cyan[]        = "#505050";
-static const unsigned int baralpha = 0xff;
+static const unsigned int baralpha = 0;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
+	[SchemeNorm] = { col_gray5, col_gray1, col_gray2 },
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
-	[SchemeHigh] = { col_cyan, col_gray5,  col_cyan  },
+	[SchemeHigh] = { col_gray3, col_gray1, col_cyan  },
 };
 static const unsigned int alphas[][3]      = {
 	/*               fg      bg        border     */
