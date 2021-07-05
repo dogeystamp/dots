@@ -17,11 +17,11 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "JetBrains Mono:size=12" };
 static const char dmenufont[]       = "JetBrains Mono:size=13";
 static const char col_gray1[]       = "#000000";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
+static const char col_gray2[]       = "#eeeeee";
+static const char col_gray3[]       = "#dddddd";
 static const char col_gray4[]       = "#eeeeee";
-static const char col_gray5[]       = "#050505";
-static const char col_cyan[]        = "#252525";
+static const char col_gray5[]       = "#151515";
+static const char col_cyan[]        = "#505050";
 static const unsigned int baralpha = 0xff;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
@@ -34,6 +34,7 @@ static const unsigned int alphas[][3]      = {
 	/*               fg      bg        border     */
 	[SchemeNorm] = { OPAQUE, baralpha, borderalpha },
 	[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
+	[SchemeHigh] = { OPAQUE, baralpha, borderalpha },
 };
 
 /* tagging */
