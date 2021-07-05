@@ -10,14 +10,17 @@ After, install the programs that I have dots for (you can remove the ones you do
 
 `pacman -S - < programs`
 
-Then install the AUR programs in programs-aur using your preferred method.
+Then install the AUR programs in programs-aur using your preferred method. If you don't need picom dual kawase blur, install regular picom instead of picom-git.
 
 You should install [my dwm](https://github.com/dogeystamp/dwm), [dmenu](https://github.com/dogeystamp/dmenu), [slock](https://github.com/dogeystamp/slock) and [st](https://github.com/dogeystamp/st) builds as well as this for a complete desktop environment.
 
 ### Note
 
 The xinitrc provides changes I like, such as swapping escape and caps lock, which you should remove if you don't need.
-Also, the aesthetic is very minimal, so consider adding a wallpaper. Picom is already configured for blur/fading, but you should disable it if you wish to keep the black wallpaper.
+
+Also, by default, the wallpaper is solid black. You can change it by swapping out `.config/wall.png`.
+Picom is already configured to blur and fade windows.
+If you wish to keep the black wallpaper, disable blur for better performance.
 
 **Desktop Preview**
 ![preview](https://raw.githubusercontent.com/DogeyStamp/dots/main/preview.png)
