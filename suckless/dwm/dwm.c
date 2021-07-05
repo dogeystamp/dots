@@ -778,26 +778,11 @@ dirtomon(int dir)
 void
 drawbar(Monitor *m)
 {
-	int x, w, tw = 0;
-	int boxs = drw->fonts->h / 9;
+	int x, w = 0;
 	int boxw = drw->fonts->h / 6 + 2;
 	unsigned int i, occ = 0, urg = 0;
 	Client *c;
 	w = blw = TEXTW(m->ltsymbol);
-
-	/* clear bar from last draw */
-	drw_setscheme(drw, scheme[SchemeNorm]);
-	drw_rect(drw, 0, 0, m->ww, bh, lrpad / 2, 1);
-
-	if (!m->showbar)
-		return;
-
-	/* draw status first so it can be overdrawn by tags later */
-	if (m == selmon) { /* status is only drawn on selected monitor */
-		tw = TEXTW(stext) - lrpad + w; /* right padding for the tiling symbol */
-		drw_text(drw, m->ww - tw, 0, tw, bh, 0, stext, 0);
-		drw_text(drw, m->ww - w, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
-	}
 
 	for (c = m->clients; c; c = c->next) {
 		occ |= c->tags;
@@ -815,20 +800,7 @@ drawbar(Monitor *m)
 				urg & 1 << i);
 		x += w;
 	}
-	drw_setscheme(drw, scheme[SchemeNorm]);
-	x = m->ww/3;
 
-	if ((w = m->ww - tw - x) > bh) {
-		if (m->sel) {
-			drw_setscheme(drw, scheme[m == selmon ? SchemeSel : SchemeNorm]);
-			drw_text(drw, x, 0, m->ww/3, bh, lrpad / 2, m->sel->name, 0);
-			if (m->sel->isfloating)
-				drw_rect(drw, x + boxs, boxs, boxw, boxw, m->sel->isfixed, 0);
-		} else {
-			drw_setscheme(drw, scheme[SchemeNorm]);
-			drw_rect(drw, x, 0, w, bh, 1, 1);
-		}
-	}
 	drw_map(drw, m->barwin, 0, 0, m->ww, bh);
 }
 
@@ -1812,7 +1784,7 @@ togglebar(const Arg *arg)
 {
 	selmon->showbar = !selmon->showbar;
 	updatebarpos(selmon);
-	XMoveResizeWindow(dpy, selmon->barwin, selmon->wx, selmon->by, selmon->ww, bh);
+	XMoveResizeWindow(dpy, selmon->barwin, selmon->wx+selmon->ww/2-bh*LENGTH(tags)/2, selmon->by, bh*LENGTH(tags), bh);
 	arrange(selmon);
 }
 
@@ -1942,7 +1914,7 @@ updatebars(void)
 	for (m = mons; m; m = m->next) {
 		if (m->barwin)
 			continue;
-		m->barwin = XCreateWindow(dpy, root, m->wx, m->by, m->ww, bh, 0, depth,
+		m->barwin = XCreateWindow(dpy, root, m->wx+m->ww/2-bh*LENGTH(tags)/2, m->by, bh*LENGTH(tags), bh, 0, depth,
 		                          InputOutput, visual,
 		                          CWOverrideRedirect|CWBackPixel|CWBorderPixel|CWColormap|CWEventMask, &wa);
 		XDefineCursor(dpy, m->barwin, cursor[CurNormal]->cursor);
@@ -1956,12 +1928,12 @@ updatebarpos(Monitor *m)
 {
 	m->wy = m->my;
 	m->wh = m->mh;
+	m->wh -= bh;
 	if (m->showbar) {
-		m->wh -= bh;
 		m->by = m->topbar ? m->wy : m->wy + m->wh;
-		m->wy = m->topbar ? m->wy + bh : m->wy;
 	} else
 		m->by = -bh;
+	m->wh += bh;
 }
 
 void
