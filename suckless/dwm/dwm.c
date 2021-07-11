@@ -812,7 +812,7 @@ drawbar(Monitor *m)
 	}
 
 	if (altbarvis) {
-		drw_setscheme(drw, scheme[SchemeNorm]);
+		drw_setscheme(drw, scheme[SchemeHigh]);
 		drw_text(drw, 0, 0, LENGTH(tags)*bh, bh, 0, stext, 0);
 	}
 
