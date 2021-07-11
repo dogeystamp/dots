@@ -813,7 +813,7 @@ drawbar(Monitor *m)
 
 	if (altbarvis) {
 		drw_setscheme(drw, scheme[SchemeNorm]);
-		drw_text(drw, 0, 0, LENGTH(tags), bh, 0, stext, 0);
+		drw_text(drw, 0, 0, LENGTH(tags)*bh, bh, 0, stext, 0);
 	}
 
 	drw_map(drw, m->barwin, 0, 0, m->ww, bh);
