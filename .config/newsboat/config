@@ -10,6 +10,6 @@ bind-key K prev-feed articlelist
 bind-key j down article
 bind-key k up article
 bind-key h quit
-bind-key l open
+bind-key l open-in-browser-and-mark-read
 
-bind-key o open-in-browser-and-mark-read
+bind-key o open
