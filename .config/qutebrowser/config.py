@@ -26,3 +26,7 @@ c.content.private_browsing = True
 c.tabs.max_width = 100
 c.tabs.position = "bottom"
 c.statusbar.show = "in-mode"
+
+# This is so when using newsboat with qutebrowser,
+# they can be operated using only hjkl.
+config.bind('h', 'tab-close', mode='normal')
