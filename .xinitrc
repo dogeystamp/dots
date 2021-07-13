@@ -4,8 +4,7 @@ setxkbmap -layout us,ca -variant multi -option 'grp:win_space_toggle, caps:swape
 xset r rate 300 50
 mon-on
 picom --experimental-backends --backend glx &
-#xwallpaper --center .config/wall.png
-xwallpaper --output DP2-1 --center med/pix/ble/uwsnbl.png --output DP1 --center med/pix/ble/uwsnbr.png --output eDP1 --center med/pix/ble/uwsnba.png
+xwallpaper --center .config/wall.png
 wal --theme sexy-phrak1 -b 080808
 conky
 xautolock -time 12 -locker "systemctl suspend" -detectsleep -notify 5 -notifier "notify-send Locking" &
