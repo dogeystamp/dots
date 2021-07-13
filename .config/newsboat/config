@@ -1,4 +1,4 @@
-browser qutebrowser
+browser "qutebrowser --target private-window"
 reload-threads 10
 
 bind-key j down feedlist

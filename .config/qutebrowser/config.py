@@ -29,4 +29,4 @@ c.statusbar.show = "in-mode"
 
 # This is so when using newsboat with qutebrowser,
 # they can be operated using only hjkl.
-config.bind('h', 'tab-close', mode='normal')
+config.bind('h', 'quit', mode='normal')
