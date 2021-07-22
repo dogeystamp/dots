@@ -1,10 +1,14 @@
 config.load_autoconfig()
 
+
+c.colors.webpage.bg = "black"
 c.colors.completion.category.bg = "#111111"
 c.colors.completion.even.bg = "black"
 c.colors.statusbar.private.bg = "black"
 c.colors.hints.bg = "black"
 c.colors.hints.fg = "white"
+c.hints.border = "1px dotted white"
+c.hints.radius = 10
 c.colors.tabs.bar.bg = "black"
 c.colors.webpage.darkmode.algorithm = "lightness-hsl"
 c.colors.webpage.darkmode.contrast = 1.0
