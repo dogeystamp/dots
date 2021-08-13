@@ -9,6 +9,7 @@ c.colors.hints.bg = "black"
 c.colors.hints.fg = "white"
 c.hints.border = "1px dotted white"
 c.hints.radius = 10
+c.hints.chars = "asdf"
 c.colors.tabs.bar.bg = "black"
 c.colors.webpage.darkmode.algorithm = "lightness-hsl"
 c.colors.webpage.darkmode.contrast = 1.0
@@ -22,9 +23,9 @@ c.content.headers.custom = {"accept": "text/html,application/xhtml+xml,applicati
 c.content.canvas_reading = False
 c.content.webgl = False
 c.scrolling.smooth = True
-c.url.default_page = "https://dogeybox.sds-ip.de/searx/search"
-c.url.searchengines = {"DEFAULT":"https://dogeybox.sds-ip.de/searx/search?q={}"}
-c.url.start_pages = "https://dogeybox.sds-ip.de/searx/search"
+c.url.default_page = "https://search.disroot.org/"
+c.url.searchengines = {"DEFAULT":"https://search.disroot.org/search?q={}"}
+c.url.start_pages = "https://search.disroot.org/"
 c.window.transparent = True
 c.content.private_browsing = True
 c.tabs.max_width = 100
