@@ -9,6 +9,7 @@ xwallpaper --output DP-2-1 --center med/pix/dow/ml.png --output DP-1 --center me
 xss-lock -- slock &
 #dunst crashes X for some reason on my device so I put it in screen to prevent that
 screen -dm dunst notifs
+xrdb .Xresources
 
 while true; do
 	xsetroot -name "$(date +'%H:%M:%S %a %b %d')"
