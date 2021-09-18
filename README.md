@@ -14,13 +14,15 @@ Then install the AUR programs in programs-aur using your preferred method. If yo
 
 You should install [my dwm](https://github.com/dogeystamp/dwm), [dmenu](https://github.com/dogeystamp/dmenu), [slock](https://github.com/dogeystamp/slock) and [st](https://github.com/dogeystamp/st) builds as well as this for a complete desktop environment.
 
-### Note
+### Notes
 
 The xinitrc provides changes I like, such as swapping escape and caps lock, which you should remove if you don't need.
 
 Also, by default, the wallpaper is solid black. You can change it by swapping out `.config/wall.png`.
 Picom is already configured to blur and fade windows.
 If you wish to keep the black wallpaper, disable blur for better performance.
+
+My qutebrowser configuration emphasizes privacy over usability, and you might need to edit it to suit your needs if you want to use it.
 
 **Desktop Preview**
 ![preview](https://raw.githubusercontent.com/DogeyStamp/dots/main/preview.png)
