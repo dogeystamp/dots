@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Edit a file that requires superuser permissions without running the editor as root
+# Substitute for sudo -e that uses doas instead.
+
+fname=$(mktemp)
+
+cat $1 > $fname
+$EDITOR $fname
+
+if [ -n "$(diff $fname $1)" ]
+	then
+		diff $fname $1
+		doas cp $fname $1
+fi
+
+rm $fname
