@@ -4,13 +4,9 @@ My dotfiles.
 ## Installation
 
 Copy all the folders in here (including hidden ones like .config) to your home directory.
-You don't need .git, and you probably don't need my scripts in .local/bin (like mon-on or notification-sound.sh).
+You don't need .git, and you probably don't need my scripts in .local/bin.
 
-After, install the programs that I have dots for (you can remove the ones you don't use):
-
-`pacman -S - < programs`
-
-Then install the AUR programs in programs-aur using your preferred method. If you don't need picom dual kawase blur, install regular picom instead of picom-git.
+After, install the programs that I have dots for. A list is provided in the programs file.
 
 You should install [my dwm](https://github.com/dogeystamp/dwm), [dmenu](https://github.com/dogeystamp/dmenu), [slock](https://github.com/dogeystamp/slock) and [st](https://github.com/dogeystamp/st) builds as well as this for a complete desktop environment.
 

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Regenerate grub config
+
+grub-mkconfig -o /boot/grub/grub.cfg
+
+# I don't mount the efi partition normally.
+mount /dev/nvme0n1p1 /boot/efi
+grub-mkconfig -o /boot/efi/EFI/gentoo/grub.cfg

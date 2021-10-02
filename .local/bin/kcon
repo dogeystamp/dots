@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# Configure the Gentoo kernel, then compile and install it
+
+cd /usr/src/linux
+
+make menuconfig
+
+# Stop the script here if you only need to configure
+sleep 2
+
+# Compile kernel
+make -j8
+notify-send "Kernel compilation finished."
+
+# Loadable modules are disabled in my configuration.
+#make modules_install
+
+# Install kernel to /boot
+make install
+
+# Generate initramfs
+genkernel --install --kernel-config=.config --luks initramfs --no-ramdisk-modules
+
+# Regenerate grub config
+update-grub
+
+# Notify when finished
+tput bel
+notify-send "Kernel installation finished."

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Clean up useless dotfiles
+
+rm -rf \
+.audacity-data \
+.mplayer \
+.w3m \
+.wget-hsts \
+.python_history \
+.units_history \
+.xsel.log
+
+rmdir Downloads Desktop 2>/dev/null

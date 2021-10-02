@@ -4,9 +4,13 @@ dunst
 zathura
 zsh
 zsh-syntax-highlighting
+# Unavailable in Gentoo, you need to download from GitHub
 zsh-autosuggestions
 xorg-setxkbmap
 xorg-xrandr
 xorg-xset
 xss-lock
 qutebrowser
+# This needs to be the development branch for dual-kawase blur
+# Either get picom-git from the AUR or picom-9999 in Gentoo
+picom
