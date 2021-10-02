@@ -12,7 +12,7 @@ FNAME=$(mktemp)
 
 if [ -e $1 ]
 then
-	cp $1 $fname
+	cp $1 $FNAME
 fi
 
 $EDITOR $FNAME
@@ -28,7 +28,7 @@ fi
 
 if [ -n "$DIFF" ]
 then
-		doas cp $FNAME $1
+	doas cp $FNAME $1
 fi
 
 rm $FNAME
