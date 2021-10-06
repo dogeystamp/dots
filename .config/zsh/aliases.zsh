@@ -14,7 +14,9 @@ alias dnl='xsel -b | tr "\n" " " | xsel -ib'
 alias nvimp='nvim -u NONE -c "setlocal history=0 nobackup nomodeline noshelltemp noswapfile noundofile nowritebackup secure viminfo=\"\""'
 
 # Read pdf file as text
-alias pdfr='pdftotext $1 - | nvim'
+pdfr () {
+	pdftotext $1 - | nvim
+}
 
 # Specific to my Gentoo system
 alias genlop='doas -u portage /usr/bin/genlop'
