@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# Move kernel configuration files to new kernel
+# Takes a single argument, the number of the kernel in eselect
+
+# Sleep in case user wants to cancel
+sleep 2
+
+cd /usr/src/linux
+
+# Store config in /usr/src/.config
+cp .config ../.config
+
+# Switch to new kernel
+eselect kernel set $1
+cd /usr/src/linux
+
+# Apply new configuration file
+cp ../.config .config
