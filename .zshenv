@@ -30,6 +30,6 @@ export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
 export EDITOR="nvim"
 
 # Variables for passphrase2pgp
-export REALNAME="DogeyStamp"
+export REALNAME="dogeystamp"
 export EMAIL="dogeystamp@disroot.org"
-export KEYID="48B4FA19F1BC1603C85762514C53B0126F579F36"
+export KEYID="A3A5FA72F8E5E54FBEE425057225FE3592EFFA38"

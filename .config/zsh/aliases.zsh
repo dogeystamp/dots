@@ -23,4 +23,4 @@ alias genlop='doas -u portage /usr/bin/genlop'
 alias loginctl='doas /bin/loginctl'
 
 # Delete my gpg key
-alias wipekey='gpg --batch --yes --delete-secret-keys 48B4FA19F1BC1603C85762514C53B0126F579F36'
+alias wipekey='gpg --batch --yes --delete-secret-keys A3A5FA72F8E5E54FBEE425057225FE3592EFFA38'
