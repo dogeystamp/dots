@@ -4,8 +4,9 @@ setxkbmap -layout us,ca -variant multi -option 'grp:win_space_toggle, caps:swape
 xset r rate 300 50
 mon-on
 picom --experimental-backends --backend glx &
-#xwallpaper --center .config/wall.png
-xwallpaper --output DP-2-1 --center med/pix/dow/ml.png --output DP-1 --center med/pix/dow/mr.png --output eDP-1 --center med/pix/dow/m.png
+xwallpaper --center .config/wall.png
+# For use on my machines
+#xwallpaper --output DP-2-1 --center med/pix/dow/ml.png --output DP-1 --center med/pix/dow/mr.png --output eDP-1 --center med/pix/dow/m.png
 xss-lock -- slock &
 dunst &
 xrdb .Xresources
