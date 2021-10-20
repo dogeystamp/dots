@@ -5,8 +5,8 @@ xset r rate 300 50
 mon-on
 picom --experimental-backends --backend glx &
 xwallpaper --center .config/wall.png
-# For use on my machines
-#xwallpaper --output DP-2-1 --center med/pix/dow/ml.png --output DP-1 --center med/pix/dow/mr.png --output eDP-1 --center med/pix/dow/m.png
+# Host specific wallpapers
+wallpaper
 xss-lock -- slock &
 dunst &
 xrdb .Xresources

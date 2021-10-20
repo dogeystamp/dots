@@ -1,8 +1,10 @@
 # Color ls 
 alias ls='ls --color=auto'
 
-# Limit mpv to 1080p so it doesn't buffer
+# Limit mpv and youtube-dl to 1080p so it doesn't use too much bandwidth
 alias mpv='mpv --ytdl-format="bestvideo[ext=mp4][height<=?1080]+bestaudio[ext=m4a]"'
+
+alias youtube-dl='youtube-dl -f "bestvideo[ext=mp4][height<=?1080]+bestaudio[ext=m4a]"'
 
 # Set gpg tty so curses pinentry works
 alias gpgt='export GPG_TTY=$(tty)'

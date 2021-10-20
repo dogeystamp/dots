@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Per host wallpaper configuration example
+
+xwallpaper --output DP-2-1 --center med/pix/dow/ml.png --output DP-1 --center med/pix/dow/mr.png --output eDP-1 --center med/pix/dow/m.png

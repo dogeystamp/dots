@@ -3,8 +3,8 @@ My dotfiles.
 
 ## Installation
 
-Copy all the folders in here (including hidden ones like .config) to your home directory.
-You don't need .git, and you probably don't need my scripts in .local/bin.
+Symlink all the files in src/ to your home directory using the provided dotinstall.sh script, or manually.
+Otherwise, copy them manually to your home directory.
 
 After, install the programs that I have dots for. A list is provided in the programs file.
 

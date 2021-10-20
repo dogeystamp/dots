@@ -20,7 +20,11 @@ c.window.transparent = True
 c.scrolling.smooth = True
 c.url.default_page = "about:blank"
 c.url.start_pages = "about:blank"
-c.url.searchengines = {"DEFAULT":"https://search.disroot.org/search?q={}"}
+c.url.searchengines = {"DEFAULT":"https://searx.be/search?q={}"}
+
+# Downloads
+
+c.downloads.remove_finished = 1000
 
 # Bar settings
 

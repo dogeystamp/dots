@@ -10,6 +10,7 @@ cd /usr/src/linux
 
 # Store config in /usr/src/.config
 cp .config ../.config
+cp .config /home/dogeystamp/dox/bak/kernelconf
 
 # Switch to new kernel
 eselect kernel set $1
