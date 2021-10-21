@@ -1,4 +1,4 @@
-#/bin/sh
+#!/bin/sh
 
 # Set XDG directories
 export XDG_CONFIG_HOME="$HOME"/.config
@@ -33,3 +33,5 @@ export EDITOR="nvim"
 export REALNAME="dogeystamp"
 export EMAIL="dogeystamp@disroot.org"
 export KEYID="A3A5FA72F8E5E54FBEE425057225FE3592EFFA38"
+
+source .config/bashrc

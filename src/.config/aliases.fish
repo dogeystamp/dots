@@ -7,7 +7,7 @@ alias mpv='mpv --ytdl-format="bestvideo[ext=mp4][height<=?1080]+bestaudio[ext=m4
 alias youtube-dl='youtube-dl -f "bestvideo[ext=mp4][height<=?1080]+bestaudio[ext=m4a]"'
 
 # Set gpg tty so curses pinentry works
-alias gpgt='export GPG_TTY=$(tty)'
+alias gpgt='export GPG_TTY=(tty)'
 
 # Remove newlines from clipboard (for competitive programming)
 alias dnl='xsel -b | tr "\n" " " | xsel -ib'
@@ -16,9 +16,9 @@ alias dnl='xsel -b | tr "\n" " " | xsel -ib'
 alias nvimp='nvim -u NONE -c "setlocal history=0 nobackup nomodeline noshelltemp noswapfile noundofile nowritebackup secure viminfo=\"\""'
 
 # Read pdf file as text
-pdfr () {
-	pdftotext $1 - | nvim
-}
+function pdfr
+	pdftotext $argv - | nvim
+end
 
 # Specific to my Gentoo system
 alias genlop='doas -u portage /usr/bin/genlop'
