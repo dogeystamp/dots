@@ -8,7 +8,3 @@ autocmd InsertLeave * hi StatusLine cterm=italic
 
 highlight LineNr ctermfg=grey
 highlight EndOfBuffer ctermfg=black ctermbg=black
-
-call plug#begin()
-Plug 'ycm-core/youcompleteme'
-call plug#end()
