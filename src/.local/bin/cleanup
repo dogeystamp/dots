@@ -9,6 +9,7 @@ rm -rf \
 .wget-hsts \
 .python_history \
 .units_history \
+.avidemux6 \
 .xsel.log
 
 rmdir Downloads Desktop 2>/dev/null
