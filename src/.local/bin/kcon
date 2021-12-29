@@ -4,7 +4,10 @@
 
 cd /usr/src/linux
 
-make menuconfig
+make nconfig
+
+# Alternatively
+#make menuconfig
 
 # Stop the script here if you only need to configure
 sleep 2
@@ -13,14 +16,14 @@ sleep 2
 make -j8
 notify-send "Kernel compilation finished."
 
-# Loadable modules are disabled in my configuration.
-#make modules_install
+# Comment out this line if you disable modules
+make modules_install
 
 # Install kernel to /boot
 make install
 
 # Generate initramfs
-genkernel --install --kernel-config=.config --luks initramfs --no-ramdisk-modules
+genkernel --install --kernel-config=.config --luks initramfs #--no-ramdisk-modules # Uncomment for modules
 
 # Regenerate grub config
 update-grub
