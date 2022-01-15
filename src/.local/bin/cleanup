@@ -10,6 +10,13 @@ rm -rf \
 .python_history \
 .units_history \
 .avidemux6 \
-.xsel.log
+.xsel.log \
+.gnuplot_history \
+.gnome \
+.ansible \
+.wavemonrc \
+.viminfo \
+.icons
+
 
 rmdir Downloads Desktop 2>/dev/null
