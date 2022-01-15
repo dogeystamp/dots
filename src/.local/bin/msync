@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# Sync certain files between all my devices, with this one being the central point.
+
+while getopts ":pr" o; do
+	case "${o}" in
+		p) ACTION=PUSH ;;
+		r) ACTION=RECV ;;
+	esac
+done
+
+if [ $ACTION = PUSH ]
+then
+	rsync -avPzc ~/med/memes/woof/ boron:~/med/memes/woof
+	rsync -avPzc ~/med/memes/woof/ beryllium:~/med/memes/woof
+fi
+
+if [ $ACTION = RECV ]
+then
+	# Move files to the quarantine zone for categorisation and renaming
+	rsync -avPzc beryllium:~/storage/pictures/Infinity/ ~/med/memes/woof/quar && \
+		ssh beryllium "rm -I storage/pictures/Infinity/*"
+fi
