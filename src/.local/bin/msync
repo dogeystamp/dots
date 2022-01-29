@@ -18,6 +18,17 @@ fi
 if [ $ACTION = RECV ]
 then
 	# Move files to the quarantine zone for categorisation and renaming
+
+	# Setup ssh agent to avoid repeated password prompts
+	eval `ssh-agent -s`
+	ssh-add ~/.ssh/keys/beryllium_n
+
 	rsync -avPzc beryllium:~/storage/pictures/Infinity/ ~/med/memes/woof/quar && \
 		ssh beryllium "rm -I storage/pictures/Infinity/*"
+
+	rsync -avPzc beryllium:~/storage/movies/Infinity/ ~/med/memes/woof/quar && \
+		ssh beryllium "rm -I storage/movies/Infinity/*"
+
+	# Kill ssh agent
+	kill $SSH_AGENT_PID
 fi
