@@ -11,6 +11,11 @@ xss-lock -- slock &
 dunst &
 xrdb .Xresources
 
+# IME
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+
 while true; do
 	xsetroot -name "$(date +'%H:%M:%S %a %b %d')"
 	sleep 2
