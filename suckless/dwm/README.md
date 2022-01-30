@@ -1,17 +1,11 @@
 # dwm
 My build of dwm.
 ## Patches
-center
-
 swallow
-
-combo
 
 blanktags
 
 alpha
-
-rearrangebar
 
 warp
 ## Installation

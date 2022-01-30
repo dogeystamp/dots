@@ -3,14 +3,9 @@
 #include <X11/XF86keysym.h>
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int swallowfloating    = 1;        /* 1 means swallow floating windows by default */
-static const unsigned int gappih    = 20;       /* horiz inner gap between windows */
-static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
-static const unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov    = 30;       /* vert outer gap between windows and screen edge */
-static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static       int passthrough        = 0;        /* 1 means to ignore most shortcuts */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int barpadding         = 0;        /* 0 means no padding beneath/above bar */
@@ -80,10 +75,8 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, "-n", NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *suspendcmd[]  = { "systemctl", "suspend", NULL };
-static const char *browsercmd[]  = { "librewolf", NULL };
-static const char *scrotcmd[]  = {".local/bin/screenshot.sh"};
-static const char *scrotscmd[]  = {".local/bin/screenshot-save.sh"};
+static const char *suspendcmd[]  = { "doas", "/bin/loginctl", "suspend", NULL };
+static const char *browsercmd[]  = { "qutebrowser", NULL };
 static const char *lockcmd[]  = { "slock" };
 static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
 static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
@@ -96,21 +89,21 @@ static const char *stopcmd[] = { "mpc", "stop",  NULL };
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ Mod4Mask,                     XK_p,      togglepass,     {0} },
-	{ MODKEY,                       XK_f,      togglealtbar,        {0} },
+	{ MODKEY,                       XK_f,      togglealtbar,   {0} },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = suspendcmd } },
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = browsercmd } },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lockcmd } },
-	{ 0,                            XK_Print,  spawn,          {.v = scrotcmd } },
-	{ ShiftMask,                    XK_Print,  spawn,          {.v = scrotscmd } },
-	{ 0,                       XF86XK_AudioStop, spawn, {.v = stopcmd } },
-	{ 0,                       XF86XK_AudioNext, spawn, {.v = next } },
-	{ 0,                       XF86XK_AudioPrev, spawn, {.v = prev   } },
-	{ 0,                       XF86XK_AudioPlay, spawn, {.v = play   } },
-    { 0,                       XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
-	{ 0,                       XF86XK_AudioMute, spawn, {.v = mutevol } },
-	{ 0,                       XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
+	{ 0,                            XK_Print,  spawn,          SHCMD("~/.local/bin/s.sh")  },
+	{ ShiftMask,                    XK_Print,  spawn,          SHCMD("~/.local/bin/ss.sh") },
+	{ 0,                     	    XF86XK_AudioStop, spawn, {.v = stopcmd } },
+	{ 0,                     	    XF86XK_AudioNext, spawn, {.v = next } },
+	{ 0,                     	    XF86XK_AudioPrev, spawn, {.v = prev   } },
+	{ 0,                     	    XF86XK_AudioPlay, spawn, {.v = play   } },
+    { 0,                     	    XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
+	{ 0,                     	    XF86XK_AudioMute, spawn, {.v = mutevol } },
+	{ 0,                     	    XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
