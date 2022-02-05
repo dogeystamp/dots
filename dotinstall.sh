@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd src
+cd $(dirname $(echo $0))/src/
 
 echo Making directories
 for f in $(find -type d); do
