@@ -1,11 +1,8 @@
 xwallpaper
 ncmpcpp
+mpd
 dunst
 zathura
-zsh
-zsh-syntax-highlighting
-# Unavailable in Gentoo, you need to download from GitHub
-zsh-autosuggestions
 xorg-setxkbmap
 xorg-xrandr
 xorg-xset
