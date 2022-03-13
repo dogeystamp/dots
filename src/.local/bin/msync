@@ -21,7 +21,7 @@ then
 
 	# Setup ssh agent to avoid repeated password prompts
 	eval `ssh-agent -s`
-	ssh-add ~/.ssh/keys/beryllium_n
+	ssh-add ~/.ssh/keys/beryllium
 
 	rsync -avPzc beryllium:~/storage/pictures/Infinity/ ~/med/memes/woof/quar && \
 		ssh beryllium "rm -I storage/pictures/Infinity/*"
