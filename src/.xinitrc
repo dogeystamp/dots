@@ -17,7 +17,7 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
 while true; do
-	xsetroot -name "$(date +'%H:%M:%S %a %b %d')"
+	xsetroot -name " $(date +'%H:%M:%S %a %b %d') // $(acpi | cut -f4 -d " ") "
 	sleep 2
 done &
 
