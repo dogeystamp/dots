@@ -3,6 +3,7 @@
 # Remote backup script
 
 rsync -avzP \
+	--chown=dogeystamp:sftpr \
 	--exclude=mus \
 	--exclude=gv \
 	--exclude=dow \
