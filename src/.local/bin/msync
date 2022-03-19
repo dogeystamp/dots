@@ -9,19 +9,24 @@ while getopts ":pr" o; do
 	esac
 done
 
+
+# Setup ssh agent to avoid repeated password prompts
+eval `ssh-agent -s`
+
+ssh-add ~/.ssh/keys/beryllium
+
 if [ $ACTION = PUSH ]
 then
 	rsync -avPzc ~/med/memes/woof/ boron:~/med/memes/woof
+
 	rsync -avPzc ~/med/memes/woof/ beryllium:~/med/memes/woof
+
+	rsync -avPzc --delete ~/med/mus/ beryllium:~/storage/music/mus
 fi
 
 if [ $ACTION = RECV ]
 then
 	# Move files to the quarantine zone for categorisation and renaming
-
-	# Setup ssh agent to avoid repeated password prompts
-	eval `ssh-agent -s`
-	ssh-add ~/.ssh/keys/beryllium
 
 	rsync -avPzc beryllium:~/storage/pictures/Infinity/ ~/med/memes/woof/quar && \
 		ssh beryllium "rm -I storage/pictures/Infinity/*"
@@ -30,5 +35,6 @@ then
 		ssh beryllium "rm -I storage/movies/Infinity/*"
 
 	# Kill ssh agent
-	kill $SSH_AGENT_PID
 fi
+
+kill $SSH_AGENT_PID
