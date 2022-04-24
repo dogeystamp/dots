@@ -81,9 +81,9 @@ static const char *lockcmd[]  = { "slock" };
 static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
 static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
-static const char *play[] = { "mpc", "toggle",  NULL };
-static const char *next[] = { "mpc", "next",  NULL };
-static const char *prev[] = { "mpc", "prev",  NULL };
+static const char *play[] = { "playerctl", "play-pause",  NULL };
+static const char *next[] = { "playerctl", "next",  NULL };
+static const char *prev[] = { "playerctl", "previous",  NULL };
 static const char *stopcmd[] = { "mpc", "stop",  NULL };
 
 static const Key keys[] = {
