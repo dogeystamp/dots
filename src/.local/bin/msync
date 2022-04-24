@@ -21,7 +21,7 @@ then
 
 	rsync -avPzc ~/med/memes/woof/ beryllium:~/med/memes/woof
 
-	rsync -avPzc --delete ~/med/mus/ beryllium:~/storage/music/mus
+	rsync -avPzc --delete ~/med/mus/ beryllium:~/storage/music
 fi
 
 if [ $ACTION = RECV ]

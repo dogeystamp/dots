@@ -17,7 +17,8 @@ rm -rf \
 .ansible \
 .wavemonrc \
 .viminfo \
-.icons
+.icons\
+.ipython
 
 
 rmdir Downloads Desktop 2>/dev/null
