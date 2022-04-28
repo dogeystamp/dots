@@ -3,7 +3,7 @@
 #include <X11/XF86keysym.h>
 
 /* appearance */
-static const unsigned int borderpx  = 0;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int swallowfloating    = 1;        /* 1 means swallow floating windows by default */
 static       int passthrough        = 0;        /* 1 means to ignore most shortcuts */
@@ -13,18 +13,17 @@ static const int topbar             = 0;        /* 0 means bottom bar */
 static const char *fonts[]          = { "JetBrains Mono:size=14" };
 static const char dmenufont[]       = "JetBrains Mono:size=13";
 static const char col_gray1[]       = "#000000";
-static const char col_gray2[]       = "#eeeeee";
-static const char col_gray3[]       = "#dddddd";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_gray5[]       = "#454545";
-static const char col_cyan[]        = "#505050";
+static const char col_gray2[]       = "#202020";
+static const char col_gray3[]       = "#505050";
+static const char col_gray4[]       = "#bbbbbb";
+static const char col_gray5[]       = "#eeeeee";
 static const unsigned int baralpha = 0;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray5, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
-	[SchemeHigh] = { col_gray3, col_gray1, col_cyan  },
+	[SchemeNorm] = { col_gray4, col_gray1, col_gray3 },
+	[SchemeSel]  = { col_gray5, col_gray3, col_gray4 },
+	[SchemeHigh] = { col_gray5, col_gray1, col_gray5 },
 };
 static const unsigned int alphas[][3]      = {
 	/*               fg      bg        border     */
@@ -73,7 +72,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, "-n", NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray5, "-sb", col_gray3, "-sf", col_gray4, "-n", NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *suspendcmd[]  = { "doas", "/bin/loginctl", "suspend", NULL };
 static const char *browsercmd[]  = { "qutebrowser", NULL };
