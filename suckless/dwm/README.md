@@ -9,7 +9,7 @@ alpha
 
 warp
 
-vanitygaps (customised to have 16:9 windows)
+vanitygaps
 
 ## Installation
 Clone the repo.
