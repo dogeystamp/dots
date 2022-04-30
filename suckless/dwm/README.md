@@ -8,6 +8,9 @@ blanktags
 alpha
 
 warp
+
+vanitygaps (customised to have 16:9 windows)
+
 ## Installation
 Clone the repo.
 
