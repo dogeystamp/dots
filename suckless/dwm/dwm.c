@@ -100,7 +100,7 @@ struct Client {
 	int basew, baseh, incw, inch, maxw, maxh, minw, minh, hintsvalid;
 	int bw, oldbw;
 	unsigned int tags;
-	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen, isterminal, noswallow;
+	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen, isterminal, noswallow, swalresize;
 	pid_t pid;
 	Client *next;
 	Client *snext;
@@ -155,6 +155,7 @@ typedef struct {
 	int isterminal;
 	int noswallow;
 	int monitor;
+	int swalresize;
 } Rule;
 
 /* function declarations */
@@ -339,6 +340,7 @@ applyrules(Client *c)
 		{
 			c->isterminal = r->isterminal;
 			c->noswallow  = r->noswallow;
+			c->swalresize  = r->swalresize;
 			c->isfloating = r->isfloating;
 			c->tags |= r->tags;
 			for (m = mons; m && m->num != r->monitor; m = m->next);
@@ -465,13 +467,22 @@ swallow(Client *p, Client *c)
 	if (c->noswallow && !swallowfloating && c->isfloating)
 		return;
 
-	detach(p);
-	detachstack(p);
-
 	setclientstate(p, WithdrawnState);
 	XUnmapWindow(dpy, p->win);
 
-	c->swallowing = p;
+	if (c->swalresize) {
+		detach(p);
+		detachstack(p);
+		c->swallowing = p;
+	} else {
+		detach(c);
+		detachstack(c);
+		p->swallowing = c;
+		Window w = p->win;
+		p->win = c->win;
+		c->win = w;
+	}
+
 	c->mon = p->mon;
 
 	updatetitle(p);
@@ -485,11 +496,16 @@ void
 unswallow(Client *c)
 {
 	Client old = *c;
-	memcpy(c, c->swallowing, sizeof(Client));
 
-	c->next = old.next;
-	c->snext = old.snext;
-	c->mon = old.mon;
+	if (c->swallowing->swalresize || c->swalresize) {
+		memcpy(c, c->swallowing, sizeof(Client));
+
+		c->next = old.next;
+		c->snext = old.snext;
+		c->mon = old.mon;
+	}
+	else
+		c->win = c->swallowing->win;
 
 	free(old.swallowing);
 	c->swallowing = NULL;
