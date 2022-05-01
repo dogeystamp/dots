@@ -474,6 +474,7 @@ swallow(Client *p, Client *c)
 		detach(p);
 		detachstack(p);
 		c->swallowing = p;
+		p->mon = c->mon;
 	} else {
 		detach(c);
 		detachstack(c);
@@ -482,8 +483,6 @@ swallow(Client *p, Client *c)
 		p->win = c->win;
 		c->win = w;
 	}
-
-	c->mon = p->mon;
 
 	updatetitle(p);
 	XMoveResizeWindow(dpy, p->win, p->x, p->y, p->w, p->h);
@@ -503,6 +502,7 @@ unswallow(Client *c)
 		c->next = old.next;
 		c->snext = old.snext;
 		c->mon = old.mon;
+		c->tags = old.tags;
 	}
 	else
 		c->win = c->swallowing->win;
