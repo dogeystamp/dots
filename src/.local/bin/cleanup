@@ -18,7 +18,11 @@ rm -rf \
 .wavemonrc \
 .viminfo \
 .icons\
-.ipython
+.ipython \
+.android \
+.electron-gyp \
+.yarn \
+.yarnrc
 
 
 rmdir Downloads Desktop 2>/dev/null
