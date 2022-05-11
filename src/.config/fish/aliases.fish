@@ -3,7 +3,7 @@ alias ls='ls --color=auto'
 
 # Run mpv from clipboard, replacing Invidious instances with YouTube's domain
 # Limit mpv and youtube-dl to 1080p so it doesn't use too much bandwidth
-alias mpvy='mpv --ytdl-format="bestvideo[ext=mp4][height<=?1080]+bestaudio[ext=m4a]" (xsel -b | sed "s/vid\.mint\.lgbt/youtube\.com/g" | sed "s/yewtu\.be/youtube\.com/g")'
+alias mpvy='mpv --ytdl-format="bestvideo[ext=mp4][height<=?1080]+bestaudio[ext=m4a]" (xsel -b)'
 
 alias youtube-dl='youtube-dl -f "bestvideo[ext=mp4][height<=?1080]+bestaudio[ext=m4a]"'
 
