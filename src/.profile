@@ -26,8 +26,9 @@ export MAILCAPS="$XDG_CONFIG_HOME"/tuir/mailcap
 export TERMINFO="$XDG_DATA_HOME"/terminfo
 export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
 
-# Set editor
+# Set default programs
 export EDITOR="nvim"
+export BROWSER="qutebrowser"
 
 # Variables for passphrase2pgp
 export REALNAME="dogeystamp"
