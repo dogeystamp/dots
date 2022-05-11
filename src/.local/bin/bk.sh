@@ -12,4 +12,4 @@ rsync -avzP \
 	--exclude=proj \
 	--exclude=vms \
 	--exclude=pix/hdri \
-	~/med ~/dox dogeystamp@patria:/mnt/disk/uv/
+	~/med ~/dox dogeystamp@lambda:/mnt/disk/uv/
