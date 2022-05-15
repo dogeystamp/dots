@@ -12,4 +12,5 @@ rsync -avzP \
 	--exclude=proj \
 	--exclude=vms \
 	--exclude=pix/hdri \
+	--exclude=memes/woof/quar \
 	~/med ~/dox dogeystamp@lambda:/mnt/disk/uv/
