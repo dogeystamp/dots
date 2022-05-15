@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Sync certain files between all my devices, with this one being the central point.
+# Sync files to the main device for categorisation and renaming.
 
 while getopts ":pr" o; do
 	case "${o}" in
@@ -17,23 +17,25 @@ ssh-add ~/.ssh/keys/gamma
 
 if [ $ACTION = PUSH ]
 then
-	rsync -avPzc ~/med/memes/woof/ boron:~/med/memes/woof
-
-	rsync -avPzc ~/med/memes/woof/ gamma:~/med/memes/woof
-
-	rsync -avPzc --delete ~/med/mus/ gamma:~/storage/music
+	# Optionally send sorted files back
+	echo Push action is not implemented.
 fi
 
 if [ $ACTION = RECV ]
 then
 	# Move files to the quarantine zone for categorisation and renaming
 
-	rsync -avPzc gamma:~/storage/pictures/Infinity/ ~/med/memes/woof/quar && \
+	rsync -avPzc gamma:~/storage/pictures/Infinity/ ~/quar && \
 		ssh gamma "rm -I storage/pictures/Infinity/*"
 
-	rsync -avPzc gamma:~/storage/movies/Infinity/ ~/med/memes/woof/quar && \
+	rsync -avPzc gamma:~/storage/movies/Infinity/ ~/quar && \
 		ssh gamma "rm -I storage/movies/Infinity/*"
 
+	rsync -avPzc gamma:~/storage/dcim/Camera/ ~/quar && \
+		ssh gamma "rm -I storage/dcim/Camera/*"
+
+	rsync -avPzc "gamma:~/storage/shared/Recordings/Sound records/" ~/quar && \
+		ssh gamma "rm -I storage/shared/Recordings/Sound\ records/*"
 fi
 
 # Kill ssh agent
