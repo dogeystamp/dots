@@ -11,7 +11,7 @@ c.colors.hints.bg = "black"
 c.colors.hints.fg = "white"
 c.colors.tabs.bar.bg = "black"
 c.colors.webpage.darkmode.algorithm = "lightness-hsl"
-c.colors.webpage.darkmode.contrast = 1.0
+c.colors.webpage.darkmode.contrast = 0.5
 c.colors.webpage.darkmode.enabled = True
 c.window.transparent = True
 
