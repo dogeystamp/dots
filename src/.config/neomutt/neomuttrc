@@ -1,0 +1,55 @@
+source ~/.config/neomutt/colors.muttrc
+
+set folder = ~/dox/mail/disroot/
+set spoolfile = "+Inbox"
+set postponed = "+Drafts"
+set record = "+Sent"
+set trash = "+Trash"
+set header_cache = ~/.cache/neomutt/headers
+set message_cachedir = ~/.cache/neomutt/bodies
+set certificate_file = /etc/ssl/certs/ca-certificates.crt
+set tmpdir = .cache/neomutt/tmp
+
+set wait_key = no
+set mbox_type = Maildir
+set use_from=yes                                                                
+set ssl_starttls=yes                                                            
+set ssl_force_tls=yes  
+
+set editor="nvim"
+set rfc2047_parameters = yes                                                    
+set sleep_time = 0    # Pause 0 seconds for informational messages              
+set markers = no    # Disables the `+` displayed at line wraps                  
+set mark_old = no   # Unread mail stay unread until read                        
+set mime_forward = yes    # attachments are forwarded with mail                 
+set wait_key = no   # mutt won't ask "press key to continue"                    
+set fast_reply      # skip to compose when replying                             
+set fcc_attach      # save attachments with the body                            
+set forward_format = "Fwd: %s"  # format of subject when forwarding             
+set forward_quote   # include message in forwards                               
+set reverse_name    # reply as whomever it was to                               
+set include     # include message in replies  
+
+set sidebar_visible = yes                                                       
+set sidebar_width = 20                                                          
+set sidebar_short_path = yes                                                    
+set sidebar_next_new_wrap = yes                                                 
+set mail_check_stats                                                            
+set sidebar_format = '%B%?F? [%F]?%* %?N?%N/? %?S?%S?'
+set charset = "utf-8"
+
+mailboxes =Inbox
+mailboxes =Archive =Sent =Drafts =Junk =Trash
+
+set sendmail="/usr/bin/msmtp -a mail"
+
+macro index O "<shell-escape>mbsync -c \"$XDG_CONFIG_HOME\"/isync/mbsyncrc disroot <enter>" "run offlineimap to sync all mail"
+bind index,pager \CP sidebar-prev
+# Ctrl-P – Previous Mailbox
+bind index,pager \CN sidebar-next
+# Ctrl-N – Next Mailbox
+bind index,pager \CO sidebar-open
+# Ctrl-O – Open Highlighted Mailbox
+
+set realname = "dogeystamp"
+set signature = ~/dox/sig

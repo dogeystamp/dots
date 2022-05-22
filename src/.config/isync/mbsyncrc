@@ -1,0 +1,18 @@
+IMAPStore disroot-remote
+Host disroot.org
+User dogeystamp@disroot.org
+PassCmd "pass msg/mail/dogeystamp@disroot.org"
+SSLType IMAPS
+
+MaildirStore disroot-local
+SubFolders Verbatim
+Path ~/dox/mail/disroot/
+Inbox ~/dox/mail/disroot/Inbox
+
+Channel disroot
+Far :disroot-remote:
+Near :disroot-local:
+Patterns *
+Create Both
+Expunge Both
+SyncState *
