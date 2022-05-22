@@ -67,3 +67,6 @@ c.content.headers.do_not_track = None;
 # Block certain trackers
 c.content.canvas_reading = False
 c.content.webgl = False
+
+# Bind '#' key to scroll to anchor (sections in wiki pages, for example)
+config.bind("#", "set-cmd-text -s :scroll-to-anchor ")
