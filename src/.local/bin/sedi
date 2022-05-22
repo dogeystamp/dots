@@ -3,32 +3,44 @@
 # Edit a file that requires superuser permissions without running the editor as root
 # Substitute for sudo -e that uses doas instead.
 
+set -e
+
 if [ -z $1 ]
 then
 	exit
 fi
 
-FNAME=$(mktemp)
+DNAME=$(mktemp -d)
+FNAME=$(basename $1)
+FPATH="$DNAME/$FNAME"
 
 if [ -e $1 ]
 then
-	cp $1 $FNAME
+	cp "$1" "$FPATH"
+else
+	touch "$FPATH"
 fi
 
-$EDITOR $FNAME
+$EDITOR "$FPATH"
 
 DIFF=""
 
+if [ ! -e $FPATH ]
+then
+	exit
+fi
+
 if [ -e $1 ]
 then
-	DIFF=$(diff $FNAME $1)
+	DIFF=$(diff "$FPATH" "$1")
 else
-	DIFF=$(cat $FNAME)
+	DIFF=$(cat "$FPATH")
 fi
 
 if [ -n "$DIFF" ]
 then
-	doas cp $FNAME $1
+	doas cp "$FPATH" "$1"
 fi
 
-rm $FNAME
+rm "$FPATH"
+rmdir $DNAME
