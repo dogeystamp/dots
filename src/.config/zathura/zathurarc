@@ -2,6 +2,6 @@ set selection-clipboard clipboard
 set recolor-darkcolor "#ffffff"
 set default-bg "#000000"
 set recolor-lightcolor "#000000"
-#set recolor true
+set recolor true
 
 map D feedkeys ":set recolor<Return>"
