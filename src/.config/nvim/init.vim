@@ -8,3 +8,5 @@ autocmd InsertLeave * hi StatusLine cterm=italic
 
 highlight LineNr ctermfg=grey
 highlight EndOfBuffer ctermfg=black ctermbg=black
+
+nnoremap <esc> :noh<return><esc>
