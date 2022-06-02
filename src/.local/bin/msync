@@ -2,6 +2,8 @@
 
 # Sync files to the main device for categorisation and renaming.
 
+set -e
+
 while getopts ":pr" o; do
 	case "${o}" in
 		p) ACTION=PUSH ;;
@@ -25,17 +27,20 @@ if [ $ACTION = RECV ]
 then
 	# Move files to the quarantine zone for categorisation and renaming
 
-	rsync -avPzc gamma:~/storage/pictures/Infinity/ ~/quar && \
-		ssh gamma "rm -I storage/pictures/Infinity/*"
+	rsync -avPzc gamma:~/storage/pictures/Infinity/ ~/quar
 
-	rsync -avPzc gamma:~/storage/movies/Infinity/ ~/quar && \
-		ssh gamma "rm -I storage/movies/Infinity/*"
+	rsync -avPzc gamma:~/storage/movies/Infinity/ ~/quar
 
-	rsync -avPzc gamma:~/storage/dcim/Camera/ ~/quar && \
-		ssh gamma "rm -I storage/dcim/Camera/*"
+	rsync -avPzc gamma:~/storage/dcim/OpenCamera/ ~/quar
 
-	rsync -avPzc "gamma:~/storage/shared/Recordings/Sound records/" ~/quar && \
-		ssh gamma "rm -I storage/shared/Recordings/Sound\ records/*"
+	rsync -avPzc "gamma:~/storage/shared/Recordings/Sound records/" ~/quar
+
+	rsync -avPzc gamma:~/dr ~/quar
+
+	# Delete remote files
+
+	echo 'rm -rf ~/storage/pictures/Infinity/* ~/storage/movies/Infinity/* ~/storage/dcim/OpenCamera/* "~/storage/shared/Recordings/Sound records/*"' | ssh gamma /bin/sh
+	ssh gamma 'echo > dr'
 fi
 
 # Kill ssh agent
