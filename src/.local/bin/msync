@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Sync files to the main device for categorisation and renaming.
+# Use go-mtpfs to sync files from an Android device
 
 set -e
 
@@ -11,37 +11,37 @@ while getopts ":pr" o; do
 	esac
 done
 
+ROOT="$HOME/quar/mnt/Internal shared storage"
 
-# Setup ssh agent to avoid repeated password prompts
-eval `ssh-agent -s`
+go-mtpfs "$ROOT" &
 
-ssh-add ~/.ssh/keys/gamma
+# General rsync options
+OPTS="-avPc"
 
 if [ $ACTION = PUSH ]
 then
 	# Optionally send sorted files back
-	echo Push action is not implemented.
+
+	rsync $OPTS ~/med/memes/woof/ "$ROOT/Pictures/memes"
+	rsync $OPTS ~/med/rw/sch/ "$ROOT/Pictures/rw/sch"
+	rsync $OPTS ~/med/sticker/ "$ROOT/Pictures/sticker"
 fi
+
+# Options for all receive rsync transfers
+ROPTS="--remove-source-files"
 
 if [ $ACTION = RECV ]
 then
 	# Move files to the quarantine zone for categorisation and renaming
 
-	rsync -avPzc gamma:~/storage/pictures/Infinity/ ~/quar
+	rsync $OPTS $ROPTS "$ROOT/Pictures/Infinity/" ~/quar
 
-	rsync -avPzc gamma:~/storage/movies/Infinity/ ~/quar
+	rsync $OPTS $ROPTS "$ROOT/Movies/Infinity/" ~/quar
 
-	rsync -avPzc gamma:~/storage/dcim/OpenCamera/ ~/quar
+	rsync $OPTS $ROPTS "$ROOT/DCIM/OpenCamera/" ~/quar
+	rsync $OPTS $ROPTS "$ROOT/DCIM/Camera/" ~/quar
 
-	rsync -avPzc "gamma:~/storage/shared/Recordings/Sound records/" ~/quar
+	rsync $OPTS $ROPTS "$ROOT/Recordings/Sound records/" ~/quar
 
-	rsync -avPzc gamma:~/dr ~/quar
-
-	# Delete remote files
-
-	echo 'rm -rf ~/storage/pictures/Infinity/* ~/storage/movies/Infinity/* ~/storage/dcim/OpenCamera/* "~/storage/shared/Recordings/Sound records/*"' | ssh gamma /bin/sh
-	ssh gamma 'echo > dr'
+	rsync $OPTS $ROPTS "$ROOT/Documents/dr" ~/quar
 fi
-
-# Kill ssh agent
-kill $SSH_AGENT_PID
