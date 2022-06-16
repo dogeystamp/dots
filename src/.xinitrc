@@ -24,7 +24,11 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
 while true; do
-	xsetroot -name " $(date +'%H:%M:%S %a %b %d') // $(acpi | cut -f4 -d " ") "
+	DATE=$(date +'%H:%M:%S %a %b %d')
+	TEMP="$(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))C"
+	BAT="$(acpi | cut -f4 -d " " | tr -d ',')"
+
+	xsetroot -name " $DATE // $TEMP, $BAT "
 	sleep 2
 done &
 
