@@ -11,9 +11,8 @@ while getopts ":pr" o; do
 	esac
 done
 
-ROOT="$HOME/quar/mnt/Internal shared storage"
-
-go-mtpfs "$ROOT" &
+MNT="$HOME/quar/mnt"
+ROOT="$MNT/Internal shared storage"
 
 # General rsync options
 OPTS="-avPc"
