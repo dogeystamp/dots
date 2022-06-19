@@ -29,6 +29,8 @@ fi
 if [ $ACTION = RECV ]
 then
 	rsync -avzP \
-		dogeystamp@lambda:~/mnt/disk_b/ ~/arc/bk/
+		dogeystamp@lambda:/mnt/disk_b/ ~/arc/bk/
+	rsync -avzP \
+		dogeystamp@lambda:/mnt/disk/data/navidrome/mus/ ~/med/mus
 fi
 
