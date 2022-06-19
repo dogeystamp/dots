@@ -14,33 +14,35 @@ done
 MNT="$HOME/quar/mnt"
 ROOT="$MNT/Internal shared storage"
 
-# General rsync options
-OPTS="-avPc"
+imp () {
+	find "$1" -type f | xargs -I{} mv {} "$2"
+}
+
+exp () {
+	find "$1" -type f| xargs -I{} cp -n {} "$2"
+}
 
 if [ $ACTION = PUSH ]
 then
 	# Optionally send sorted files back
 
-	rsync $OPTS ~/med/memes/woof/ "$ROOT/Pictures/memes"
-	rsync $OPTS ~/med/rw/sch/ "$ROOT/Pictures/rw/sch"
-	rsync $OPTS ~/med/sticker/ "$ROOT/Pictures/sticker"
+	exp ~/med/memes/woof/ "$ROOT/Pictures/memes/"
+	exp ~/med/rw/sch/ "$ROOT/Pictures/rw/sch/"
+	exp ~/med/sticker/ "$ROOT/Pictures/sticker/"
 fi
-
-# Options for all receive rsync transfers
-ROPTS="--remove-source-files"
 
 if [ $ACTION = RECV ]
 then
 	# Move files to the quarantine zone for categorisation and renaming
 
-	rsync $OPTS $ROPTS "$ROOT/Pictures/Infinity/" ~/quar
+	imp "$ROOT/Pictures/Infinity/" ~/quar
 
-	rsync $OPTS $ROPTS "$ROOT/Movies/Infinity/" ~/quar
+	imp "$ROOT/Movies/Infinity/" ~/quar
 
-	rsync $OPTS $ROPTS "$ROOT/DCIM/OpenCamera/" ~/quar
-	rsync $OPTS $ROPTS "$ROOT/DCIM/Camera/" ~/quar
+	imp "$ROOT/DCIM/OpenCamera/" ~/quar
+	imp "$ROOT/DCIM/Camera/" ~/quar
 
-	rsync $OPTS $ROPTS "$ROOT/Recordings/Sound records/" ~/quar
+	imp "$ROOT/Recordings/Sound records/" ~/quar
 
-	rsync $OPTS $ROPTS "$ROOT/Documents/dr" ~/quar
+	imp "$ROOT/Documents/dr" ~/quar
 fi
