@@ -24,6 +24,7 @@ then
 		--exclude=med/pix/hdri \
 		--exclude=med/memes/woof/quar \
 		--exclude=BL_proxy \
+		--exclude=a.out \
 		~/med ~/dox dogeystamp@lambda:/mnt/disk/uv/
 fi
 
