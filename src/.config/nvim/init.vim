@@ -20,10 +20,8 @@ let g:netrw_altv = 1
 let g:netrw_winsize = 20
 
 function! OpenNetRW()
-	vsplit
-	:vertical resize 25
-	Explore
-	wincmd h
+	Vexplore
+	wincmd l
 endfunction
 
 aug ProjectDrawer
@@ -35,3 +33,8 @@ aug netrw_close
   au!
   au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&filetype") == "netrw"|q|endif
 aug END
+
+nnoremap <tab> :wincmd w<cr>
+inoremap <tab> <c-o>:wincmd w<cr>
+nnoremap <s-tab> :wincmd W<cr>
+inoremap <s-tab> <c-o>:wincmd W<cr>
