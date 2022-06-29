@@ -23,12 +23,13 @@ then
 		--exclude=dox/vms \
 		--exclude=med/pix/hdri \
 		--exclude=med/memes/woof/quar \
+		--exclude=BL_proxy \
 		~/med ~/dox dogeystamp@lambda:/mnt/disk/uv/
 fi
 
 if [ $ACTION = RECV ]
 then
-	rsync -avzP \
+	rsync -avzP --append-verify \
 		dogeystamp@lambda:/mnt/disk_b/ ~/arc/bk/
 	rsync -avzP \
 		dogeystamp@lambda:/mnt/disk/data/navidrome/mus/ ~/med/mus
