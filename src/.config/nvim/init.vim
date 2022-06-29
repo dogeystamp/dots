@@ -10,3 +10,28 @@ highlight LineNr ctermfg=grey
 highlight EndOfBuffer ctermfg=black ctermbg=black
 
 nnoremap <esc> :noh<return><esc>
+
+set splitbelow splitright
+
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 20
+
+function! OpenNetRW()
+	vsplit
+	:vertical resize 25
+	Explore
+	wincmd h
+endfunction
+
+aug ProjectDrawer
+  au!
+  au VimEnter * :call OpenNetRW()
+aug END
+
+aug netrw_close
+  au!
+  au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&filetype") == "netrw"|q|endif
+aug END
