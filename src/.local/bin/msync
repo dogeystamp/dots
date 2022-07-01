@@ -51,5 +51,6 @@ then
 	imp "$ROOT/Documents/dr" ~/quar
 
 	imp "$ROOT/Documents/contacts.vcf" ~/quar
+	imp "$ROOT/infbk/" ~/quar/infinity/
 	impf "$ROOT/.SeedVaultAndroidBackup/" ~/quar/seedvault/
 fi
