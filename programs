@@ -3,6 +3,7 @@ ncmpcpp
 mpd
 dunst
 zathura
+xkblayout-state
 xorg-setxkbmap
 xorg-xrandr
 xorg-xset
