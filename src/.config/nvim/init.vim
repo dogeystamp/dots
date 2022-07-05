@@ -1,4 +1,5 @@
-set tabstop=4 shiftwidth=4 noexpandtab relativenumber ai nu rnu nosmd
+set tabstop=4 shiftwidth=4 noexpandtab relativenumber ai nu rnu nosmd ignorecase smartcase
+set lazyredraw nocursorline ttyfast
 
 hi Search cterm=NONE ctermfg=white ctermbg=blue
 hi StatusLine ctermbg=NONE cterm=italic
