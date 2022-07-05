@@ -25,9 +25,10 @@ while true; do
 	DATE=$(date +'%H:%M:%S %a %b %d')
 	TEMP="$(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))C"
 	BAT="$(acpi | cut -f4 -d " " | tr -d ',')"
+	KEY="$(xkblayout-state print '%s')"
 
-	xsetroot -name " $DATE // $TEMP, $BAT "
-	sleep 2
+	xsetroot -name " $DATE // $TEMP, $BAT // $KEY"
+	sleep 1
 done &
 
 dwm
