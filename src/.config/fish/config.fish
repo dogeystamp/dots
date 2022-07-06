@@ -4,7 +4,7 @@ end
 
 source ~/.config/fish/aliases.fish
 
-source ~/.config/fish/functions/tmux_prompt.fish
+source ~/.config/fish/functions/extra_prompt.fish
 
 # Set GPG_TTY
 gpgt
