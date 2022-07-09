@@ -31,6 +31,7 @@ then
 	# Optionally send sorted files back
 
 	exp ~/med/memes/woof/ "$ROOT/Pictures/memes/"
+	exp ~/med/memes/bork/ "$ROOT/Pictures/memes2/"
 	exp ~/med/rw/sch/ "$ROOT/Pictures/rw/sch/"
 	exp ~/med/sticker/ "$ROOT/Pictures/sticker/"
 fi
@@ -40,6 +41,7 @@ then
 	# Move files to the quarantine zone for categorisation and renaming
 
 	imp "$ROOT/Pictures/Infinity/" ~/quar
+	imp "$ROOT/Pictures/Screenshots/" ~/quar
 
 	imp "$ROOT/Movies/Infinity/" ~/quar
 
