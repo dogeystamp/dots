@@ -45,9 +45,9 @@ nnoremap - :call OpenNetRW()<cr>
 let g:termdebug_popup = 0
 let g:termdebug_wide = 100
 
-tnoremap <silent> <tab> <c-\><c-n> :wincmd w<cr>
-tnoremap <silent> <s-tab> <c-\><c-n> :wincmd W<cr>
-tnoremap <silent> <esc> <c-\><c-n>
+tnoremap <silent> <tab> <c-\><c-n><c-\><c-n>:wincmd w<cr>
+tnoremap <silent> <s-tab> <c-\><c-n><c-\><c-n>:wincmd W<cr>
+tnoremap <silent> <esc> <c-\><c-n><c-\><c-n>
 
 au BufEnter term://* startinsert
 au BufEnter *.c,*.cpp,*.h,*.hpp packadd termdebug
@@ -55,10 +55,12 @@ au BufEnter *.c,*.cpp,*.h,*.hpp packadd termdebug
 nnoremap <silent> <f3> :Termdebug a.out<cr>
 nnoremap <silent> <f4> :!g++ -g %:p<cr>
 nnoremap <silent> <f5> :Run<cr>
-nnoremap <silent> <s-f5> :Stop<cr>
-nnoremap <silent> <f9> :Break<cr>
+nnoremap <silent> <f6> :Stop<cr>
 nnoremap <silent> <f8> :Clear<cr>
-nnoremap <silent> <s-f10> :Continue<cr>
-nnoremap <silent> <c-n> :Over<cr>
+nnoremap <silent> <f9> :Break<cr>
+nnoremap <silent> <f10> :Continue<cr>
+
 nnoremap <silent> <c-p> :Step<cr>
-nnoremap <silent> <s-f11> :Finish<cr>
+nnoremap <silent> <c-n> :Over<cr>
+
+vnoremap <silent> K :'<,'>Evaluate<cr>
