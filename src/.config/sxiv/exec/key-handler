@@ -2,7 +2,7 @@
 while read -r file
 do
         case "$1" in
-		"d")	mv $file ~/ ;;
-		"m")	mv $file sta/ ;;
+		"d")	mv "$file" ~/ ;;
+		"m")	mv "$file" sta/ ;;
         esac
 done
