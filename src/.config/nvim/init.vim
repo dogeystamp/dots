@@ -33,10 +33,6 @@ aug netrw_close
   au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&filetype") == "netrw"|q|endif
 aug END
 
-nnoremap <silent> <tab> :wincmd w<cr>
-nnoremap <silent> <s-tab> :wincmd W<cr>
-inoremap <silent> <s-tab> <c-o>:wincmd W<cr>
-
 nnoremap - :call OpenNetRW()<cr>
 
 
@@ -45,12 +41,10 @@ nnoremap - :call OpenNetRW()<cr>
 let g:termdebug_popup = 0
 let g:termdebug_wide = 100
 
-tnoremap <silent> <tab> <c-\><c-n><c-\><c-n>:wincmd w<cr>
-tnoremap <silent> <s-tab> <c-\><c-n><c-\><c-n>:wincmd W<cr>
-tnoremap <silent> <esc> <c-\><c-n><c-\><c-n>
-
 au BufEnter term://* startinsert
 au BufEnter *.c,*.cpp,*.h,*.hpp packadd termdebug
+
+tnoremap <silent> <esc> <c-\><c-n><c-\><c-n>
 
 nnoremap <silent> <f3> :Termdebug a.out<cr>
 nnoremap <silent> <f4> :!g++ -g %:p<cr>
@@ -59,6 +53,8 @@ nnoremap <silent> <f6> :Stop<cr>
 nnoremap <silent> <f8> :Clear<cr>
 nnoremap <silent> <f9> :Break<cr>
 nnoremap <silent> <f10> :Continue<cr>
+
+tnoremap <c-w> <c-\><c-n><c-\><c-n><c-w>
 
 nnoremap <silent> <c-p> :Step<cr>
 nnoremap <silent> <c-n> :Over<cr>
