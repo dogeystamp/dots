@@ -48,7 +48,7 @@ exp () {
 }
 
 display_help () {
-	cat << "EOF"
+	cat << EOF
 usage: $SCRIPT_NAME [-r] [-p] [-h] [-s PATH] [-d PATH]
 	-r: receive files from mobile device
 	-p: send files to mobile device
