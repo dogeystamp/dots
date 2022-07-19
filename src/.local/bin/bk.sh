@@ -28,6 +28,9 @@ then
 		~/med ~/dox dogeystamp@lambda:/mnt/disk/uv/
 fi
 
+eval `ssh-agent`
+ssh-add ~/.ssh/keys/lambda
+
 if [ $ACTION = RECV ]
 then
 	rsync -avzP --append-verify \
@@ -36,3 +39,4 @@ then
 		dogeystamp@lambda:/mnt/disk/data/navidrome/mus/ ~/med/mus
 fi
 
+kill $SSH_AGENT_PID
