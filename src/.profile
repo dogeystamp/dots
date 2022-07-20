@@ -25,6 +25,8 @@ export MAILCAPS="$XDG_CONFIG_HOME"/tuir/mailcap
 # terminfo
 export TERMINFO="$XDG_DATA_HOME"/terminfo
 export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
+# go
+export GOPATH="$HOME"/.local/go
 
 # Set default programs
 export EDITOR="nvim"
