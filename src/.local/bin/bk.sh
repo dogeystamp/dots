@@ -10,6 +10,9 @@ while getopts ":pr" o; do
 	esac
 done
 
+eval `ssh-agent`
+ssh-add ~/.ssh/keys/lambda
+
 if [ $ACTION = PUSH ]
 then
 	rsync -avzP \
@@ -27,9 +30,6 @@ then
 		--exclude=a.out \
 		~/med ~/dox dogeystamp@lambda:/mnt/disk/uv/
 fi
-
-eval `ssh-agent`
-ssh-add ~/.ssh/keys/lambda
 
 if [ $ACTION = RECV ]
 then
