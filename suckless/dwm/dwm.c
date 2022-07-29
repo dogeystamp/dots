@@ -471,10 +471,11 @@ swallow(Client *p, Client *c)
 	XUnmapWindow(dpy, p->win);
 
 	if (c->swalresize) {
+		sendmon(c, p->mon);
+		c->tags = p->tags;
 		detach(p);
 		detachstack(p);
 		c->swallowing = p;
-		p->mon = c->mon;
 	} else {
 		detach(c);
 		detachstack(c);
@@ -482,10 +483,10 @@ swallow(Client *p, Client *c)
 		Window w = p->win;
 		p->win = c->win;
 		c->win = w;
+		updatetitle(p);
+		XMoveResizeWindow(dpy, p->win, p->x, p->y, p->w, p->h);
 	}
 
-	updatetitle(p);
-	XMoveResizeWindow(dpy, p->win, p->x, p->y, p->w, p->h);
 	arrange(p->mon);
 	configure(p);
 	updateclientlist();
