@@ -471,11 +471,11 @@ swallow(Client *p, Client *c)
 	XUnmapWindow(dpy, p->win);
 
 	if (c->swalresize) {
-		sendmon(c, p->mon);
-		c->tags = p->tags;
 		detach(p);
 		detachstack(p);
 		c->swallowing = p;
+		sendmon(c, p->mon);
+		c->tags = p->tags;
 	} else {
 		detach(c);
 		detachstack(c);
