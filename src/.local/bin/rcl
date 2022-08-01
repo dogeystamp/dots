@@ -1,5 +1,0 @@
-#!/bin/sh
-
-# Send clipboard to my QEMU VM. Probably very hacky.
-
-xsel -b | ssh boron 'bash -ic "export DISPLAY=:0; export XAUTHORITY=\"$XDG_RUNTIME_DIR\"/Xauthority; cat | xclip -i -selection clipboard"' 2>/dev/null & disown 2>/dev/null

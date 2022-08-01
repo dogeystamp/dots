@@ -31,6 +31,9 @@ export GOPATH="$HOME"/.local/go
 # Set default programs
 export EDITOR="nvim"
 export BROWSER="qutebrowser"
+# man pager
+export MANPAGER='nvim +Man!'
+export MANWIDTH=999
 
 # Variables for passphrase2pgp
 export REALNAME="dogeystamp"

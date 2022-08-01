@@ -46,4 +46,4 @@
 
 [play_sound]
     summary = "*"
-    script = /home/dogeystamp/.local/bin/notification-sound.sh
+    script = /home/dogeystamp/.local/bin/deskutils/notification-sound.sh

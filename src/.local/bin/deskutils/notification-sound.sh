@@ -2,4 +2,4 @@
 
 # Dunst notification sound script.
 
-mpv ~/.local/bin/notif.wav
+mpv ~/.local/bin/deskutils/notif.wav
