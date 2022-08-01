@@ -41,7 +41,9 @@ nnoremap - :call OpenNetRW()<cr>
 let g:termdebug_popup = 0
 let g:termdebug_wide = 100
 
-au BufEnter term://* startinsert
+" Enter insert mode automatically in terminal windows
+"au BufEnter term://* startinsert
+
 au BufEnter *.c,*.cpp,*.h,*.hpp packadd termdebug
 
 tnoremap <silent> <esc> <c-\><c-n><c-\><c-n>
@@ -54,7 +56,10 @@ nnoremap <silent> <f8> :Clear<cr>
 nnoremap <silent> <f9> :Break<cr>
 nnoremap <silent> <f10> :Continue<cr>
 
-tnoremap <c-w> <c-\><c-n><c-\><c-n><c-w>
+nnoremap <silent> <C-h> :vertical resize -5<cr>
+nnoremap <silent> <C-l> :vertical resize +5<cr>
+nnoremap <C-j> <C-w>w
+nnoremap <C-k> <C-w>W
 
 nnoremap <silent> <c-p> :Step<cr>
 nnoremap <silent> <c-n> :Over<cr>
