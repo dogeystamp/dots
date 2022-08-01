@@ -1,5 +1,5 @@
 #!/bin/sh
 
-# Dunst notification sound script
+# Dunst notification sound script.
 
-mpv ~/med/aud/not.mp3
+mpv ~/.local/bin/notif.wav
