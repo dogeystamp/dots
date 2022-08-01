@@ -17,7 +17,7 @@ c.window.transparent = True
 
 # General settings
 
-c.scrolling.smooth = True
+c.scrolling.smooth = False
 c.url.default_page = "about:blank"
 c.url.start_pages = "about:blank"
 c.url.searchengines = {"DEFAULT":"https://searx.be/search?q={}"}
@@ -36,7 +36,7 @@ c.statusbar.show = "in-mode"
 
 c.hints.border = "1px dotted white"
 c.hints.radius = 10
-c.hints.chars = "asdf"
+c.hints.chars = "asdfhjkl"
 
 # Privacy settings
 
