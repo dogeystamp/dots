@@ -1,7 +1,14 @@
-set selection-clipboard clipboard
 set recolor-darkcolor "#ffffff"
-set default-bg "#000000"
 set recolor-lightcolor "#000000"
 set recolor true
+
+set default-bg "#000000"
+set index-bg "#000000"
+set index-active-bg "#111111"
+set index-active-fg "#FFFFFF"
+set inputbar-bg "#000000"
+set inputbar-fg "#CCCCCC"
+
+set selection-clipboard clipboard
 
 map D feedkeys ":set recolor<Return>"
