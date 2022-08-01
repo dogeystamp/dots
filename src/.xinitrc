@@ -1,7 +1,7 @@
 #!/bin/sh
 
 mon-on
-#picom --experimental-backends --backend glx &
+picom &
 xwallpaper --center .config/wall.png
 # Host specific wallpapers
 wallpaper
