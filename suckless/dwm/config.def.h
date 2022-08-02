@@ -93,9 +93,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray5, "-sb", col_gray3, "-sf", col_gray4, "-n", NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *suspendcmd[]  = { "doas", "/bin/loginctl", "suspend", NULL };
 static const char *browsercmd[]  = { "qutebrowser", NULL };
-static const char *lockcmd[]  = { "slock" };
 static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
 static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
@@ -110,11 +108,11 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_f,      togglealtbar,   {0} },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = suspendcmd } },
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = browsercmd } },
-	{ MODKEY|ControlMask,           XK_l,      spawn,          {.v = lockcmd } },
-	{ 0,                            XK_Print,  spawn,          SHCMD("~/.local/bin/s.sh")  },
-	{ ShiftMask,                    XK_Print,  spawn,          SHCMD("~/.local/bin/ss.sh") },
+	{ MODKEY|ControlMask,           XK_l,      spawn,          SHCMD("/usr/local/bin/slock")  },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("~/.local/bin/deskutils/suspend.sh")  },
+	{ 0,                            XK_Print,  spawn,          SHCMD("~/.local/bin/deskutils/screenshot.sh")  },
+	{ ShiftMask,                    XK_Print,  spawn,          SHCMD("~/.local/bind/deskutils/screenshot-save.sh") },
 	{ 0,                     	    XF86XK_AudioStop, spawn, {.v = stopcmd } },
 	{ 0,                     	    XF86XK_AudioNext, spawn, {.v = next } },
 	{ 0,                     	    XF86XK_AudioPrev, spawn, {.v = prev   } },
