@@ -10,5 +10,3 @@ set inputbar-bg "#000000"
 set inputbar-fg "#CCCCCC"
 
 set selection-clipboard clipboard
-
-map D feedkeys ":set recolor<Return>"
