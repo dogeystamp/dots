@@ -43,6 +43,10 @@ impf () {
 	find "$1" -mindepth 1 -maxdepth 1 | xargs -I{} mv "{}"/ "$2"
 }
 
+impf_cp () {
+	find "$1" -mindepth 1 -maxdepth 1 | xargs -I{} cp -r "{}"/ "$2"
+}
+
 exp () {
 	find "$1" -type f | xargs -I{} cp -n "{}" "$2"
 }
@@ -84,7 +88,7 @@ case "$ACTION" in
 
 		imp "$ROOT/Documents/contacts.vcf" $DEST
 		imp "$ROOT/infbk/" $DEST
-		impf "$ROOT/.SeedVaultAndroidBackup/" $DEST/seedvault/
+		impf_cp "$ROOT/.SeedVaultAndroidBackup/" $DEST/seedvault/
 		;;
 
 	HELP)
