@@ -24,7 +24,7 @@ export XMODIFIERS=@im=fcitx
 while true; do
 	DATE=$(date +'%H:%M:%S %a %b %d')
 	TEMP="$(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))C"
-	BAT="$(acpi | cut -f4 -d " " | tr -d ',')"
+	BAT="$(acpi -b | head -n 1 | awk -F'[,:]' '{print $3}' | tr -d '[:space:]')"
 	KEY="$(xkblayout-state print '%s')"
 
 	xsetroot -name " $DATE // $TEMP, $BAT // $KEY"
