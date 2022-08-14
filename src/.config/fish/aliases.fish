@@ -1,8 +1,6 @@
 # Color ls 
 alias ls='ls --color=auto'
 
-# Limit mpv and youtube-dl to 1080p so it doesn't use too much bandwidth
-alias mpvs='mpv --ytdl-format="bestvideo[ext=mp4][height<=?1080]+bestaudio[ext=m4a]"'
 # Run mpv from clipboard
 alias mpvy='mpvs (xsel -b)'
 

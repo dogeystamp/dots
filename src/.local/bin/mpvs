@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Custom mpv settings
+
+# passed to yt-dl
+FORMAT="bestvideo[ext=mp4][height<=?1080]+bestaudio[ext=m4a]"
+
+mpv \
+--ytdl-format="$FORMAT" \
+$@
