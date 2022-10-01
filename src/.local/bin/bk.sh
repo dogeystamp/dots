@@ -28,7 +28,8 @@ then
 		--exclude=med/memes/woof/quar \
 		--exclude=BL_proxy \
 		--exclude=a.out \
-		~/med ~/dox dogeystamp@lambda:/mnt/disk/uv/
+		--exclude=dlcache \
+		~/med ~/dox ~/.xonotic dogeystamp@lambda:/mnt/disk/uv/
 fi
 
 if [ $ACTION = RECV ]
