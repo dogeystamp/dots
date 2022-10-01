@@ -10,7 +10,9 @@ source ~/.config/fish/functions/extra_prompt.fish
 gpgt
 
 # Add .local/bin to path
-set -gx PATH "$PATH:$HOME/.local/bin:$HOME/.local/bin/deskutils:"
+set -gx PATH "$PATH:$HOME/.local/bin:"
+set -gx PATH "$PATH:$HOME/.local/bin/deskutils:"
+set -gx PATH "$PATH:$HOME/.local/bin/minrss-scripts:"
 
 # Disable fish greeting
 set fish_greeting ""
