@@ -3,7 +3,7 @@
 # Custom mpv settings
 
 # passed to yt-dl
-FORMAT="bestvideo[ext=mp4][height<=?1080]+bestaudio[ext=m4a]"
+FORMAT="bestvideo[height<=?720][fps<=?30][vcodec!=?vp9]+bestaudio/best"
 
 mpv \
 --ytdl-format="$FORMAT" \
