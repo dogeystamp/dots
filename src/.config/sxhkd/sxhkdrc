@@ -1,0 +1,22 @@
+# Soundboard setup
+# "Boxes" labelled 0-9 in ~/med/sb2/
+# Each one has files/symlinks 0-9
+
+super + {0-9}
+	unlink ~/med/sb/cur;\
+	ln -sr ~/med/sb/{0-9} ~/med/sb/cur;\
+	rm /tmp/sb-socket*
+
+KP_{Insert,End,Down,Next,Left,Begin,Right,Home,Up,Prior}
+	snd_id="{0-9}";\
+	id=$(cat /dev/random | base32 | head -c 5);\
+	socket="/tmp/sb-socket$snd_id-$id";\
+	mpv --input-ipc-server=$socket ~/med/sb/cur/$snd_id*;\
+	rm $socket
+
+shift + KP_{Insert,End,Down,Next,Left,Begin,Right,Home,Up,Prior}
+	snd_id="{0-9}";\
+	ls /tmp/sb-socket$snd_id-* |\
+		while read -r socket; do \
+			echo {"stop"} | socat - $socket;\
+		done

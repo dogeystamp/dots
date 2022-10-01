@@ -35,6 +35,8 @@ export BROWSER="qutebrowser"
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
 
+export SXHKD_SHELL='/bin/sh'
+
 # Variables for passphrase2pgp
 export REALNAME="dogeystamp"
 export EMAIL="dogeystamp@disroot.org"
