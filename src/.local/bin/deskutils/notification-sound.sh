@@ -2,4 +2,8 @@
 
 # Dunst notification sound script.
 
-mpv ~/.local/bin/deskutils/notif.wav
+if pactl list short sinks | grep -q virtual_mic; then
+	mpv ~/.local/bin/deskutils/notif.wav --audio-device=pulse/c1_out
+else
+	mpv ~/.local/bin/deskutils/notif.wav
+fi
