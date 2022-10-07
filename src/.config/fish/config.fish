@@ -12,6 +12,7 @@ gpgt
 # Add .local/bin to path
 set -gx PATH "$PATH:$HOME/.local/bin:"
 set -gx PATH "$PATH:$HOME/.local/bin/deskutils:"
+set -gx PATH "$PATH:$HOME/.local/bin/deskutils/soundboard:"
 set -gx PATH "$PATH:$HOME/.local/bin/minrss-scripts:"
 
 # Disable fish greeting

@@ -1,0 +1,7 @@
+#!/bin/sh
+# Given a list of mpv sockets through stdin, send a message to all of them
+
+while read -r socket; do
+	printf "$1\n" | socat - $socket
+	rm "$socket"
+done

@@ -1,22 +1,29 @@
 # Soundboard setup
-# "Boxes" labelled 0-9 in ~/med/sb2/
+# "Boxes" labelled 0-9 in $SB_DIR/
 # Each one has files/symlinks 0-9
 
+# change dir
 super + {0-9}
-	unlink ~/med/sb/cur;\
-	ln -sr ~/med/sb/{0-9} ~/med/sb/cur;\
-	rm /tmp/sb-socket*
+	unlink $SB_DIR/cur;\
+	ln -sr $SB_DIR/{0-9} $SB_DIR/cur
 
+# start sound
 KP_{Insert,End,Down,Next,Left,Begin,Right,Home,Up,Prior}
 	snd_id="{0-9}";\
 	id=$(cat /dev/random | base32 | head -c 5);\
-	socket="/tmp/sb-socket$snd_id-$id";\
-	mpv --input-ipc-server=$socket ~/med/sb/cur/$snd_id*;\
-	rm $socket
+	socket="$SB_DIR/cur/sb-socket$snd_id-$id";\
+	mpv --input-ipc-server=$socket $SB_DIR/cur/$snd_id*;\
+	rm -f "$socket"
 
+# stop specific sound
 shift + KP_{Insert,End,Down,Next,Left,Begin,Right,Home,Up,Prior}
 	snd_id="{0-9}";\
-	ls /tmp/sb-socket$snd_id-* |\
-		while read -r socket; do \
-			echo {"stop"} | socat - $socket;\
-		done
+	ls $SB_DIR/cur/sb-socket$snd_id-* | sb-msg "stop"
+
+# stop all sounds in current dir
+KP_Delete
+	ls $SB_DIR/cur/sb-socket* | stop.sh
+
+# stop all sounds
+shift + KP_Delete
+	find $SB_DIR/ -name "sb-socket*" | sb-msg "stop"
