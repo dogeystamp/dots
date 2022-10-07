@@ -19,11 +19,13 @@ then
 		--chown=dogeystamp:sftpr \
 		--exclude=med/mus \
 		--exclude=med/gv \
+		--exclude=sb-socket \
 		--exclude=dox/dow \
 		--exclude=dox/rss \
 		--exclude=dox/rem \
 		--exclude=dox/proj \
 		--exclude=dox/vms \
+		--exclude=dox/mail/disroot \
 		--exclude=med/pix/hdri \
 		--exclude=med/memes/woof/quar \
 		--exclude=BL_proxy \
