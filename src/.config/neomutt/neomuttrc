@@ -39,11 +39,12 @@ set sidebar_format = '%B%?F? [%F]?%* %?N?%N/? %?S?%S?'
 set charset = "utf-8"
 
 mailboxes =Inbox
-mailboxes =Archive =Sent =Drafts =Junk =Trash
+mailboxes =Archive =Sent =Drafts =Junk =Trash =../arc
 
 set sendmail="/usr/bin/msmtp -a mail"
 
 macro index O "<shell-escape>mbsync -c \"$XDG_CONFIG_HOME\"/isync/mbsyncrc disroot <enter>" "run offlineimap to sync all mail"
+macro index,pager A "<save-message>=../arc<enter>" "Archive Message"
 bind index,pager \CP sidebar-prev
 # Ctrl-P – Previous Mailbox
 bind index,pager \CN sidebar-next
