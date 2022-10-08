@@ -3,7 +3,7 @@
 # Directory tree under $SB_DIR
 # Play sounds in current dir using numpad 0-9 keys
 # Navigate to a dir under current one with super + 0-9
-# Navigate back to root with super + minus
+# Navigate back to root with super + `
 
 
 # change dir
@@ -13,18 +13,27 @@ super + {0-9}
 	fi;\
 	ln -sr $SB_DIR/$(readlink $SB_DIR/cur)/{0-9}* $SB_DIR/cur_n;\
 	unlink $SB_DIR/cur;\
-	mv $SB_DIR/cur_n $SB_DIR/cur
+	mv $SB_DIR/cur_n $SB_DIR/cur;\
+	sb-ls.sh
 
 # set current directory to $SB_DIR
-super + minus
+super + grave
 	unlink $SB_DIR/cur;\
-	ln -sr $SB_DIR $SB_DIR/cur
+	ln -sr $SB_DIR $SB_DIR/cur;\
+	sb-ls.sh
+
+# list current directory contents
+KP_Enter
+	sb-ls.sh
+# super + shift + `
+super + asciitilde
+	sb-ls.sh
 
 # start sound
 KP_{Insert,End,Down,Next,Left,Begin,Right,Home,Up,Prior}
 	if [ -z "$SB_DIR" ]; then \
 		notify-send -u critical -a "soundboard" '$SB_DIR is unset!';\
-		exit;\
+		exit 1;\
 	fi;\
 	snd_id="{0-9}";\
 	id=$(cat /dev/random | base32 | head -c 5);\

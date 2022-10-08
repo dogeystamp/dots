@@ -2,7 +2,7 @@
 
 # Dunst notification sound script.
 
-if [ $DUNST_URGENCY = "LOW" ]; then
+if [ "$DUNST_APP_NAME" = "soundboard" ]; then
 	exit
 fi
 
