@@ -1,14 +1,31 @@
-# Soundboard setup
-# "Boxes" labelled 0-9 in $SB_DIR/
-# Each one has files/symlinks 0-9
+# Soundboard
+
+# Directory tree under $SB_DIR
+# Play sounds in current dir using numpad 0-9 keys
+# Navigate to a dir under current one with super + 0-9
+# Navigate back to root with super + minus
+
 
 # change dir
 super + {0-9}
+	if [ ! -h $SB_DIR/cur ]; then \
+		ln -sr $SB_DIR $SB_DIR/cur;\
+	fi;\
+	ln -sr $SB_DIR/$(readlink $SB_DIR/cur)/{0-9}* $SB_DIR/cur_n;\
 	unlink $SB_DIR/cur;\
-	ln -sr $SB_DIR/{0-9} $SB_DIR/cur
+	mv $SB_DIR/cur_n $SB_DIR/cur
+
+# set current directory to $SB_DIR
+super + minus
+	unlink $SB_DIR/cur;\
+	ln -sr $SB_DIR $SB_DIR/cur
 
 # start sound
 KP_{Insert,End,Down,Next,Left,Begin,Right,Home,Up,Prior}
+	if [ -z "$SB_DIR" ]; then \
+		notify-send -u critical -a "soundboard" '$SB_DIR is unset!';\
+		exit;\
+	fi;\
 	snd_id="{0-9}";\
 	id=$(cat /dev/random | base32 | head -c 5);\
 	socket="$SB_DIR/cur/sb-socket$snd_id-$id";\
@@ -20,10 +37,7 @@ shift + KP_{Insert,End,Down,Next,Left,Begin,Right,Home,Up,Prior}
 	snd_id="{0-9}";\
 	ls $SB_DIR/cur/sb-socket$snd_id-* | sb-msg "stop"
 
-# stop all sounds in current dir
-KP_Delete
-	ls $SB_DIR/cur/sb-socket* | stop.sh
-
 # stop all sounds
 shift + KP_Delete
-	find $SB_DIR/ -name "sb-socket*" | sb-msg "stop"
+	find $SB_DIR/ -name "sb-socket*" | sb-msg "stop";\
+	find $SB_DIR/ -name "sb-socket*" | xargs rm

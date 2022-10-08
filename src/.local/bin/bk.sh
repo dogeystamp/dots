@@ -20,6 +20,7 @@ then
 		--exclude=med/mus \
 		--exclude=med/gv \
 		--exclude=sb-socket \
+		--exclude=med/sb/cur \
 		--exclude=dox/dow \
 		--exclude=dox/rss \
 		--exclude=dox/rem \
