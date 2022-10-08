@@ -46,6 +46,23 @@ shift + KP_{Insert,End,Down,Next,Left,Begin,Right,Home,Up,Prior}
 	snd_id="{0-9}";\
 	ls $SB_DIR/cur/sb-socket$snd_id-* | sb-msg "stop"
 
+# loop specific sound
+ctrl + shift + KP_{Insert,End,Down,Next,Left,Begin,Right,Home,Up,Prior}
+	snd_id="{0-9}";\
+	ls $SB_DIR/cur/sb-socket$snd_id-* | sb-msg "set loop inf"
+
+# reduce volume of current dir
+ctrl + KP_Subtract
+	snd_id="{0-9}";\
+	ls $SB_DIR/cur/sb-socket* | sb-msg "add volume -5";\
+	sb-vol
+
+# increase volume of current dir
+ctrl + KP_Add
+	snd_id="{0-9}";\
+	ls $SB_DIR/cur/sb-socket* | sb-msg "add volume +5";\
+	sb-vol
+
 # stop all sounds
 shift + KP_Delete
 	find $SB_DIR/ -name "sb-socket*" | sb-msg "stop";\

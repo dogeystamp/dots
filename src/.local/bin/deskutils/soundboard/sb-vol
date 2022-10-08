@@ -1,0 +1,10 @@
+#!/bin/sh
+# Get the highest volume in the current directory, and present it as a notification.
+
+RES=$(ls $SB_DIR/cur/sb-socket* | \
+	sb-msg '{ "command": ["get_property", "volume"], "request_id": 100 }' |\
+	jq .data | sort | head -n 1 | awk '{ printf("%.0f\n", $0) }')
+
+CUR_DIR="$(basename $(readlink $SB_DIR/cur))"
+
+notify-send -a "soundboard" -r 13371337 "$(printf "%s\nVolume set to %s\n" "$CUR_DIR" "$RES")"

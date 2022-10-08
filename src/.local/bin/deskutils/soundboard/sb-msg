@@ -3,5 +3,4 @@
 
 while read -r socket; do
 	printf "$1\n" | socat - $socket
-	rm "$socket"
 done
