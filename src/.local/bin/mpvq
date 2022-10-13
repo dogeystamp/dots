@@ -1,0 +1,5 @@
+#!/bin/sh
+# Append link from clipboard to mpv playlist
+
+path="$(xsel -b)"
+echo "{ command: [ \"loadfile\", \"$path\", \"append-play\" ] }" | socat - /tmp/mpv-socket
