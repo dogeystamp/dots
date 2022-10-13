@@ -22,9 +22,11 @@ super + grave
 	ln -sr $SB_DIR $SB_DIR/cur;\
 	sb-ls.sh
 
-# list current directory contents
+# list currently playing + volume
 KP_Enter
-	sb-ls.sh
+	find $SB_DIR/ -name "sb-socket*" | sb-vol
+
+# list current directory contents
 # super + shift + `
 super + asciitilde
 	sb-ls.sh
@@ -52,16 +54,28 @@ ctrl + shift + KP_{Insert,End,Down,Next,Left,Begin,Right,Home,Up,Prior}
 	ls $SB_DIR/cur/sb-socket$snd_id-* | sb-msg "set loop inf"
 
 # reduce volume of current dir
-ctrl + KP_Subtract
+ctrl + shift + KP_Subtract
 	snd_id="{0-9}";\
 	ls $SB_DIR/cur/sb-socket* | sb-msg "add volume -5";\
-	sb-vol
+	ls $SB_DIR/cur/sb-socket* | sb-vol
 
 # increase volume of current dir
-ctrl + KP_Add
+ctrl + shift + KP_Add
 	snd_id="{0-9}";\
 	ls $SB_DIR/cur/sb-socket* | sb-msg "add volume +5";\
-	sb-vol
+	ls $SB_DIR/cur/sb-socket* | sb-vol
+
+# reduce volume of specific sound
+ctrl + KP_Subtract; KP_{Insert,End,Down,Next,Left,Begin,Right,Home,Up,Prior}
+	snd_id="{0-9}";\
+	ls $SB_DIR/cur/sb-socket$snd_id-* | sb-msg "add volume -10";\
+	ls $SB_DIR/cur/sb-socket$snd_id-* | sb-vol
+
+# increase volume of specific sound
+ctrl + KP_Add; KP_{Insert,End,Down,Next,Left,Begin,Right,Home,Up,Prior}
+	snd_id="{0-9}";\
+	ls $SB_DIR/cur/sb-socket$snd_id-* | sb-msg "add volume +10";\
+	ls $SB_DIR/cur/sb-socket$snd_id-* | sb-vol
 
 # stop all sounds
 shift + KP_Delete

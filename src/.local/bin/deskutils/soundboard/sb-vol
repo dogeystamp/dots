@@ -1,10 +1,39 @@
 #!/bin/sh
-# Get the highest volume in the current directory, and present it as a notification.
+# Get volumes of mpv sockets piped through stdin
 
-RES=$(ls $SB_DIR/cur/sb-socket* | \
-	sb-msg '{ "command": ["get_property", "volume"], "request_id": 100 }' |\
-	jq .data | sort | head -n 1 | awk '{ printf("%.0f\n", $0) }')
+SOCKETS=""
+
+while read x; do
+	SOCKETS=$(printf "%s\n%s" "$SOCKETS" "$x")
+done
+SOCKETS=$(printf %s "$SOCKETS" | sed "/^$/d")
+
+VOLS=$(echo "$SOCKETS" |\
+	sb-msg '{ "command": ["get_property", "volume"], "request_id": 1336 }' |\
+	jq .data | awk '{ printf("%.0f\n", $0) }')
+
+PATHS=$(echo "$SOCKETS" |\
+	sb-msg '{ "command": ["get_property", "path"], "request_id": 1337 }' |\
+	jq -r .data)
+NAMES=""
+for x in $PATHS; do
+	NAMES="$NAMES $(basename $x)"
+done
+
+CNT=$(echo $PATHS | wc -w)
+if [ "$CNT" = 0 ]; then
+	exit
+fi
 
 CUR_DIR="$(basename $(readlink $SB_DIR/cur))"
 
-notify-send -a "soundboard" -r 13371337 "$(printf "%s\nVolume set to %s\n" "$CUR_DIR" "$RES")"
+zip () {
+	awk '{for(i=1; i<=NF/2; i++) {j=NF/2+i; printf "%s %s%\n",$i,$j;}}'
+}
+
+PROMPT=$(printf '%s\n%s' "$CUR_DIR" "$(echo "$NAMES" $VOLS | zip | column --table --output-width 20)")
+
+notify-send \
+	-a "soundboard" \
+	-r 13371337 \
+	"$(printf "%s" "$PROMPT")"
