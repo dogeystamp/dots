@@ -1,0 +1,16 @@
+#!/bin/sh
+# Open word on Wiktionary in a browser
+# Requires fzf
+
+# Empty query to abort
+# $1 sets the language to scroll to in the page
+
+# wikt [language]
+
+while true; do
+	WORD="$(cat ~/.local/bin/wikt-words | fzf | iconv -f UTF-8 -t ASCII//TRANSLIT | tr -d '-')"
+    if [ -z "$WORD" ]; then
+		break
+	fi
+	$BROWSER "https://wiktionary.org/wiki/$WORD#$1" > /dev/null 2>&1 &
+done
