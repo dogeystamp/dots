@@ -2,7 +2,7 @@ config.load_autoconfig()
 
 # Colors
 
-c.colors.webpage.bg = "black"
+c.colors.webpage.bg = "#111111"
 c.colors.completion.category.bg = "#111111"
 c.colors.completion.even.bg = "black"
 c.colors.statusbar.private.bg = "black"
@@ -11,9 +11,11 @@ c.colors.hints.bg = "black"
 c.colors.hints.fg = "white"
 c.colors.tabs.bar.bg = "black"
 c.colors.webpage.darkmode.algorithm = "lightness-hsl"
-c.colors.webpage.darkmode.contrast = 0.1
-c.colors.webpage.darkmode.enabled = True
-c.window.transparent = True
+c.colors.webpage.darkmode.contrast = 0.5
+c.colors.webpage.darkmode.policy.images = "smart"
+c.colors.webpage.darkmode.grayscale.images = 0.5
+
+config.bind('td', 'config-cycle colors.webpage.darkmode.enabled true false;; restart')
 
 # General settings
 
