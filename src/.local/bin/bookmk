@@ -1,0 +1,6 @@
+#!/bin/sh
+# Copy a bookmark to clipboard.
+# Requires fzf, xsel
+# Bookmarks are stored in ~/dox/not/bk.txt, commented with #
+
+cat ~/dox/not/bk.txt | fzf | awk -F'#' '{print $1}' | xsel -ib
