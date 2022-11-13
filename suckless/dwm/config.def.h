@@ -15,8 +15,8 @@ static       int passthrough        = 0;        /* 1 means to ignore most shortc
 static const int showbar            = 1;        /* 0 means no bar */
 static const int barpadding         = 0;        /* 0 means no padding beneath/above bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
-static const char *fonts[]          = { "JetBrains Mono:size=14" };
-static const char dmenufont[]       = "JetBrains Mono:size=13";
+static const char *fonts[]          = { "Terminus:size=16" };
+static const char dmenufont[]       = "Terminus:size=16";
 static const char col_gray1[]       = "#000000";
 static const char col_gray2[]       = "#202020";
 static const char col_gray3[]       = "#505050";
