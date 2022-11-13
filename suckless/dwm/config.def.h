@@ -2,6 +2,9 @@
 
 #include <X11/XF86keysym.h>
 
+/* constants */
+#define TERMINAL "st"
+
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -88,6 +91,8 @@ static const Layout layouts[] = {
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
+/* open shell command in a terminal window */
+#define TERMCMD(cmd) { .v = (const char*[]){ "/usr/local/bin/st", cmd, NULL } }
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
@@ -109,10 +114,11 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = browsercmd } },
-	{ MODKEY|ControlMask,           XK_l,      spawn,          SHCMD("/usr/local/bin/slock")  },
-	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("~/.local/bin/deskutils/suspend.sh")  },
-	{ 0,                            XK_Print,  spawn,          SHCMD("~/.local/bin/deskutils/screenshot.sh")  },
-	{ ShiftMask,                    XK_Print,  spawn,          SHCMD("~/.local/bind/deskutils/screenshot-save.sh") },
+	{ MODKEY|ControlMask,           XK_l,      spawn,          {.v = (const char*[]){ "/usr/local/bin/slock", NULL} } },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = (const char*[]){ "~/.local/bin/deskutils/suspend.sh", NULL } } },
+	{ 0,                            XK_Print,  spawn,          {.v = (const char*[]){ "~/.local/bin/deskutils/screenshot.sh", NULL} } },
+	{ ShiftMask,                    XK_Print,  spawn,          {.v = (const char*[]){ "~/.local/bin/deskutils/screenshot-save.sh", NULL } } },
+	{ MODKEY,                       XK_z,      spawn,          TERMCMD("bookmk") },
 	{ 0,                     	    XF86XK_AudioStop, spawn, {.v = stopcmd } },
 	{ 0,                     	    XF86XK_AudioNext, spawn, {.v = next } },
 	{ 0,                     	    XF86XK_AudioPrev, spawn, {.v = prev   } },
