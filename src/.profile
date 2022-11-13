@@ -34,7 +34,7 @@ export EDITOR="nvim"
 export BROWSER="qutebrowser"
 # man pager
 export MANPAGER='nvim +Man!'
-export MANWIDTH=999
+export MANWIDTH=165
 
 # Soundboard
 export SB_DIR="$HOME"/med/sb
