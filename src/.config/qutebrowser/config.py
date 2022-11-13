@@ -2,7 +2,7 @@ config.load_autoconfig()
 
 # Colors
 
-c.colors.webpage.bg = "#111111"
+c.colors.webpage.bg = "#444444"
 c.colors.completion.category.bg = "#111111"
 c.colors.completion.even.bg = "black"
 c.colors.statusbar.private.bg = "black"
@@ -10,20 +10,37 @@ c.colors.statusbar.command.private.bg = "black"
 c.colors.hints.bg = "black"
 c.colors.hints.fg = "white"
 c.colors.tabs.bar.bg = "black"
+
+c.colors.tabs.even.bg = "#000000"
+c.colors.tabs.odd.bg = "#000000"
+c.colors.tabs.selected.even.bg = "#333333"
+c.colors.tabs.selected.odd.bg = "#444444"
+
 c.colors.webpage.darkmode.algorithm = "lightness-hsl"
 c.colors.webpage.darkmode.contrast = 0.5
 c.colors.webpage.darkmode.policy.images = "smart"
 c.colors.webpage.darkmode.grayscale.images = 0.5
+
+c.colors.prompts.bg = "black"
+c.colors.prompts.border = "1px solid white"
+c.prompt.radius = 0
+
+# Fonts
+
+c.fonts.default_family = "Terminus"
+c.fonts.prompts = "default_size default_family"
 
 config.bind('td', 'config-cycle colors.webpage.darkmode.enabled true false;; restart')
 
 # General settings
 
 c.scrolling.smooth = False
-c.url.default_page = "about:blank"
-c.url.start_pages = "about:blank"
+c.url.default_page = "~/.config/qutebrowser/homepage.html"
+c.url.start_pages = "~/.config/qutebrowser/homepage.html"
 c.url.searchengines = {"DEFAULT":"https://searx.be/search?q={}"}
 c.downloads.location.directory = "~/quar/"
+
+c.zoom.default = "90%"
 
 # Downloads
 
@@ -31,15 +48,17 @@ c.downloads.remove_finished = 1000
 
 # Bar settings
 
-c.tabs.max_width = 100
+c.tabs.max_width = 300
+c.tabs.favicons.show = "never"
 c.tabs.position = "bottom"
 c.statusbar.show = "in-mode"
+c.statusbar.widgets = [ "keypress", "progress" ]
 
 # Hints
 
 c.hints.border = "1px dotted white"
 c.hints.radius = 10
-c.hints.chars = "asdfhjkl"
+c.hints.chars = "asdfghjklweu"
 
 # Privacy settings
 
@@ -73,3 +92,7 @@ c.content.webgl = False
 
 # Bind '#' key to scroll to anchor (sections in wiki pages, for example)
 config.bind("#", "set-cmd-text -s :scroll-to-anchor ")
+# Get image URL quickly
+config.bind(";I", "hint images yank")
+# This overrides pP because I don't use primary clip
+config.bind("p", "open -t {clipboard}")
