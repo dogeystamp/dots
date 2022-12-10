@@ -2,4 +2,4 @@
 
 # Run mpv on the output files of minrss
 
-mpvs $(for v in "$@"; do echo $(head -n 2 "${v}" | tail -n 1 | awk -F\" '{ print $2 }'); done)
+mpvs $(extractlink.sh "$@")
