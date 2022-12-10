@@ -1,6 +1,10 @@
 set tabstop=4 shiftwidth=4 noexpandtab relativenumber ai nu rnu nosmd ignorecase smartcase
 set lazyredraw nocursorline ttyfast
 
+let maplocalleader = ","
+
+set shell=/bin/sh
+
 hi Search cterm=NONE ctermfg=white ctermbg=blue
 hi StatusLine ctermbg=NONE cterm=italic
 
@@ -65,3 +69,41 @@ nnoremap <silent> <c-p> :Step<cr>
 nnoremap <silent> <c-n> :Over<cr>
 
 vnoremap <silent> K :'<,'>Evaluate<cr>
+
+" Plugins
+
+call plug#begin()
+
+filetype plugin indent on
+
+Plug 'lervag/vimtex'
+let g:vimtex_view_method = 'zathura'
+let g:vimtex_compiler_method = 'latexmk'
+set conceallevel=0
+let g:tex_conceal='abdmg'
+let g:vimtex_view_forward_search_on_start=1
+let g:vimtex_compiler_latexmk = {
+	\ 'build_dir' : $HOME.'/.cache/latexmk/',
+	\ 'callback' : 1,
+	\ 'continuous' : 1,
+	\ 'executable' : 'latexmk',
+	\ 'hooks' : [],
+	\ 'options' : [
+	\   '-verbose',
+	\   '-file-line-error',
+	\   '-synctex=1',
+	\   '-interaction=nonstopmode',
+	\ ],
+	\}
+
+" Autowrite in tex files
+" au TextChanged,TextChangedI *.tex silent write
+
+
+Plug 'SirVer/ultisnips'
+let g:UltiSnipsExpandTrigger="<c-m>"
+let g:UltiSnipsJumpForwardTrigger="<c-m>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/ultisnips/']
+
+call plug#end()

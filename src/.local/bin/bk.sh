@@ -32,6 +32,10 @@ then
 		--exclude=BL_proxy \
 		--exclude=a.out \
 		--exclude=dlcache \
+		--exclude=.synctex.gz \
+		--exclude=.fls \
+		--exclude=.fdb_latexmk \
+		--exclude=.aux \
 		~/med ~/dox ~/.xonotic dogeystamp@lambda:/mnt/disk/uv/
 fi
 

@@ -1,0 +1,30 @@
+snippet shrug "shrug emoticon"
+¯\_(ツ)_/¯
+endsnippet
+
+snippet timestamp "unix time for today"
+`date -d "$(date +"%Y-%m-%d 15:45")" +%s`
+endsnippet
+
+snippet today "normal formatted date for today" i
+`date +"%Y-%m-%d"`
+endsnippet
+
+snippet "pyscr (.*)" "python script" r
+`!p
+def ps():
+	"""
+	Returns int list parsed from VISUAL.
+	"""
+	return [int(i) for i in snip.v.text.split()]
+
+def tl(a):
+	"""
+	Opposite of ps().
+	"""
+	return " ".join([str(i) for i in list(a)])
+
+if not snip.c:
+	exec("snip.rv = " + match.group(1))
+`
+endsnippet

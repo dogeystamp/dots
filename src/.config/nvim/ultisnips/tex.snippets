@@ -1,0 +1,377 @@
+global !p
+import json
+
+def to_snip(s):
+	return '\n'.join([snip.mkline(i) for i in s.split('\n')])
+
+def parse_graph(data):
+    """Parses markup export from https://csacademy.com/app/graph_editor/.
+
+    It seems like they put JSON inside XML, but it's horrible unstandard format
+    The JSON isn't properly quoted
+    So this solution is hacky
+    """
+
+    for rep in ["label", "center", "source", "target", "x", "y", "options", "fixed"]:
+        data = data.replace(f"{rep}:", f"\"{rep}\":")
+
+    for prop in data.split(' '):
+        prop = prop.rstrip('}')
+
+        if prop.startswith("nodes="):
+            prop = prop.lstrip("nodes={")
+            nodesData = json.loads(prop)
+        if prop.startswith("edges="):
+            prop = prop.lstrip("edges={")
+            edgeData = json.loads(prop)
+
+    return {"nodes": nodesData, "edges": edgeData}
+            
+def tikz_graph(data):
+    """Given a dictionary graphically representing a graph, export it to Tikz
+
+    This takes the output from parse_graph().
+
+    Note that the IDs of edge source and destinations are based on the order of
+    nodes as they are given, not their labels.
+
+    Example dict::
+        {
+            "nodes": {
+                [
+                    {
+                        "label": "0",
+                        "center": {"x": 0, "y": 0}
+                    }
+                    {
+                        "label": "1",
+                        "center": {"x": 200, "y": 200}
+                    }
+                ]
+            }
+            "edges": {
+                {
+                    "label": "weight goes here",
+                    "source": "0",
+                    "target": "1",
+                }
+            }
+        }
+    """
+    ret = ""
+
+    id_to_label = {}
+
+    for i, node in enumerate(data["nodes"]):
+        loc = f'({node["center"]["x"]}, {400-node["center"]["y"]})'
+        ret += f'\\node[vertex] ({node["label"]}) at {loc} \u007b{node["label"]}\u007d;\n'
+        id_to_label[i] = node["label"]
+
+    for edge in data["edges"]:
+        src = id_to_label[edge["source"]]
+        dest = id_to_label[edge["target"]]
+
+        ret += f'\draw[edge] ({src}) -> ({dest});\n'
+        if "label" in edge:
+            ret += f'\draw[edge] ({src}) -- node[midway, above, sloped, pos=0.5] \u007b{edge["label"]}\u007d ({dest});\n'
+
+    return ret.strip()
+
+endglobal
+
+snippet beg "begin{} / end{}" bi
+\begin{$1}
+	${0:${VISUAL}}
+\end{$1}
+endsnippet
+
+snippet cent "center env" bi
+\begin{center}
+	${0:${VISUAL}}
+\end{center}
+endsnippet
+
+snippet sec "section" wi
+\section{$1}
+endsnippet
+
+snippet ssec "subsection" wi
+\subsection{$1}
+endsnippet
+
+snippet sssec "subsubsection" wi
+\subsubsection{$1}
+endsnippet
+
+snippet em "emphasis" wi
+\emph{${1:${VISUAL}}}
+endsnippet
+
+snippet tab "table environment" bi
+\begin{table}[tb]
+	\centering
+	\begin{tabular}{@{}$2@{}}
+		\toprule
+		$5 \\\\
+		\midrule
+		$0
+		\bottomrule
+	\end{tabular}
+	\caption{$3}  \label{fig:$4}
+\end{table}
+endsnippet
+
+snippet mcl "multicolumn" w
+\multicolumn{$1}{c}{$3}$0
+endsnippet
+
+snippet cmd "cmidrule" w
+\cmidrule(lr){$1}
+endsnippet
+
+snippet items "itemize" bi
+\begin{itemize}
+	$0
+\end{itemize}
+endsnippet
+
+snippet enum "enumerate (ordered list)" bi
+\begin{enumerate}
+	${0:${VISUAL/^/\\item /g}}
+\end{enumerate}
+endsnippet
+
+snippet it "itemize row" bi
+\\item ${0:${VISUAL}}
+endsnippet
+
+snippet im "inline math" w
+\\(${1:${VISUAL}}\\)
+endsnippet
+
+snippet eq "equation" bi
+\begin{equation}
+	${0:${VISUAL}}
+\end{equation}
+endsnippet
+
+snippet equ "equation, unnumbered" bi
+\begin{equation*}
+	${0:${VISUAL}}
+\end{equation*}
+endsnippet
+
+snippet ali "align env for equations, unnumbered" bi
+\begin{align*}
+	${0:${VISUAL}}
+\end{align*}
+endsnippet
+
+snippet alir "align env row for continuing equations" bi
+& = ${1:${VISUAL}} \\\\
+$0
+endsnippet
+
+snippet rf "figure/table reference" w
+\ref{$1}
+endsnippet
+
+snippet ar "figure/table auto reference" w
+\autoref{$1}
+endsnippet
+
+snippet lab "reference label" w
+\label{$1}
+endsnippet
+
+snippet grph "parse graph data from https://csacademy.com/app/graph_editor/" bi
+\begin{figure}[tb]
+	\centering
+	\begin{tikzpicture}[scale=0.045, thick]
+		\tikzset{edge/.style = {->,> = latex'}}
+		\tikzset{vertex/.style = {draw, circle}}
+`!p
+snip >> 2
+snip.rv = to_snip(tikz_graph(parse_graph(snip.v.text)))
+`
+	\end{tikzpicture}
+	\caption{${3:Sample case}}  \label{fig:$2}
+\end{figure}$0
+endsnippet
+
+snippet nodes "generic nodes and edges tikz graph figure" bi
+\begin{figure}[tb]
+	\centering
+	\begin{tikzpicture}[scale=1, thick]
+		\tikzset{edge/.style = {->,> = latex'}}
+		\tikzset{vertex/.style = {draw, circle}}
+		$0
+	\end{tikzpicture}
+	\caption{${3:Sample case}}  \label{fig:$2}
+\end{figure}
+endsnippet
+
+snippet nod "draw a node" bi
+\node[vertex] ($1) [$2] {$1};
+endsnippet
+
+snippet edg "draw an edge" bi
+\draw[edge] ($1) to[$3] ($2);
+endsnippet
+
+snippet tik "generic tikz figure" bi
+\begin{figure}[tb]
+	\centering
+	\begin{tikzpicture}[scale=0.3]
+		$0
+	\end{tikzpicture}
+	\caption{${3:Sample case}}  \label{fig:$2}
+\end{figure}
+endsnippet
+
+snippet lst "source code listing" bi
+\begin{lstlisting}
+$1
+\end{lstlisting}
+endsnippet
+
+snippet lstf "source code listing from file" bi
+\lstinputlisting[]{src/`!p snip.rv = snip.basename`.cpp}
+endsnippet
+
+snippet bigo "O() asymptotic time complexity"
+\\(O($1)\\) $0
+endsnippet
+
+snippet logn "O(log n) time complexity" i 
+\log n
+endsnippet
+
+snippet nlogn "O(n log n) time complexity" i
+n \log n
+endsnippet
+
+snippet rec "tikz rectangle draw" bi
+\draw[] ($1) rectangle ($2);
+endsnippet
+snippet pnt "tikz draw a point with coordinate label" bi
+\node[label=below:{$($1)$}] at ($1) {\textbullet};
+endsnippet
+snippet line "tikz line" bi
+\draw ($1) -- ($2);
+endsnippet
+
+snippet bca "begin cases" bi
+\begin{cases}
+	${0:${VISUAL}}
+\end{cases}
+endsnippet
+
+snippet car "case row" bi
+$1 & \text{if } $0 \\\\
+endsnippet
+
+snippet url "url hyperlink" w
+\url{${0:${VISUAL}}}
+endsnippet
+
+snippet bas "footnote" i
+\footnote{${0:${VISUAL}}}
+endsnippet
+
+snippet shr "no indent macro" bi
+\shortmacro $0
+endsnippet
+
+snippet sum "sigma sum" w
+\sum_{$1}^{$2} $0
+endsnippet
+
+snippet prod "pi product" w
+\prod_{$1}^{$2} $0
+endsnippet
+
+snippet != "not equal" w
+\neq
+endsnippet
+
+snippet <= "less or equal" w
+\le
+endsnippet
+
+snippet >= "more or equal" w
+\ge
+endsnippet
+
+snippet ran "range between" w
+${3:1} \le $1 \le $2
+endsnippet
+
+snippet * "multiply dot" w
+\cdot
+endsnippet
+
+snippet frac "Fraction" w
+\frac{$1}{$2}$0
+endsnippet
+
+snippet ov "over" w
+\over
+endsnippet
+
+snippet sc "small caps" w
+\textsc{$1}
+endsnippet
+
+snippet () "proper parentheses" i
+\left(${1:${VISUAL}}\right)
+endsnippet
+
+snippet [] "proper brackets" i
+\left[${1:${VISUAL}}\right]
+endsnippet
+
+snippet floor "floor" w
+\left \lfloor $1 \right \rfloor
+endsnippet
+
+snippet ceil "ceil" w
+\left \lceil $1 \right \rceil
+endsnippet
+
+snippet __ "subscript" i
+_{$1}$0
+endsnippet
+
+snippet ss "superscript" i
+^{$1}
+endsnippet
+
+snippet cub "cube" i
+^{3}
+endsnippet
+snippet sqr "cube" i
+^{2}
+endsnippet
+
+snippet s_ "substack" i
+\substack{$1}$0
+endsnippet
+
+snippet root "tex root specification" bi
+%!TEX root = ${1:master.tex}
+$0
+endsnippet
+
+snippet master "template for notes" bi
+\documentclass[fleqn, 12pt, a4paper]{article}
+\input{$1../preamble.tex}
+\title{$2}
+
+\begin{document}
+	\maketitle
+	\tableofcontents
+
+	$0
+\end{document}
+endsnippet
