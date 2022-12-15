@@ -358,6 +358,16 @@ snippet s_ "substack" i
 \substack{$1}$0
 endsnippet
 
+snippet glos "glossary" bi
+\newglossaryentry{$1}{
+    name=$1,
+    description={$2}
+}
+endsnippet
+snippet pglos "print glossaries" bi
+\printnoidxglossary
+endsnippet
+
 snippet root "tex root specification" bi
 %!TEX root = ${1:master.tex}
 $0
@@ -366,6 +376,7 @@ endsnippet
 snippet master "template for notes" bi
 \documentclass[fleqn, 12pt, a4paper]{article}
 \input{$1../preamble.tex}
+%\input{glossary.tex}
 \title{$2}
 
 \begin{document}
@@ -374,4 +385,8 @@ snippet master "template for notes" bi
 
 	$0
 \end{document}
+endsnippet
+
+snippet inp "input" bi
+\input{$1}
 endsnippet
