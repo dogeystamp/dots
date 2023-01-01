@@ -15,7 +15,7 @@ ssh-add ~/.ssh/keys/lambda
 
 if [ $ACTION = PUSH ]
 then
-	rsync -avzP \
+	rsync --delete -avzP \
 		--chown=dogeystamp:sftpr \
 		--exclude=med/mus \
 		--exclude=med/gv \
@@ -36,7 +36,7 @@ then
 		--exclude=.fls \
 		--exclude=.fdb_latexmk \
 		--exclude=.aux \
-		~/med ~/dox ~/.xonotic dogeystamp@lambda:/mnt/disk/uv/
+		~/med ~/dox ~/nt ~/.xonotic dogeystamp@lambda:/mnt/disk/uv/
 fi
 
 if [ $ACTION = RECV ]
