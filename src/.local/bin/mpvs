@@ -3,7 +3,7 @@
 # Custom mpv settings
 
 # passed to yt-dl
-FORMAT=""
+FORMAT="bestvideo[height<=?1080]+bestaudio/best"
 
 mpv \
 --ytdl-format="$FORMAT" \
