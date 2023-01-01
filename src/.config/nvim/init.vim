@@ -52,8 +52,8 @@ au BufEnter *.c,*.cpp,*.h,*.hpp packadd termdebug
 
 tnoremap <silent> <esc> <c-\><c-n><c-\><c-n>
 
-nnoremap <silent> <f3> :Termdebug a.out<cr>
-nnoremap <silent> <f4> :!g++ -g %:p<cr>
+nnoremap <silent> <f3> :execute "Termdebug" $HOME .. "/.cache/termdebug.out"<cr>
+nnoremap <silent> <f4> :!g++ -g %:p -o ~/.cache/termdebug.out<cr>
 nnoremap <silent> <f5> :Run<cr>
 nnoremap <silent> <f6> :Stop<cr>
 nnoremap <silent> <f8> :Clear<cr>
@@ -95,6 +95,9 @@ let g:vimtex_compiler_latexmk = {
 	\   '-interaction=nonstopmode',
 	\ ],
 	\}
+
+" spellcheck
+au BufEnter *.tex set spell spelllang=en_ca
 
 " Autowrite in tex files
 " au TextChanged,TextChangedI *.tex silent write
