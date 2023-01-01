@@ -91,6 +91,10 @@ snippet cent "center env" bi
 \end{center}
 endsnippet
 
+snippet chap "chapter" bi
+\chapter{$1}
+endsnippet
+
 snippet sec "section" wi
 \section{$1}
 endsnippet
@@ -235,6 +239,10 @@ $1
 \end{lstlisting}
 endsnippet
 
+snippet `` "source code listing (inline)" wi
+\lstinline{${1:${VISUAL}}}
+endsnippet
+
 snippet lstf "source code listing from file" bi
 \lstinputlisting[]{src/`!p snip.rv = snip.basename`.cpp}
 endsnippet
@@ -374,7 +382,7 @@ $0
 endsnippet
 
 snippet master "template for notes" bi
-\documentclass[fleqn, 12pt, a4paper]{article}
+\documentclass[fleqn, 12pt, openany, a4paper]{article}
 \input{$1../preamble.tex}
 %\input{glossary.tex}
 \title{$2}
