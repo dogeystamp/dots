@@ -33,15 +33,10 @@ super + asciitilde
 
 # start sound
 KP_{Insert,End,Down,Next,Left,Begin,Right,Home,Up,Prior}
-	if [ -z "$SB_DIR" ]; then \
-		notify-send -u critical -a "soundboard" '$SB_DIR is unset!';\
-		exit 1;\
-	fi;\
-	snd_id="{0-9}";\
-	id=$(cat /dev/random | base32 | head -c 5);\
-	socket="$SB_DIR/cur/sb-socket$snd_id-$id";\
-	mpv --no-resume-playback --input-ipc-server=$socket $SB_DIR/cur/$snd_id*;\
-	rm -f "$socket"
+	sb-play "{0-9}"
+
+KP_{Divide,Multiply,Delete}
+	sb-play "1{0-2}"
 
 # stop specific sound
 shift + KP_{Insert,End,Down,Next,Left,Begin,Right,Home,Up,Prior}
