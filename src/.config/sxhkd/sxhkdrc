@@ -22,10 +22,6 @@ super + grave
 	ln -sr $SB_DIR $SB_DIR/cur;\
 	sb-ls.sh
 
-# list currently playing + volume
-KP_Enter
-	find $SB_DIR/ -name "sb-socket*" | sb-vol
-
 # list current directory contents
 # super + shift + `
 super + asciitilde
@@ -34,18 +30,25 @@ super + asciitilde
 # start sound
 KP_{Insert,End,Down,Next,Left,Begin,Right,Home,Up,Prior}
 	sb-play "{0-9}"
-
+# use a0, a1, a2 instead of 10, 11, 12
+# prevents globbing issues
 KP_{Divide,Multiply,Delete}
-	sb-play "1{0-2}"
+	sb-play "a{0-2}"
 
 # stop specific sound
 shift + KP_{Insert,End,Down,Next,Left,Begin,Right,Home,Up,Prior}
 	snd_id="{0-9}";\
 	ls $SB_DIR/cur/sb-socket$snd_id-* | sb-msg "stop"
+shift + KP_{Divide,Multiply,Delete}
+	snd_id="a{0-2}";\
+	ls $SB_DIR/cur/sb-socket$snd_id-* | sb-msg "stop"
 
 # loop specific sound
 ctrl + shift + KP_{Insert,End,Down,Next,Left,Begin,Right,Home,Up,Prior}
 	snd_id="{0-9}";\
+	ls $SB_DIR/cur/sb-socket$snd_id-* | sb-msg "set loop inf"
+ctrl + shift + KP_{Divide,Multiply,Delete}
+	snd_id="a{0-9}";\
 	ls $SB_DIR/cur/sb-socket$snd_id-* | sb-msg "set loop inf"
 
 # reduce volume of current dir
@@ -65,14 +68,22 @@ ctrl + KP_Subtract; KP_{Insert,End,Down,Next,Left,Begin,Right,Home,Up,Prior}
 	snd_id="{0-9}";\
 	ls $SB_DIR/cur/sb-socket$snd_id-* | sb-msg "add volume -10";\
 	ls $SB_DIR/cur/sb-socket$snd_id-* | sb-vol
+ctrl + KP_Subtract; KP_{Divide,Multiply,Delete}
+	snd_id="a{0-9}";\
+	ls $SB_DIR/cur/sb-socket$snd_id-* | sb-msg "add volume -10";\
+	ls $SB_DIR/cur/sb-socket$snd_id-* | sb-vol
 
 # increase volume of specific sound
 ctrl + KP_Add; KP_{Insert,End,Down,Next,Left,Begin,Right,Home,Up,Prior}
 	snd_id="{0-9}";\
 	ls $SB_DIR/cur/sb-socket$snd_id-* | sb-msg "add volume +10";\
 	ls $SB_DIR/cur/sb-socket$snd_id-* | sb-vol
+ctrl + KP_Add; KP_{Divide,Multiply,Delete}
+	snd_id="a{0-9}";\
+	ls $SB_DIR/cur/sb-socket$snd_id-* | sb-msg "add volume +10";\
+	ls $SB_DIR/cur/sb-socket$snd_id-* | sb-vol
 
 # stop all sounds
-shift + KP_Delete
+KP_Enter
 	find $SB_DIR/ -name "sb-socket*" | sb-msg "stop";\
 	find $SB_DIR/ -name "sb-socket*" | xargs rm
