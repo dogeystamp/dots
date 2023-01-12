@@ -53,7 +53,7 @@ au BufEnter *.c,*.cpp,*.h,*.hpp packadd termdebug
 tnoremap <silent> <esc> <c-\><c-n><c-\><c-n>
 
 nnoremap <silent> <f3> :execute "Termdebug" $HOME .. "/.cache/termdebug.out"<cr>
-nnoremap <silent> <f4> :!g++ -g %:p -o ~/.cache/termdebug.out<cr>
+nnoremap <silent> <f4> :!g++ -Wall -Wextra -Wpedantic -g %:p -o ~/.cache/termdebug.out<cr>
 nnoremap <silent> <f5> :Run<cr>
 nnoremap <silent> <f6> :Stop<cr>
 nnoremap <silent> <f8> :Clear<cr>
