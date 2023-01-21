@@ -22,7 +22,7 @@ if set -q SSH_TTY
     functions -c fish_prompt ssh_old_fish_prompt
 
 	function fish_prompt
-		printf "%s%s%s" (set_color 80809C) "(ssh) " (set_color normal)
+		printf "%s%s%s" (set_color 8080FF) "(ssh) " (set_color normal)
 		ssh_old_fish_prompt
 	end
 end
