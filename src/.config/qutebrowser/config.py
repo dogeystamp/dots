@@ -27,7 +27,7 @@ c.prompt.radius = 0
 
 # Fonts
 
-c.fonts.default_family = "Terminus"
+c.fonts.default_family = "JetBrains Mono"
 c.fonts.prompts = "default_size default_family"
 
 config.bind('td', 'config-cycle colors.webpage.darkmode.enabled true false;; restart')

@@ -18,15 +18,14 @@ function fish_right_prompt
 
     set -l duration "$cmd_duration$CMD_DURATION"
     if test $duration -gt 100
-        set duration (math $duration / 1000)s
+        set duration (math $duration / 1000)s" // "
     else
         set duration
     end
 
-	printf '%s%s %s%s%s' \
+	printf '%s%s%s%s%s' \
 		(set_color brgrey) \
 		$duration \
-		(set_color brblue) \
 		(date +"%H:%M") \
 		(set_color normal)
 	printf '%s ' \
@@ -38,5 +37,5 @@ function fish_right_prompt
 		(set_color normal)
 end
 function fish_prompt
-	printf '%s%s%s> ' (set_color blue) (prompt_pwd) (set_color normal)
+	printf '%s%s%s> ' (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
 end

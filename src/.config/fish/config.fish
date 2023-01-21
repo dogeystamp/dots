@@ -31,3 +31,6 @@ bind -M insert \cf accept-autosuggestion
 
 set __fish_git_prompt_showdirtystate 1
 set __fish_git_prompt_showupstream auto
+
+set fish_color_param normal
+set fish_color_cwd grey
