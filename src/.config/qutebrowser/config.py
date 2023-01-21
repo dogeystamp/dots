@@ -56,8 +56,7 @@ c.statusbar.widgets = [ "keypress", "progress" ]
 
 # Hints
 
-c.hints.border = "1px dotted white"
-c.hints.radius = 10
+c.hints.border = "1px solid white"
 c.hints.chars = "asdfghjklweu"
 
 # Privacy settings
