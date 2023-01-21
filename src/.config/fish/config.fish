@@ -4,6 +4,7 @@ end
 
 source ~/.config/fish/aliases.fish
 
+source ~/.config/fish/functions/prompts.fish
 source ~/.config/fish/functions/extra_prompt.fish
 
 # Set GPG_TTY
@@ -16,6 +17,9 @@ set -gx PATH "$PATH:$HOME/.local/bin/deskutils/soundboard:"
 set -gx PATH "$PATH:$HOME/.local/bin/minrss-scripts:"
 
 set -gx PATH "$PATH:$XDG_DATA_HOME/npm/bin"
+
+# cppman can't set it itself for some reason
+set -gx  MANPATH "$MANPATH:/home/dogeystamp/.cache/cppman/"
 
 # Disable fish greeting
 set fish_greeting ""

@@ -17,3 +17,12 @@ if set -q SSH_AGENT_PID
 		ssha_old_fish_prompt
 	end
 end
+
+if set -q SSH_TTY
+    functions -c fish_prompt ssh_old_fish_prompt
+
+	function fish_prompt
+		printf "%s%s%s" (set_color 80809C) "(ssh) " (set_color normal)
+		ssh_old_fish_prompt
+	end
+end
