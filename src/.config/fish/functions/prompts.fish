@@ -17,7 +17,7 @@ function fish_right_prompt
 	end
 
 	printf '%s%s@%s%s' $usercolor \
-		(echo $USER | string shorten -m 1 -c '') \
+		(echo $USER | string shorten -m 5 -c '') \
 		(echo $hostname | string shorten -m 1 -c '') \
 		(set_color normal)
 end
