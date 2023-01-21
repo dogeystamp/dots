@@ -16,6 +16,19 @@ function fish_right_prompt
 		set usercolor (set_color $col)
 	end
 
+    set -l duration "$cmd_duration$CMD_DURATION"
+    if test $duration -gt 100
+        set duration (math $duration / 1000)s
+    else
+        set duration
+    end
+
+	printf '%s%s %s%s%s' \
+		(set_color brgrey) \
+		$duration \
+		(set_color brblue) \
+		(date +"%H:%M") \
+		(set_color normal)
 	printf '%s ' \
 		(fish_git_prompt)
 	printf '%s%s@%s%s'\
