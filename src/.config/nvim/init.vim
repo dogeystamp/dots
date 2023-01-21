@@ -108,10 +108,12 @@ au BufEnter *.tex set spell spelllang=en_ca
 " au TextChanged,TextChangedI *.tex silent write
 
 
-Plug 'SirVer/ultisnips'
-let g:UltiSnipsExpandTrigger="<c-m>"
-let g:UltiSnipsJumpForwardTrigger="<c-m>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/ultisnips/']
+if has('python3')
+	Plug 'SirVer/ultisnips'
+	let g:UltiSnipsExpandTrigger="<c-m>"
+	let g:UltiSnipsJumpForwardTrigger="<c-m>"
+	let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+	let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/ultisnips/']
+endif
 
 call plug#end()
