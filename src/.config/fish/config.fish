@@ -31,3 +31,4 @@ bind -M insert \ce accept-autosuggestion -m default
 bind -M default \ce execute
 
 set __fish_git_prompt_showdirtystate 1
+set __fish_git_prompt_showupstream auto
