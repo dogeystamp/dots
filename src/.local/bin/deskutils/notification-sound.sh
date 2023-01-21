@@ -7,7 +7,7 @@ if [ "$DUNST_APP_NAME" = "soundboard" ]; then
 fi
 
 if pactl list short sinks | grep -q virtual_mic; then
-	mpv ~/.local/bin/deskutils/notif.wav --audio-device=pulse/c1_out
+	mpv ~/.local/bin/deskutils/notif.wav --audio-device=pulse/alsa_output.usb-C-Media_Electronics_Inc._USB_Audio_Device-00.analog-stereo
 else
 	mpv ~/.local/bin/deskutils/notif.wav
 fi
