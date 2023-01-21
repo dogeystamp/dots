@@ -16,7 +16,10 @@ function fish_right_prompt
 		set usercolor (set_color $col)
 	end
 
-	printf '%s%s@%s%s' $usercolor \
+	printf '%s ' \
+		(fish_git_prompt)
+	printf '%s%s@%s%s'\
+		$usercolor \
 		(echo $USER | string shorten -m 5 -c '') \
 		(echo $hostname | string shorten -m 1 -c '') \
 		(set_color normal)
