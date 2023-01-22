@@ -138,3 +138,8 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
+
+" Code folding
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+autocmd BufEnter * normal zR
