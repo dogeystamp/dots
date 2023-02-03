@@ -1,7 +1,7 @@
 IMAPStore disroot-remote
 Host disroot.org
 User dogeystamp@disroot.org
-PassCmd "pass msg/mail/dogeystamp@disroot.org"
+PassCmd "keepassxc-cli show -sa password dox/sec/pass.kdbx msg/disroot"
 SSLType IMAPS
 
 MaildirStore disroot-local
