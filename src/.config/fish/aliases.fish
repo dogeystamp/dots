@@ -2,7 +2,7 @@
 alias ls='ls --color=auto'
 
 # Run mpv from clipboard
-alias mpvy='mpvs (xsel -b)'
+alias mpvy='mpv (xsel -b)'
 
 alias youtube-dl='youtube-dl -f "bestvideo[ext=mp4][height<=?1080]+bestaudio[ext=m4a]"'
 

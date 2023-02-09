@@ -2,4 +2,5 @@
 
 # Screenshot and save to disk.
 
-sleep 0.1 && scrot -fs '/tmp/%F_%T_$wx$h.png' -e 'cp $f ~/med/screen/latest.png && mv $f ~/quar/'
+rm ~/med/screen/latest.png
+sleep 0.1 && scrot -fs "$HOME/med/screen/latest.png" -e "cp ~/med/screen/latest.png ~/quar/screenshot-$(date +%s).png"

@@ -14,7 +14,6 @@ gpgt
 set -gx PATH "$PATH:$HOME/.local/bin:"
 set -gx PATH "$PATH:$HOME/.local/bin/deskutils:"
 set -gx PATH "$PATH:$HOME/.local/bin/deskutils/soundboard:"
-set -gx PATH "$PATH:$HOME/.local/bin/minrss-scripts:"
 
 set -gx PATH "$PATH:$XDG_DATA_HOME/npm/bin"
 
