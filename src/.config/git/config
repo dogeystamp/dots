@@ -1,6 +1,5 @@
 [user]
 	email = dogeystamp@disroot.org
 	name = dogeystamp
-	signingKey = dogeystamp@disroot.org
-[commit]
-	gpgsign = true
+[gpg]
+	program = passphrase2pgp
