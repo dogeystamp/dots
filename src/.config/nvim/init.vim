@@ -73,9 +73,11 @@ vnoremap <silent> K :'<,'>Evaluate<cr>
 " Plugins
 
 " Run PlugInstall if there are missing plugins
-autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \| PlugInstall --sync | source $MYVIMRC
-\| endif
+" (disabled because it's kind of intense for weak devices)
+"autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  "\| PlugInstall --sync | source $MYVIMRC
+"\| endif
+
 
 call plug#begin()
 
