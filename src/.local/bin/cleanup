@@ -14,7 +14,6 @@ rm -rf \
 .xsel.log \
 .gnuplot_history \
 .gnome \
-.ansible \
 .wavemonrc \
 .viminfo \
 .icons\
