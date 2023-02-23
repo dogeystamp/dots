@@ -12,7 +12,6 @@ autocmd InsertEnter * hi StatusLine cterm=bold
 autocmd InsertLeave * hi StatusLine cterm=italic
 
 highlight LineNr ctermfg=grey
-highlight EndOfBuffer ctermfg=black ctermbg=black
 
 " Disable highlighting when searching
 nnoremap <silent> <esc> :noh<return><esc>
