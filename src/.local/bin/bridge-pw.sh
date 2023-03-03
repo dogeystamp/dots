@@ -11,8 +11,6 @@
 MONITOR="USB Audio Device"
 
 pactl load-module module-null-sink sink_name="soundboard" sink_properties=device.description="Soundboard"
-pactl set-sink-volume soundboard 0.5
-pactl load-module module-null-sink sink_name="virtual_mic" sink_properties=device.description="Virtual-mic"
 
 pw-link soundboard:monitor_FR "$MONITOR":playback_FR
 pw-link soundboard:monitor_FL "$MONITOR":playback_FL
