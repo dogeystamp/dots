@@ -33,6 +33,7 @@ confirm() {
 PREVDIR=""
 PREVNAME=""
 find ~/quar \
+	-maxdepth 1 \
 	-type f \
 	-not -path '*/trash/*' \
 	\( \
