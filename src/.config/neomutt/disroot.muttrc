@@ -1,0 +1,24 @@
+# vim: filetype=muttrc
+
+set from="dogeystamp@disroot.org"
+set realname="dogeystamp"
+
+set imap_user="dogeystamp"
+set imap_pass="`keepassxc-cli show -s -a password \"$KEEPASSDB\" msg/disroot`"
+
+set smtp_url="smtps://$ID_EMAIL_USER@disroot.org/"
+set smtp_pass="$imap_pass"
+set smtp_authenticators = 'login'
+
+set folder="imaps://disroot.org/"
+set spoolfile=+INBOX
+set record="+Sent"
+set postponed="+Drafts"
+mailboxes =INBOX =Sent =Drafts =Junk =Trash
+
+macro index gd "<change-folder>=Drafts<enter>" "Go to drafts"
+macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
+macro index gS "<change-folder>=Sent<enter>" "Go to sent messages"
+macro index gt "<change-folder>=Trash<enter>" "Go to trash"
+macro index,pager d "<save-message>=Trash<enter><enter>" "Trash"
+macro index,pager y "<save-message>=~/dox/mail/arc/<enter><enter>" "Archive"

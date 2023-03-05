@@ -51,4 +51,10 @@ export REALNAME="dogeystamp"
 export EMAIL="dogeystamp@disroot.org"
 export KEYID="A3A5FA72F8E5E54FBEE425057225FE3592EFFA38"
 
+export KEEPASSDB="$HOME"/dox/sec/pass.kdbx
+# Identity (see ~/.local/bin/identity.sh)
+if [ -r "$XDG_CONFIG_HOME"/identity ]; then
+	source "$XDG_CONFIG_HOME"/identity
+fi
+
 source .config/bashrc

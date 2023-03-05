@@ -1,0 +1,15 @@
+# vim: filetype=muttrc
+
+bind attach,index,pager \CD next-page
+bind attach,index,pager \CU previous-page
+bind pager g noop
+bind pager gg top
+bind pager G bottom
+bind attach,index g noop
+bind attach,index gg first-entry
+bind attach,index G last-entry
+
+bind index,pager \CP sidebar-prev
+bind index,pager \CN sidebar-next
+bind index,pager \CO sidebar-open
+bind index,pager \CB sidebar-toggle-visible

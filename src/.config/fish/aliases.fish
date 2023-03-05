@@ -23,8 +23,9 @@ function pdfr
 	pdftotext $argv - | nvim
 end
 
-# Neomutt local config
+# Neomutt configs
 alias neomutt.local='neomutt -F .config/neomutt/neomuttrc.local'
+alias neomutt.disroot='neomutt -F .config/neomutt/neomuttrc.disroot'
 
 # Specific to my Gentoo system
 alias genlop='doas -u portage /usr/bin/genlop'

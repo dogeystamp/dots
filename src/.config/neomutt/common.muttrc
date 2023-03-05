@@ -1,0 +1,13 @@
+# vim: filetype=muttrc
+
+source ~/.config/neomutt/colors.muttrc
+source ~/.config/neomutt/binds.muttrc
+
+set sleep_time=0
+set beep=no
+set editor="nvim"
+set sort=reverse-date
+
+set sidebar_visible
+set sidebar_format="%B%?F? [%F]?%* %?N?%N/?%S"
+set mail_check_stats
