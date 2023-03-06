@@ -2,7 +2,7 @@
 # Categorize files in the quarantine directory
 
 view() {
-	mpv --no-resume-playback $@
+	mpv --no-resume-playback "$1"
 }
 
 dirsel() {
