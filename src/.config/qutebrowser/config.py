@@ -34,7 +34,7 @@ config.bind('td', 'config-cycle colors.webpage.darkmode.enabled true false;; res
 
 # General settings
 
-c.scrolling.smooth = False
+c.scrolling.smooth = True
 c.url.default_page = "~/.config/qutebrowser/homepage.html"
 c.url.start_pages = "~/.config/qutebrowser/homepage.html"
 c.url.searchengines = {"DEFAULT":"https://search.disroot.org/search?q={}"}
