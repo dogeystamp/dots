@@ -30,3 +30,5 @@ alias neomutt.disroot='neomutt -F .config/neomutt/neomuttrc.disroot'
 # Specific to my Gentoo system
 alias genlop='doas -u portage /usr/bin/genlop'
 alias loginctl='doas /bin/loginctl'
+
+alias pyenv='source ~/dox/proj/ref/venv/bin/activate.fish'
