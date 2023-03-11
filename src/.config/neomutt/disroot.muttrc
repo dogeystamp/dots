@@ -15,10 +15,12 @@ set spoolfile=+INBOX
 set record="+Sent"
 set postponed="+Drafts"
 mailboxes =INBOX =Sent =Drafts =Junk =Trash
+mailboxes "~/dox/mail/arc"
 
 macro index gd "<change-folder>=Drafts<enter>" "Go to drafts"
 macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index gS "<change-folder>=Sent<enter>" "Go to sent messages"
 macro index gt "<change-folder>=Trash<enter>" "Go to trash"
+macro index ga "<change-folder>~/dox/mail/arc<enter>" "Go to archive"
 macro index,pager d "<save-message>=Trash<enter><enter>" "Trash"
-macro index,pager y "<save-message>=~/dox/mail/arc/<enter><enter>" "Archive"
+macro index,pager y "<save-message>=~/dox/mail/arc<enter><enter>" "Archive"
