@@ -54,6 +54,7 @@ while read -r FILE; do
 	PREVDIR=""
 	PREVNAME=""
 	while true; do
+		clear
 		printf "\n\n%s\n" "$FILE"
 		DESTPATH="$DIR"/"$NAME"."$EXT"
 		printf "send to: %s\n" "$DESTPATH"
@@ -73,6 +74,10 @@ while read -r FILE; do
 			fi;;
 			s ) break;;
 			d ) mv "$FILE" ~/quar/trash/; break;;
+			* )
+				printf "\nInvalid input! Press enter to continue\n";
+				read </dev/tty;
+				;;
 		esac
 	done
 done
