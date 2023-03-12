@@ -67,14 +67,13 @@ case "$ACTION" in
 
 		exp ~/med/memes/woof/ "$ROOT/Pictures/memes/"
 		exp ~/med/memes/bork/ "$ROOT/Pictures/memes2/"
-		exp ~/med/rw/sch/ "$ROOT/Pictures/rw/sch/"
-		exp ~/med/sticker/ "$ROOT/Pictures/sticker/"
 		;;
 	
 	RECV)
 		# Move files to the quarantine zone for categorisation and renaming
 
 		imp "$ROOT/Pictures/Infinity/" $DEST
+		imp "$ROOT/Pictures/Tachiyomi/" $DEST/crop/
 		imp "$ROOT/Pictures/Screenshots/" $DEST
 
 		imp "$ROOT/Movies/Infinity/" $DEST
@@ -84,10 +83,6 @@ case "$ACTION" in
 
 		imp "$ROOT/Recordings/Sound records/" $DEST
 
-		imp "$ROOT/Documents/dr" $DEST
-
-		imp "$ROOT/Documents/contacts.vcf" $DEST
-		imp "$ROOT/infbk/" $DEST
 		impf_cp "$ROOT/.SeedVaultAndroidBackup/" $DEST/seedvault/ &
 		;;
 
