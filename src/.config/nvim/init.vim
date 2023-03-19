@@ -1,7 +1,7 @@
 set tabstop=4 shiftwidth=4 noexpandtab relativenumber ai nu rnu nosmd ignorecase smartcase
 set lazyredraw nocursorline ttyfast
 
-let maplocalleader = ","
+let mapleader = ","
 
 set shell=/bin/sh
 
@@ -42,7 +42,7 @@ nnoremap - :call OpenNetRW()<cr>
 " gdb integration
 
 let g:termdebug_popup = 0
-let g:termdebug_wide = 100
+let g:termdebug_wide = 50
 
 " Enter insert mode automatically in terminal windows
 "au BufEnter term://* startinsert
@@ -50,24 +50,34 @@ let g:termdebug_wide = 100
 au BufEnter *.c,*.cpp,*.h,*.hpp packadd termdebug
 
 tnoremap <silent> <esc> <c-\><c-n><c-\><c-n>
-
-nnoremap <silent> <f3> :execute "Termdebug" $HOME .. "/.cache/termdebug.out"<cr>
-nnoremap <silent> <f4> :!g++ -Wall -Wextra -Wpedantic -g %:p -o ~/.cache/termdebug.out<cr>
-nnoremap <silent> <f5> :Run<cr>
-nnoremap <silent> <f6> :Stop<cr>
-nnoremap <silent> <f8> :Clear<cr>
-nnoremap <silent> <f9> :Break<cr>
-nnoremap <silent> <f10> :Continue<cr>
+" start debugger
+nnoremap <silent> <leader>dd :execute "Termdebug" $HOME .. "/.cache/termdebug/" .. expand("%:r")<cr>:Source<cr>
+" compile
+nnoremap <silent> <leader>dc :Source<cr>:w<cr>:execute "make ~/.cache/termdebug/" .. expand("%:r") .. " -f ~/.config/nvim/makefile"<cr>
+" start, stop, continue forwards
+nnoremap <silent> <leader>rs :Run<cr>
+nnoremap <silent> <leader>rr :Stop<cr>
+nnoremap <silent> <leader>rf :Continue<cr>
+" clear, add breakpoints
+nnoremap <silent> <leader>dsc :Clear<cr>
+nnoremap <silent> <leader>dsf :Break<cr>
 
 nnoremap <silent> <C-h> :vertical resize -5<cr>
 nnoremap <silent> <C-l> :vertical resize +5<cr>
-nnoremap <C-j> <C-w>w
-nnoremap <C-k> <C-w>W
-
 nnoremap <silent> <c-p> :Step<cr>
 nnoremap <silent> <c-n> :Over<cr>
 
+" quickfix window (after running make)
+nnoremap <silent> <leader>dqf :tab cope<cr>
+nnoremap <silent> <leader>df :tabNext<cr>
+
 vnoremap <silent> K :'<,'>Evaluate<cr>
+
+" tab, window management
+nnoremap <C-j> <C-w>w
+nnoremap <C-k> <C-w>W
+" force exit (akin to ZZ, ZQ)
+nnoremap ZF :qa!<cr>
 
 " Plugins
 
