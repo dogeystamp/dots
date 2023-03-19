@@ -1,4 +1,5 @@
 set tabstop=4 shiftwidth=4 noexpandtab relativenumber ai nu rnu nosmd ignorecase smartcase
+set showtabline=0
 set lazyredraw nocursorline ttyfast
 
 let mapleader = ","
@@ -48,6 +49,7 @@ let g:termdebug_wide = 50
 "au BufEnter term://* startinsert
 
 au BufEnter *.c,*.cpp,*.h,*.hpp packadd termdebug
+au TermOpen * setlocal nonumber norelativenumber
 
 tnoremap <silent> <esc> <c-\><c-n><c-\><c-n>
 " start debugger
@@ -77,7 +79,7 @@ vnoremap <silent> K :'<,'>Evaluate<cr>
 nnoremap <C-j> <C-w>w
 nnoremap <C-k> <C-w>W
 " force exit (akin to ZZ, ZQ)
-nnoremap ZF :qa!<cr>
+nnoremap <silent> ZF :qa!<cr>
 
 " Plugins
 
