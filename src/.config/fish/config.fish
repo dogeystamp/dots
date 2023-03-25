@@ -1,11 +1,4 @@
-if status is-interactive
-    # Commands to run in interactive sessions can go here
-end
-
 source ~/.config/fish/aliases.fish
-
-source ~/.config/fish/functions/prompts.fish
-source ~/.config/fish/functions/extra_prompt.fish
 
 # Set GPG_TTY
 gpgt
@@ -23,10 +16,11 @@ set -gx  MANPATH "$MANPATH:/home/dogeystamp/.cache/cppman/"
 # Disable fish greeting
 set fish_greeting ""
 
-# Enable Vi bindings
-fish_vi_key_bindings
+source ~/.config/fish/functions/prompts.fish
+source ~/.config/fish/functions/extra_prompt.fish
 
-bind -M insert \cf accept-autosuggestion
+# Enable Vi bindings
+fish_hybrid_key_bindings
 
 set __fish_git_prompt_showdirtystate 1
 set __fish_git_prompt_showupstream auto
