@@ -56,7 +56,6 @@ color body green default "\`[^\`]*\`" # Green text between ` and `
 color body brightblue default "^# \.*" # Headings as bold blue
 color body brightcyan default "^## \.*" # Subheadings as bold cyan
 color body brightgreen default "^### \.*" # Subsubheadings as bold green
-color body yellow default "^(	| )*(-|\*) \.*" # List items as yellow
 color body brightcyan default "[;:][-o][)/(|]" # emoticons
 color body brightcyan default "[;:][)(|]" # emoticons
 color body brightcyan default "[ ][*][^*]*[*][ ]?" # more emoticon?

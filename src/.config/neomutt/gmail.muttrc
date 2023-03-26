@@ -14,7 +14,7 @@ set folder="imaps://imap.gmail.com/"
 set spoolfile=+INBOX
 set record="+[Gmail]/Sent Mail"
 set postponed="+[Gmail]/Drafts"
-mailboxes =INBOX =[Gmail]/Sent\ Mail =[Gmail]/Starred =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/Trash
+mailboxes =INBOX =[Gmail]/Sent\ Mail =[Gmail]/All\ Mail =[Gmail]/Starred =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/Trash
 
 macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
 macro index gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
