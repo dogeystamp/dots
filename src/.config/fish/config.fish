@@ -16,14 +16,18 @@ set -gx  MANPATH "$MANPATH:/home/dogeystamp/.cache/cppman/"
 # Disable fish greeting
 set fish_greeting ""
 
-source ~/.config/fish/functions/prompts.fish
-source ~/.config/fish/functions/extra_prompt.fish
+if status --is-interactive
+	source ~/.config/fish/functions/prompts.fish
+	source ~/.config/fish/functions/extra_prompt.fish
 
-# Enable Vi bindings
-fish_hybrid_key_bindings
+	# Enable Vi bindings
+	fish_hybrid_key_bindings
 
-set __fish_git_prompt_showdirtystate 1
-set __fish_git_prompt_showupstream auto
+	set __fish_git_prompt_showdirtystate 1
+	set __fish_git_prompt_showupstream auto
 
-set fish_color_param normal
-set fish_color_cwd grey
+	set fish_color_param normal
+	set fish_color_cwd grey
+
+	rem.sh show
+end

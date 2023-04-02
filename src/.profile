@@ -32,8 +32,12 @@ export GOPATH="$HOME"/.local/go
 export npm_config_userconfig=$XDG_CONFIG_HOME/npm/config
 export npm_config_cache=$XDG_CACHE_HOME/npm
 export npm_config_prefix=$XDG_DATA_HOME/npm
+
 # minrss scripts
 export MRSS_DIR="$HOME/dox/rss"
+
+# reminder script
+export REM_FILE="$HOME/dox/not/rem"
 
 # Set default programs
 export EDITOR="nvim"
