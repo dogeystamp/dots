@@ -16,11 +16,13 @@ fields=$(mktemp)
 cat << "EOF" > "$fields"
 export ID_REALNAME=
 export ID_EMAIL=
+export ID_EMAIL_WORK=
 EOF
 
-keepassxc-cli show "$KEEPASSDB" meta/identity -a realname -a email | paste -d '' "$fields" - >> "$IDFILE"
+keepassxc-cli show "$KEEPASSDB" meta/identity -a realname -a email -a email-work | paste -d '' "$fields" - >> "$IDFILE"
 rm "$fields"
 
 cat << "EOF" >> "$IDFILE"
 export ID_EMAIL_USER=$(basename "$ID_EMAIL" @gmail.com)
+export ID_EMAIL_WORK_USER=$(basename "$ID_EMAIL_WORK" @gmail.com)
 EOF

@@ -1,0 +1,10 @@
+# vim: filetype=muttrc
+
+set from="$ID_EMAIL_WORK"
+set realname="$ID_REALNAME"
+
+set imap_user="$ID_EMAIL_WORK"
+set imap_pass="`keepassxc-cli show -s -a neomutt \"$KEEPASSDB\" work/gmail`"
+set smtp_url="smtps://$ID_EMAIL_WORK_USER@smtp.gmail.com/"
+
+source ~/.config/neomutt/gmail-common.muttrc

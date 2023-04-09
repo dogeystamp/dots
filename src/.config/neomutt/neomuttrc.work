@@ -1,0 +1,2 @@
+source ~/.config/neomutt/common.muttrc
+source ~/.config/neomutt/gmail-work.muttrc
