@@ -131,6 +131,8 @@ endif
 
 Plug 'nvim-treesitter/nvim-treesitter'
 
+Plug 'axieax/urlview.nvim'
+
 call plug#end()
 
 lua << EOF
@@ -151,6 +153,16 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
+
+lua << EOF
+require("urlview").setup({
+	jump = {
+		prev = "<leader>uj",
+		next = "<leader>uh",
+	},
+})
+EOF
+:nnoremap <silent><leader>uu :let @+ = expand('<cfile>')<CR>
 
 " Code folding
 set foldmethod=expr

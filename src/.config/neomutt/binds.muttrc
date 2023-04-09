@@ -13,3 +13,6 @@ bind index,pager \CP sidebar-prev
 bind index,pager \CN sidebar-next
 bind index,pager \CO sidebar-open
 bind index,pager \CB sidebar-toggle-visible
+
+set wait_key=no
+macro index,pager \Cb "<enter-command>set pipe_decode = yes<enter><pipe-message>nvim -R -c 'set filetype=mail' <enter><enter-command>set pipe_decode = no<enter>"
