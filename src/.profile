@@ -22,7 +22,7 @@ export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 # pass
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
 # tuir
-export MAILCAPS="$XDG_CONFIG_HOME"/tuir/mailcap
+export MAILCAPS="$XDG_CONFIG_HOME"/mailcap
 # terminfo
 export TERMINFO="$XDG_DATA_HOME"/terminfo
 export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
