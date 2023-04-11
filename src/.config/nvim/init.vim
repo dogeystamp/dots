@@ -1,6 +1,7 @@
 set tabstop=4 shiftwidth=4 noexpandtab relativenumber ai nu rnu nosmd ignorecase smartcase
 set showtabline=0
 set lazyredraw nocursorline ttyfast
+set clipboard=unnamedplus
 
 let mapleader = ","
 
@@ -55,7 +56,14 @@ tnoremap <silent> <esc> <c-\><c-n><c-\><c-n>
 " start debugger
 nnoremap <silent> <leader>dd :execute "Termdebug" $HOME .. "/.cache/termdebug/" .. expand("%:r")<cr>:Source<cr>
 " compile
-nnoremap <silent> <leader>dc :Source<cr>:w<cr>:execute "make ~/.cache/termdebug/" .. expand("%:r") .. " -f ~/.config/nvim/makefile"<cr>
+function Compile()
+	if exists(":Source")
+		Source
+	endif
+	execute "make ~/.cache/termdebug/" .. expand("%:r") .. " -f ~/.config/nvim/makefile"
+endfunction
+
+nnoremap <silent> <leader>dc :call Compile()<cr>
 " start, stop, continue forwards
 nnoremap <silent> <leader>rs :Run<cr>
 nnoremap <silent> <leader>rr :Stop<cr>
