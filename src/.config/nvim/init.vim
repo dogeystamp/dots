@@ -55,6 +55,7 @@ au TermOpen * setlocal nonumber norelativenumber
 tnoremap <silent> <esc> <c-\><c-n><c-\><c-n>
 " start debugger
 nnoremap <silent> <leader>dd :execute "Termdebug" $HOME .. "/.cache/termdebug/" .. expand("%:r")<cr>:Source<cr>
+
 " compile
 function Compile()
 	if exists(":Source")
@@ -62,8 +63,28 @@ function Compile()
 	endif
 	execute "make ~/.cache/termdebug/" .. expand("%:r") .. " -f ~/.config/nvim/makefile"
 endfunction
-
 nnoremap <silent> <leader>dc :call Compile()<cr>
+
+" write clipboard into input file
+function WriteInput()
+	let inputfile=$HOME .. "/.cache/termdebug/input/" .. expand("%:r")
+	echo "Written input to '" .. inputfile .. "'."
+	call writefile(getreg('+', 1, 1), inputfile)
+endfunction
+nnoremap <silent> <leader>rw :call WriteInput()<cr>
+
+" start from input file
+function RunInput()
+	Stop
+	Run
+	Source
+	let inputfile=$HOME .. "/.cache/termdebug/input/" .. expand("%:r")
+	let @x = join(readfile(inputfile), "\n") .. "\n\n"
+	Program
+	normal G"xp
+endfunction
+nnoremap <silent> <leader>ri :call RunInput()<cr>
+
 " start, stop, continue forwards
 nnoremap <silent> <leader>rs :Run<cr>
 nnoremap <silent> <leader>rr :Stop<cr>
@@ -86,8 +107,8 @@ vnoremap <silent> K :'<,'>Evaluate<cr>
 " tab, window management
 nnoremap <C-j> <C-w>w
 nnoremap <C-k> <C-w>W
-" force exit (akin to ZZ, ZQ)
-nnoremap <silent> ZF :qa!<cr>
+" exit all (akin to ZZ, ZQ)
+nnoremap <silent> ZF :qa<cr>
 
 " Plugins
 
