@@ -30,6 +30,7 @@ inkscape
 scrot
 pynvim
 python-lsp-server
+python-lsp-black
 bear
 xsel
 xwallpaper

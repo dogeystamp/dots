@@ -45,6 +45,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.format()<CR>', opts)
 end
 
 -- settings per server (overrides defaults)
@@ -57,6 +58,9 @@ local servers = {
 						enabled = true,
 						convention = "numpy",
 						addIgnore = {"D100", "D101", "D102", "D105"}
+					},
+					black = {
+						enabled = true,
 					}
 				}
 			}
@@ -72,8 +76,8 @@ for lsp, sv_settings in pairs(servers) do
 			debounce_text_changes = 150,
 		}
 	}
-	for k, v in pairs(servers) do settings[k] = v end
-	nvim_lsp[lsp].setup(settings[lsp])
+	for k, v in pairs(servers[lsp]) do settings[k] = v end
+	nvim_lsp[lsp].setup(settings)
 end
 
 -- fancy prompts
