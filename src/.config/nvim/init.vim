@@ -161,8 +161,11 @@ if has('python3')
 
 	" my devices without python3 probably don't need these
 	Plug 'neovim/nvim-lspconfig'
-	Plug 'nvim-lua/completion-nvim'
 	Plug 'nvim-lua/lsp-status.nvim'
+
+	Plug 'hrsh7th/nvim-cmp'
+	Plug 'hrsh7th/cmp-nvim-lsp'
+
 	Plug 'stevearc/dressing.nvim'
 endif
 
