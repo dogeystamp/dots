@@ -47,14 +47,33 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 end
 
-local servers = { 'pylsp', 'clangd' }
-for _, lsp in ipairs(servers) do
-nvim_lsp[lsp].setup {
-	on_attach = on_attach,
-	flags = {
-		debounce_text_changes = 150,
-	}
+-- settings per server (overrides defaults)
+local servers = {
+	pylsp = {
+		settings = {
+			pylsp = {
+				plugins = {
+					pydocstyle = {
+						enabled = true,
+						convention = "numpy",
+						addIgnore = {"D100", "D101", "D102", "D105"}
+					}
+				}
+			}
+		}
+	},
+	clangd = {}
 }
+for lsp, sv_settings in pairs(servers) do
+	-- defaults
+	settings = {
+		on_attach = on_attach,
+		flags = {
+			debounce_text_changes = 150,
+		}
+	}
+	for k, v in pairs(servers) do settings[k] = v end
+	nvim_lsp[lsp].setup(settings[lsp])
 end
 
 -- fancy prompts
