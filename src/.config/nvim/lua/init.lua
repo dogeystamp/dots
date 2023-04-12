@@ -86,3 +86,14 @@ require('dressing').setup({
 		insert_only = false,
 	}
 })
+
+-- fancy motions (leap.nvim)
+vim.keymap.set({'n', 'x', 'o'}, 'f', '<Plug>(leap-forward-to)')
+vim.keymap.set({'n', 'x', 'o'}, 'F', '<Plug>(leap-backward-to)')
+require('leap').opts.safe_labels = {
+	"a", "s", "d", "f", "g", "h", "j", "k", "l"
+}
+require('leap').opts.labels = { "a", "s", "d",
+	"f", "k", "l", "h", "o", "d", "w", "e", "m", "b",
+	"u", "y", "v", "r", "g", "t", "c", "x", "/", "z",
+}

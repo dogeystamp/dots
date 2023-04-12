@@ -9,6 +9,8 @@ set shell=/bin/sh
 
 hi Search cterm=NONE ctermfg=white ctermbg=blue
 hi StatusLine ctermbg=NONE cterm=italic
+hi SignColumn ctermbg=NONE
+
 
 autocmd InsertEnter * hi StatusLine cterm=bold
 autocmd InsertLeave * hi StatusLine cterm=italic
@@ -156,16 +158,19 @@ if has('python3')
 	let g:UltiSnipsJumpForwardTrigger="<c-m>"
 	let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 	let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/ultisnips/']
+
+	" my devices without python3 probably don't need these
+	Plug 'neovim/nvim-lspconfig'
+	Plug 'nvim-lua/completion-nvim'
+	Plug 'nvim-lua/lsp-status.nvim'
+	Plug 'stevearc/dressing.nvim'
 endif
 
 Plug 'nvim-treesitter/nvim-treesitter'
 
 Plug 'axieax/urlview.nvim'
 
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-Plug 'nvim-lua/lsp-status.nvim'
-Plug 'stevearc/dressing.nvim'
+Plug 'ggandor/leap.nvim'
 
 call plug#end()
 
