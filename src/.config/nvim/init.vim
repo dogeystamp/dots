@@ -162,6 +162,11 @@ Plug 'nvim-treesitter/nvim-treesitter'
 
 Plug 'axieax/urlview.nvim'
 
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-lua/lsp-status.nvim'
+Plug 'stevearc/dressing.nvim'
+
 call plug#end()
 
 " copy URL under cursor to clipboard bind

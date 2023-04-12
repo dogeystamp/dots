@@ -3,3 +3,7 @@
 ~/.cache/termdebug/%: %.cpp
 	mkdir -p ~/.cache/termdebug/
 	$(LINK.cpp) -g -Wall -Wpedantic $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+~/.cache/termdebug/%: %.c
+	mkdir -p ~/.cache/termdebug/
+	$(LINK.c) -g -Wall -Wpedantic $^ $(LOADLIBES) $(LDLIBS) -o $@
