@@ -164,34 +164,11 @@ Plug 'axieax/urlview.nvim'
 
 call plug#end()
 
-lua << EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "cpp", "javascript", "python", "vim", "latex", "fish", "bash" },
-  sync_install = false,
-  auto_install = false,
-  highlight = {
-    enable = true,
-
-    disable = function(lang, buf)
-        local max_filesize = 100 * 1024 -- 100 KB
-        local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-        if ok and stats and stats.size > max_filesize then
-            return true
-        end
-    end,
-  },
-}
-EOF
-
-lua << EOF
-require("urlview").setup({
-	jump = {
-		prev = "<leader>uj",
-		next = "<leader>uh",
-	},
-})
-EOF
+" copy URL under cursor to clipboard bind
 :nnoremap <silent><leader>uu :let @+ = expand('<cfile>')<CR>
+
+" see .config/nvim/lua/init.lua
+lua require('init')
 
 " Code folding
 set foldmethod=expr
