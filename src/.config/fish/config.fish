@@ -30,6 +30,8 @@ if status --is-interactive
 
 	if test $SYSTEM_PROFILE = "DEFAULT"
 		source ~/.config/fish/functions/extra_prompt.fish
+		source ~/.config/fish/functions/fzf_binds.fish
+		fzf_key_bindings
 		rem.sh show
 	end
 end
