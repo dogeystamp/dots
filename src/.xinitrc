@@ -1,7 +1,15 @@
 #!/bin/sh
 
 mon-on
-picom &
+
+if [ $SYSTEM_PROFILE == "MINIMAL" ]; then
+	dwm
+	exit
+fi
+
+if [ $SYSTEM_PROFILE == "DEFAULT" ]; then
+	picom &
+fi
 xwallpaper --center .config/wall.png
 # Host specific wallpapers
 wallpaper

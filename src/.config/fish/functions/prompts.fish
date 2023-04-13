@@ -1,4 +1,8 @@
 function fish_right_prompt
+	if test $SYSTEM_PROFILE != "DEFAULT"
+		return
+	end
+
 	set -l usercolor (set_color $fish_color_cwd)
 	if command -sq cksum
 		# randomised color for user/hostname based on disco.fish

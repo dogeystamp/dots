@@ -17,11 +17,10 @@ set -gx  MANPATH "$MANPATH:/home/dogeystamp/.cache/cppman/"
 set fish_greeting ""
 
 if status --is-interactive
-	source ~/.config/fish/functions/prompts.fish
-	source ~/.config/fish/functions/extra_prompt.fish
-
 	# Enable Vi bindings
 	fish_hybrid_key_bindings
+
+	source ~/.config/fish/functions/prompts.fish
 
 	set __fish_git_prompt_showdirtystate 1
 	set __fish_git_prompt_showupstream auto
@@ -29,5 +28,8 @@ if status --is-interactive
 	set fish_color_param normal
 	set fish_color_cwd grey
 
-	rem.sh show
+	if test $SYSTEM_PROFILE = "DEFAULT"
+		source ~/.config/fish/functions/extra_prompt.fish
+		rem.sh show
+	end
 end
