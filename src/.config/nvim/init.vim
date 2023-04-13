@@ -112,54 +112,65 @@ nnoremap <C-k> <C-w>W
 " exit all (akin to ZZ, ZQ)
 nnoremap <silent> ZF :qa<cr>
 
+" copy URL under cursor to clipboard bind
+:nnoremap <silent><leader>uu :let @+ = expand('<cfile>')<CR>
+
 " Plugins
 
 " Run PlugInstall if there are missing plugins
-" (disabled because it's kind of intense for weak devices)
-"autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  "\| PlugInstall --sync | source $MYVIMRC
-"\| endif
+if $SYSTEM_PROFILE == "DEFAULT"
+	autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+	  \| PlugInstall --sync | source $MYVIMRC
+	\| endif
+endif
 
+" The rest will not be sourced if the system is on minimal settings.
+if $SYSTEM_PROFILE == "MINIMAL"
+	finish
+endif
 
 call plug#begin()
 
 filetype plugin indent on
 
-Plug 'lervag/vimtex'
-let g:vimtex_view_method = 'zathura'
-let g:vimtex_compiler_method = 'latexmk'
-set conceallevel=0
-let g:tex_conceal='abdmg'
-let g:vimtex_view_forward_search_on_start=1
-let g:vimtex_compiler_latexmk = {
-	\ 'build_dir' : $HOME.'/.cache/latexmk/',
-	\ 'callback' : 1,
-	\ 'continuous' : 1,
-	\ 'executable' : 'latexmk',
-	\ 'hooks' : [],
-	\ 'options' : [
-	\   '-verbose',
-	\   '-file-line-error',
-	\   '-synctex=1',
-	\   '-interaction=nonstopmode',
-	\ ],
-	\}
+if $SYSTEM_PROFILE == "DEFAULT"
+	Plug 'lervag/vimtex'
+	let g:vimtex_view_method = 'zathura'
+	let g:vimtex_compiler_method = 'latexmk'
+	set conceallevel=0
+	let g:tex_conceal='abdmg'
+	let g:vimtex_view_forward_search_on_start=1
+	let g:vimtex_compiler_latexmk = {
+		\ 'build_dir' : $HOME.'/.cache/latexmk/',
+		\ 'callback' : 1,
+		\ 'continuous' : 1,
+		\ 'executable' : 'latexmk',
+		\ 'hooks' : [],
+		\ 'options' : [
+		\   '-verbose',
+		\   '-file-line-error',
+		\   '-synctex=1',
+		\   '-interaction=nonstopmode',
+		\ ],
+		\}
 
-" spellcheck
-au BufEnter *.tex set spell spelllang=en_ca
+	" spellcheck
+	au BufEnter *.tex set spell spelllang=en_ca
 
-" Autowrite in tex files
-" au TextChanged,TextChangedI *.tex silent write
+	" Autowrite in tex files
+	" au TextChanged,TextChangedI *.tex silent write
+endif
 
 
-if has('python3')
+if has('python3') && ($SYSTEM_PROFILE == "DEFAULT" || $SYSTEM_PROFILE == "SLIM")
 	Plug 'SirVer/ultisnips'
 	let g:UltiSnipsExpandTrigger="<c-m>"
 	let g:UltiSnipsJumpForwardTrigger="<c-m>"
 	let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 	let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/ultisnips/']
+endif
 
-	" my devices without python3 probably don't need these
+if $SYSTEM_PROFILE == "DEFAULT"
 	Plug 'neovim/nvim-lspconfig'
 	Plug 'nvim-lua/lsp-status.nvim'
 
@@ -167,9 +178,13 @@ if has('python3')
 	Plug 'hrsh7th/cmp-nvim-lsp'
 
 	Plug 'stevearc/dressing.nvim'
-endif
 
-Plug 'nvim-treesitter/nvim-treesitter'
+	Plug 'nvim-treesitter/nvim-treesitter'
+	" Code folding
+	set foldmethod=expr
+	set foldexpr=nvim_treesitter#foldexpr()
+	"autocmd BufEnter * normal zR
+endif
 
 Plug 'axieax/urlview.nvim'
 
@@ -177,13 +192,7 @@ Plug 'ggandor/leap.nvim'
 
 call plug#end()
 
-" copy URL under cursor to clipboard bind
-:nnoremap <silent><leader>uu :let @+ = expand('<cfile>')<CR>
-
-" see .config/nvim/lua/init.lua
-lua require('init')
-
-" Code folding
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
-"autocmd BufEnter * normal zR
+if $SYSTEM_PROFILE == "DEFAULT"
+	" see .config/nvim/lua/init.lua
+	lua require('init')
+endif

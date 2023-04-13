@@ -1,0 +1,20 @@
+#!/bin/sh
+# Profile that enables/disables certain features based on the device
+# Everything might need to be restarted for this to take effect.
+
+## ----------
+## IMPORTANT!
+## ----------
+## Copy this to '~/.config/dot_profile'.
+
+# Profiles
+# --------
+# DEFAULT:
+#   Everything's enabled. Nvim auto-installs plugins on launch.
+# SLIM:
+#   Try to reduce bloat; turn off expensive plugins and eye-candy.
+#   Run :PlugInstall in Nvim to install plugins.
+# MINIMAL:
+# 	Nothing is launched automatically, and no plugins are installed.
+
+export SYSTEM_PROFILE="DEFAULT"

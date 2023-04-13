@@ -61,4 +61,11 @@ if [ -r "$XDG_CONFIG_HOME"/identity ]; then
 	source "$XDG_CONFIG_HOME"/identity
 fi
 
+# Profile to enable/disable features on certain devices
+if [ ! -f "$XDG_CONFIG_HOME"/dot_profile ]; then
+	export SYSTEM_PROFILE="DEFAULT"
+else 
+	source "$XDG_CONFIG_HOME"/dot_profile
+fi
+
 source .config/bashrc
