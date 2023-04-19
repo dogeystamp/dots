@@ -63,6 +63,7 @@ function Compile()
 	if exists(":Source")
 		Source
 	endif
+	w
 	execute "make ~/.cache/termdebug/" .. expand("%:r") .. " -f ~/.config/nvim/makefile"
 endfunction
 nnoremap <silent> <leader>dc :call Compile()<cr>
@@ -189,6 +190,8 @@ endif
 Plug 'axieax/urlview.nvim'
 
 Plug 'ggandor/leap.nvim'
+
+Plug 'kaarmu/typst.vim'
 
 call plug#end()
 

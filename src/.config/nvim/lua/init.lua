@@ -64,7 +64,7 @@ local servers = {
 			}
 		}
 	},
-	clangd = {}
+	clangd = {},
 }
 
 local nvim_lsp = require('lspconfig')
