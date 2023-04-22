@@ -25,7 +25,7 @@ endsnippet
 
 snippet fig "create new figure" bi
 #figure(
-  image("fig/${0:name}.svg"),
+  image("fig/`!v expand("%:r")`/$1.svg"),
   caption: [$2],
-) <${3:identifier}>
+) <$1>
 endsnippet

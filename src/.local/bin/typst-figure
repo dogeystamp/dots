@@ -3,9 +3,9 @@
 # Run this from Vim and it will edit a figure with the given filename in Inkscape.
 
 SVG_PATH="$1"
-mkdir -p fig/
+mkdir -p "$(dirname "$SVG_PATH")"
 
-if [ -e fig/"$1" ]; then
+if [ -e "$SVG_PATH" ]; then
 	# just edit it
 	inkscape "$SVG_PATH" &
 else
@@ -15,9 +15,9 @@ else
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="300mm"
-   height="300mm"
-   viewBox="0 0 300 300"
+   width="100mm"
+   height="100mm"
+   viewBox="0 0 100 100"
    version="1.1"
    id="svg5"
    inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
