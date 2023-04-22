@@ -16,7 +16,9 @@ wallpaper
 xss-lock -- slock &
 dunst &
 xrdb .Xresources
-gentoo-pipewire-launcher &
+if ! pgrep pipewire; then
+	gentoo-pipewire-launcher &
+fi
 
 # DBus
 export NO_AT_BRIDGE=1
