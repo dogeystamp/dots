@@ -22,3 +22,6 @@ function genlop; doas -u portage /usr/bin/genlop; end
 function loginctl; doas /bin/loginctl; end
 
 function pyenv; source ~/dox/proj/ref/venv/bin/activate.fish; end
+
+# bootleg meme feed
+function arf; cd ~/med/memes/arf; mpv --no-resume-playback (ls | shuf); end
