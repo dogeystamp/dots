@@ -1,6 +1,27 @@
 #!/bin/sh
 # Categorize files in the quarantine directory
 
+# read -n 1 isn't POSIX-compliant so we implement something
+# https://unix.stackexchange.com/questions/464930/can-i-read-a-single-character-from-stdin-in-posix-shell
+readc() {
+	# return a single character from input
+
+	# if tty
+	if [ -t 0 ]; then
+		# save settings
+		saved_settings="$(stty -g)"
+		# make it so we get the character even if no enter press
+		stty -icanon
+	fi
+
+	dd bs=1 count=1 2>/dev/null
+
+	if [ -t 0 ]; then
+		# restore settings
+		stty "$saved_settings"
+	fi
+}
+
 view() {
 	mpv --no-resume-playback "$1"
 }
@@ -61,7 +82,7 @@ while read -r FILE; do
 		printf "send to: %s\n" "$DESTPATH"
 		printf "\nh view again, j set directory, k set name, l confirm, L confirm and preserve information\n q exit, s skip, d move to trash\n"
 		printf "\n> "
-		read -n 1 ANS < /dev/tty
+		ANS="$(readc </dev/tty)"
 		case "$ANS" in
 			q ) exit;;
 			h ) view "$FILE";;
