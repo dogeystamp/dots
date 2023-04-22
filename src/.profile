@@ -58,14 +58,14 @@ export KEYID="A3A5FA72F8E5E54FBEE425057225FE3592EFFA38"
 export KEEPASSDB="$HOME"/dox/sec/pass.kdbx
 # Identity (see ~/.local/bin/identity.sh)
 if [ -r "$XDG_CONFIG_HOME"/identity ]; then
-	source "$XDG_CONFIG_HOME"/identity
+	. "$XDG_CONFIG_HOME"/identity
 fi
 
 # Profile to enable/disable features on certain devices
 if [ ! -f "$XDG_CONFIG_HOME"/dot_profile ]; then
 	export SYSTEM_PROFILE="DEFAULT"
 else 
-	source "$XDG_CONFIG_HOME"/dot_profile
+	. "$XDG_CONFIG_HOME"/dot_profile
 fi
 
-source .config/bashrc
+. .config/bashrc

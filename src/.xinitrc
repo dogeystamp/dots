@@ -2,12 +2,12 @@
 
 mon-on
 
-if [ $SYSTEM_PROFILE == "MINIMAL" ]; then
+if [ $SYSTEM_PROFILE = "MINIMAL" ]; then
 	dwm
 	exit
 fi
 
-if [ $SYSTEM_PROFILE == "DEFAULT" ]; then
+if [ $SYSTEM_PROFILE = "DEFAULT" ]; then
 	picom &
 fi
 xwallpaper --center .config/wall.png
@@ -16,7 +16,7 @@ wallpaper
 xss-lock -- slock &
 dunst &
 xrdb .Xresources
-gentoo-pipewire-launcher &
+# gentoo-pipewire-launcher &
 
 # DBus
 export NO_AT_BRIDGE=1
