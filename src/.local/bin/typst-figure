@@ -1,0 +1,58 @@
+#!/bin/sh
+# Figure manager for typst.
+# Run this from Vim and it will edit a figure with the given filename in Inkscape.
+
+SVG_PATH="$1"
+mkdir -p fig/
+
+if [ -e fig/"$1" ]; then
+	# just edit it
+	inkscape "$SVG_PATH" &
+else
+	# otherwise, copy this template file and edit it
+	cat <<'EOF' > "$SVG_PATH"
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="300mm"
+   height="300mm"
+   viewBox="0 0 300 300"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   sodipodi:docname="drawing.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#252525"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.62272556"
+     inkscape:cx="353.28564"
+     inkscape:cy="546.78983"
+     inkscape:window-width="1836"
+     inkscape:window-height="986"
+     inkscape:window-x="40"
+     inkscape:window-y="30"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1" />
+</svg>
+EOF
+	inkscape "$SVG_PATH" &
+fi

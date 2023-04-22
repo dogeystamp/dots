@@ -1,0 +1,51 @@
+#!/bin/sh
+# Write Typst markup, then copy it as an SVG.
+# This can be used to paste math labels in Inkscape.
+
+# Requires
+# --------
+# pdf2svg
+# typst
+# xclip
+# $EDITOR set to an editor (prefer nvim)
+
+# create temp files
+TMP_SRC="$(mktemp --suffix=.typ)"
+TMP_PDF="$(mktemp --suffix=.pdf)"
+TMP_SVG="$(mktemp --suffix=.svg)"
+
+# Typst template
+cat <<'EOF' > "$TMP_SRC"
+#set page(
+  width: 10cm,
+  height: auto,
+  margin: (x: 1cm, y: 1cm)
+)
+
+#show math.equation: eq => scale(x: 150%, y: 150%, text(font: "Fira Math", size: 17pt, eq))
+#show text: set text(font: "Fira Math", size: 25pt)
+
+$  $
+EOF
+
+# edit Typst source
+if [ "$EDITOR" = "nvim" ] || [ "$EDITOR" = "vim" ]; then
+	# if we're using vim we can jump to the end of the template
+	$EDITOR -c "normal Gll" -c "startinsert" "$TMP_SRC"
+else
+	$EDITOR "$TMP_SRC"
+fi
+
+# compile to pdf
+typst c "$TMP_SRC" "$TMP_PDF"
+
+# convert to svg
+pdf2svg "$TMP_PDF" "$TMP_SVG"
+
+# copy (x-inkscape-svg necessary otherwise it rasterizes the image when pasting)
+xclip -selection clipboard -t image/x-inkscape-svg -i "$TMP_SVG"
+
+# clean up
+rm "$TMP_SRC"
+rm "$TMP_PDF"
+rm "$TMP_SVG"

@@ -1,0 +1,31 @@
+snippet problem "template for problem notes" bi
+#import "../templates/problems.typ": template, source_code, status
+#show: template.with(
+  title: "$1",
+  problem_url: "$2",
+  stat: "${3:incomplete}",
+)
+
+endsnippet
+
+snippet math_prob "template for math problems" bi
+#import "../../../templates/math_prob.typ": template
+#show: template.with(
+  title: "$1",
+)
+
+endsnippet
+
+snippet ss "superscript" i
+^$1
+endsnippet
+snippet im "inline math" w
+\$${1:${VISUAL}}\$
+endsnippet
+
+snippet fig "create new figure" bi
+#figure(
+  image("fig/${0:name}.svg"),
+  caption: [$2],
+) <${3:identifier}>
+endsnippet

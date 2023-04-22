@@ -116,6 +116,13 @@ nnoremap <silent> ZF :qa<cr>
 " copy URL under cursor to clipboard bind
 :nnoremap <silent><leader>uu :let @+ = expand('<cfile>')<CR>
 
+" edit figure in Inkscape
+function EditFig()
+	let figure_fname = expand('<cfile>')
+	exec "silent !typst-figure " .. figure_fname
+endfunc
+
+:nnoremap <silent><leader>ff :call EditFig()<cr>
 " Plugins
 
 " Run PlugInstall if there are missing plugins
