@@ -90,6 +90,18 @@ require('dressing').setup({
 -- fancy motions (leap.nvim)
 vim.keymap.set({'n', 'x', 'o'}, 'f', '<Plug>(leap-forward-to)')
 vim.keymap.set({'n', 'x', 'o'}, 'F', '<Plug>(leap-backward-to)')
+vim.keymap.set(
+	{'n', 'x', 'o'}, 't',
+	function ()
+		require("leap").leap { offset = 2 }
+	end
+)
+vim.keymap.set(
+	{'n', 'x', 'o'}, 'T',
+	function ()
+		require("leap").leap { backward = true, offset = 2 }
+	end
+)
 require('leap').opts.safe_labels = {
 	"a", "s", "d", "f", "g", "h", "j", "k", "l"
 }
