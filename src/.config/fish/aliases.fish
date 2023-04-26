@@ -31,3 +31,12 @@ function xx; $EDITOR ~/dox/not/xx.tsv; end
 function dr; $EDITOR ~/dox/not/dr.txt; end
 function bk; $EDITOR ~/dox/not/bk.txt; end
 function rem; $EDITOR ~/dox/not/rem; end
+
+# music recognition
+function musrec
+	# if file exists
+	if test -e $argv
+		# recognize it
+		http --form POST "https://api.audd.io?api_token=$(cat ~/.config/audd_token)" file@$argv
+	end
+end
