@@ -220,13 +220,23 @@ if $SYSTEM_PROFILE == "DEFAULT"
 	set foldmethod=expr
 	set foldexpr=nvim_treesitter#foldexpr()
 	"autocmd BufEnter * normal zR
+
+	" typst filetype support
+	Plug 'kaarmu/typst.vim'
+
+	" project-wide searching
+	Plug 'mileszs/ack.vim'
+	" close quickfix list after pressing enter
+	let g:ack_autoclose = 1
+	" Ack! does not jump to first result
+	nnoremap <Leader>/ :Ack!<Space>
+	" use ripgrep
+	let g:ackprg = 'rg --vimgrep --smart-case'
 endif
 
 Plug 'axieax/urlview.nvim'
 
 Plug 'ggandor/leap.nvim'
-
-Plug 'kaarmu/typst.vim'
 
 call plug#end()
 
