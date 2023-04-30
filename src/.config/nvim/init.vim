@@ -1,7 +1,22 @@
-set tabstop=4 shiftwidth=4 noexpandtab relativenumber ai nu rnu nosmd ignorecase smartcase
+set tabstop=4 shiftwidth=4 noexpandtab ai nosmd ignorecase smartcase
+
+" sign column on top of the line number (gutter for things like breakpoints, warnings)
+set scl=number
+
+" enable line numbers
+set number relativenumber
+
+" disable bottom right status line
+set noruler
 set showtabline=0
+
+" performance?
 set lazyredraw nocursorline ttyfast
+
+" use system clipboard instead of internal
 set clipboard=unnamedplus
+" when using c, do not overwrite clipboard
+nnoremap c "-c
 
 let mapleader = ","
 
