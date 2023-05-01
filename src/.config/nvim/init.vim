@@ -169,7 +169,8 @@ call plug#begin()
 
 filetype plugin indent on
 
-if $SYSTEM_PROFILE == "DEFAULT"
+" i don't use LaTeX anymore, but you can comment out && 0 to
+if $SYSTEM_PROFILE == "DEFAULT" && 0
 	Plug 'lervag/vimtex'
 	let g:vimtex_view_method = 'zathura'
 	let g:vimtex_compiler_method = 'latexmk'
