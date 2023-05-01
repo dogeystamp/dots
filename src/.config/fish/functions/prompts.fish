@@ -1,12 +1,12 @@
 function fish_right_prompt
-	if test $SYSTEM_PROFILE != "DEFAULT"
+	if test $SYSTEM_PROFILE = "MINIMAL"
 		return
 	end
 
 	set -l usercolor (set_color $fish_color_cwd)
 	if command -sq cksum
 		# randomised color for user/hostname based on disco.fish
-		set -l shas (echo $USER@$hostname | cksum | string split -f1 ' ' | math --base=hex | string sub -s 3 | string pad -c 0 -w 6 | string match -ra ..)
+		set -l shas (echo $USER$hostname | cksum | string split -f1 ' ' | math --base=hex | string sub -s 3 | string pad -c 0 -w 6 | string match -ra ..)
 		set -l col 0x$shas[1..3]
 
 		# ensure luminance is readable
