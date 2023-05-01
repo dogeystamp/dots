@@ -1,3 +1,7 @@
+if test -z "$SYSTEM_PROFILE"
+	set -gx SYSTEM_PROFILE SLIM
+end
+
 source ~/.config/fish/aliases.fish
 
 # Set GPG_TTY
