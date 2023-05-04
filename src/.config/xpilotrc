@@ -1,0 +1,10 @@
+xpilot.name: immy
+xpilot.user:imogen
+xpilot.host:localhost
+
+xpilot.keyTurnLeft: a
+xpilot.keyTurnRight: d
+xpilot.keyThrust: w
+
+xpilot.keyLockClose: e
+xpilot.keyLockClose: q
