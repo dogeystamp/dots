@@ -15,8 +15,9 @@ set lazyredraw nocursorline ttyfast
 
 " use system clipboard instead of internal
 set clipboard=unnamedplus
-" when using c, do not overwrite clipboard
+" when using c or s, do not overwrite clipboard
 nnoremap c "-c
+nnoremap s "-s
 
 let mapleader = ","
 
@@ -35,6 +36,32 @@ highlight LineNr ctermfg=grey
 " Disable highlighting when searching
 nnoremap <silent> <esc> :noh<return><esc>
 
+" see :help digraphs
+" these digraphs are reminiscent of canadian french keyboard layout
+call digraph_setlist([
+		\["'a", 'à'],
+		\["'e", 'è'],
+		\["'u", 'ù'],
+		\["/e", 'é'],
+		\["}a", 'ä'],
+		\["}e", 'ë'],
+		\["}i", 'ï'],
+		\["}o", 'ö'],
+		\["}u", 'ü'],
+		\["}y", 'ÿ'],
+		\["]c", 'ç'],
+		\["[a", 'â'],
+		\["[e", 'ê'],
+		\["[i", 'î'],
+		\["[o", 'ô'],
+		\["[u", 'û'],
+	\])
+
+" misc funny digraphs
+call digraph_setlist([
+		\["++", '✝'],
+		\["+-", '†'],
+	\])
 
 " NetRW
 
