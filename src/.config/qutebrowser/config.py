@@ -83,7 +83,7 @@ c.content.headers.custom = {"accept": "text/html,application/xhtml+xml,applicati
 # Sending a Do Not Track header makes your fingerprint more unique according to Panopticlick,
 # and I don't trust sites to respect it, so I think it's better to not include it at all.
 # (True: send DNT, False: Send DNT header set to 0, None: Don't send DNT)
-c.content.headers.do_not_track = None;
+c.content.headers.do_not_track = None
 
 # Block certain trackers
 c.content.canvas_reading = False
@@ -95,3 +95,10 @@ config.bind("#", "set-cmd-text -s :scroll-to-anchor ")
 config.bind(";I", "hint images yank")
 # This overrides pP because I don't use primary clip
 config.bind("p", "open -t {clipboard}")
+
+# code block copying
+c.hints.selectors["code"] = [
+    ":not(pre) > code",
+    "pre"
+]
+config.bind("cc", "hint code userscript code_select.py")
