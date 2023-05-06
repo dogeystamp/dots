@@ -127,6 +127,7 @@ function RunInput()
 	let @x = join(readfile(inputfile), "\n") .. "\n\n"
 	Program
 	normal G"xp
+	Source
 endfunction
 nnoremap <silent> <leader>ri :call RunInput()<cr>
 
