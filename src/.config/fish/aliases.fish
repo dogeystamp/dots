@@ -41,6 +41,14 @@ function musrec
 	end
 end
 
+# git stuff
+abbr -a -- gs git status
+abbr -a -- gl git log
+abbr -a -- gc git commit -S
+abbr -a -- gca git commit -aS
+abbr -a -- gp git push
+abbr -a --position anywhere -- gh "&& git push gh"
+
 # problem solving
 # ---------------
 # use abbreviations instead of aliases/functions because
