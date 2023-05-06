@@ -40,3 +40,18 @@ function musrec
 		http --form POST "https://api.audd.io?api_token=$(cat ~/.config/audd_token)" file@$argv
 	end
 end
+
+# problem solving
+# ---------------
+# use abbreviations instead of aliases/functions because
+# this allows retrieving the files accessed from history
+# instead of (basename (xsel -b))
+
+function prob_typ; echo $EDITOR (basename (xsel -b)).typ; end
+abbr -a typ --function prob_typ
+function prob_cpp; echo $EDITOR src/(basename (xsel -b)).cpp; end
+abbr -a cpp --function prob_cpp
+function prob_py; echo $EDITOR src/(basename (xsel -b)).py; end
+abbr -a py --function prob_py
+function prob_pdf; echo zathura (basename (xsel -b)).pdf; end
+abbr -a pdf --function prob_pdf
