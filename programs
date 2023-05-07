@@ -19,7 +19,7 @@ gimp
 blender
 audacity
 pulsemixer
-ffmppeg
+ffmpeg
 mpv
 netcat
 nmap
@@ -31,6 +31,8 @@ scrot
 pynvim
 python-lsp-server
 python-lsp-black
+typescript
+typescript-language-server
 bear
 xsel
 xwallpaper

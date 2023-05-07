@@ -1,6 +1,6 @@
 -- Syntax highlighting
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "cpp", "javascript", "python", "vim", "latex", "fish", "bash" },
+  ensure_installed = { "c", "cpp", "javascript", "typescript", "python", "vim", "fish", "bash" },
   sync_install = false,
   auto_install = false,
   highlight = {
@@ -65,6 +65,7 @@ local servers = {
 		}
 	},
 	clangd = {},
+	tsserver = {},
 }
 
 local nvim_lsp = require('lspconfig')
