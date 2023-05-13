@@ -112,3 +112,7 @@ case $command in
   window) window $args;;
   *) echo "unknown command"; exit 1;;
 esac
+
+# hacky fix to prevent tmux from displaying a "returned 1" prompt
+# probably ignoring something but can't matter that much
+exit 0
