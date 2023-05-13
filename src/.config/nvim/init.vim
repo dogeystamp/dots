@@ -263,9 +263,15 @@ if $SYSTEM_PROFILE == "DEFAULT"
 	let g:ackprg = 'rg --vimgrep --smart-case'
 endif
 
+" URL motions
 Plug 'axieax/urlview.nvim'
 
+" fancy motions
 Plug 'ggandor/leap.nvim'
+
+" bracket closing
+Plug 'jiangmiao/auto-pairs'
+let g:AutoPairsShortcutToggle = "@@"
 
 call plug#end()
 
