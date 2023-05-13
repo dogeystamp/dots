@@ -1,10 +1,6 @@
 #!/bin/sh
 # https://github.com/saysjonathan/dwm.tmux
 
-window_panes=
-killlast=
-mfact=
-
 newpane() {
   tmux \
     split-window -t :.0\; \
@@ -94,7 +90,6 @@ args=$*
 set -- $(echo $(tmux display -p "#{window_panes}\n#{killlast}\n#{mfact}"))
 window_panes=$1
 killlast=$2
-mfact=$3
 
 case $command in
   newpane) newpane;;
@@ -112,7 +107,3 @@ case $command in
   window) window $args;;
   *) echo "unknown command"; exit 1;;
 esac
-
-# hacky fix to prevent tmux from displaying a "returned 1" prompt
-# probably ignoring something but can't matter that much
-exit 0
