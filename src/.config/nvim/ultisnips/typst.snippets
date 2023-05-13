@@ -8,6 +8,14 @@ snippet problem "template for problem notes" bi
 
 endsnippet
 
+snippet algs "template for compsci notes" bi
+#import "../templates/algs.typ": template, source_code
+#show: template.with(
+  title: "$1",
+)
+
+endsnippet
+
 snippet math_prob "template for math problems" bi
 #import "../../../templates/math_prob.typ": template
 #show: template.with(
@@ -21,6 +29,10 @@ snippet ss "superscript" i
 endsnippet
 snippet im "inline math" w
 \$${1:${VISUAL}}\$
+endsnippet
+
+snippet link "link" w
+#link("${1}")[${2}]
 endsnippet
 
 snippet fig "create new figure" bi
