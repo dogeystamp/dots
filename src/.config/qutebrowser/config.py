@@ -105,4 +105,4 @@ config.bind("cc", "hint code userscript code_select.py")
 
 # use libre redirects
 config.bind(",fl", "hint links userscript fixlink.sh")
-config.bind(",fL", "hint links userscript fixlink.sh -t")
+config.bind(",fL", "hint links userscript fixlink-tab.sh")
