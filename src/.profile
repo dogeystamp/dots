@@ -65,7 +65,7 @@ fi
 
 # Profile to enable/disable features on certain devices
 if [ ! -f "$XDG_CONFIG_HOME"/dot_profile ]; then
-	export SYSTEM_PROFILE="DEFAULT"
+	export SYSTEM_PROFILE="SLIM"
 else 
 	. "$XDG_CONFIG_HOME"/dot_profile
 fi
