@@ -103,6 +103,15 @@ c.hints.selectors["code"] = [
 ]
 config.bind("cc", "hint code userscript code_select.py")
 
+# copy the title
+c.hints.selectors["title"] = [
+    "h1",
+    "h2",
+    "h3",
+    "h4",
+]
+config.bind("ct", "hint title userscript code_select.py")
+
 # use libre redirects
 config.bind(",fl", "hint links userscript fixlink.sh")
 config.bind(",fL", "hint links userscript fixlink-tab.sh")
