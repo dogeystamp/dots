@@ -63,6 +63,7 @@ nnoremap <silent> <c-n> :call vimspector#StepOver()<cr>
 
 " breakpoints
 nnoremap <silent> <leader>dsf :call vimspector#ToggleBreakpoint()<cr>
+nnoremap <silent> <leader>dsF <Plug>VimspectorToggleConditionalBreakpoint
 nnoremap <silent> <leader>dsc :call vimspector#ClearBreakpoints()<cr>
 
 " watches
@@ -76,3 +77,4 @@ func VimspectorEval()
 	call win_gotoid(l:winid)
 endfunc
 vnoremap <silent> K :call VimspectorEval()<cr>
+nnoremap <silent> K <Plug>VimspectorBalloonEval
