@@ -44,8 +44,6 @@ nnoremap <silent> <esc> :noh<return><esc>
 " shortcuts to type symbols easier
 source $XDG_CONFIG_HOME/nvim/digraphs.vim
 
-vnoremap <silent> K :'<,'>Evaluate<cr>
-
 " tab, window management
 set splitbelow splitright
 nnoremap <C-j> <C-w>w

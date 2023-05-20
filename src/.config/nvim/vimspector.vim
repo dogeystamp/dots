@@ -36,12 +36,13 @@ nnoremap <silent> <leader>rw :call WriteInput()<cr>
 
 " feed from input file into program stdin
 function RunInput()
+	let l:winid = win_getid()
 	call win_gotoid(g:vimspector_session_windows.code)
-	let inputfile=$HOME .. "/.cache/termdebug/input/" .. expand("%:r")
-	let @x = join(readfile(inputfile), "\n") .. "\n\n"
+	let l:inputfile=$HOME .. "/.cache/termdebug/input/" .. expand("%:r")
+	let @x = join(readfile(l:inputfile), "\n") .. "\n\n"
 	call win_gotoid(g:vimspector_session_windows.terminal)
 	normal G"xp
-	call win_gotoid(g:vimspector_session_windows.code)
+	call win_gotoid(l:winid)
 endfunction
 nnoremap <silent> <leader>ri :call RunInput()<cr>
 
@@ -49,6 +50,14 @@ nnoremap <silent> <leader>ri :call RunInput()<cr>
 nnoremap <silent> <leader>rs :call vimspector#Restart()<cr>
 nnoremap <silent> <leader>rr :call vimspector#Stop()<cr>
 nnoremap <silent> <leader>rf :call vimspector#Continue()<cr>
+" codelldb breaks if you just restart directly
+func VimspectorHardRestart()
+	call vimspector#Stop()
+	sleep 100m
+	call vimspector#Restart()
+endfunc
+nnoremap <silent> <leader>rt :call VimspectorHardRestart()<cr>
+
 nnoremap <silent> <c-p> :call vimspector#StepInto()<cr>
 nnoremap <silent> <c-n> :call vimspector#StepOver()<cr>
 
@@ -58,3 +67,12 @@ nnoremap <silent> <leader>dsc :call vimspector#ClearBreakpoints()<cr>
 
 " watches
 au BufEnter vimspector.Watches* nnoremap <silent> <buffer> dd :call vimspector#DeleteWatch()<cr>
+
+func VimspectorEval()
+	let l:winid = win_getid()
+	normal gv"xy
+	call win_gotoid(g:vimspector_session_windows.output)
+	execute "normal! ip " . @x . "\n\<Esc>"
+	call win_gotoid(l:winid)
+endfunc
+vnoremap <silent> K :call VimspectorEval()<cr>
