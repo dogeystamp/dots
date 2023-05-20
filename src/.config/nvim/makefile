@@ -1,9 +1,9 @@
 # makefile for compiling individual files from vim
 
-~/.cache/termdebug/%: %.cpp
-	mkdir -p ~/.cache/termdebug/
+~/.cache/termdebug/bin/%: %.cpp
+	mkdir -p ~/.cache/termdebug/bin/
 	$(LINK.cpp) -g -Wall -Wpedantic $^ $(LOADLIBES) $(LDLIBS) -o $@
 
-~/.cache/termdebug/%: %.c
-	mkdir -p ~/.cache/termdebug/
+~/.cache/termdebug/bin/%: %.c
+	mkdir -p ~/.cache/termdebug/bin/
 	$(LINK.c) -g -Wall -Wpedantic $^ $(LOADLIBES) $(LDLIBS) -o $@
