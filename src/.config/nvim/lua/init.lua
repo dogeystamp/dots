@@ -55,7 +55,7 @@ local servers = {
 					pydocstyle = {
 						enabled = true,
 						convention = "numpy",
-						addIgnore = {"D100", "D101", "D102", "D105"}
+						addIgnore = {"D100", "D101", "D102", "D103" ,"D105"}
 					},
 					black = {
 						enabled = true,

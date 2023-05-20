@@ -1,5 +1,11 @@
 set tabstop=4 shiftwidth=4 noexpandtab ai nosmd ignorecase smartcase
 
+" terminal settings
+" disable line numbers
+au TermOpen * setlocal nonumber norelativenumber
+" make ESC go to normal mode
+tnoremap <silent> <esc> <c-\><c-n><c-\><c-n>
+
 " sign column on top of the line number (gutter for things like breakpoints, warnings)
 set scl=number
 
@@ -27,7 +33,6 @@ hi Search cterm=NONE ctermfg=white ctermbg=blue
 hi StatusLine ctermbg=NONE cterm=italic
 hi SignColumn ctermbg=NONE
 
-
 autocmd InsertEnter * hi StatusLine cterm=bold
 autocmd InsertLeave * hi StatusLine cterm=italic
 
@@ -36,148 +41,22 @@ highlight LineNr ctermfg=grey
 " Disable highlighting when searching
 nnoremap <silent> <esc> :noh<return><esc>
 
-" see :help digraphs
-" these digraphs are reminiscent of canadian french keyboard layout
-call digraph_setlist([
-		\["'a", 'à'],
-		\["'e", 'è'],
-		\["'u", 'ù'],
-		\["/e", 'é'],
-		\["}a", 'ä'],
-		\["}e", 'ë'],
-		\["}i", 'ï'],
-		\["}o", 'ö'],
-		\["}u", 'ü'],
-		\["}y", 'ÿ'],
-		\["]c", 'ç'],
-		\["[a", 'â'],
-		\["[e", 'ê'],
-		\["[i", 'î'],
-		\["[o", 'ô'],
-		\["[u", 'û'],
-	\])
-
-" misc funny digraphs
-call digraph_setlist([
-		\["++", '✝'],
-		\["+-", '†'],
-	\])
-
-" NetRW
-
-set splitbelow splitright
-
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 20
-
-function! OpenNetRW()
-	Vexplore
-endfunction
-
-aug netrw_close
-  au!
-  au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&filetype") == "netrw"|q|endif
-aug END
-
-nnoremap - :call OpenNetRW()<cr>
-
-
-" gdb integration
-
-let g:termdebug_popup = 0
-let g:termdebug_wide = 50
-
-" Enter insert mode automatically in terminal windows
-"au BufEnter term://* startinsert
-
-au BufEnter *.c,*.cpp,*.h,*.hpp packadd termdebug
-au TermOpen * setlocal nonumber norelativenumber
-
-tnoremap <silent> <esc> <c-\><c-n><c-\><c-n>
-" start debugger
-nnoremap <silent> <leader>dd :execute "Termdebug" $HOME .. "/.cache/termdebug/" .. expand("%:r")<cr>:Source<cr>
-
-" compile
-function Compile()
-	if exists(":Source")
-		Source
-	endif
-	w
-	execute "make ~/.cache/termdebug/" .. expand("%:r") .. " -f ~/.config/nvim/makefile"
-endfunction
-nnoremap <silent> <leader>dc :call Compile()<cr>
-
-" write clipboard into input file
-function WriteInput()
-	let inputfile=$HOME .. "/.cache/termdebug/input/" .. expand("%:r")
-	echo "Written input to '" .. inputfile .. "'."
-	call writefile(getreg('+', 1, 1), inputfile)
-endfunction
-nnoremap <silent> <leader>rw :call WriteInput()<cr>
-
-" start from input file
-function RunInput()
-	Stop
-	Run
-	Source
-	let inputfile=$HOME .. "/.cache/termdebug/input/" .. expand("%:r")
-	let @x = join(readfile(inputfile), "\n") .. "\n\n"
-	Program
-	normal G"xp
-	Source
-endfunction
-nnoremap <silent> <leader>ri :call RunInput()<cr>
-
-" start, stop, continue forwards
-nnoremap <silent> <leader>rs :Run<cr>
-nnoremap <silent> <leader>rr :Stop<cr>
-nnoremap <silent> <leader>rf :Continue<cr>
-" clear, add breakpoints
-nnoremap <silent> <leader>dsc :Clear<cr>
-nnoremap <silent> <leader>dsf :Break<cr>
-
-nnoremap <silent> <C-h> :vertical resize -5<cr>
-nnoremap <silent> <C-l> :vertical resize +5<cr>
-nnoremap <silent> <c-p> :Step<cr>
-nnoremap <silent> <c-n> :Over<cr>
-
-" quickfix window (after running make)
-nnoremap <silent> <leader>dqf :tab cope<cr>
-nnoremap <silent> <leader>df :tabNext<cr>
+" shortcuts to type symbols easier
+source $XDG_CONFIG_HOME/nvim/digraphs.vim
 
 vnoremap <silent> K :'<,'>Evaluate<cr>
 
 " tab, window management
+set splitbelow splitright
 nnoremap <C-j> <C-w>w
 nnoremap <C-k> <C-w>W
+nnoremap <silent> <C-h> :vertical resize -5<cr>
+nnoremap <silent> <C-l> :vertical resize +5<cr>
 " exit all (akin to ZZ, ZQ)
 nnoremap <silent> ZF :qa<cr>
 
 " copy URL under cursor to clipboard bind
 :nnoremap <silent><leader>uu :let @+ = expand('<cfile>')<CR>
-
-" edit figure in Inkscape
-function EditFig()
-	let figure_fname = expand('<cfile>')
-	exec "silent !typst-figure " .. figure_fname
-	vsp
-	exec "term inkscape-shortcut-manager"
-	quit
-endfunc
-
-:nnoremap <silent><leader>ff :call EditFig()<cr>
-
-" compile typst doc on write
-function TypstWatch()
-	vsp
-	vertical resize 50
-	exec 'terminal ' .. 'typst watch ' .. expand("%:t")
-	exec "norm \<c-w>h"
-endfunc
-:nnoremap <silent><leader>fc :call TypstWatch()<cr>
 
 " Plugins
 
@@ -197,70 +76,17 @@ call plug#begin()
 
 filetype plugin indent on
 
-" i don't use LaTeX anymore, but you can comment out && 0 to
-if $SYSTEM_PROFILE == "DEFAULT" && 0
-	Plug 'lervag/vimtex'
-	let g:vimtex_view_method = 'zathura'
-	let g:vimtex_compiler_method = 'latexmk'
-	set conceallevel=0
-	let g:tex_conceal='abdmg'
-	let g:vimtex_view_forward_search_on_start=1
-	let g:vimtex_compiler_latexmk = {
-		\ 'build_dir' : $HOME.'/.cache/latexmk/',
-		\ 'callback' : 1,
-		\ 'continuous' : 1,
-		\ 'executable' : 'latexmk',
-		\ 'hooks' : [],
-		\ 'options' : [
-		\   '-verbose',
-		\   '-file-line-error',
-		\   '-synctex=1',
-		\   '-interaction=nonstopmode',
-		\ ],
-		\}
+" i don't use LaTeX anymore, but you can uncomment this to
+"source $XDG_CONFIG_HOME/nvim/vimtex.vim
 
-	" spellcheck
-	au BufEnter *.tex set spell spelllang=en_ca
-
-	" Autowrite in tex files
-	" au TextChanged,TextChangedI *.tex silent write
-endif
-
-
-if has('python3') && ($SYSTEM_PROFILE == "DEFAULT" || $SYSTEM_PROFILE == "SLIM")
-	Plug 'SirVer/ultisnips'
-	let g:UltiSnipsExpandTrigger="<c-m>"
-	let g:UltiSnipsJumpForwardTrigger="<c-m>"
-	let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-	let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/ultisnips/']
-endif
+source $XDG_CONFIG_HOME/nvim/ultisnips.vim
 
 if $SYSTEM_PROFILE == "DEFAULT"
-	Plug 'neovim/nvim-lspconfig'
-	Plug 'nvim-lua/lsp-status.nvim'
+	" notes and documents stuff
+	source $XDG_CONFIG_HOME/nvim/typst.vim
 
-	Plug 'hrsh7th/nvim-cmp'
-	Plug 'hrsh7th/cmp-nvim-lsp'
-
-	Plug 'stevearc/dressing.nvim'
-
-	Plug 'nvim-treesitter/nvim-treesitter'
-	" Code folding
-	set foldmethod=expr
-	set foldexpr=nvim_treesitter#foldexpr()
-	"autocmd BufEnter * normal zR
-
-	" typst filetype support
-	Plug 'kaarmu/typst.vim'
-
-	" project-wide searching
-	Plug 'mileszs/ack.vim'
-	" close quickfix list after pressing enter
-	let g:ack_autoclose = 1
-	" Ack! does not jump to first result
-	nnoremap <Leader>/ :Ack!<Space>
-	" use ripgrep
-	let g:ackprg = 'rg --vimgrep --smart-case'
+	" plugins for IDE-like nvim
+	source $XDG_CONFIG_HOME/nvim/coding.vim
 endif
 
 " URL motions
@@ -268,10 +94,6 @@ Plug 'axieax/urlview.nvim'
 
 " fancy motions
 Plug 'ggandor/leap.nvim'
-
-" bracket closing
-Plug 'jiangmiao/auto-pairs'
-let g:AutoPairsShortcutToggle = "@@"
 
 call plug#end()
 
