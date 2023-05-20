@@ -34,16 +34,12 @@ function WriteInput()
 endfunction
 nnoremap <silent> <leader>rw :call WriteInput()<cr>
 
-" start from input file
+" feed from input file into program stdin
 function RunInput()
-	call vimspector#Stop()
-	call vimspector#Restart()
 	call win_gotoid(g:vimspector_session_windows.code)
 	let inputfile=$HOME .. "/.cache/termdebug/input/" .. expand("%:r")
 	let @x = join(readfile(inputfile), "\n") .. "\n\n"
 	call win_gotoid(g:vimspector_session_windows.terminal)
-	" let vimspector set up before feeding input
-	sleep 1
 	normal G"xp
 	call win_gotoid(g:vimspector_session_windows.code)
 endfunction
