@@ -23,4 +23,5 @@ call digraph_setlist([
 call digraph_setlist([
 		\["++", '✝'],
 		\["+-", '†'],
+		\["m-", '—'],
 	\])
