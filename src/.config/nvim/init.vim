@@ -93,6 +93,8 @@ Plug 'axieax/urlview.nvim'
 " fancy motions
 Plug 'ggandor/leap.nvim'
 
+Plug 'ledger/vim-ledger'
+
 call plug#end()
 
 if $SYSTEM_PROFILE == "DEFAULT"

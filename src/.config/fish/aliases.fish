@@ -31,6 +31,7 @@ function xx; $EDITOR ~/dox/not/xx.tsv; end
 function dr; $EDITOR ~/dox/not/dr.txt; end
 function bk; $EDITOR ~/dox/not/bk.txt; end
 function rem; $EDITOR ~/dox/not/rem; end
+function ldg; $EDITOR ~/dox/not/journal.ldg; end
 
 # music recognition
 function musrec
