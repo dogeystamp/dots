@@ -42,6 +42,9 @@ function musrec
 	end
 end
 
+# discord in chromium
+function discord; chromium --profile-directory="Profile 2" --app=https://app.discord.com & disown; exit; end
+
 # git stuff
 abbr -a -- gs git status
 abbr -a -- gl git log
