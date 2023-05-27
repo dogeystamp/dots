@@ -45,9 +45,11 @@ end
 # git stuff
 abbr -a -- gs git status
 abbr -a -- gl git log
-abbr -a -- gc git commit -S
 abbr -a -- ga git add
-abbr -a -- gca git commit -aS
+abbr -a -- gcs git commit -S
+abbr -a -- gc git commit
+abbr -a -- gca git commit -a
+abbr -a -- gas git commit -aS
 abbr -a -- gp git push
 abbr -a --position anywhere -- pgh "&& git push gh"
 
