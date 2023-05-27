@@ -1,8 +1,8 @@
 snippet problem "template for problem notes" bi
 #import "../templates/problems.typ": template, source_code, status
 #show: template.with(
-  title: "$1",
-  problem_url: "$2",
+  problem_url: "$1",
+  title: "$2",
   stat: "${3:incomplete}",
 )
 
