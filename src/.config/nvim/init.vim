@@ -23,7 +23,9 @@ set lazyredraw nocursorline ttyfast
 set clipboard=unnamedplus
 " when using c or s, do not overwrite clipboard
 nnoremap c "-c
+vnoremap c "-c
 nnoremap s "-s
+vnoremap s "-s
 
 let mapleader = ","
 
