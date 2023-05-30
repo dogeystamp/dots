@@ -10,10 +10,6 @@ xsetwacom set 17 MapToOutput eDP1
 xsetwacom set 18 MapToOutput eDP1
 xsetwacom set 23 MapToOutput eDP1
 
-# Set keyboard settings
-setxkbmap -layout au,us,ca -variant basic,haw,multi -option 'grp:win_space_toggle, caps:swapescape'
-xset r rate 300 50
-
 # Configure touchpad sensitivity
 
 # To change this:

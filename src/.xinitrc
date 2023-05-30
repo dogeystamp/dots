@@ -10,6 +10,7 @@ fi
 if [ $SYSTEM_PROFILE = "DEFAULT" ]; then
 	picom &
 fi
+battwatch.sh &
 xwallpaper --center .config/wall.png
 # Host specific wallpapers
 wallpaper
@@ -30,7 +31,12 @@ export DBUS_SESSION_BUS_WINDOWID
 # IME
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
+# for some reason this breaks deadkeys
+#export XMODIFIERS=@im=fcitx
+
+# set up keyboard
+keyboard.sh
+export XCOMPOSEFILE="$XDG_CONFIG_HOME"/xcompose/main
 
 while true; do
 	DATE=$(date +'%H:%M:%S %a %b %d')
