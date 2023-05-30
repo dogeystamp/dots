@@ -2,7 +2,7 @@
 # compiles list of emoji into valid xcompose file
 # ./emoji.py > emoji
 
-emoji = """
+emoji = r"""
 😔 pens
 🤡 clow
 😎 sung
@@ -17,6 +17,7 @@ emoji = """
 👁️ eye
 🤔 think
 👋 wave
+¯\\\\\\_(ツ)\\_/¯ shrug
 """.strip()
 
 prefix = "<Multi_key> <Escape>"
