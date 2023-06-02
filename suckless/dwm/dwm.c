@@ -2313,6 +2313,9 @@ warp(const Client *c)
 		return;
 	}
 
+	if (c->isfloating)
+		return;
+
 	if (!getrootptr(&x, &y) ||
 	    (x > c->x - c->bw &&
 	     y > c->y - c->bw &&
