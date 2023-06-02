@@ -33,6 +33,14 @@ snippet math_prob "template for math problems" bi
 
 endsnippet
 
+snippet proj "template for project documents" bi
+#import "../../templates/proj.typ": template
+#show: template.with(
+  title: "$1",
+)
+
+endsnippet
+
 snippet ss "superscript" i
 ^$1
 endsnippet
