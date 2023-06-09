@@ -40,11 +40,15 @@ export XCOMPOSEFILE="$XDG_CONFIG_HOME"/xcompose/main
 
 while true; do
 	DATE=$(date +'%H:%M:%S %a %b %d')
-	TEMP="$(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))C"
+	#TEMP="$(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))C"
 	BAT="$(acpi -b | head -n 1 | awk -F'[,:]' '{print $3}' | tr -d '[:space:]')"
-	KEY="$(xkblayout-state print '%s')"
+	if command -v xkblayout-state print &> /dev/null; then
+		KEY="$(xkblayout-state print '%s')"
+	else
+		KEY="??"
+	fi
 
-	xsetroot -name " $DATE // $TEMP, $BAT // $KEY"
+	xsetroot -name " $DATE // $BAT // $KEY"
 	sleep 1
 done &
 
