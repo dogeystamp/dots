@@ -14,7 +14,8 @@ emoji = r"""
 😌 reliev
 💀 skul
 👀 eyes
-👁️ eye
+👁️ eyei
+👄 lips
 🤔 think
 👋 wave
 ¯\\\\\\_(ツ)\\_/¯ shrug
