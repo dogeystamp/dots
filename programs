@@ -5,6 +5,7 @@ xkblayout-state
 xorg-setxkbmap
 xorg-xrandr
 xorg-xset
+xorg-xsetroot
 xss-lock
 qutebrowser
 picom
