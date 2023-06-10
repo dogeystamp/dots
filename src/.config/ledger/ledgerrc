@@ -4,3 +4,6 @@ commodity $
 	format $1,000.00
 	nomarket
 	default
+
+# show everything in dollars
+--exchange $
