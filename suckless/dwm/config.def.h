@@ -48,9 +48,10 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor swalresize */
-	{ NULL,       NULL,     "st",           0,         0,          1,           1,        -1,        0},
-	{ "mpv",      NULL,     NULL,           0,         0,          0,           0,        -1,        1}, /* mpv */
+	/* class              instance  title      tags mask  isfloating  isterminal  noswallow  monitor swalresize */
+	{ NULL,                 NULL,    "st",      0,         0,          1,           1,        -1,        0},
+	{ "popup-bottom-center",NULL,    NULL,      0,         1,          1,           1,        -1,        0},
+	{ "mpv",                NULL,    NULL,      0,         0,          0,           0,        -1,        1}, /* mpv */
 };
 
 /* layout(s) */
@@ -119,7 +120,8 @@ static const Key keys[] = {
 	{ 0,                            XK_Print,  spawn,          SHCMD("~/.local/bin/deskutils/screenshot.sh") },
 	{ ShiftMask,                    XK_Print,  spawn,          SHCMD("~/.local/bin/deskutils/screenshot-save.sh"  ) },
 	{ MODKEY,                       XK_z,      spawn,          TERMCMD("bookmk") },
-	{ MODKEY|ShiftMask,             XK_z,      spawn,          TERMCMD("clipedit.sh") },
+	// SHCMD because we already start a terminal from inside clipedit.sh
+	{ MODKEY|ShiftMask,             XK_z,      spawn,          SHCMD("clipedit.sh") },
 	{ 0,                     	    XF86XK_AudioStop, spawn, {.v = stopcmd } },
 	{ 0,                     	    XF86XK_AudioNext, spawn, {.v = next } },
 	{ 0,                     	    XF86XK_AudioPrev, spawn, {.v = prev   } },
