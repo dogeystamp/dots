@@ -67,4 +67,6 @@ else
 	. "$XDG_CONFIG_HOME"/dot_profile
 fi
 
+export PROFILE_RAN=yes
+
 . .config/bashrc

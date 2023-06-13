@@ -21,6 +21,10 @@ set -gx  MANPATH "$MANPATH:/home/dogeystamp/.cache/cppman/"
 # Disable fish greeting
 set fish_greeting ""
 
+if test -z "$PROFILE_RAN"
+	source "$XDG_CONFIG_HOME"/identity
+end
+
 if status --is-interactive
 	# Enable Vi bindings
 	fish_hybrid_key_bindings
