@@ -1,1 +1,55 @@
-/home/dogeystamp/dox/proj/dots/src/.xinitrc
+#!/bin/sh
+
+mon-on
+
+if [ $SYSTEM_PROFILE = "MINIMAL" ]; then
+	dwm
+	exit
+fi
+
+if [ $SYSTEM_PROFILE = "DEFAULT" ]; then
+	picom &
+fi
+battwatch.sh &
+xwallpaper --center .config/wall.png
+# Host specific wallpapers
+wallpaper
+xss-lock -- slock &
+dunst &
+xrdb .Xresources
+if ! pgrep pipewire; then
+	gentoo-pipewire-launcher &
+fi
+
+# DBus
+export NO_AT_BRIDGE=1
+eval $(dbus-launch --sh-syntax)
+export DBUS_SESSION_BUS_ADDRESS
+export DBUS_SESSION_BUS_PID
+export DBUS_SESSION_BUS_WINDOWID
+
+# IME
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+# for some reason this breaks deadkeys
+#export XMODIFIERS=@im=fcitx
+
+# set up keyboard
+keyboard.sh
+export XCOMPOSEFILE="$XDG_CONFIG_HOME"/xcompose/main
+
+while true; do
+	DATE=$(date +'%H:%M:%S %a %b %d')
+	#TEMP="$(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))C"
+	BAT="$(acpi -b | head -n 1 | awk -F'[,:]' '{print $3}' | tr -d '[:space:]')"
+	if command -v xkblayout-state print &> /dev/null; then
+		KEY="$(xkblayout-state print '%s')"
+	else
+		KEY="??"
+	fi
+
+	xsetroot -name " $DATE // $BAT // $KEY"
+	sleep 1
+done &
+
+dwm
