@@ -47,6 +47,7 @@ function discord; chromium --profile-directory="Profile 2" --app=https://app.dis
 
 # git stuff
 abbr -a -- gs git status
+abbr -a -- gt git switch
 abbr -a -- gl git log
 abbr -a -- ga git add
 abbr -a -- gcs git commit -S
@@ -55,6 +56,7 @@ abbr -a -- gca git commit -a
 abbr -a -- gas git commit -aS
 abbr -a -- gp git push
 abbr -a --position anywhere -- pgh "&& git push gh"
+abbr -a --position anywhere -- rbsign "--exec 'git commit --amend --no-edit -n -S'"
 
 # problem solving
 # ---------------
