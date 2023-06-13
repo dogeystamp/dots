@@ -8,6 +8,8 @@ export XDG_DOWNLOAD_DIR="$HOME"/quar/
 
 # Clean up home directory dotfiles
 
+# xinit
+export XINITRC="$XDG_CONFIG_HOME"/xinitrc
 # XAuthority
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 # GTK2
