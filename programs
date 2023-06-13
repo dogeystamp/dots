@@ -6,6 +6,7 @@ git
 xwallpaper
 dunst
 zathura
+libnotify
 xorg-setxkbmap
 xorg-xrandr
 xorg-xset
@@ -38,6 +39,7 @@ netcat
 nmap
 remmina
 python-pynvim
+xorg-xinput
 neofetch
 
 #
