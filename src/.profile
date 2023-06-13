@@ -27,7 +27,7 @@ export MAILCAPS="$XDG_CONFIG_HOME"/mailcap
 export TERMINFO="$XDG_DATA_HOME"/terminfo
 export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
 # go
-export GOPATH="$HOME"/.local/go
+export GOPATH="$XDG_DATA_HOME"/go
 # npm
 export npm_config_userconfig=$XDG_CONFIG_HOME/npm/config
 export npm_config_cache=$XDG_CACHE_HOME/npm
