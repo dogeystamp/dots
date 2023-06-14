@@ -1,3 +1,0 @@
-#!/bin/sh
-
-gpg --batch --yes --delete-secret-keys A3A5FA72F8E5E54FBEE425057225FE3592EFFA38

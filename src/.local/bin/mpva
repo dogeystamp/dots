@@ -1,5 +1,0 @@
-#!/bin/bash
-
-# Run mpv on the output files of minrss
-
-mpvs $(extractlink.sh "$@")
