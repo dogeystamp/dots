@@ -33,6 +33,9 @@ function bk; $EDITOR ~/dox/not/bk.txt; end
 function rem; $EDITOR ~/dox/not/rem; end
 function ldg; $EDITOR ~/dox/not/journal.ldg; end
 
+# pocket calculator
+function calcpy; python3 ~/.local/bin/calcpy/calcpy_cli.py; end
+
 # music recognition
 function musrec
 	# if file exists

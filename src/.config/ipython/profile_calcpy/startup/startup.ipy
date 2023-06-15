@@ -1,0 +1,4 @@
+# vim: ft=python
+
+# don't need parentheses on some function calls
+%autocall 2

@@ -56,6 +56,9 @@ python-lsp-server
 python-lsp-black
 typescript
 typescript-language-server
+# .local/bin/calcpy/ script
+ipython
+python-sympy
 
 #
 # for new systems

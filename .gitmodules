@@ -1,0 +1,3 @@
+[submodule "src/.local/bin/calcpy"]
+	path = src/.local/bin/calcpy
+	url = https://github.com/idanpa/calcpy
