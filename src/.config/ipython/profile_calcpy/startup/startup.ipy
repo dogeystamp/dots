@@ -1,4 +1,6 @@
 # vim: ft=python
 
+from math import degrees as dg
+
 # don't need parentheses on some function calls
 %autocall 2
