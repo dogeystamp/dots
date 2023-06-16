@@ -11,6 +11,8 @@ warp
 
 vanitygaps
 
+zeroastag
+
 ## Installation
 Clone the repo.
 
