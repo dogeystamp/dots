@@ -6,6 +6,7 @@ git
 xwallpaper
 dunst
 zathura
+zathura-pdf-poppler
 libnotify
 xorg-setxkbmap
 xorg-xrandr

@@ -2,11 +2,12 @@ set recolor-darkcolor "#ffffff"
 set recolor-lightcolor "#000000"
 set recolor true
 
-set default-bg "#000000"
+set default-bg "#000000ff"
 set index-bg "#000000"
 set index-active-bg "#111111"
 set index-active-fg "#FFFFFF"
 set inputbar-bg "#000000"
 set inputbar-fg "#CCCCCC"
+set statusbar-bg "#000000"
 
 set selection-clipboard clipboard
