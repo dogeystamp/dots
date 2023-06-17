@@ -36,6 +36,9 @@ function ldg; $EDITOR ~/dox/not/journal.ldg; end
 # pocket calculator
 function calcpy; python3 ~/.local/bin/calcpy/calcpy_cli.py; end
 
+# disable history on units
+alias units='units -H ""'
+
 # music recognition
 function musrec
 	# if file exists
