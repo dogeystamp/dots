@@ -23,7 +23,7 @@ mpv
 scrot
 xsel
 xclip
-sxiv
+nsxiv
 pulsemixer
 # battery status
 acpi

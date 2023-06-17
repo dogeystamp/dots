@@ -38,6 +38,7 @@ function calcpy; python3 ~/.local/bin/calcpy/calcpy_cli.py; end
 
 # disable history on units
 alias units='units -H ""'
+alias sxiv='nsxiv'
 
 # music recognition
 function musrec
