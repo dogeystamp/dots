@@ -41,6 +41,8 @@ alias units='units -H ""'
 alias sxiv='nsxiv'
 
 # music recognition
+# an alternative is available at ~/.local/bin/msrec
+# which uses a different service
 function musrec
 	# if file exists
 	if test -e $argv

@@ -1,0 +1,69 @@
+#!/bin/sh
+# https://docs.acrcloud.com/reference/identification-api
+
+# put your access key and access secret on two lines in ~/.config/acr_token
+# usage:
+#
+# 	msrec file.mp4
+#
+
+set -e
+
+TMPF="$(mktemp --suffix .mp3)"
+
+ffmpeg -y -i $1 "$TMPF"
+
+c=`cat <<EOF
+import base64
+import hashlib
+import hmac
+import os
+import sys
+import time
+import requests
+import tempfile
+
+access_key, access_secret = (
+    open(os.path.expanduser("~/.config/acr_token")).read().strip().split("\n")
+)
+
+timestamp = time.time()
+
+requrl = "https://identify-us-west-2.acrcloud.com/v1/identify"
+to_sign = f"POST\n/v1/identify\n{access_key}\naudio\n1\n{str(timestamp)}"
+
+sign = base64.b64encode(
+    hmac.new(
+        access_secret.encode("ascii"),
+        to_sign.encode("ascii"),
+        digestmod=hashlib.sha1,
+    ).digest()
+).decode("ascii")
+
+f = open(sys.argv[1], "rb")
+sample_bytes = os.path.getsize(sys.argv[1])
+
+files = [("sample", ("test.mp3", f, "audio/mpeg"))]
+data = {
+    "access_key": access_key,
+    "sample_bytes": sample_bytes,
+    "timestamp": str(timestamp),
+    "signature": sign,
+    "data_type": "audio",
+    "signature_version": 1,
+}
+
+r = requests.post(requrl, files=files, data=data)
+r.encoding = "utf-8"
+print(r.text)
+EOF`
+
+printf "\n\nResult (copied to clipboard):\n\n"
+
+python -c "$c" "$TMPF" \
+	| tee "$XDG_CACHE_HOME"/msrec.out \
+	| jq -r '"https://youtube.com/watch?v=" + .metadata.music[-1].external_metadata.youtube.vid' \
+	| tee /dev/tty \
+	| xsel -ib
+
+rm "$TMPF"
