@@ -1,34 +1,23 @@
 #!/bin/sh
-# Sets up environment variables for things I don't want to expose in my dotfiles
+# Sets up env vars and configs for things I don't want to expose in my dotfiles
 
-if [ -z "$XDG_CONFIG_HOME" ]; then
-	XDG_CONFIG_HOME="$HOME"/.config
-fi
+# - install libsecret
+# - set up keepassxc
+# 	- tools -> settings -> secret service integration -> enable integration
+# 	- expose database:
+# 		- click on the edit icon in exposed database groups
+# 		- secret service integration
+# 		- "expose entries under this group"
+# 		- select a group to expose
+# - use secret-tool to import configs into keepassxc
+# 	for example:
+# 		
+# 		cat .config/aerc/accounts.conf | secret-tool store --label="aerc-conf" Title aerc-conf
+#
+# 	you can use the same command to update the entry
+#
+# this script takes these secret files and deploys them to the system
+# you need to have keepassxc running to use it
 
-IDFILE="$XDG_CONFIG_HOME"/identity
-
-cat << "EOF" > "$IDFILE"
-#!/bin/sh
-# Environment variables for personal information
-EOF
-
-fields=$(mktemp)
-cat << "EOF" > "$fields"
-export ID_REALNAME=
-export ID_EMAIL=
-export ID_EMAIL_WORK=
-export REALNAME=
-export EMAIL=
-export KEYID=
-EOF
-
-keepassxc-cli show "$KEEPASSDB" meta/identity \
-	-a realname -a email -a email-work \
-	-a p2p-name -a p2p-email -a p2p-keyid \
-	| paste -d '' "$fields" - >> "$IDFILE"
-rm "$fields"
-
-cat << "EOF" >> "$IDFILE"
-export ID_EMAIL_USER=$(basename "$ID_EMAIL" @gmail.com)
-export ID_EMAIL_WORK_USER=$(basename "$ID_EMAIL_WORK" @gmail.com)
-EOF
+secret-tool lookup Title "conf-aerc-accounts" > .config/aerc/accounts.conf
+secret-tool lookup Title "conf-identity" > .config/identity

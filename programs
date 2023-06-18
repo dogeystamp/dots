@@ -8,6 +8,7 @@ dunst
 zathura
 zathura-pdf-poppler
 libnotify
+libsecret
 xorg-setxkbmap
 xorg-xrandr
 xorg-xset
@@ -42,6 +43,7 @@ remmina
 python-pynvim
 xorg-xinput
 neofetch
+aerc
 
 #
 # extras
