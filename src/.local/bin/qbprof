@@ -1,0 +1,4 @@
+#!/bin/sh
+# runs a qutebrowser profile
+
+qutebrowser --basedir ~/.config/qbprof/"$1"

@@ -54,10 +54,9 @@ end
 #
 # qutebrowser profiles
 #
-function discord; qutebrowser --basedir ~/.config/qbprof/dsc; end
 # listenbrainz
-function lstb; qutebrowser --basedir ~/.config/qbprof/lstb; end
-function work; qutebrowser --basedir ~/.config/qbprof/work; end
+function lstb; qbprof lstb; end
+function work; qbprof work; end
 
 # git stuff
 abbr -a -- gs git status
