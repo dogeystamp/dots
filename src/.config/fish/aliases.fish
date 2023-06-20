@@ -51,8 +51,13 @@ function musrec
 	end
 end
 
-# discord in chromium
-function discord; chromium --profile-directory="Profile 2" --app=https://app.discord.com & disown; exit; end
+#
+# qutebrowser profiles
+#
+function discord; qutebrowser --basedir ~/.config/qbprof/dsc; end
+# listenbrainz
+function lstb; qutebrowser --basedir ~/.config/qbprof/lstb; end
+function work; qutebrowser --basedir ~/.config/qbprof/work; end
 
 # git stuff
 abbr -a -- gs git status
