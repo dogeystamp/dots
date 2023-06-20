@@ -30,6 +30,8 @@ export TERMINFO="$XDG_DATA_HOME"/terminfo
 export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
 # go
 export GOPATH="$XDG_DATA_HOME"/go
+# cargo
+export CARGI_HOME="$XDG_DATA_HOME/cargo"
 # npm
 export npm_config_userconfig=$XDG_CONFIG_HOME/npm/config
 export npm_config_cache=$XDG_CACHE_HOME/npm
