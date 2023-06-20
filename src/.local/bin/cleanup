@@ -3,25 +3,26 @@
 # Clean up useless dotfiles
 
 rm -rf \
-.audacity-data \
-.mplayer \
-.w3m \
-.wget-hsts \
-.python_history \
-.units_history \
-.bash_history \
-.avidemux6 \
-.xsel.log \
-.gnuplot_history \
-.gnome \
-.wavemonrc \
-.viminfo \
-.icons\
-.ipython \
-.android \
-.electron-gyp \
-.yarn \
-.yarnrc
+~/.audacity-data \
+~/.mplayer \
+~/.w3m \
+~/.wget-hsts \
+~/.python_history \
+~/.units_history \
+~/.bash_history \
+~/.avidemux6 \
+~/.xsel.log \
+~/.gnuplot_history \
+~/.gnome \
+~/.wavemonrc \
+~/.viminfo \
+~/.icons\
+~/.ipython \
+~/.android \
+~/.electron-gyp \
+~/.yarn \
+~/.yarnrc \
+~/.vimspector.log
 
 # ipython supports XDG_CONFIG just not by default
 mv ~/.ipython "$XDG_CONFIG_HOME"/ipython
