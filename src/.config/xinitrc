@@ -48,7 +48,7 @@ while true; do
 		KEY="??"
 	fi
 
-	xsetroot -name " $DATE // $BAT // $KEY"
+	xsetroot -name " $DATE // $BAT // $KEY "
 	sleep 1
 done &
 
