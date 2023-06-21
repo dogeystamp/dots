@@ -2,6 +2,8 @@
 # essentials
 #
 ttf-jetbrains-mono
+ttf-roboto
+noto-fonts-emoji
 git
 xwallpaper
 dunst
@@ -13,8 +15,10 @@ xorg-setxkbmap
 xorg-xrandr
 xorg-xset
 xorg-xsetroot
+
 # in the aur
 xkblayout-state
+
 xss-lock
 qutebrowser
 neovim
@@ -27,12 +31,22 @@ xsel
 xclip
 nsxiv
 pulsemixer
+
 # battery status
 acpi
+
+pipewire-pulse
 
 #
 # utility
 #
+which
+termdown
+rsync
+unzip
+wget
+playerctl
+helvum
 jq
 fzf
 yt-dlp
@@ -43,7 +57,21 @@ remmina
 python-pynvim
 xorg-xinput
 neofetch
+
 aerc
+# use w3m for aerc and disallow network
+dante
+
+python-pip
+httpie
+
+# for mpvq script
+socat
+
+# for appimage opening
+fuse2
+
+w3m
 
 #
 # extras
@@ -59,20 +87,41 @@ python-lsp-server
 python-lsp-black
 typescript
 typescript-language-server
+adwaita-color-schemes
+lxappearance
+
 # .local/bin/calcpy/ script
 ipython
 python-sympy
+
+chromium
+cargo
+npm
+ansible
+
+# for personal website compilation
+lowdown
 
 #
 # for new systems
 #
 networkmanager
+os-prober
+efibootmgr
 grub
 xorg-server
 xorg-xinit
 man
+
 # for compiling suckless utilities
 make
 freetype2
 pkgconf
 gcc
+
+#
+# personal
+#
+sof-firmware
+xonotic
+python-pipx
