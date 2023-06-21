@@ -7,17 +7,6 @@ source ~/.config/fish/aliases.fish
 # Set GPG_TTY
 gpgt
 
-# Add .local/bin to path
-set -gx PATH "$PATH:$HOME/.local/bin:"
-set -gx PATH "$PATH:$HOME/.local/bin/deskutils:"
-set -gx PATH "$PATH:$HOME/.local/bin/deskutils/soundboard:"
-
-set -gx PATH "$PATH:$XDG_DATA_HOME/npm/bin"
-set -gx PATH "$PATH:$XDG_DATA_HOME/go/bin"
-
-# cppman can't set it itself for some reason
-set -gx  MANPATH "$MANPATH:/home/dogeystamp/.cache/cppman/"
-
 # Disable fish greeting
 set fish_greeting ""
 

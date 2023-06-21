@@ -69,4 +69,15 @@ else
 	. "$XDG_CONFIG_HOME"/dot_profile
 fi
 
+# Add .local/bin to path
+export PATH="$PATH":~/.local/bin
+export PATH="$PATH":~/.local/bin/deskutils
+export PATH="$PATH":~/.local/bin/deskutils/soundboard
+
+export PATH="$PATH":"$XDG_DATA_HOME"/npm/bin
+export PATH="$PATH":"$XDG_DATA_HOME"/go/bin
+
+# cppman can't set it itself for some reason
+export MANPATH="$MANPATH":~/.cache/cppman/
+
 . .config/bashrc
