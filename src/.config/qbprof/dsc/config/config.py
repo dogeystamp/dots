@@ -9,3 +9,8 @@ c.bindings.commands["passthrough"] = {
 }
 
 c.url.start_pages = "https://app.discord.com"
+
+c.fonts.default_family = "JetBrains Mono"
+c.downloads.location.directory = "~/quar/"
+c.scrolling.smooth = True
+c.downloads.remove_finished = 1000
