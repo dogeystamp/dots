@@ -9,15 +9,6 @@ if set -q TMUX
 	end
 end
 
-if set -q SSH_AGENT_PID
-    functions -c fish_prompt ssha_old_fish_prompt
-
-	function fish_prompt
-		printf "%s%s%s" (set_color 9C8080) "(ssha) " (set_color normal)
-		ssha_old_fish_prompt
-	end
-end
-
 if set -q SSH_TTY
     functions -c fish_prompt ssh_old_fish_prompt
 

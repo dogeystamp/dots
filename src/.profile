@@ -80,4 +80,6 @@ export PATH="$PATH":"$XDG_DATA_HOME"/go/bin
 # cppman can't set it itself for some reason
 export MANPATH="$MANPATH":~/.cache/cppman/
 
+eval $(ssh-agent)
+
 . .config/bashrc
