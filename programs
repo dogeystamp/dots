@@ -127,3 +127,4 @@ gcc
 sof-firmware
 xonotic
 python-pipx
+xf86-input-wacom
