@@ -87,6 +87,7 @@ python-lsp-server
 python-lsp-black
 typescript
 typescript-language-server
+bash-language-server
 adwaita-color-schemes
 lxappearance
 
