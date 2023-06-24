@@ -41,6 +41,10 @@ pipewire-pulse
 # utility
 #
 which
+
+# for qutebrowser copy code block
+python-pyperclip
+
 termdown
 rsync
 unzip
