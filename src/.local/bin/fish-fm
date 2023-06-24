@@ -1,0 +1,26 @@
+#!/bin/fish
+# simple wrapper to let you select files in the terminal
+# call it like this:
+# 
+# 	fish -P -C "set -x OUTPUT [output file]; source fish-fm"
+#
+# if specified, $OUTPUT will contain the selected paths
+# otherwise paths are printed to stdout
+# in the shell, write the following to select files:
+# 	
+# 	sel file1 file2 file3
+#
+
+if test -z "$OUTPUT"
+	set OUTPUT /dev/stdout
+end
+
+# clear output
+printf "" > "$OUTPUT"
+
+function sel
+	for arg in $argv
+		realpath "$arg" >> "$OUTPUT"
+	end
+	exit
+end
