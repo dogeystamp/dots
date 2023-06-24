@@ -11,6 +11,23 @@
 # 	sel file1 file2 file3
 #
 
+# Save the current fish_prompt function as the function _old_fish_prompt.
+functions -c fish_prompt _old_fish_prompt
+
+# stolen prompt code from python venv
+function fish_prompt
+	# Save the return status of the last command.
+	set -l old_status $status
+
+	# Output the venv prompt; color taken from the blue of the Python logo.
+	printf "%s%s%s" (set_color 4B8BBE) "(fishfm) " (set_color normal)
+
+	# Restore the return status of the previous command.
+	echo "exit $old_status" | .
+	# Output the original/"old" prompt.
+	_old_fish_prompt
+end
+
 if test -z "$OUTPUT"
 	set OUTPUT /dev/stdout
 end
