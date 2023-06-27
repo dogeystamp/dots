@@ -41,3 +41,13 @@ function sel
 	end
 	exit
 end
+
+# use sxiv to select pictures
+# see its man page about marking
+# 'm' marks a single picture
+function ssel
+	set res (sxiv -to $argv)
+	if test -n "$res" 
+		sel $res
+	end
+end
