@@ -42,6 +42,9 @@ pipewire-pulse
 #
 which
 
+# in the aur
+tmsu
+
 # for qutebrowser copy code block
 python-pyperclip
 
@@ -107,6 +110,9 @@ ansible
 
 # for personal website compilation
 lowdown
+
+# for lobster.sh
+html-xml-utils
 
 #
 # for new systems
