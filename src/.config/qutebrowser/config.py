@@ -116,6 +116,9 @@ config.bind("ct", "hint title userscript code_select.py")
 config.bind(",fl", "hint links userscript fixlink.sh")
 config.bind(",fL", "hint links userscript fixlink-tab.sh")
 
+# dismiss on-screen messages
+config.bind("<escape>", "clear-messages")
+
 # homegrown file selector
 c.fileselect.handler = "external"
 c.fileselect.multiple_files.command = ["st", "-e", "fish", "-C", "set -x OUTPUT {}; source ~/.local/bin/fish-fm"]
