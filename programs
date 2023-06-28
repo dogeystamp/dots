@@ -64,6 +64,7 @@ remmina
 python-pynvim
 xorg-xinput
 neofetch
+cloc
 
 aerc
 # use w3m for aerc and disallow network
