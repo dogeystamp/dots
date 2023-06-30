@@ -41,6 +41,7 @@ pipewire-pulse
 # utility
 #
 which
+dnsutils
 
 # in the aur
 tmsu
@@ -115,6 +116,22 @@ lowdown
 # for lobster.sh
 html-xml-utils
 
+# for general compiling from source
+cmake
+ninja
+fakeroot
+autoconf
+automake
+bison
+flex
+gcc
+libtool
+m4
+make
+patch
+pkgconf
+texinfo
+
 #
 # for new systems
 #
@@ -127,10 +144,7 @@ xorg-xinit
 man
 
 # for compiling suckless utilities
-make
 freetype2
-pkgconf
-gcc
 
 #
 # personal
