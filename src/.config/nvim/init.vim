@@ -19,15 +19,23 @@ set showtabline=0
 " performance?
 set lazyredraw nocursorline ttyfast
 
-" use system clipboard instead of internal
-set clipboard=unnamedplus
-" when using c or s, do not overwrite clipboard
-nnoremap c "-c
-vnoremap c "-c
-nnoremap s "-s
-vnoremap s "-s
-
 let mapleader = ","
+
+" " use system clipboard instead of internal
+" set clipboard=unnamedplus
+" " when using c or s, do not overwrite clipboard
+" nnoremap c "-c
+" vnoremap c "-c
+" nnoremap s "-s
+" vnoremap s "-s
+
+" easier binds to use system clipboard with
+nnoremap <leader>cy "+yy
+vnoremap <leader>cy "+y
+vnoremap <leader>cd "+d
+nnoremap <leader>cd "+dd
+nnoremap <leader>cp "+p
+nnoremap <leader>cP "+P
 
 set shell=/bin/sh
 
