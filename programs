@@ -40,6 +40,7 @@ pipewire-pulse
 #
 # utility
 #
+dosfstools
 which
 dnsutils
 
@@ -64,6 +65,7 @@ nmap
 remmina
 python-pynvim
 xorg-xinput
+xorg-xbacklight
 neofetch
 cloc
 
@@ -100,6 +102,8 @@ bash-language-server
 vscode-css-languageserver
 adwaita-color-schemes
 lxappearance
+radare2
+gdb
 
 # .local/bin/calcpy/ script
 ipython
