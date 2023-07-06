@@ -102,6 +102,12 @@ Plug 'axieax/urlview.nvim'
 
 Plug 'ledger/vim-ledger'
 
+" adds git diffs to the gutter (side bar thing)
+Plug 'airblade/vim-gitgutter'
+highlight GitGutterAdd ctermfg=green
+highlight GitGutterChange ctermfg=yellow
+highlight GitGutterDelete ctermfg=red
+
 call plug#end()
 
 if $SYSTEM_PROFILE == "DEFAULT"
