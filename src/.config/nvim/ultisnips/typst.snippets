@@ -1,9 +1,18 @@
 snippet problem "template for problem notes" bi
-#import "../templates/problems.typ": template, source_code, status
+#import "../templates/sfd.typ": template
 #show: template.with(
   problem_url: "$1",
   title: "$2",
   stat: "${3:incomplete}",
+)
+
+endsnippet
+
+snippet sfd "template for lecture notes" bi
+#import "../../templates/problems.typ": template, source_code, status
+#show: template.with(
+  lecture_url: "$1",
+  title: "$2",
 )
 
 endsnippet
@@ -58,6 +67,13 @@ endsnippet
 snippet fig "create new figure" bi
 #figure(
   image("fig/`!v expand("%:r")`/$1.svg"),
+  caption: [$2],
+) <$1>
+endsnippet
+
+snippet figp "create new image figure" bi
+#figure(
+  image("fig/`!v expand("%:r")`/$1.jpg"),
   caption: [$2],
 ) <$1>
 endsnippet
