@@ -42,6 +42,7 @@ pipewire-pulse
 #
 # utility
 #
+obs-studio
 dosfstools
 which
 dnsutils
@@ -110,6 +111,9 @@ gdb
 # .local/bin/calcpy/ script
 ipython
 python-sympy
+
+# inkscape shortcut manager
+python-xlib
 
 chromium
 cargo
