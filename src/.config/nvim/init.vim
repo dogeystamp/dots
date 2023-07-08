@@ -30,12 +30,8 @@ let mapleader = ","
 " vnoremap s "-s
 
 " easier binds to use system clipboard with
-nnoremap <leader>cy "+yy
-vnoremap <leader>cy "+y
-vnoremap <leader>cd "+d
-nnoremap <leader>cd "+dd
-nnoremap <leader>cp "+p
-nnoremap <leader>cP "+P
+nmap <leader>y "+y
+vmap <leader>y "+y
 
 set shell=/bin/sh
 
