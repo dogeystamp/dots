@@ -1,5 +1,9 @@
 set tabstop=4 shiftwidth=4 noexpandtab ai nosmd ignorecase smartcase
 
+" Time neovim saves to swapfile in
+" Also time neovim recognizes cursor inactivity
+set updatetime=800
+
 " terminal settings
 " disable line numbers
 au TermOpen * setlocal nonumber norelativenumber
@@ -7,7 +11,7 @@ au TermOpen * setlocal nonumber norelativenumber
 tnoremap <silent> <esc> <c-\><c-n><c-\><c-n>
 
 " sign column on top of the line number (gutter for things like breakpoints, warnings)
-set scl=number
+" set scl=number
 
 " enable line numbers
 set number relativenumber
