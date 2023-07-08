@@ -1,5 +1,5 @@
 snippet problem "template for problem notes" bi
-#import "../templates/sfd.typ": template
+#import "../templates/problems.typ": template, source_code, status
 #show: template.with(
   problem_url: "$1",
   title: "$2",
@@ -9,7 +9,7 @@ snippet problem "template for problem notes" bi
 endsnippet
 
 snippet sfd "template for lecture notes" bi
-#import "../../templates/problems.typ": template, source_code, status
+#import "../../../templates/sfd.typ": template
 #show: template.with(
   lecture_url: "$1",
   title: "$2",
