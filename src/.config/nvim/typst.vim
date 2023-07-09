@@ -29,4 +29,4 @@ function TypstWatch()
 endfunc
 nnoremap <silent><leader>fc :call TypstWatch()<cr>
 
-au Filetype FILETYPE let b:AutoPairs = {"(": ")"}
+au Filetype typst let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '$':'$'}
