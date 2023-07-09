@@ -36,6 +36,8 @@ let mapleader = ","
 " easier binds to use system clipboard with
 nmap <leader>y "+y
 vmap <leader>y "+y
+nmap <leader>c "+c
+vmap <leader>c "+c
 
 set shell=/bin/sh
 
