@@ -58,12 +58,14 @@ r.encoding = "utf-8"
 print(r.text)
 EOF`
 
-printf "\n\nResult (copied to clipboard):\n\n"
-
 python -c "$c" "$TMPF" \
-	| tee "$XDG_CACHE_HOME"/msrec.out \
-	| jq -r '"https://youtube.com/watch?v=" + .metadata.music[-1].external_metadata.youtube.vid' \
-	| tee /dev/tty \
-	| xsel -ib
+	> "$XDG_CACHE_HOME"/msrec.out
+
+printf "\n\nRaw output:\n"
+cat "$XDG_CACHE_HOME"/msrec.out | jq
+
+printf "Links:\n"
+cat "$XDG_CACHE_HOME"/msrec.out \
+	| jq -r '"https://youtu.be/" + .metadata.music[].external_metadata.youtube.vid'
 
 rm "$TMPF"
