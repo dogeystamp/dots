@@ -90,11 +90,11 @@ filetype plugin indent on
 source $XDG_CONFIG_HOME/nvim/ultisnips.vim
 
 if $SYSTEM_PROFILE == "DEFAULT"
-	" notes and documents stuff
-	source $XDG_CONFIG_HOME/nvim/typst.vim
-
 	" plugins for IDE-like nvim
 	source $XDG_CONFIG_HOME/nvim/coding.vim
+
+	" notes and documents stuff
+	source $XDG_CONFIG_HOME/nvim/typst.vim
 endif
 
 " URL motions

@@ -28,3 +28,5 @@ function TypstWatch()
 	exec "norm \<c-w>h"
 endfunc
 nnoremap <silent><leader>fc :call TypstWatch()<cr>
+
+au Filetype FILETYPE let b:AutoPairs = {"(": ")"}
