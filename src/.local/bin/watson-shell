@@ -3,8 +3,6 @@
 # thing for running watson subcommands quickly
 
 
-pyenv
-
 prod.sh &
 
 while true
