@@ -1,5 +1,5 @@
 snippet problem "template for problem notes" bi
-#import "../templates/problems.typ": template, source_code, status
+#import "/templates/problems.typ": template, source_code, status, lref
 #show: template.with(
   problem_url: "$1",
   title: "$2",
@@ -9,7 +9,7 @@ snippet problem "template for problem notes" bi
 endsnippet
 
 snippet sfd "template for lecture notes" bi
-#import "../../../templates/sfd.typ": template
+#import "/templates/sfd.typ": template, lref
 #show: template.with(
   lecture_url: "$1",
   title: "$2",
@@ -18,7 +18,7 @@ snippet sfd "template for lecture notes" bi
 endsnippet
 
 snippet contest "template for contest problems" bi
-#import "../../templates/contest.typ": template, source_code, status
+#import "/templates/contest.typ": template, source_code, status, lref
 #show: template.with(
   title: "$1",
   stat: "${2:incomplete}",
@@ -27,7 +27,7 @@ snippet contest "template for contest problems" bi
 endsnippet
 
 snippet algs "template for compsci notes" bi
-#import "../templates/algs.typ": template, source_code
+#import "/templates/algs.typ": template, source_code, lref
 #show: template.with(
   title: "$1",
 )
@@ -35,7 +35,7 @@ snippet algs "template for compsci notes" bi
 endsnippet
 
 snippet math_prob "template for math problems" bi
-#import "../../../templates/math_prob.typ": template
+#import "/templates/math_prob.typ": template, lref
 #show: template.with(
   title: "$1",
 )
@@ -43,7 +43,7 @@ snippet math_prob "template for math problems" bi
 endsnippet
 
 snippet proj "template for project documents" bi
-#import "../../templates/proj.typ": template
+#import "/templates/proj.typ": template, lref
 #show: template.with(
   title: "$1",
 )
@@ -56,6 +56,10 @@ endsnippet
 
 snippet link "link" w
 #link("${1}")[${2}]
+endsnippet
+
+snippet lref "refer to another knowledge base doc" w
+#lref("/${1}")[${2}]
 endsnippet
 
 snippet fig "create new figure" bi

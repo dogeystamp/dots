@@ -69,6 +69,9 @@ else
 	. "$XDG_CONFIG_HOME"/dot_profile
 fi
 
+# Typst root
+export TYPST_ROOT="$HOME/nt"
+
 # Add .local/bin to path
 export PATH="$PATH":~/.local/bin
 export PATH="$PATH":~/.local/bin/deskutils
