@@ -22,6 +22,7 @@ rm -rf \
 ~/.electron-gyp \
 ~/.yarn \
 ~/.yarnrc \
+~/.node_repl_history \
 ~/.vimspector.log
 
 # ipython supports XDG_CONFIG just not by default
