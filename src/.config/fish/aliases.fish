@@ -55,6 +55,7 @@ end
 # listenbrainz
 function lstb; qbprof lstb; end
 function work; qbprof work; end
+function chat; qbprof chat; end
 
 # git stuff
 abbr -a -- gs git status
