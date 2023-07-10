@@ -107,6 +107,7 @@ adwaita-color-schemes
 lxappearance
 radare2
 gdb
+typst
 
 # .local/bin/calcpy/ script
 ipython
