@@ -97,8 +97,8 @@ blender
 audacity
 syncthing
 inkscape
-python-lsp-server
-python-lsp-black
+pyright
+python-black
 typescript
 typescript-language-server
 bash-language-server

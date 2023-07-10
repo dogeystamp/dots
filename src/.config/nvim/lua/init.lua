@@ -48,22 +48,7 @@ end
 
 -- settings per server (overrides defaults)
 local servers = {
-	pylsp = {
-		settings = {
-			pylsp = {
-				plugins = {
-					pydocstyle = {
-						enabled = true,
-						convention = "numpy",
-						addIgnore = {"D100", "D101", "D102", "D103" ,"D105"}
-					},
-					black = {
-						enabled = true,
-					}
-				}
-			}
-		}
-	},
+	pyright = {},
 	clangd = {},
 	tsserver = {},
 	bashls = {},
