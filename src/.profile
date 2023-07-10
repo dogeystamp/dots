@@ -76,6 +76,7 @@ export TYPST_ROOT="$HOME/nt"
 export PATH="$PATH":~/.local/bin
 export PATH="$PATH":~/.local/bin/deskutils
 export PATH="$PATH":~/.local/bin/deskutils/soundboard
+export PATH="$PATH":~/.local/bin/pyinstantref
 
 export PATH="$PATH":"$XDG_DATA_HOME"/npm/bin
 export PATH="$PATH":"$XDG_DATA_HOME"/go/bin

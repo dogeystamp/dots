@@ -1,3 +1,4 @@
 
 [Default Applications]
 application/pdf=org.pwmt.zathura.desktop
+x-scheme-handler/pdfref=copy_ref

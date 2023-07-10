@@ -11,3 +11,5 @@ set inputbar-fg "#CCCCCC"
 set statusbar-bg "#000000"
 
 set selection-clipboard clipboard
+
+map <C-l> exec copy_ref

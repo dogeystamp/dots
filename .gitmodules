@@ -1,3 +1,6 @@
 [submodule "src/.local/bin/calcpy"]
 	path = src/.local/bin/calcpy
 	url = https://github.com/idanpa/calcpy
+[submodule "src/.local/bin/pyinstantref"]
+	path = src/.local/bin/pyinstantref
+	url = https://github.com/dogeystamp/pyinstantref

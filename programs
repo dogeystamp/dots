@@ -113,6 +113,12 @@ typst
 ipython
 python-sympy
 
+# .local/bin/pyinstantref script
+python-pydbus
+xorg-xprop
+xdotool
+xsel
+
 # inkscape shortcut manager
 python-xlib
 
