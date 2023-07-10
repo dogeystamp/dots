@@ -26,16 +26,18 @@
     separator_color = frame
 	gap_size = 5
 
-	origin = top-right
-	offset = 30x30
+	frame_width = 1
+
+	origin = bottom-right
+	offset = 60x70
 
 [urgency_low]
-    background = "#000000"
+    background = "#000000aa"
     foreground = "#dddddd"
     timeout = 10
 
 [urgency_normal]
-    background = "#000000"
+    background = "#000000aa"
     foreground = "#ffffff"
     timeout = 10
 
