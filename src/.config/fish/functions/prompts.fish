@@ -3,6 +3,28 @@ function fish_right_prompt
 		return
 	end
 
+    set -l duration "$cmd_duration$CMD_DURATION"
+    if test $duration -gt 100
+        set duration (math $duration / 1000)s" // "
+    else
+        set duration
+    end
+
+	printf '%s%s%s%s%s' \
+		(set_color brgrey) \
+		$duration \
+		(date +"%H:%M") \
+		(set_color normal)
+	printf '%s ' \
+		(fish_git_prompt)
+end
+function fish_prompt
+	if fish_is_root_user
+		set letter '#'
+	else
+		set letter '>'
+	end
+
 	set -l usercolor (set_color $fish_color_cwd)
 	if command -sq cksum
 		# randomised color for user/hostname based on disco.fish
@@ -20,31 +42,10 @@ function fish_right_prompt
 		set usercolor (set_color $col)
 	end
 
-    set -l duration "$cmd_duration$CMD_DURATION"
-    if test $duration -gt 100
-        set duration (math $duration / 1000)s" // "
-    else
-        set duration
-    end
-
-	printf '%s%s%s%s%s' \
-		(set_color brgrey) \
-		$duration \
-		(date +"%H:%M") \
-		(set_color normal)
-	printf '%s ' \
-		(fish_git_prompt)
-	printf '%s%s@%s%s'\
+	printf '%s%s@%s%s '\
 		$usercolor \
 		(echo $USER | string shorten -m 5 -c '') \
 		(echo $hostname | string shorten -m 1 -c '') \
 		(set_color normal)
-end
-function fish_prompt
-	if fish_is_root_user
-		set letter '#'
-	else
-		set letter '>'
-	end
 	printf '%s%s%s%s ' (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) $letter
 end
