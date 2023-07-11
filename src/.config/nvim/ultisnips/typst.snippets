@@ -34,6 +34,14 @@ snippet algs "template for compsci notes" bi
 
 endsnippet
 
+snippet general "general template" bi
+#import "/templates/general.typ": template, lref
+#show: template.with(
+  title: "$1",
+)
+
+endsnippet
+
 snippet math_prob "template for math problems" bi
 #import "/templates/math_prob.typ": template, lref
 #show: template.with(
