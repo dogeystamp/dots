@@ -17,6 +17,7 @@ xorg-setxkbmap
 xorg-xrandr
 xorg-xset
 xorg-xsetroot
+doas
 
 # in the aur
 xkblayout-state
