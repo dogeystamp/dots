@@ -1,3 +1,6 @@
+# zathura
+alias thur="zathura"
+
 # Run mpv from clipboard
 function mpvy; mpv (xsel -b); end
 
