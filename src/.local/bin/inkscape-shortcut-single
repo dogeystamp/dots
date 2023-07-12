@@ -1,0 +1,8 @@
+#!/bin/sh
+# hacky wrapper to have a single instance of inkscape-shortcut-manager running
+
+if ! pgrep -u "$USER" -f inkscape-shortcut-manager/main.py; then
+	# https://github.com/dogeystamp/inkscape-shortcut-manager
+	# clone this and point to its main.py
+	python3 ~/.local/bin/inkscape-shortcut-manager/main.py
+fi

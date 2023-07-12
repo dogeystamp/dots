@@ -122,6 +122,7 @@ xsel
 
 # inkscape shortcut manager
 python-xlib
+pdf2svg
 
 chromium
 cargo

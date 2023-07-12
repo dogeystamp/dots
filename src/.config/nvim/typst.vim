@@ -7,7 +7,7 @@ function EditFig()
 	let figure_fname = expand('<cfile>')
 	exec "silent !typst-figure " .. figure_fname
 	vsp
-	exec "term inkscape-shortcut-manager"
+	exec "term inkscape-shortcut-single"
 	quit
 endfunc
 

@@ -4,3 +4,6 @@
 [submodule "src/.local/bin/pyinstantref"]
 	path = src/.local/bin/pyinstantref
 	url = https://github.com/dogeystamp/pyinstantref
+[submodule "src/.local/bin/inkscape-shortcut-manager"]
+	path = src/.local/bin/inkscape-shortcut-manager
+	url = https://github.com/dogeystamp/inkscape-shortcut-manager
