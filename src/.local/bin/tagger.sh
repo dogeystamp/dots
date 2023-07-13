@@ -1,10 +1,14 @@
 #!/bin/sh
 # wrapper over tmsu for easy tagging
-#
-# takes in file paths via stdin to tag
-# pipe in `tmsu untagged` to tag untagged files
+# tags untagged files for the database in the current working directory
 
 set -e
+
+if [ -z "$NO_COLOR" ]; then
+	COL_LIGHT_BLUE="$(tput setaf 12)"
+	COL_LIGHT_PURPLE="$(tput setaf 13)"
+	COL_RESET="$(tput sgr0)"
+fi
 
 # read -n 1 isn't POSIX-compliant so we implement something
 # https://unix.stackexchange.com/questions/464930/can-i-read-a-single-character-from-stdin-in-posix-shell
@@ -40,9 +44,7 @@ editargs() {
 
 appendargs() {
 	while true; do
-		RES="$(tmsu tags \
-			| fzf -m --print-query --header "Select tag (or write 'tagname+' or any other special character to create a new tag)" \
-			|| true)"
+		RES="$(tmsu tags | fzf -m --print-query --header "Select tag (or write 'tagname+' or any other special character to create a new tag)" || true)"
 
 		if [ -z "$RES" ]; then
 			break
@@ -73,9 +75,10 @@ while read -r FILE; do
 	appendargs
 	
 	while true; do
-		printf "%s\n" "$FILE"
-		printf "tagging %s with tags:\n" "$FILE"
+		printf "\n\ntagging %s%s%s with tags:\n" "$COL_LIGHT_BLUE" "$FILE" "$COL_RESET"
+		printf "$COL_LIGHT_PURPLE"
 		cat "$TMSU_ARGS" | sed 's/^/- /'
+		printf "$COL_RESET"
 		printf "\nh view again, j add tmsu args, k edit tmsu args, l confirm, q exit, s skip\n"
 		printf "\n> "
 		ANS="$(readc </dev/tty)"
