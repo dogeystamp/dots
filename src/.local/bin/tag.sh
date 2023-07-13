@@ -1,4 +1,10 @@
 #!/bin/sh
+# write entries like 
+# 	
+# 	[youtube link];[artist];[album];[track]
+#
+# track is optional, if it is not there album is set for both
+
 TMPFILE="$(mktemp)"
 nvim "$TMPFILE"
 cat "$TMPFILE" | while read line; do
