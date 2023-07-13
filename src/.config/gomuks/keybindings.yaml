@@ -1,0 +1,13 @@
+main:
+  # ctrl-enter is broken for me and idk why
+  'Ctrl+u': add_newline
+
+visual:
+  # just to emphasize that these binds do exist by default 🐸
+  'h': clear
+  'k': select_prev
+  'j': select_next
+  'l': confirm
+
+room:
+  'Escape': no-op
