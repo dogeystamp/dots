@@ -44,15 +44,15 @@ editargs() {
 
 appendargs() {
 	while true; do
-		RES="$(tmsu tags | fzf -m --print-query --header "Select tag (or write 'tagname+' or any other special character to create a new tag)" || true)"
+		RES="$(tmsu tags | fzf -m --print-query --header "Select tag (or write 'tagname;' to create a new tag)" || true)"
 
 		if [ -z "$RES" ]; then
 			break
 		fi
 		SEL="$(printf "%s\n" "$RES" | tail -n+2)"
-		QUER="$(printf "%s" "$RES" | head -n 1 | head -c-1)"
+		QUER="$(printf "%s" "$RES" | head -n 1 | sed 's/;$//')"
 		if [ "$SEL" = "" ]; then
-			printf "$QUER\n" >> "$TMSU_ARGS"
+			printf "%s\n" "$QUER" >> "$TMSU_ARGS"
 		else
 			printf "$SEL\n" >> "$TMSU_ARGS"
 		fi
@@ -76,9 +76,9 @@ while read -r FILE; do
 	
 	while true; do
 		printf "\n\ntagging %s%s%s with tags:\n" "$COL_LIGHT_BLUE" "$FILE" "$COL_RESET"
-		printf "$COL_LIGHT_PURPLE"
+		printf "%s" "$COL_LIGHT_PURPLE"
 		cat "$TMSU_ARGS" | sed 's/^/- /'
-		printf "$COL_RESET"
+		printf "%s" "$COL_RESET"
 		printf "\nh view again, j add tmsu args, k edit tmsu args, l confirm, q exit, s skip\n"
 		printf "\n> "
 		ANS="$(readc </dev/tty)"
