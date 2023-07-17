@@ -43,6 +43,7 @@ pipewire-pulse
 #
 # utility
 #
+progress
 speedtest-cli
 obs-studio
 dosfstools
