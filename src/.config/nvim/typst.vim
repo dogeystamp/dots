@@ -23,10 +23,12 @@ nnoremap <silent><leader>fs :call ScreenshotFig()<cr>
 " compile typst doc on write
 function TypstWatch()
 	vsp
-	vertical resize 50
-	exec 'terminal ' .. 'typst watch ' .. expand("%:t")
+	vertical resize 20
+	exec 'terminal ' .. 'typst watch ' .. expand("%:")
 	exec "norm \<c-w>h"
 endfunc
 nnoremap <silent><leader>fc :call TypstWatch()<cr>
+
+nnoremap <silent><leader>fr :call setreg("+", expand("%:p:r") . ".pdf")<cr>:echo "Copied path."<cr>
 
 au Filetype typst let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '$':'$', "```" : "```", "`": "`"}

@@ -85,5 +85,6 @@ function prob_cpp; echo $EDITOR src/(basename (xsel -b)).cpp; end
 abbr -a cpp --function prob_cpp
 function prob_py; echo $EDITOR src/(basename (xsel -b)).py; end
 abbr -a py --function prob_py
-function prob_pdf; echo zathura (basename (xsel -b)).pdf; end
+# in .config/nvim/typst.vim there is a bind that copies the path
+function prob_pdf; echo zathura (xsel -b); end
 abbr -a pdf --function prob_pdf
