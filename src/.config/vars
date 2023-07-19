@@ -1,10 +1,9 @@
 #!/bin/sh
 
-export VARS_SET=1
 if [ -n "$VARS_SET" ]; then
-	exit
+	return
 fi
-
+export VARS_SET=1
 
 # Set XDG directories
 export XDG_CONFIG_HOME="$HOME"/.config

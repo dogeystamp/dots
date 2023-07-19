@@ -1,6 +1,6 @@
 #!/bin/sh
 
-~/.config/vars
+. ~/.config/vars
 
 if [ "$SYSTEM_PROFILE" = "DEFAULT" ]; then
 	eval $(ssh-agent)
