@@ -99,6 +99,9 @@ if $SYSTEM_PROFILE == "DEFAULT"
 	source $XDG_CONFIG_HOME/nvim/typst.vim
 endif
 
+" color theme
+Plug 'kvrohit/rasmus.nvim'
+
 " URL motions
 Plug 'axieax/urlview.nvim'
 
@@ -111,6 +114,8 @@ highlight GitGutterChange ctermfg=yellow
 highlight GitGutterDelete ctermfg=red
 
 call plug#end()
+
+source $XDG_CONFIG_HOME/nvim/color.vim
 
 if $SYSTEM_PROFILE == "DEFAULT"
 	" see .config/nvim/lua/init.lua
