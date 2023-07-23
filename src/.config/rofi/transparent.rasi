@@ -34,10 +34,10 @@ configuration {
   padding: 0;
   spacing: 0;
 
-  bg: #00000040;
-  bg-alt: #232323;
+  bg: #000000aa;
+  bg-alt: #232323aa;
   fg: #FFFFFF;
-  fg-alt: #424242;
+  fg-alt: #606060;
 
   background-color: @bg;
   text-color: @fg;
