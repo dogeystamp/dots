@@ -43,6 +43,7 @@ pipewire-pulse
 #
 # utility
 #
+rofi
 progress
 speedtest-cli
 obs-studio
