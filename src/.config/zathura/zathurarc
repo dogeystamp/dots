@@ -13,3 +13,4 @@ set statusbar-bg "#000000"
 set selection-clipboard clipboard
 
 map <C-l> exec copy_ref
+map <C-g> exec "copy_ref --section"
