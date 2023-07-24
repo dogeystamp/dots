@@ -34,7 +34,6 @@ config.bind('td', 'config-cycle colors.webpage.darkmode.enabled true false;; res
 
 # General settings
 
-c.scrolling.smooth = True
 c.url.default_page = "~/.config/qutebrowser/homepage.html"
 c.url.start_pages = "~/.config/qutebrowser/homepage.html"
 c.url.searchengines = {"DEFAULT":"https://search.disroot.org/search?q={}"}
@@ -115,6 +114,7 @@ config.bind("ct", "hint title userscript code_select.py")
 # use libre redirects
 config.bind(",fl", "hint links userscript fixlink.sh")
 config.bind(",fL", "hint links userscript fixlink-tab.sh")
+config.bind(",fo", "spawn --userscript fixlink.sh")
 
 # dismiss on-screen messages
 config.bind("<escape>", "clear-messages")
@@ -123,3 +123,11 @@ config.bind("<escape>", "clear-messages")
 c.fileselect.handler = "external"
 c.fileselect.multiple_files.command = ["st", "-e", "fish", "-C", "set -x OUTPUT {}; source ~/.local/bin/fish-fm"]
 c.fileselect.single_file.command = ["st", "-e", "fish", "-C", "set -x OUTPUT {}; source ~/.local/bin/fish-fm"]
+
+# smooth scroll for larger increments
+# (thank you very much dima https://github.com/qutebrowser/qutebrowser/issues/6281)
+config.bind("<Ctrl-d>", "jseval -q window.scrollBy({top: window.innerHeight/2, left: 0, behavior: 'smooth'});")
+config.bind("<Ctrl-u>", "jseval -q window.scrollBy({top: -window.innerHeight/2, left: 0, behavior: 'smooth'});")
+config.bind("G", "jseval -q window.scrollBy({top: document.body.scrollHeight, left: 0, behavior: 'smooth'});")
+config.bind("gg", "jseval -q window.scrollBy({top: -document.body.scrollHeight, left: 0, behavior: 'smooth'});")
+c.scrolling.smooth = True
