@@ -1,6 +1,8 @@
 config.load_autoconfig()
 
-# Colors
+# Style
+
+c.window.transparent = True
 
 c.colors.webpage.bg = "#444444"
 c.colors.completion.category.bg = "#111111"
@@ -9,12 +11,12 @@ c.colors.statusbar.private.bg = "black"
 c.colors.statusbar.command.private.bg = "black"
 c.colors.hints.bg = "black"
 c.colors.hints.fg = "white"
-c.colors.tabs.bar.bg = "black"
+c.colors.tabs.bar.bg = "transparent"
 
-c.colors.tabs.even.bg = "#000000"
-c.colors.tabs.odd.bg = "#000000"
-c.colors.tabs.selected.even.bg = "#333333"
-c.colors.tabs.selected.odd.bg = "#444444"
+c.colors.tabs.even.bg = "#66111111"
+c.colors.tabs.odd.bg = c.colors.tabs.even.bg
+c.colors.tabs.selected.even.bg = "#dd444455"
+c.colors.tabs.selected.odd.bg = c.colors.tabs.selected.even.bg
 
 c.colors.webpage.darkmode.algorithm = "lightness-hsl"
 c.colors.webpage.darkmode.contrast = 0.5
@@ -27,8 +29,14 @@ c.prompt.radius = 0
 
 # Fonts
 
-c.fonts.default_family = "JetBrains Mono"
+c.fonts.default_size = "12pt"
+c.fonts.default_family = "IBM Plex Sans"
 c.fonts.prompts = "default_size default_family"
+
+c.fonts.web.family.serif = "IBM Plex Sans"
+c.fonts.web.family.sans_serif = "IBM Plex Sans"
+c.fonts.web.family.standard = "IBM Plex Sans"
+c.fonts.web.family.fixed = "JetBrains Mono"
 
 config.bind('td', 'config-cycle colors.webpage.darkmode.enabled true false;; restart')
 
@@ -36,7 +44,7 @@ config.bind('td', 'config-cycle colors.webpage.darkmode.enabled true false;; res
 
 c.url.default_page = "~/.config/qutebrowser/homepage.html"
 c.url.start_pages = "~/.config/qutebrowser/homepage.html"
-c.url.searchengines = {"DEFAULT":"https://search.disroot.org/search?q={}"}
+c.url.searchengines = {"DEFAULT":"https://xo.wtf/search?q={}"}
 c.downloads.location.directory = "~/quar/"
 
 c.zoom.default = "90%"
@@ -48,10 +56,20 @@ c.downloads.remove_finished = 1000
 # Bar settings
 
 c.tabs.max_width = 300
-c.tabs.favicons.show = "never"
-c.tabs.position = "bottom"
+c.tabs.position = "top"
 c.statusbar.show = "in-mode"
 c.statusbar.widgets = [ "keypress", "progress" ]
+c.tabs.indicator.width = 0
+c.tabs.position = "top"
+c.tabs.title.format = "{audio}{current_title}"
+c.tabs.padding = dict(
+    bottom=5,
+    left=5,
+    right=5,
+    top=5,
+)
+c.tabs.title.alignment = "left"
+c.tabs.favicons.show = "always"
 
 # Hints
 
@@ -128,6 +146,6 @@ c.fileselect.single_file.command = ["st", "-e", "fish", "-C", "set -x OUTPUT {};
 # (thank you very much dima https://github.com/qutebrowser/qutebrowser/issues/6281)
 config.bind("<Ctrl-d>", "jseval -q window.scrollBy({top: window.innerHeight/2, left: 0, behavior: 'smooth'});")
 config.bind("<Ctrl-u>", "jseval -q window.scrollBy({top: -window.innerHeight/2, left: 0, behavior: 'smooth'});")
-config.bind("G", "jseval -q window.scrollBy({top: document.body.scrollHeight, left: 0, behavior: 'smooth'});")
-config.bind("gg", "jseval -q window.scrollBy({top: -document.body.scrollHeight, left: 0, behavior: 'smooth'});")
+config.bind("G", "jseval -q window.scrollBy({top: document.body.scrollHeight + 1e6, left: 0, behavior: 'smooth'});")
+config.bind("gg", "jseval -q window.scrollBy({top: -document.body.scrollHeight - 1e6, left: 0, behavior: 'smooth'});")
 c.scrolling.smooth = True
