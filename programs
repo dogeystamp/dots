@@ -141,6 +141,7 @@ html-xml-utils
 # for general compiling from source
 cmake
 ninja
+meson
 fakeroot
 autoconf
 automake
