@@ -1,5 +1,6 @@
 # include default settings
 include "%L"
 
-# emoji
 include "%H/.config/xcompose/emoji"
+
+include "%H/.config/xcompose/letters"
