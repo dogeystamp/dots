@@ -4,21 +4,25 @@ set sandbox strict
 set statusbar-home-tilde true
 
 # make things fit better
+set smooth-scroll "true"
 set scroll-page-aware true
 set adjust-open width
 
+set font "IBM Plex Sans 12"
+
 set recolor-darkcolor "#ffffff"
-set recolor-lightcolor "#000000"
+set recolor-lightcolor rgba(0,0,0,0)
 set recolor true
 set recolor-keephue true
+set recolor-reverse-video true
 
 set default-bg "#000000ff"
 set index-bg "#000000"
 set index-active-bg "#111111"
 set index-active-fg "#FFFFFF"
-set inputbar-bg "#000000"
+set inputbar-bg rgba(0,0,0,0.5)
 set inputbar-fg "#CCCCCC"
-set statusbar-bg "#000000"
+set statusbar-bg rgba(0,0,0,0.5)
 
 set selection-clipboard clipboard
 
