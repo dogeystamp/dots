@@ -1,6 +1,16 @@
+# might break things, but more secure
+set sandbox strict
+
+set statusbar-home-tilde true
+
+# make things fit better
+set scroll-page-aware true
+set adjust-open width
+
 set recolor-darkcolor "#ffffff"
 set recolor-lightcolor "#000000"
-# set recolor true
+set recolor true
+set recolor-keephue true
 
 set default-bg "#000000ff"
 set index-bg "#000000"

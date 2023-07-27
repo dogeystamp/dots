@@ -29,6 +29,6 @@ function TypstWatch()
 endfunc
 nnoremap <silent><leader>fc :call TypstWatch()<cr>
 
-nnoremap <silent><leader>fr :call setreg("+", expand("%:p:r") . ".pdf")<cr>:echo "Copied path."<cr>
+nnoremap <silent><leader>fr :silent exec "!zathura --fork " . expand("%:p:r") . ".pdf &"<cr>
 
 au Filetype typst let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '$':'$', "```" : "```", "`": "`"}
