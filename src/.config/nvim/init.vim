@@ -36,8 +36,10 @@ let mapleader = ","
 " easier binds to use system clipboard with
 nmap <leader>y "+y
 vmap <leader>y "+y
-nmap <leader>c "+c
-vmap <leader>c "+c
+" <leader>d is for debugging
+" and nobody uses clipboard c amirite or amirite
+nmap <leader>c "+d
+vmap <leader>c "+d
 
 set shell=/bin/sh
 
