@@ -1,6 +1,3 @@
-# might break things, but more secure
-set sandbox strict
-
 set statusbar-home-tilde true
 
 # make things fit better
@@ -27,3 +24,5 @@ set selection-clipboard clipboard
 
 map <C-l> exec copy_ref
 map <C-g> exec "copy_ref --section"
+
+map ,fr exec "open_typ.sh $FILE"
