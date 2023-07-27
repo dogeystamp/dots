@@ -1,5 +1,7 @@
 # zathura
-alias thur="zathura"
+function thur; zathura $argv; end
+# stricter sandbox zathura
+function zathsec; zathura -c ~/.config/zathura-sec $argv; end
 
 # Run mpv from clipboard
 function mpvy; mpv (xsel -b); end
@@ -8,7 +10,7 @@ function mpvy; mpv (xsel -b); end
 function gpgt; export GPG_TTY=(tty); end
 
 # Private neovim
-function nvimp; nvim -u NONE -c "setlocal history=0 nobackup nomodeline noshelltemp noswapfile noundofile nowritebackup secure viminfo=\"\""; end
+function nvimp; nvim -u NONE -c "setlocal history=0 nobackup nomodeline noshelltemp noswapfile noundofile nowritebackup secure viminfo=\"\"" $argv; end
 
 # Read pdf file as text
 function pdfr
