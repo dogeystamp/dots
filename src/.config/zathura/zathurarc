@@ -4,7 +4,6 @@ set sandbox strict
 set statusbar-home-tilde true
 
 # make things fit better
-set smooth-scroll "true"
 set scroll-page-aware true
 set adjust-open width
 
