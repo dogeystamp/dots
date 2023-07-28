@@ -1,6 +1,7 @@
 #!/bin/sh
 # wrapper over tmsu for easy tagging
 # tags untagged files for the database in the current working directory
+# or pipe in a list of files to tag
 
 set -e
 
@@ -60,7 +61,11 @@ appendargs() {
 }
 
 INPUT_FILE="$(mktemp)"
-tmsu untagged > "$INPUT_FILE"
+if [ -t 0 ]; then
+	tmsu untagged > "$INPUT_FILE"
+else
+	cat /dev/stdin > "$INPUT_FILE"
+fi
 
 # this seems to magically fix some tmsu issue i don't really understand
 # tmsu freezes for a second or two
@@ -71,7 +76,10 @@ while read -r FILE; do
 		continue
 	fi
 
+	tmsu tags -1 "$FILE" | tail -n+2 > "$TMSU_ARGS"
+
 	view "$FILE"
+
 	appendargs
 	
 	while true; do
