@@ -44,7 +44,7 @@ config.bind('td', 'config-cycle colors.webpage.darkmode.enabled true false;; res
 
 c.url.default_page = "~/.config/qutebrowser/homepage.html"
 c.url.start_pages = "~/.config/qutebrowser/homepage.html"
-c.url.searchengines = {"DEFAULT":"https://xo.wtf/search?q={}"}
+c.url.searchengines = {"DEFAULT":"https://searx.be/search?q={}"}
 c.downloads.location.directory = "~/quar/"
 
 c.zoom.default = "90%"
