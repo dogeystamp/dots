@@ -3,6 +3,9 @@ function thur; zathura $argv; end
 # stricter sandbox zathura
 function zathsec; zathura -c ~/.config/zathura-sec $argv; end
 
+# tmux with 256-color
+function tmx; tmux -2 $argv; end
+
 # Run mpv from clipboard
 function mpvy; mpv (xsel -b); end
 
