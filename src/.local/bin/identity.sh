@@ -19,5 +19,7 @@
 # this script takes these secret files and deploys them to the system
 # you need to have keepassxc running to use it
 
-secret-tool lookup Title "conf-aerc-accounts" > .config/aerc/accounts.conf
-secret-tool lookup Title "conf-identity" > .config/identity
+secret-tool lookup Title "conf-aerc-accounts" > ~/.config/aerc/accounts.conf
+chmod 600 ~/.config/aerc/accounts.conf
+secret-tool lookup Title "conf-identity" > ~/.config/identity
+chmod 600 ~/.config/identity
