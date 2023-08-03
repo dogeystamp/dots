@@ -5,6 +5,7 @@ ttf-jetbrains-mono
 ttf-ibm-plex
 wqy-microhei
 ttf-roboto
+noto-fonts
 noto-fonts-emoji
 git
 xwallpaper
@@ -43,6 +44,9 @@ pipewire-pulse
 #
 # utility
 #
+glances
+net-tools
+libappimage
 nftables
 ufw
 rofi
@@ -96,6 +100,7 @@ w3m
 #
 # extras
 #
+gomuks
 picom
 keepassxc
 gimp
@@ -131,6 +136,7 @@ pdf2svg
 
 chromium
 cargo
+go
 npm
 ansible
 
@@ -170,6 +176,8 @@ man
 
 # for compiling suckless utilities
 freetype2
+libxft
+libxinerama
 
 #
 # personal
