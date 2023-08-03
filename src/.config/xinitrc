@@ -18,7 +18,9 @@ xss-lock -- slock &
 dunst &
 xrdb .Xresources
 if ! pgrep pipewire; then
-	gentoo-pipewire-launcher &
+	wireplumber &
+	pipewire &
+	pipewire-pulse &
 fi
 
 # DBus
