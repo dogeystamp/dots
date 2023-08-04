@@ -129,6 +129,7 @@ python-pydbus
 xorg-xprop
 xdotool
 xsel
+python-pymupdf
 
 # inkscape shortcut manager
 python-xlib
