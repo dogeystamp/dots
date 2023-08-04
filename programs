@@ -115,7 +115,7 @@ typescript-language-server
 bash-language-server
 vscode-css-languageserver
 arc-gtk-theme
-lxappearance
+lxappearance-gtk3
 radare2
 gdb
 typst
