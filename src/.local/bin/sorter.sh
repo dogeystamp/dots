@@ -23,7 +23,7 @@ readc() {
 }
 
 view() {
-	mpv --no-resume-playback "$1"
+	mpv --loop --no-resume-playback "$1"
 }
 
 dirsel() {
