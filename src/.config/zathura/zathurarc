@@ -18,6 +18,7 @@ set index-active-bg "#111111"
 set index-active-fg "#FFFFFF"
 set inputbar-bg rgba(0,0,0,0.5)
 set inputbar-fg "#CCCCCC"
+set highlight-transparency 0.75
 set statusbar-bg rgba(0,0,0,0.5)
 
 set selection-clipboard clipboard
