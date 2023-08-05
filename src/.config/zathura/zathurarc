@@ -21,6 +21,8 @@ set inputbar-fg "#CCCCCC"
 set highlight-transparency 0.75
 set statusbar-bg rgba(0,0,0,0.5)
 
+set render-loading false
+
 set selection-clipboard clipboard
 
 map <C-l> exec copy_ref
