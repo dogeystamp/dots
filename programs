@@ -46,6 +46,7 @@ pipewire-pulse
 #
 glances
 usbutils
+translate-shell
 net-tools
 libappimage
 nftables
