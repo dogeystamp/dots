@@ -45,6 +45,7 @@ pipewire-pulse
 # utility
 #
 glances
+wavemon
 usbutils
 translate-shell
 net-tools
