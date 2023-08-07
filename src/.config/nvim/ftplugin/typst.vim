@@ -1,6 +1,3 @@
-" typst filetype support
-Plug 'kaarmu/typst.vim'
-
 " edit figure in Inkscape
 function EditFig()
 	" expands filename under cursor
@@ -31,4 +28,4 @@ nnoremap <silent><leader>fc :call TypstWatch()<cr>
 
 nnoremap <silent><leader>fr :silent exec "!zathura --fork " . expand("%:p:r") . ".pdf &"<cr>
 
-au Filetype typst let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '$':'$', "```" : "```", "`": "`"}
+let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '$':'$', "```" : "```", "`": "`"}

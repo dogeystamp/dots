@@ -98,7 +98,8 @@ if $SYSTEM_PROFILE == "DEFAULT"
 	source $XDG_CONFIG_HOME/nvim/coding.vim
 
 	" notes and documents stuff
-	source $XDG_CONFIG_HOME/nvim/typst.vim
+	" see ftplugin/typst.vim for binds and stuff
+	Plug 'kaarmu/typst.vim'
 endif
 
 " color theme
