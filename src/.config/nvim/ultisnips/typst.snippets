@@ -8,6 +8,14 @@ snippet problem "template for problem notes" bi
 
 endsnippet
 
+snippet index "template for index documents" bi
+#import "/templates/index.typ": template, lref
+#show: template.with(
+  title: "$1",
+)
+
+endsnippet
+
 snippet sfd "template for lecture notes" bi
 #import "/templates/sfd.typ": template, lref
 #show: template.with(
