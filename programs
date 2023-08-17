@@ -79,6 +79,8 @@ ripgrep
 netcat
 nmap
 remmina
+freerdp
+nss-mdns
 python-pynvim
 xorg-xinput
 xorg-xbacklight
@@ -190,3 +192,8 @@ sof-firmware
 xonotic
 python-pipx
 xf86-input-wacom
+
+# for raspberyy pi pico dev
+arm-none-eabi-binutils
+arm-none-eabi-gcc
+arm-none-eabi-newlib
