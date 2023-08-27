@@ -3,6 +3,8 @@ function thur; zathura $argv; end
 # stricter sandbox zathura
 function zathsec; /usr/bin/zathura -c ~/.config/zathura-sec $argv; end
 
+function calc; calcpy $argv; end
+
 # tmux with 256-color
 function tmx; tmux -2 $argv; end
 
@@ -64,6 +66,7 @@ end
 function lstb; qbprof lstb; end
 function work; qbprof work; end
 function chat; qbprof chat; end
+function zoom; qbprof zoom; end
 
 # git stuff
 abbr -a -- gs git status
