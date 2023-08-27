@@ -22,7 +22,6 @@ source $XDG_CONFIG_HOME/nvim/vimspector.vim
 
 " bracket closing
 Plug 'jiangmiao/auto-pairs'
-let g:AutoPairsShortcutToggle = "@@"
 let g:AutoPairsFlyMode = 0
 
 " improved error list
