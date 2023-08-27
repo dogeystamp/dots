@@ -25,6 +25,21 @@ snippet sfd "template for lecture notes" bi
 
 endsnippet
 
+snippet chem "template for chemistry notes" bi
+#import "/templates/chem.typ": template, lref
+#show: template.with(
+  title: "$1",
+)
+
+endsnippet
+
+snippet chbl "chemistry math block" bi
+#chem()[$
+$1
+$]
+$0
+endsnippet
+
 snippet contest "template for contest problems" bi
 #import "/templates/contest.typ": template, source_code, status, lref
 #show: template.with(
