@@ -3,8 +3,6 @@ function thur; zathura $argv; end
 # stricter sandbox zathura
 function zathsec; /usr/bin/zathura -c ~/.config/zathura-sec $argv; end
 
-function calc; calcpy $argv; end
-
 # tmux with 256-color
 function tmx; tmux -2 $argv; end
 
@@ -42,7 +40,7 @@ function rem; $EDITOR ~/dox/not/rem; end
 function ldg; $EDITOR ~/dox/not/journal.ldg; end
 
 # pocket calculator
-function calcpy; python3 ~/.local/bin/calcpy/calcpy_cli.py; end
+function calc; calcpy $argv; end
 
 # disable history on units
 alias units='units -H ""'

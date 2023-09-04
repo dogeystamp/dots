@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Symlink dotfiles into the home directory
+# Installs dotfiles and Python packages
 
 set -e
 
@@ -8,24 +8,27 @@ SCRIPT_NAME="$(basename $0)"
 
 # Default source for dotfiles
 SRCFOLDER="$(dirname "$0")/src/"
+PYREQS="$(realpath "$(dirname "$0")/programs-python")"
 DESTFOLDER="$HOME"
 
 # Allow overwriting of outdated files
 FORCE="N"
 VERBOSE="N"
+INSTALL_PYTHON="N"
 
 display_help () {
 cat >&2 <<EOF 
 usage: $SCRIPT_NAME [-h] [-v] [-f] [-s PATH] [-d PATH]
 	-h: display help
 	-f: allow overwriting existing dotfiles
+	-p: installs python packages via pipx
 	-v: print modified files
 	-s: path to source of dotfiles
 	-d: path to destination where dotfiles are linked from
 EOF
 }
 
-while getopts "fvhs:d:" o; do
+while getopts "fvphs:d:" o; do
 	case "$o" in
 		h) 
 			display_help
@@ -33,6 +36,7 @@ while getopts "fvhs:d:" o; do
 			;;
 		f) FORCE="Y" ;;
 		v) VERBOSE="Y" ;;
+		p) INSTALL_PYTHON="Y" ;;
 		s)
 			DESTFOLDER="$OPTARG"
 			;;
@@ -92,3 +96,14 @@ for f in $(find -type f); do
 		link "$SRC" "$DEST"
 	fi
 done
+
+printf "Symlinked dotfiles.\n" >&2
+
+if [ "$INSTALL_PYTHON" = "Y" ]; then
+	if command -v pipx > /dev/null; then
+		printf "Installing Python packages via pipx...\n" >&2
+		cat "$PYREQS" | sed "/#.*/d" | xargs -I{} pipx install {}
+	else
+		printf "'pipx' is missing. Not installing Python packages...\n" >&2
+	fi
+fi
