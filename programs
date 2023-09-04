@@ -51,6 +51,7 @@ translate-shell
 net-tools
 libappimage
 nftables
+sdcv
 ufw
 rofi
 progress
@@ -125,10 +126,6 @@ radare2
 gdb
 typst
 
-# .local/bin/calcpy/ script
-ipython
-python-sympy
-
 # .local/bin/pyinstantref script
 python-pydbus
 xorg-xprop
@@ -153,6 +150,7 @@ lowdown
 html-xml-utils
 
 # for general compiling from source
+clang
 cmake
 ninja
 meson
