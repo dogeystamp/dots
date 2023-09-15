@@ -30,7 +30,7 @@ function genlop; doas -u portage /usr/bin/genlop; end
 function loginctl; doas /bin/loginctl; end
 
 # bootleg meme feed
-function arf; cd ~/med/memes/arf; mpv --no-resume-playback (ls | shuf); end
+function arf; mpv --shuffle --no-resume-playback med/memes/arf; end
 
 # aliases for logs and notes
 function xx; $EDITOR ~/dox/not/xx.tsv; end
