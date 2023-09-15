@@ -26,7 +26,7 @@ snippet sfd "template for lecture notes" bi
 endsnippet
 
 snippet chem "template for chemistry notes" bi
-#import "/templates/chem.typ": template, lref, chem
+#import "/templates/chem.typ": template, lref, chem, gaz, liq, sol, aq
 #show: template.with(
   title: "$1",
 )
@@ -67,6 +67,14 @@ endsnippet
 
 snippet math_prob "template for math problems" bi
 #import "/templates/math_prob.typ": template, lref
+#show: template.with(
+  title: "$1",
+)
+
+endsnippet
+
+snippet math_notes "template for math notes" bi
+#import "/templates/math_notes.typ": template, lref
 #show: template.with(
   title: "$1",
 )
