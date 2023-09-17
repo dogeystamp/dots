@@ -195,3 +195,4 @@ xf86-input-wacom
 arm-none-eabi-binutils
 arm-none-eabi-gcc
 arm-none-eabi-newlib
+picocom
