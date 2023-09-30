@@ -29,7 +29,7 @@ nnoremap <silent> <leader>de :call vimspector#Reset()<cr>
 " write clipboard into input file
 function WriteInput()
 	let inputfile=$HOME .. "/.cache/termdebug/input/" .. expand("%:r")
-	echo "Written input to '" .. inputfile .. "'."
+	echo "Input written to '" .. inputfile .. "'."
 	call writefile(getreg('+', 1, 1), inputfile)
 endfunction
 nnoremap <silent> <leader>rw :call WriteInput()<cr>
