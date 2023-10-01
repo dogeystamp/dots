@@ -60,6 +60,7 @@ obs-studio
 dosfstools
 which
 dnsutils
+man-pages
 
 # in the aur
 tmsu
@@ -107,6 +108,7 @@ w3m
 # extras
 #
 gomuks
+beets
 picom
 keepassxc
 gimp
