@@ -109,6 +109,8 @@ w3m
 #
 gomuks
 beets
+# for beets
+python-pylast
 picom
 keepassxc
 gimp
