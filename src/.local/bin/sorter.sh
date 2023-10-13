@@ -65,6 +65,7 @@ find ~/quar \
 	-name '*.png' -o \
 	-name '*.jpeg' -o \
 	-name '*.webp' -o \
+	-name '*.webm' -o \
 	-name '*.gif' \
 	\) | \
 while read -r FILE; do
