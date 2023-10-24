@@ -44,6 +44,9 @@ pipewire-pulse
 #
 # utility
 #
+cups
+sane
+ghostscript
 glances
 wavemon
 usbutils
