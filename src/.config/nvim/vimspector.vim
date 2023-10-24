@@ -28,9 +28,12 @@ nnoremap <silent> <leader>de :call vimspector#Reset()<cr>
 
 " write clipboard into input file
 function WriteInput()
-	let inputfile=$HOME .. "/.cache/termdebug/input/" .. expand("%:r")
-	echo "Input written to '" .. inputfile .. "'."
+	let inputfolder=$HOME .. "/.cache/termdebug/input/" .. expand("%:h")
+	silent exec "!mkdir -p " .. inputfolder
+	let inputfile=inputfolder .. "/" .. expand("%:t:r")
 	call writefile(getreg('+', 1, 1), inputfile)
+	" for some reason this line causes a Press Enter to continue
+	"echo "Input written to '" .. inputfile .. "'."
 endfunction
 nnoremap <silent> <leader>rw :call WriteInput()<cr>
 
