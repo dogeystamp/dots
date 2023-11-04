@@ -6,7 +6,7 @@ set adjust-open width
 
 set font "IBM Plex Sans 12"
 
-set recolor-darkcolor "#ffffff"
+set recolor-darkcolor "#dddddd"
 set recolor-lightcolor rgba(0,0,0,0)
 set recolor true
 set recolor-keephue true
