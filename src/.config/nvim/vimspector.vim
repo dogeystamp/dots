@@ -49,6 +49,23 @@ function RunInput()
 endfunction
 nnoremap <silent> <leader>ri :call RunInput()<cr>
 
+" use test runner
+function TestRunner()
+	if expand("%:e") == "cpp"
+		let binary=$HOME .. "/.cache/termdebug/bin/" .. expand("%:r")
+	else
+		let binary=expand("%:p")
+	endif
+	let testfolder=$HOME .. "/.cache/termdebug/tests/" .. expand("%:r")
+	silent exec "!mkdir -p " .. testfolder
+	vsp
+	vertical resize 40
+	normal G
+	exec 'terminal ' .. 'testr --exec ' .. binary .. " --testdir " .. testfolder
+	exec "norm \<c-w>h"
+endfunction
+nnoremap <silent> <leader>dt :call TestRunner()<cr>
+
 " debugging program flow
 nnoremap <silent> <leader>rs :call vimspector#Restart()<cr>
 nnoremap <silent> <leader>rr :call vimspector#Stop()<cr>
