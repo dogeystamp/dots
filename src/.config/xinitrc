@@ -8,7 +8,7 @@ if [ $SYSTEM_PROFILE = "MINIMAL" ]; then
 fi
 
 if [ $SYSTEM_PROFILE = "DEFAULT" ]; then
-	picom &
+	picomstart.sh &
 fi
 battwatch.sh &
 xwallpaper --center .config/wall.png
