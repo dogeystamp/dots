@@ -87,6 +87,7 @@ export PATH="$PATH":~/.local/bin/pyinstantref
 
 export PATH="$PATH":"$XDG_DATA_HOME"/npm/bin
 export PATH="$PATH":"$XDG_DATA_HOME"/go/bin
+export PATH="$PATH":"$XDG_DATA_HOME"/cargo/bin
 
 # cppman can't set it itself for some reason
 export MANPATH="$MANPATH":~/.cache/cppman/
