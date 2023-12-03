@@ -64,6 +64,7 @@ dosfstools
 which
 dnsutils
 man-pages
+zoxide
 
 # in the aur
 tmsu

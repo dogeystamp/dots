@@ -27,5 +27,8 @@ if status --is-interactive
 		source ~/.config/fish/functions/fzf_binds.fish
 		fzf_key_bindings
 		rem.sh show
+		if command -v zoxide > /dev/null
+			zoxide init fish | source
+		end
 	end
 end
