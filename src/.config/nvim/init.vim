@@ -116,6 +116,10 @@ highlight GitGutterAdd ctermfg=green
 highlight GitGutterChange ctermfg=yellow
 highlight GitGutterDelete ctermfg=red
 
+" fancy picker stuff
+
+source $XDG_CONFIG_HOME/nvim/telescope.vim
+
 call plug#end()
 
 source $XDG_CONFIG_HOME/nvim/color.vim
