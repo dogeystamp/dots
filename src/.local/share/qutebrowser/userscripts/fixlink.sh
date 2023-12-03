@@ -7,7 +7,7 @@
 # 	config.bind(",fL", "hint links userscript fixlink.sh -t")
 #
 
-REDDIT="reddit.baby"
+REDDIT="old.reddit.com"
 TWITTER="nitter.net"
 # genius lyrics
 GENIUS="sing.whatever.social"
