@@ -21,7 +21,6 @@ c.colors.tabs.selected.odd.bg = c.colors.tabs.selected.even.bg
 c.colors.webpage.darkmode.algorithm = "lightness-hsl"
 c.colors.webpage.darkmode.contrast = 0.5
 c.colors.webpage.darkmode.policy.images = "smart"
-c.colors.webpage.darkmode.grayscale.images = 0.5
 
 c.colors.prompts.bg = "black"
 c.colors.prompts.border = "1px solid white"
