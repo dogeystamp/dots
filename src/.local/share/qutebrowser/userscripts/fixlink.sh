@@ -10,7 +10,7 @@
 REDDIT="old.reddit.com"
 TWITTER="nitter.net"
 # genius lyrics
-GENIUS="sing.whatever.social"
+GENIUS="dm.vern.cc"
 # fandom the wiki
 FANDOM="breezewiki.com"
 YOUTUBE="yewtu.be"
