@@ -62,6 +62,8 @@ end
 #
 # listenbrainz
 function lstb; qbprof lstb; end
+# paperless
+function papr; qbprof papr; end
 function work; qbprof work; end
 function chat; qbprof chat; end
 function zoom; qbprof zoom; end
