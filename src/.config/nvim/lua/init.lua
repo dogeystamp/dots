@@ -54,6 +54,7 @@ local servers = {
 	tsserver = {},
 	bashls = {},
 	cssls = {},
+	rust_analyzer = {},
 }
 
 local nvim_lsp = require('lspconfig')
