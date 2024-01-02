@@ -12,7 +12,8 @@ This list encompasses all packages needed for a full system, including utilities
 Feel free to pick and choose which packages you want.
 
 For a full desktop experience,
-you should also build the programs in `suckless/` based on the instructions in the README files in each directory.
+you should also build the programs in `suckless/` by runningn `./compile-suckless.sh` as root.
+Alternatively, build the programs with the README instructions in the directory.
 
 ### Notes
 
