@@ -77,7 +77,7 @@ rsync
 unzip
 wget
 playerctl
-helvum
+qpwgraph
 jq
 fzf
 yt-dlp
