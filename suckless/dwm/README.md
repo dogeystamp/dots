@@ -1,23 +1,23 @@
 # dwm
+
 My build of dwm.
+
 ## Patches
-swallow
 
-blanktags
+- swallow
 
-alpha
+- blanktags
 
-warp
+- alpha
 
-vanitygaps
+- warp
 
-zeroastag
+- vanitygaps
 
-## Installation
-Clone the repo.
+- zeroastag
 
-`git clone https://github.com/dogeystamp/dwm`
+## Building
 
-Build dwm.
-
-`cd dwm && sudo make install`
+```
+sudo make clean install
+```

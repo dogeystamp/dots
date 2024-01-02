@@ -2,6 +2,17 @@ st - simple terminal
 --------------------
 st is a simple terminal emulator for X which sucks less.
 
+Patches
+-------
+This customized build of st has the following patches:
+- alpha
+- scrollback
+- ligatures
+- newterm (orphan variant)
+- anysize
+- font2
+- externalpipe (eternal variant)
+
 
 Requirements
 ------------

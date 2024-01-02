@@ -2,6 +2,13 @@ dmenu - dynamic menu
 ====================
 dmenu is an efficient dynamic menu for X.
 
+Patches
+-------
+This version of dmenu for my dotfiles has the following patches:
+- instant
+- alpha
+- centered
+
 
 Requirements
 ------------
