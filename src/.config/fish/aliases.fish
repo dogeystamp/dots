@@ -3,8 +3,8 @@ function thur; zathura $argv; end
 # stricter sandbox zathura
 function zathsec; /usr/bin/zathura -c ~/.config/zathura-sec $argv; end
 
-# tmux with 256-color
-function tmx; tmux -2 $argv; end
+# tmux with 256-color and UTF-8
+function tmx; tmux -u -2 $argv; end
 
 # Run mpv from clipboard
 function mpvy; mpv (xsel -b); end
@@ -30,7 +30,7 @@ function genlop; doas -u portage /usr/bin/genlop; end
 function loginctl; doas /bin/loginctl; end
 
 # bootleg meme feed
-function arf; mpv --shuffle --no-resume-playback med/memes/arf; end
+function arf; mpv --shuffle --no-resume-playback ~/med/memes/arf; end
 
 # aliases for logs and notes
 function xx; $EDITOR ~/dox/not/xx.tsv; end
