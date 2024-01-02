@@ -1549,7 +1549,7 @@ xdrawglyphfontspecs(const XftGlyphFontSpec *specs, Glyph base, int len, int x, i
 	int charlen = len * ((base.mode & ATTR_WIDE) ? 2 : 1);
 	int winx = win.hborderpx + x * win.cw, winy = win.vborderpx + y * win.ch,
 	    width = charlen * win.cw;
-	Color *fg, *bg, *temp, revfg, revbg, truefg, truebg;
+	Color *fg, *bg, *temp, revfg, revbg, clarfg, truefg, truebg;
 	XRenderColor colfg, colbg;
 	XRectangle r;
 
@@ -1634,6 +1634,17 @@ xdrawglyphfontspecs(const XftGlyphFontSpec *specs, Glyph base, int len, int x, i
 
 	if (base.mode & ATTR_INVISIBLE)
 		fg = bg;
+
+	/* Hack that fixes fg becoming same as bg when its alpha is set near 0. */
+	if (fg == &dc.col[defaultbg]) {
+		colfg.red = fg->color.red;
+		colfg.green = fg->color.green;
+		colfg.blue = fg->color.blue;
+		colfg.alpha = 0xFFFF;
+		XftColorAllocValue(xw.dpy, xw.vis, xw.cmap, &colfg,
+				&clarfg);
+		fg = &clarfg;
+	}
 
 	/* Intelligent cleaning up of the borders. */
 	if (x == 0) {
