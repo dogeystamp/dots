@@ -812,7 +812,7 @@ drawbar(Monitor *m)
 	int boxw = drw->fonts->h / 6 + 2;
 	unsigned int i, occ = 0, urg = 0;
 	Client *c;
-	w = blw = TEXTW(m->ltsymbol);
+	w = TEXTW(m->ltsymbol);
 
 	/* clear bar from last draw */
 	drw_setscheme(drw, scheme[SchemeNorm]);
