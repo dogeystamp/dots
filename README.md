@@ -7,13 +7,16 @@ My dotfiles.
 Symlink all the files in src/ to your home directory using the provided dotinstall.sh script, or manually.
 Otherwise, copy them manually to your home directory.
 
-After, install the programs that I have dots for. A list is provided in the programs file.
+After, install some packages. A list is provided in the programs file.
+This list encompasses all packages needed for a full system, including utilities and games.
+Feel free to pick and choose which packages you want.
 
-You should install [my dwm](https://github.com/dogeystamp/dwm), [dmenu](https://github.com/dogeystamp/dmenu), [slock](https://github.com/dogeystamp/slock) and [st](https://github.com/dogeystamp/st) builds as well as this for a complete desktop environment.
+For a full desktop experience,
+you should also build the programs in `suckless/` based on the instructions in the README files in each directory.
 
 ### Notes
 
-The xinitrc provides changes I like, such as swapping escape and caps lock, which you should remove if you don't need.
+`.local/bin/keyboard.sh` provides changes I like, such as swapping escape and caps lock, which you should remove if you don't need.
 
 My qutebrowser configuration emphasizes privacy over usability, and you might need to edit it to suit your needs if you want to use it.
 
