@@ -7,7 +7,7 @@ function zathsec; /usr/bin/zathura -c ~/.config/zathura-sec $argv; end
 function tmx; tmux -u -2 $argv; end
 
 # Run mpv from clipboard
-function mpvy; mpv (xsel -b); end
+function mpvy; mpv $argv (xsel -b); end
 
 # Set gpg tty so curses pinentry works
 function gpgt; export GPG_TTY=(tty); end
