@@ -15,7 +15,7 @@ local options = {
 	-- and [[/home/john]] (on Unix-like systems eg. Linux).
 	-- The [[]] delimiter is not needed when using from a configuration file
 	-- in the script-opts folder.
-	output_directory = [[]],
+	output_directory = [[~/quar/]],
 	run_detached = false,
 	-- Template string for the output file
 	-- %f - Filename, with extension
@@ -29,7 +29,7 @@ local options = {
 	-- Property expansion is supported (with %{} at top level, ${} when nested), see https://mpv.io/manual/master/#property-expansion
 	output_template = "%F-[%s-%e]%M",
 	-- Scale video to a certain height, keeping the aspect ratio. -1 disables it.
-	scale_height = -1,
+	scale_height = 720,
 	-- Change the FPS of the output video, dropping or duplicating frames as needed.
 	-- -1 means the FPS will be unchanged from the source.
 	fps = -1,
@@ -37,12 +37,12 @@ local options = {
 	-- used on the encode. If this is set to <= 0, the video bitrate will be set
 	-- to 0, which might enable constant quality modes, depending on the
 	-- video codec that's used (VP8 and VP9, for example).
-	target_filesize = 7980,
+	target_filesize = 20000,
 	-- If true, will use stricter flags to ensure the resulting file doesn't
 	-- overshoot the target filesize. Not recommended, as constrained quality
 	-- mode should work well, unless you're really having trouble hitting
 	-- the target size.
-	strict_filesize_constraint = false,
+	strict_filesize_constraint = true,
 	strict_bitrate_multiplier = 0.95,
 	-- In kilobits.
 	strict_audio_bitrate = 64,
