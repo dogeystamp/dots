@@ -25,7 +25,18 @@ function fish_prompt
 		set letter '>'
 	end
 
-	set -l usercolor (set_color $fish_color_cwd)
+	set -l usercolor (set_color brgrey)
+
+	printf '%s%s@%s%s '\
+		$usercolor \
+		(echo $USER | string shorten -m 5 -c '') \
+		(echo $hostname | string shorten -m 1 -c '') \
+		(set_color normal)
+	printf '%s%s%s%s ' (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) $letter
+end
+
+# https://fishshell.com/docs/3.2/cmds/fish_mode_prompt.html
+function fish_mode_prompt
 	if command -sq cksum
 		# randomised color for user/hostname based on disco.fish
 		set -l shas (echo $USER$hostname | cksum | string split -f1 ' ' | math --base=hex | string sub -s 3 | string pad -c 0 -w 6 | string match -ra ..)
@@ -39,13 +50,27 @@ function fish_prompt
 		end
 		set -l col (string replace 0x '' $col | string pad -c 0 -w 2 | string join "")
 
-		set usercolor (set_color $col)
+		set uniquecol (set_color --bold $col)
 	end
 
-	printf '%s%s@%s%s '\
-		$usercolor \
-		(echo $USER | string shorten -m 5 -c '') \
-		(echo $hostname | string shorten -m 1 -c '') \
-		(set_color normal)
-	printf '%s%s%s%s ' (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) $letter
+	set_color --bold brgrey
+	echo '['
+	echo $uniquecol
+
+	switch $fish_bind_mode
+	case default
+		echo 'N'
+	case insert
+		echo 'I'
+	case replace_one
+		echo 'R'
+	case visual
+		echo 'V'
+	case '*'
+		echo '?'
+	end
+
+	set_color --bold brgrey
+	echo '] '
+	set_color normal
 end
