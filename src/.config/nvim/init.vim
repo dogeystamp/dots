@@ -104,6 +104,9 @@ endif
 
 " color theme
 Plug 'kvrohit/rasmus.nvim'
+" personal preference
+autocmd ColorScheme * highlight clear statusline
+set shortmess+=I
 
 " URL motions
 Plug 'axieax/urlview.nvim'
