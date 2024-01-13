@@ -53,6 +53,10 @@ static const Rule rules[] = {
 	{ "mpv",                NULL,    NULL,      0,         0,          -1, }, /* mpv */
 };
 
+/* window swallowing */
+static const int swaldecay = 3;
+static const int swalretroactive = 1;
+
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
@@ -170,6 +174,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period, setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,             XK_h,      tagmon,         {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_l,      tagmon,         {.i = -1 } },
+	{ MODKEY,                       XK_u,      swalstopsel,    {0} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -194,6 +199,7 @@ static const Button buttons[] = {
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
+	{ ClkClientWin,         MODKEY|ShiftMask, Button1,      swalmouse,      {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },

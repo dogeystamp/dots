@@ -25,6 +25,36 @@ die(const char *fmt, ...)
 	exit(1);
 }
 
+/*
+ * Splits a string into segments according to a separator. A '\0' is written to
+ * the end of every segment. The beginning of every segment is written to
+ * 'pbegin'. Only the first 'maxcount' segments will be written if
+ * maxcount > 0. Inspired by python's split.
+ *
+ * Used exclusively by fakesignal() to split arguments.
+ */
+size_t
+split(char *s, const char* sep, char **pbegin, size_t maxcount) {
+
+	char *p, *q;
+	const size_t seplen = strlen(sep);
+	size_t count = 0;
+
+	maxcount = maxcount == 0 ? (size_t)-1 : maxcount;
+	p = s;
+	while ((q = strstr(p, sep)) != NULL && count < maxcount) {
+		pbegin[count] = p;
+		*q = '\0';
+		p = q + seplen;
+		count++;
+	}
+	if (count < maxcount) {
+		pbegin[count] = p;
+		count++;
+	}
+	return count;
+}
+
 void *
 ecalloc(size_t nmemb, size_t size)
 {

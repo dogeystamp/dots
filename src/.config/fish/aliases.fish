@@ -1,3 +1,7 @@
+# dynamic swallow (dwm patch)
+# run this before opening, e.g., mpv or zathura
+abbr -a -- ds dwmswallow \$WINDOWID\;
+
 # zathura
 function thur; zathura $argv; end
 # stricter sandbox zathura
