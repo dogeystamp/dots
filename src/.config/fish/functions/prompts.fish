@@ -1,24 +1,6 @@
-function fish_right_prompt
-	if test $SYSTEM_PROFILE = "MINIMAL"
-		return
-	end
-
-    set -l duration "$cmd_duration$CMD_DURATION"
-    if test $duration -gt 100
-        set duration (math $duration / 1000)s" // "
-    else
-        set duration
-    end
-
-	printf '%s%s%s%s%s' \
-		(set_color brgrey) \
-		$duration \
-		(date +"%H:%M") \
-		(set_color normal)
-	printf '%s ' \
-		(fish_git_prompt)
-end
 function fish_prompt
+	set -l cmd_status $status
+
 	if fish_is_root_user
 		set letter '#'
 	else
@@ -27,11 +9,19 @@ function fish_prompt
 
 	set -l usercolor (set_color brgrey)
 
-	printf '%s%s@%s%s '\
+	set -l stat_code ""
+	if test $cmd_status -ne 0
+		set stat_code " "(set_color red)(fish_status_to_signal $cmd_status)
+	end
+
+	printf '%s%s@%s%s%s%s '\
 		$usercolor \
 		(echo $USER | string shorten -m 5 -c '') \
-		(echo $hostname | string shorten -m 1 -c '') \
-		(set_color normal)
+		(echo $hostname | string shorten -m 3 -c '') \
+		$stat_code \
+		(set_color normal) \
+		(fish_git_prompt)
+		
 	printf '%s%s%s%s ' (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) $letter
 end
 
