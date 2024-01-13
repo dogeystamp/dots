@@ -1,11 +1,20 @@
 # dynamic swallow (dwm patch)
+function swal
+	if command -v dwmswallow > /dev/null
+		dwmswallow "$WINDOWID" $argv
+	end
+end
+
+alias mpv='swal -c mpv; command mpv'
+
 # run this before opening, e.g., mpv or zathura
-abbr -a -- ds dwmswallow \$WINDOWID\;
+abbr -a -- ds swal;
+
 
 # zathura
-function thur; zathura $argv; end
+alias thur='swal -c Zathura; zathura'
 # stricter sandbox zathura
-function zathsec; /usr/bin/zathura -c ~/.config/zathura-sec $argv; end
+alias zathsec='/usr/bin/zathura -c ~/.config/zathura-sec'
 
 # tmux with 256-color and UTF-8
 function tmx; tmux -u -2 $argv; end
@@ -43,12 +52,9 @@ function bk; $EDITOR ~/dox/not/bk.txt; end
 function rem; $EDITOR ~/dox/not/rem; end
 function ldg; $EDITOR ~/dox/not/journal.ldg; end
 
-# pocket calculator
-function calc; calcpy $argv; end
-
 # disable history on units
 alias units='units -H ""'
-alias sxiv='nsxiv'
+alias sxiv='swal; nsxiv'
 
 # music recognition
 # an alternative is available at ~/.local/bin/msrec
