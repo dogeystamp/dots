@@ -3,7 +3,7 @@
 #include <X11/XF86keysym.h>
 
 /* constants */
-#define TERMINAL "st"
+#define TERMINAL "alacritty"
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
@@ -49,7 +49,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class              instance  title      tags mask  isfloating  isterminal  noswallow  monitor swalresize */
-	{ NULL,                 NULL,    "st",      0,         0,          1,           1,        -1,        0},
+	{ "Alacritty",          NULL,    NULL,      0,         0,          1,           1,        -1,        0},
 	{ "popup-bottom-center",NULL,    NULL,      0,         1,          1,           1,        -1,        0},
 	{ "mpv",                NULL,    NULL,      0,         0,          0,           0,        -1,        1}, /* mpv */
 };
@@ -93,12 +93,13 @@ static const Layout layouts[] = {
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 /* open shell command in a terminal window */
-#define TERMCMD(cmd) { .v = (const char*[]){ "/usr/local/bin/st", cmd, NULL } }
+#define TERMCMD(cmd) { .v = (const char*[]){ "/usr/bin/alacritty", "-e", cmd, NULL } }
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray5, "-sb", col_gray3, "-sf", col_gray4, "-n", NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char termcmd[]  = "alacritty msg create-window || alacritty";
+static const char *freshtermcmd[]  = { "alacritty", NULL };
 static const char *browsercmd[]  = { "qutebrowser", NULL };
 static const char *pwdcmd[]  = { "keepassxc", NULL };
 static const char *musiccmd[]  = { "sonixd", NULL };
@@ -115,7 +116,8 @@ static const Key keys[] = {
 	{ Mod4Mask,                     XK_p,      togglepass,     {0} },
 	{ MODKEY,                       XK_f,      togglealtbar,   {0} },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          SHCMD(termcmd) },
+	{ MODKEY|ShiftMask|ControlMask, XK_Return, spawn,          {.v = freshtermcmd} },
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = browsercmd } },
 	{ MODKEY|ShiftMask,             XK_k,      spawn,          {.v = pwdcmd } },
 	{ MODKEY|ShiftMask,             XK_d,      spawn,          SHCMD("qbprof dsc") },

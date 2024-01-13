@@ -19,6 +19,7 @@ xorg-xrandr
 xorg-xset
 xorg-xsetroot
 doas
+alacritty
 
 # in the aur
 xkblayout-state
