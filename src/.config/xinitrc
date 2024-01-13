@@ -17,11 +17,6 @@ wallpaper
 xss-lock -- slock &
 dunst &
 xrdb .Xresources
-if ! pgrep pipewire; then
-	wireplumber &
-	pipewire &
-	pipewire-pulse &
-fi
 
 # DBus
 export NO_AT_BRIDGE=1
