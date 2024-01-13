@@ -8,7 +8,6 @@
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const int swallowfloating    = 1;        /* 1 means swallow floating windows by default */
 static const unsigned int gappih    = 35;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 40;       /* vert inner gap between windows */
 static const unsigned int gappoh    = 30;       /* horiz outer gap between windows and screen edge */
@@ -48,10 +47,10 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class              instance  title      tags mask  isfloating  isterminal  noswallow  monitor swalresize */
-	{ "Alacritty",          NULL,    NULL,      0,         0,          1,           1,        -1,        0},
-	{ "popup-bottom-center",NULL,    NULL,      0,         1,          1,           1,        -1,        0},
-	{ "mpv",                NULL,    NULL,      0,         0,          0,           0,        -1,        1}, /* mpv */
+	/* class              instance  title      tags mask  isfloating  monitor */
+	{ "Alacritty",          NULL,    NULL,      0,         0,          -1, },
+	{ "popup-bottom-center",NULL,    NULL,      0,         1,          -1, },
+	{ "mpv",                NULL,    NULL,      0,         0,          -1, }, /* mpv */
 };
 
 /* layout(s) */

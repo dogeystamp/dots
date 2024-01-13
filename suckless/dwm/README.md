@@ -4,8 +4,6 @@ My build of dwm.
 
 ## Patches
 
-- swallow
-
 - blanktags
 
 - alpha
