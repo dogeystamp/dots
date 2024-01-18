@@ -54,7 +54,15 @@ local servers = {
 	tsserver = {},
 	bashls = {},
 	cssls = {},
-	rust_analyzer = {},
+	rust_analyzer = {
+		settings = {
+			['rust-analyzer'] = {
+				check = {
+					allTargets = false,
+				},
+			},
+		},
+	},
 }
 
 local nvim_lsp = require('lspconfig')

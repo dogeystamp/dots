@@ -148,9 +148,9 @@ python-xlib
 pdf2svg
 
 chromium
-cargo
 go
 npm
+rustup
 ansible
 
 # for personal website compilation
@@ -201,8 +201,10 @@ xonotic
 python-pipx
 xf86-input-wacom
 
-# for raspberyy pi pico dev
+# for raspberry pi pico dev
 arm-none-eabi-binutils
 arm-none-eabi-gcc
 arm-none-eabi-newlib
 picocom
+# for raspberry pi pico rust dev
+elf2uf2-rs
