@@ -48,6 +48,7 @@ pipewire-pulse
 cups
 sane
 ghostscript
+imagemagick
 glances
 wavemon
 usbutils
