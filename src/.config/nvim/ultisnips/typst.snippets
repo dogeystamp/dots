@@ -44,6 +44,12 @@ endsnippet
 snippet chbl "chemistry math block" w
 #chem(block: true)[$$1$]
 endsnippet
+snippet numb "numbered math block" w
+#numbered_eq()[
+$$1$
+<$2>
+]
+endsnippet
 
 snippet contest "template for contest problems" bi
 #import "/templates/contest.typ": template, source_code, status, lref
