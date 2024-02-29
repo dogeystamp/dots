@@ -49,6 +49,7 @@ cups
 sane
 ghostscript
 imagemagick
+perl-image-exiftool
 glances
 wavemon
 usbutils
