@@ -1,4 +1,9 @@
 #!/bin/sh
 # runs a qutebrowser profile
 
+if [ -z "$1" ]; then
+	printf "No profile selected.\n" > /dev/stderr
+	exit 1
+fi
+
 qutebrowser --basedir ~/.config/qbprof/"$1"
