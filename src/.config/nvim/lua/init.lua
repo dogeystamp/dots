@@ -49,7 +49,16 @@ end
 
 -- settings per server (overrides defaults)
 local servers = {
-	pyright = {},
+	--pyright = {},
+	pylsp = {
+		settings = {
+			plugins = {
+				['python-lsp-black'] = {},
+				['python-pyflakes'] = {},
+				['pylsp-mypy'] = {},
+			},
+		},
+	},
 	clangd = {},
 	tsserver = {},
 	bashls = {},

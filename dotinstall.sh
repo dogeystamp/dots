@@ -102,7 +102,7 @@ printf "Symlinked dotfiles.\n" >&2
 if [ "$INSTALL_PYTHON" = "Y" ]; then
 	if command -v pipx > /dev/null; then
 		printf "Installing Python packages via pipx...\n" >&2
-		cat "$PYREQS" | sed "/#.*/d" | xargs -I{} pipx install {}
+		"$PYREQS"
 	else
 		printf "'pipx' is missing. Not installing Python packages...\n" >&2
 	fi
