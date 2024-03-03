@@ -10,10 +10,9 @@
 # Profiles
 # --------
 # DEFAULT:
-#   Everything's enabled. Nvim auto-installs plugins on launch.
+#   Everything's enabled.
 # SLIM:
 #   Try to reduce bloat; turn off expensive plugins and eye-candy.
-#   Run :PlugInstall in Nvim to install plugins.
 # MINIMAL:
 # 	Nothing is launched automatically, and no plugins are installed.
 
