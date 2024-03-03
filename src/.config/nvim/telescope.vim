@@ -1,5 +1,5 @@
-Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
-Plug 'nvim-lua/plenary.nvim', { 'branch': '0.1.x' }
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-lua/plenary.nvim'
 
 nnoremap <leader>ef <cmd>Telescope find_files<cr>
 nnoremap <leader>eg <cmd>Telescope live_grep<cr>
