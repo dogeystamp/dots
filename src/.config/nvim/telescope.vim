@@ -1,5 +1,4 @@
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-lua/plenary.nvim'
+" depends on: telescope.nvim, plenary.nvim
 
 nnoremap <leader>ef <cmd>Telescope find_files<cr>
 nnoremap <leader>eg <cmd>Telescope live_grep<cr>

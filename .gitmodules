@@ -1,9 +1,93 @@
-[submodule "src/.local/bin/calcpy"]
-	path = src/.local/bin/calcpy
-	url = https://github.com/idanpa/calcpy
 [submodule "src/.local/bin/pyinstantref"]
 	path = src/.local/bin/pyinstantref
 	url = https://github.com/dogeystamp/pyinstantref
 [submodule "src/.local/bin/inkscape-shortcut-manager"]
 	path = src/.local/bin/inkscape-shortcut-manager
 	url = https://github.com/dogeystamp/inkscape-shortcut-manager
+
+# prompts
+# telescope.vim
+[submodule "src/.local/share/nvim/site/pack/3pp/start/telescope.nvim"]
+	path = src/.local/share/nvim/site/pack/3pp/start/telescope.nvim
+	url = https://github.com/nvim-telescope/telescope.nvim.git
+[submodule "src/.local/share/nvim/site/pack/3pp/start/plenary.nvim"]
+	path = src/.local/share/nvim/site/pack/3pp/start/plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim.git
+
+# color theme
+# init.vim
+[submodule "src/.local/share/nvim/site/pack/3pp/start/rasmus.nvim"]
+	path = src/.local/share/nvim/site/pack/3pp/start/rasmus.nvim
+	url = https://github.com/kvrohit/rasmus.nvim.git
+
+# url motions
+# init.lua
+[submodule "src/.local/share/nvim/site/pack/3pp/start/urlview.nvim"]
+	path = src/.local/share/nvim/site/pack/3pp/start/urlview.nvim
+	url = https://github.com/axieax/urlview.nvim
+
+# git symbols in the gutter
+# init.vim
+[submodule "src/.local/share/nvim/site/pack/3pp/start/vim-gitgutter"]
+	path = src/.local/share/nvim/site/pack/3pp/start/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
+
+# error/warning/info box
+# coding.vim
+[submodule "src/.local/share/nvim/site/pack/3pp/start/trouble.nvim"]
+	path = src/.local/share/nvim/site/pack/3pp/start/trouble.nvim
+	url = https://github.com/folke/trouble.nvim
+
+# auto close brackets and quotes
+# coding.vim
+[submodule "src/.local/share/nvim/site/pack/3pp/start/auto-pairs"]
+	path = src/.local/share/nvim/site/pack/3pp/start/auto-pairs
+	url = https://github.com/jiangmiao/auto-pairs
+
+# debugging and stuff
+# vimspector.vim
+[submodule "src/.local/share/nvim/site/pack/3pp/start/vimspector"]
+	path = src/.local/share/nvim/site/pack/3pp/start/vimspector
+	url = https://github.com/puremourning/vimspector.git
+
+# language smarts
+# coding.vim
+[submodule "src/.local/share/nvim/site/pack/3pp/start/nvim-lspconfig"]
+	path = src/.local/share/nvim/site/pack/3pp/start/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig.git
+[submodule "src/.local/share/nvim/site/pack/3pp/start/lsp-status.nvim"]
+	path = src/.local/share/nvim/site/pack/3pp/start/lsp-status.nvim
+	url = https://github.com/nvim-lua/lsp-status.nvim.git
+[submodule "src/.local/share/nvim/site/pack/3pp/start/nvim-cmp"]
+	path = src/.local/share/nvim/site/pack/3pp/start/nvim-cmp
+	url = https://github.com/hrsh7th/nvim-cmp.git
+[submodule "src/.local/share/nvim/site/pack/3pp/start/cmp-nvim-lsp"]
+	path = src/.local/share/nvim/site/pack/3pp/start/cmp-nvim-lsp
+	url = https://github.com/hrsh7th/cmp-nvim-lsp.git
+[submodule "src/.local/share/nvim/site/pack/3pp/start/nvim-treesitter"]
+	path = src/.local/share/nvim/site/pack/3pp/start/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+
+# aesthetic changes
+# coding.vim
+[submodule "src/.local/share/nvim/site/pack/3pp/start/dressing.nvim"]
+	path = src/.local/share/nvim/site/pack/3pp/start/dressing.nvim
+	url = https://github.com/stevearc/dressing.nvim.git
+
+# plain-text-accounting ledger ftplugin
+# ftplugin/ledger.vim
+[submodule "src/.local/share/nvim/site/pack/3pp/start/vim-ledger"]
+	path = src/.local/share/nvim/site/pack/3pp/start/vim-ledger
+	url = https://github.com/ledger/vim-ledger.git
+
+# document typesetting
+# ftplugin/typst.vim
+[submodule "src/.local/share/nvim/site/pack/3pp/start/typst.vim"]
+	path = src/.local/share/nvim/site/pack/3pp/start/typst.vim
+	url = https://github.com/kaarmu/typst.vim.git
+
+# snippet engine
+# ultisnips.vim
+[submodule "src/.local/share/nvim/site/pack/3pp/opt/ultisnips"]
+	path = src/.local/share/nvim/site/pack/3pp/opt/ultisnips
+	url = https://github.com/SirVer/ultisnips.git

@@ -1,3 +1,5 @@
+" plug: typst.vim
+
 " edit figure in Inkscape
 function EditFig()
 	" expands filename under cursor

@@ -70,51 +70,26 @@ nnoremap <silent> ZF :qa<cr>
 " copy URL under cursor to clipboard bind
 :nnoremap <silent><leader>uu :let @+ = expand('<cfile>')<CR>
 
-" Plugins
-
-" Run PlugInstall if there are missing plugins
-if $SYSTEM_PROFILE == "DEFAULT"
-	autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-	  \| PlugInstall --sync | source $MYVIMRC
-	\| endif
-endif
-
 " The rest will not be sourced if the system is on minimal settings.
 if $SYSTEM_PROFILE == "MINIMAL"
 	finish
 endif
 
-call plug#begin()
-
 filetype plugin indent on
-
-" i don't use LaTeX anymore, but you can uncomment this to
-"source $XDG_CONFIG_HOME/nvim/vimtex.vim
 
 source $XDG_CONFIG_HOME/nvim/ultisnips.vim
 
 if $SYSTEM_PROFILE == "DEFAULT"
 	" plugins for IDE-like nvim
 	source $XDG_CONFIG_HOME/nvim/coding.vim
-
-	" notes and documents stuff
-	" see ftplugin/typst.vim for binds and stuff
-	Plug 'kaarmu/typst.vim'
 endif
 
-" color theme
-Plug 'kvrohit/rasmus.nvim'
 " personal preference
 autocmd ColorScheme * highlight clear statusline
 set shortmess+=I
 
-" URL motions
-Plug 'axieax/urlview.nvim'
-
-Plug 'ledger/vim-ledger'
-
+" gitgutter
 " adds git diffs to the gutter (side bar thing)
-Plug 'airblade/vim-gitgutter'
 highlight GitGutterAdd ctermfg=green
 highlight GitGutterChange ctermfg=yellow
 highlight GitGutterDelete ctermfg=red
@@ -122,8 +97,6 @@ highlight GitGutterDelete ctermfg=red
 " fancy picker stuff
 
 source $XDG_CONFIG_HOME/nvim/telescope.vim
-
-call plug#end()
 
 source $XDG_CONFIG_HOME/nvim/color.vim
 

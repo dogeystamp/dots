@@ -1,3 +1,5 @@
+" vimspector
+
 let g:vimspector_sidebar_width = 30
 let g:vimspector_terminal_maxwidth = 30
 
