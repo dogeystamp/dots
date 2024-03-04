@@ -23,12 +23,6 @@
 	path = src/.local/share/nvim/site/pack/3pp/start/plenary.nvim
 	url = https://github.com/nvim-lua/plenary.nvim.git
 
-# color theme
-# init.vim
-[submodule "src/.local/share/nvim/site/pack/3pp/start/rasmus.nvim"]
-	path = src/.local/share/nvim/site/pack/3pp/start/rasmus.nvim
-	url = https://github.com/kvrohit/rasmus.nvim.git
-
 # url motions
 # init.lua
 [submodule "src/.local/share/nvim/site/pack/3pp/start/urlview.nvim"]
@@ -36,7 +30,6 @@
 	url = https://github.com/axieax/urlview.nvim
 
 # git symbols in the gutter
-# init.vim
 [submodule "src/.local/share/nvim/site/pack/3pp/start/vim-gitgutter"]
 	path = src/.local/share/nvim/site/pack/3pp/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
@@ -97,3 +90,12 @@
 [submodule "src/.local/share/nvim/site/pack/3pp/opt/ultisnips"]
 	path = src/.local/share/nvim/site/pack/3pp/opt/ultisnips
 	url = https://github.com/SirVer/ultisnips.git
+
+# color theme
+# init.lua
+[submodule "src/.local/share/nvim/site/pack/3pp/start/nvim-noirbuddy"]
+	path = src/.local/share/nvim/site/pack/3pp/start/nvim-noirbuddy
+	url = https://github.com/jesseleite/nvim-noirbuddy.git
+[submodule "src/.local/share/nvim/site/pack/3pp/start/colorbuddy.nvim"]
+	path = src/.local/share/nvim/site/pack/3pp/start/colorbuddy.nvim
+	url = https://github.com/tjdevries/colorbuddy.nvim.git

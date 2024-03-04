@@ -85,16 +85,4 @@ if $SYSTEM_PROFILE == "DEFAULT"
 endif
 
 " personal preference
-autocmd ColorScheme * highlight clear statusline
 set shortmess+=I
-
-" color of git diffs to the gutter (side bar thing)
-" plug: vim-gitgutter
-highlight GitGutterAdd ctermfg=green
-highlight GitGutterChange ctermfg=yellow
-highlight GitGutterDelete ctermfg=red
-
-" color theme
-" plug: rasmus
-let g:rasmus_transparent = 1
-silent! colorscheme rasmus
