@@ -1,5 +1,8 @@
 -- stuff for coding
 
+confutil = require("confutil")
+keymap = confutil.keymap
+
 
 
 ------
@@ -42,6 +45,12 @@ require('trouble').setup({
     },
     use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
 })
+keymap("<leader>dxx", "<cmd>TroubleToggle<cr>")
+keymap("<leader>dxw", "<cmd>TroubleToggle workspace_diagnostics<cr>")
+keymap("<leader>dxd", "<cmd>TroubleToggle document_diagnostics<cr>")
+keymap("<leader>dxq", "<cmd>TroubleToggle quickfix<cr>")
+keymap("<leader>dxl", "<cmd>TroubleToggle loclist<cr>")
+keymap("gR", "<cmd>TroubleToggle lsp_references<cr>")
 
 
 

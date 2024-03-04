@@ -67,8 +67,8 @@ nnoremap <silent> <C-l> :vertical resize +5<cr>
 " exit all (akin to ZZ, ZQ)
 nnoremap <silent> ZF :qa<cr>
 
-" copy URL under cursor to clipboard bind
-:nnoremap <silent><leader>uu :let @+ = expand('<cfile>')<CR>
+" see .config/nvim/lua/init.lua
+lua require('init')
 
 " The rest will not be sourced if the system is on minimal settings.
 if $SYSTEM_PROFILE == "MINIMAL"
@@ -96,11 +96,4 @@ highlight GitGutterDelete ctermfg=red
 
 " fancy picker stuff
 
-source $XDG_CONFIG_HOME/nvim/telescope.vim
-
 source $XDG_CONFIG_HOME/nvim/color.vim
-
-if $SYSTEM_PROFILE == "DEFAULT"
-	" see .config/nvim/lua/init.lua
-	lua require('init')
-endif
