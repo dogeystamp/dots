@@ -8,25 +8,25 @@ size = 10
 
 [colors]
 [colors.normal]
-black = "#000000"
-red = "#bf616a"
-green = "#a3be8c"
-yellow = "#ebcb8b"
-blue = "#81a1c1"
-magenta = "#b48ead"
-cyan = "#88c0d0"
-white = "#e5e9f0"
+black =   "#000000"
+red =     "#454545"
+green =   "#949494"
+yellow =  "#a7a7a7"
+blue =    "#56698a"
+magenta = "#d5d5d5"
+cyan =    "#99AABB"
+white =   "#e5e9f0"
 
 
 [colors.bright]
-black = "#4c566a"
-red = "#bf616a"
-green = "#a3be8c"
-yellow = "#ebcb8b"
-blue = "#81a1c1"
+black =   "#4c566a"
+red =     "#bf616a"
+green =   "#a3be8c"
+yellow =  "#ebcb8b"
+blue =    "#81a1c1"
 magenta = "#b48ead"
-cyan = "#8fbcbb"
-white = "#eceff4"
+cyan =    "#8fbcbb"
+white =   "#eceff4"
 
 [keyboard]
 bindings = [
