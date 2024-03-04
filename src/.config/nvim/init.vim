@@ -88,12 +88,13 @@ endif
 autocmd ColorScheme * highlight clear statusline
 set shortmess+=I
 
-" gitgutter
-" adds git diffs to the gutter (side bar thing)
+" color of git diffs to the gutter (side bar thing)
+" plug: vim-gitgutter
 highlight GitGutterAdd ctermfg=green
 highlight GitGutterChange ctermfg=yellow
 highlight GitGutterDelete ctermfg=red
 
-" fancy picker stuff
-
-source $XDG_CONFIG_HOME/nvim/color.vim
+" color theme
+" plug: rasmus
+let g:rasmus_transparent = 1
+silent! colorscheme rasmus
