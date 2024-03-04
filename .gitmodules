@@ -1,9 +1,18 @@
+################
+# note-taking setup
+################
 [submodule "src/.local/bin/pyinstantref"]
 	path = src/.local/bin/pyinstantref
 	url = https://github.com/dogeystamp/pyinstantref
 [submodule "src/.local/bin/inkscape-shortcut-manager"]
 	path = src/.local/bin/inkscape-shortcut-manager
 	url = https://github.com/dogeystamp/inkscape-shortcut-manager
+
+
+
+################
+# neovim plugins
+################
 
 # prompts
 # telescope.vim
@@ -32,12 +41,6 @@
 	path = src/.local/share/nvim/site/pack/3pp/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
 
-# error/warning/info box
-# coding.vim
-[submodule "src/.local/share/nvim/site/pack/3pp/start/trouble.nvim"]
-	path = src/.local/share/nvim/site/pack/3pp/start/trouble.nvim
-	url = https://github.com/folke/trouble.nvim
-
 # auto close brackets and quotes
 # coding.vim
 [submodule "src/.local/share/nvim/site/pack/3pp/start/auto-pairs"]
@@ -51,13 +54,10 @@
 	url = https://github.com/puremourning/vimspector.git
 
 # language smarts
-# coding.vim
+# coding.lua
 [submodule "src/.local/share/nvim/site/pack/3pp/start/nvim-lspconfig"]
 	path = src/.local/share/nvim/site/pack/3pp/start/nvim-lspconfig
 	url = https://github.com/neovim/nvim-lspconfig.git
-[submodule "src/.local/share/nvim/site/pack/3pp/start/lsp-status.nvim"]
-	path = src/.local/share/nvim/site/pack/3pp/start/lsp-status.nvim
-	url = https://github.com/nvim-lua/lsp-status.nvim.git
 [submodule "src/.local/share/nvim/site/pack/3pp/start/nvim-cmp"]
 	path = src/.local/share/nvim/site/pack/3pp/start/nvim-cmp
 	url = https://github.com/hrsh7th/nvim-cmp.git
@@ -68,8 +68,14 @@
 	path = src/.local/share/nvim/site/pack/3pp/start/nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter.git
 
+# error/warning/info box
+# coding.lua
+[submodule "src/.local/share/nvim/site/pack/3pp/start/trouble.nvim"]
+	path = src/.local/share/nvim/site/pack/3pp/start/trouble.nvim
+	url = https://github.com/folke/trouble.nvim
+
 # aesthetic changes
-# coding.vim
+# init.lua
 [submodule "src/.local/share/nvim/site/pack/3pp/start/dressing.nvim"]
 	path = src/.local/share/nvim/site/pack/3pp/start/dressing.nvim
 	url = https://github.com/stevearc/dressing.nvim.git
