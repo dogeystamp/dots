@@ -13,6 +13,7 @@ rm -rf \
 ~/.avidemux6 \
 ~/.xsel.log \
 ~/.gnuplot_history \
+~/.sqlite_history \
 ~/.gnome \
 ~/.wavemonrc \
 ~/.viminfo \
