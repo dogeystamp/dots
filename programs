@@ -127,6 +127,7 @@ syncthing
 inkscape
 typescript
 typescript-language-server
+pyright
 bash-language-server
 vscode-css-languageserver
 rust-analyzer

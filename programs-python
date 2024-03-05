@@ -6,7 +6,7 @@ pipx install \
 	cppman \
 	git+https://github.com/dogeystamp/testr
 
-pipx install python-lsp-server
-pipx inject python-lsp-server \
-	python-lsp-black \
-	pylsp-mypy
+# pipx install python-lsp-server
+# pipx inject python-lsp-server \
+# 	python-lsp-black \
+# 	pylsp-mypy

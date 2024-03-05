@@ -90,16 +90,16 @@ end
 -- table declares LSPs to be set up
 -- as well as settings per server (overrides defaults)
 local servers = {
-	--pyright = {},
-	pylsp = {
-		settings = {
-			plugins = {
-				['python-lsp-black'] = {},
-				['python-pyflakes'] = {},
-				['pylsp-mypy'] = {},
-			},
-		},
-	},
+	pyright = {},
+	-- pylsp = {
+	-- 	settings = {
+	-- 		plugins = {
+	-- 			['python-lsp-black'] = {},
+	-- 			['python-pyflakes'] = {},
+	-- 			['pylsp-mypy'] = {},
+	-- 		},
+	-- 	},
+	-- },
 	clangd = {},
 	tsserver = {},
 	bashls = {},
