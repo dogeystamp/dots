@@ -1,11 +1,16 @@
 # dynamic swallow (dwm patch)
 function swal
+	return
 	if command -v dwmswallow > /dev/null
 		dwmswallow "$WINDOWID" $argv
 	end
 end
 
 alias mpv='swal -c mpv; command mpv'
+
+# prevent clobbering files
+alias mv='mv -n'
+alias cp='cp -n'
 
 # run this before opening, e.g., mpv or zathura
 abbr -a -- ds swal;
