@@ -4,7 +4,7 @@ set statusbar-home-tilde true
 set scroll-page-aware true
 set adjust-open width
 
-set font "IBM Plex Sans 12"
+set font "Liberation Sans 13"
 
 set recolor-darkcolor "#dddddd"
 set recolor-lightcolor rgba(0,0,0,0)
@@ -18,7 +18,6 @@ set index-active-bg "#111111"
 set index-active-fg "#FFFFFF"
 set inputbar-bg rgba(0,0,0,0.5)
 set inputbar-fg "#CCCCCC"
-set highlight-transparency 0.75
 set statusbar-bg rgba(0,0,0,0.5)
 
 set render-loading false

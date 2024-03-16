@@ -11,12 +11,16 @@ c.colors.statusbar.private.bg = "black"
 c.colors.statusbar.command.private.bg = "black"
 c.colors.hints.bg = "black"
 c.colors.hints.fg = "white"
-c.colors.tabs.bar.bg = "transparent"
 
-c.colors.tabs.even.bg = "#66111111"
+c.colors.tabs.bar.bg = "#00000000"
+c.colors.tabs.even.bg = "#11111111"
 c.colors.tabs.odd.bg = c.colors.tabs.even.bg
-c.colors.tabs.selected.even.bg = "#dd444455"
+c.colors.tabs.even.fg = "#aaaaaa"
+c.colors.tabs.odd.fg = c.colors.tabs.even.fg
+c.colors.tabs.selected.even.bg = "#55333333"
 c.colors.tabs.selected.odd.bg = c.colors.tabs.selected.even.bg
+c.colors.tabs.selected.even.fg = "#ffffff"
+c.colors.tabs.selected.odd.fg = c.colors.tabs.selected.even.fg
 
 c.colors.webpage.darkmode.algorithm = "lightness-hsl"
 c.colors.webpage.darkmode.contrast = 0.5
@@ -28,13 +32,14 @@ c.prompt.radius = 0
 
 # Fonts
 
-c.fonts.default_size = "12pt"
-c.fonts.default_family = "IBM Plex Sans"
+c.fonts.default_size = "13pt"
+c.fonts.default_family = "Liberation Sans"
 c.fonts.prompts = "default_size default_family"
+c.fonts.tooltip = "default_size default_family"
 
-c.fonts.web.family.serif = "IBM Plex Sans"
-c.fonts.web.family.sans_serif = "IBM Plex Sans"
-c.fonts.web.family.standard = "IBM Plex Sans"
+c.fonts.web.family.serif = "Liberation Sans"
+c.fonts.web.family.sans_serif = "Liberation Sans"
+c.fonts.web.family.standard = "Liberation Sans"
 c.fonts.web.family.fixed = "JetBrains Mono"
 
 config.bind('td', 'config-cycle colors.webpage.darkmode.enabled true false;; restart')
@@ -46,7 +51,7 @@ c.url.start_pages = "~/.config/qutebrowser/homepage.html"
 c.url.searchengines = {"DEFAULT":"https://searx.be/search?q={}"}
 c.downloads.location.directory = "~/quar/"
 
-c.zoom.default = "90%"
+c.zoom.default = "100%"
 
 # Downloads
 
@@ -59,7 +64,7 @@ c.tabs.position = "top"
 c.statusbar.show = "in-mode"
 c.statusbar.widgets = [ "keypress", "progress" ]
 c.tabs.indicator.width = 0
-c.tabs.position = "top"
+c.tabs.position = "bottom"
 c.tabs.title.format = "{audio}{current_title}"
 c.tabs.padding = dict(
     bottom=5,
@@ -134,7 +139,7 @@ config.bind(",fL", "hint links userscript fixlink-tab.sh")
 config.bind(",fo", "spawn --userscript fixlink.sh")
 
 # dismiss on-screen messages
-config.bind("<escape>", "clear-messages")
+config.bind("<escape>", "clear-messages;; search")
 
 # homegrown file selector
 c.fileselect.handler = "external"
