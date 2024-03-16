@@ -82,6 +82,17 @@ Group.link("@type.qualifier", groups["keyword.return"])
 
 Group.new("NormalFloat", colors.noir_1, colors.noir_9, no)
 
+-- swap undercurls and underlines
+for _, v in ipairs({"Error", "Info", "Hint", "Warn"}) do
+	col_name = "diagnostic_" .. string.lower(v)
+	if v == "Warn" then
+		col_name = "diagnostic_warning"
+	end
+
+	Group.new("Diagnostic" .. v, colors[col_name], nil, styles.underline)
+	Group.new("DiagnosticUnderline" .. v, colors[col_name], nil, styles.undercurl)
+end
+
 --------------------------------
 --------------------------------
 -- imports (see .config/nvim/lua/)
