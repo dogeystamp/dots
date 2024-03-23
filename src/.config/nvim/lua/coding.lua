@@ -4,6 +4,28 @@ confutil = require("confutil")
 keymap = confutil.keymap
 
 
+------
+-- python format-on-save
+-- https://stackoverflow.com/a/77467553
+------
+
+-- to turn this off for a session (permanently), run
+-- :autocmd! AutoFormat
+-- https://superuser.com/a/1415274
+vim.api.nvim_create_augroup("AutoFormat", {})
+
+vim.api.nvim_create_autocmd(
+	"BufWritePost",
+	{
+		pattern = "*.py",
+		group = "AutoFormat",
+		callback = function()
+			vim.cmd("silent !black --quiet %")
+			vim.cmd("edit")
+		end,
+	}
+)
+
 
 ------
 -- syntax highlighting
