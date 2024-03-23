@@ -127,6 +127,7 @@ inkscape
 typescript
 typescript-language-server
 pyright
+python-black
 bash-language-server
 vscode-css-languageserver
 rust-analyzer
