@@ -2,15 +2,12 @@ if test -z "$SYSTEM_PROFILE"
 	set -gx SYSTEM_PROFILE SLIM
 end
 
-source ~/.config/fish/aliases.fish
-
-# Set GPG_TTY
-gpgt
-
 # Disable fish greeting
 set fish_greeting ""
 
 if status --is-interactive
+	source ~/.config/fish/aliases.fish
+
 	# Enable Vi bindings
 	fish_hybrid_key_bindings
 
