@@ -6,6 +6,8 @@ local keymap = confutil.keymap
 local dap = require("dap")
 local dapui = require("dapui")
 
+local M = {}
+
 --------------------------------
 --------------------------------
 -- dap-ui configuration
@@ -113,7 +115,31 @@ vim.cmd [[ sign define DapBreakpointCondition text=◒ ]]
 --------------------------------
 --------------------------------
 
+----------------
+-- debug directory utilities
+----------------
+function M.dbg_dir(file)
+	-- get a directory to store files needed for debugging
+	-- like ad hoc test cases, or compiled binaries
+	local dir = assert(vim.env.XDG_CACHE_HOME, "$XDG_CACHE_HOME is unset") .. "/nvimdbg"
+	local file = file or vim.fn.expand("%:p")
+	local subdir = dir .. file
+	assert(vim.fn.mkdir(subdir, "p"), "Could not create debug directory.")
+	return subdir
+end
+
+function compile(file)
+	local file = file or vim.fn.expand("%:p")
+	local subdir = M.dbg_dir(file)
+	vim.fn.execute("make " .. subdir .. "/binary " .. "-f $XDG_CONFIG_HOME/nvim/makefile")
+end
+keymap("<leader>dc", compile)
+
+
+----------------
+-- python
 -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#python
+----------------
 dap.adapters.python = function(cb, config)
 	if config.request == 'attach' then
 		assert(false, "attach not implemented")
@@ -144,7 +170,10 @@ dap.configurations.python = {
 	}
 }
 
+----------------
+-- c++
 -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#ccrust-via-gdb
+----------------
 dap.adapters.lldb = {
 	type = "executable",
 	command = "/usr/bin/lldb-vscode",
@@ -157,10 +186,17 @@ dap.configurations.cpp = {
 		type = "lldb",
 		request = "launch",
 		program = function()
-			return vim.fn.input("binary: ", vim.fn.getcwd() .. "/", "file")
+			local binary = M.dbg_dir() .. "/binary"
+			if not vim.fn.filereadable(binary) then
+				binary = vim.fn.input("binary: ", vim.fn.getcwd() .. "/", "file")
+			end
+
+			return binary
 		end,
 		cwd = "${workspaceFolder}",
 		stopOnEntry = false,
 		runInTerminal = true,
 	}
 }
+
+return M
