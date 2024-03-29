@@ -40,12 +40,6 @@
 	path = src/.local/share/nvim/site/pack/3pp/start/auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs
 
-# debugging and stuff
-# vimspector.vim
-[submodule "src/.local/share/nvim/site/pack/3pp/start/vimspector"]
-	path = src/.local/share/nvim/site/pack/3pp/start/vimspector
-	url = https://github.com/puremourning/vimspector.git
-
 # language smarts
 # coding.lua
 [submodule "src/.local/share/nvim/site/pack/3pp/start/nvim-lspconfig"]
