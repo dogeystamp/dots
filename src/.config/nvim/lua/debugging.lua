@@ -43,9 +43,9 @@ dapui.setup({
 		enabled = false,
 	},
 	icons = {
-		collapsed = ">",
-		current_frame = ">",
-		expanded = "v",
+		current_frame = "→",
+		collapsed = "►",
+		expanded = "▼",
 	},
 	layouts = {
 		{
