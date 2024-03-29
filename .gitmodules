@@ -99,3 +99,15 @@
 [submodule "src/.local/share/nvim/site/pack/3pp/start/colorbuddy.nvim"]
 	path = src/.local/share/nvim/site/pack/3pp/start/colorbuddy.nvim
 	url = https://github.com/tjdevries/colorbuddy.nvim.git
+[submodule "nvim-dap"]
+	path = nvim-dap
+	url = https://github.com/mfussenegger/nvim-dap.git
+[submodule "src/.local/share/nvim/site/pack/3pp/start/nvim-dap"]
+	path = src/.local/share/nvim/site/pack/3pp/start/nvim-dap
+	url = https://github.com/mfussenegger/nvim-dap.git
+[submodule "src/.local/share/nvim/site/pack/3pp/start/nvim-dap-ui"]
+	path = src/.local/share/nvim/site/pack/3pp/start/nvim-dap-ui
+	url = https://github.com/rcarriga/nvim-dap-ui.git
+[submodule "src/.local/share/nvim/site/pack/3pp/start/nvim-nio"]
+	path = src/.local/share/nvim/site/pack/3pp/start/nvim-nio
+	url = https://github.com/nvim-neotest/nvim-nio

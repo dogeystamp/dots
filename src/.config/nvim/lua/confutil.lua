@@ -10,7 +10,7 @@ function M.keymap(key, cmd, params)
 
 	default_params = {
 		silent=true,
-		mode="n",
+		mode={'n'},
 		noremap=true,
 	}
 	setmetatable(params, {
@@ -19,7 +19,7 @@ function M.keymap(key, cmd, params)
 		end
 	})
 
-	vim.api.nvim_set_keymap(params.mode, key, cmd, { silent=params.silent, noremap=params.noremap })
+	vim.keymap.set(params.mode, key, cmd, { silent=params.silent, noremap=params.noremap })
 end
 
 -- see ~/.config/dot_profile.example for info

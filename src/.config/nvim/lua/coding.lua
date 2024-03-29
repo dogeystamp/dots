@@ -1,7 +1,7 @@
 -- stuff for coding
 
-confutil = require("confutil")
-keymap = confutil.keymap
+local confutil = require("confutil")
+local keymap = confutil.keymap
 
 
 ------

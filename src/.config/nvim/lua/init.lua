@@ -101,4 +101,5 @@ end
 
 if dotprofile >= profile_table.DEFAULT then
 	require("coding")
+	require("debugging")
 end
