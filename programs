@@ -131,10 +131,12 @@ python-black
 bash-language-server
 vscode-css-languageserver
 rust-analyzer
+gdb
+lldb
+python-debugpy
 arc-gtk-theme
 lxappearance-gtk3
 radare2
-gdb
 typst
 
 # .local/bin/pyinstantref script

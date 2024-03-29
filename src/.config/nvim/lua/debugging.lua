@@ -16,9 +16,12 @@ local dapui = require("dapui")
 -- key bindings
 ----------------
 
-keymap("<leader>dd", dapui.setup)
 keymap("<leader>rs", dap.continue)
-keymap("<leader>rt", dap.restart)
+keymap("<leader>rt", function()
+	-- hard restart (lldb just stops when restarted)
+	dap.terminate()
+	dap.continue()
+end)
 keymap("<leader>rr", dap.terminate)
 keymap("<c-p>", dap.step_into)
 keymap("<c-n>", dap.step_over)
@@ -90,10 +93,10 @@ end
 dap.listeners.after.attach.dapui_config = function()
 	dapui.open()
 end
-dap.listeners.after.event_terminated.dapui_config = function()
+dap.listeners.before.event_terminated.dapui_config = function()
 	dapui.close()
 end
-dap.listeners.after.event_exited.dapui_config = function()
+dap.listeners.before.event_exited.dapui_config = function()
 	dapui.close()
 end
 
@@ -138,5 +141,26 @@ dap.configurations.python = {
 		-- this could be smarter (e.g., try to find a virtual env)
 		pythonPath = function() return "/usr/bin/python" end;
 		console = "integratedTerminal";
+	}
+}
+
+-- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#ccrust-via-gdb
+dap.adapters.lldb = {
+	type = "executable",
+	command = "/usr/bin/lldb-vscode",
+	name = "lldb"
+}
+
+dap.configurations.cpp = {
+	{
+		name = "launch binary",
+		type = "lldb",
+		request = "launch",
+		program = function()
+			return vim.fn.input("binary: ", vim.fn.getcwd() .. "/", "file")
+		end,
+		cwd = "${workspaceFolder}",
+		stopOnEntry = false,
+		runInTerminal = true,
 	}
 }
