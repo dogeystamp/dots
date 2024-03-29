@@ -22,6 +22,7 @@ vim.api.nvim_create_autocmd(
 		callback = function()
 			vim.cmd("silent !black --quiet %")
 			vim.cmd("edit")
+			vim.cmd("norm zz")
 		end,
 	}
 )
