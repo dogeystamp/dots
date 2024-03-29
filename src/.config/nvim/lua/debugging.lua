@@ -80,6 +80,10 @@ dapui.setup({
 	},
 })
 
+----------------
+-- hooks
+----------------
+
 dap.listeners.after.launch.dapui_config = function()
 	dapui.open()
 end
@@ -93,6 +97,12 @@ dap.listeners.after.event_exited.dapui_config = function()
 	dapui.close()
 end
 
+----------------
+-- signs
+----------------
+
+vim.cmd [[ sign define DapBreakpoint text=● ]]
+vim.cmd [[ sign define DapBreakpointCondition text=◒ ]]
 
 --------------------------------
 --------------------------------

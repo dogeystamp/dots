@@ -55,6 +55,8 @@ for _, v in ipairs({"Error", "Info", "Hint", "Warn"}) do
 end
 
 -- DAP-ui colors
+
+Group.new("debugPC", primary, colors.noir_8)
 Group.new("DapUIModifiedValue", primary, nil, styles.bold)
 Group.new("DapUIWatchesEmpty", colors.noir_8, nil, nil)
 Group.new("DapUIWatchesError", colors.diff_delete, nil, nil)
