@@ -9,96 +9,8 @@ snippet problem "template for problem notes" bi
 
 endsnippet
 
-snippet index "template for index documents" bi
-#import "/templates/index.typ": template, lref
-#import "/templates/libs.typ": *
-#show: template.with(
-  title: "$1",
-)
-
-endsnippet
-
-snippet sfd "template for lecture notes" bi
-#import "/templates/sfd.typ": template, lref
-#import "/templates/libs.typ": *
-#show: template.with(
-  lecture_url: "$1",
-  title: "$2",
-)
-
-endsnippet
-
-snippet chem "template for chemistry notes" bi
-#import "/templates/chem.typ": template, lref, chem, gaz, liq, sol, aq
-#import "/templates/libs.typ": *
-
-#show: template.with(
-  title: "$1",
-)
-
-endsnippet
-
-snippet chi "chemistry math inline" w
-#chem()[$$1$]
-endsnippet
-snippet chbl "chemistry math block" w
-#chem(block: true)[$$1$]
-endsnippet
-snippet numb "numbered math block" w
-#numbered_eq()[
-$$1$
-<$2>
-]
-endsnippet
-
-snippet contest "template for contest problems" bi
-#import "/templates/contest.typ": template, source_code, status, lref
-#import "/templates/libs.typ": *
-#show: template.with(
-  title: "$1",
-  stat: "${2:incomplete}",
-)
-
-endsnippet
-
-snippet algs "template for compsci notes" bi
-#import "/templates/algs.typ": template, source_code, lref
-#import "/templates/libs.typ": *
-#show: template.with(
-  title: "$1",
-)
-
-endsnippet
-
 snippet general "general template" bi
 #import "/templates/general.typ": template, lref
-#import "/templates/libs.typ": *
-#show: template.with(
-  title: "$1",
-)
-
-endsnippet
-
-snippet math_prob "template for math problems" bi
-#import "/templates/math_prob.typ": template, lref
-#import "/templates/libs.typ": *
-#show: template.with(
-  title: "$1",
-)
-
-endsnippet
-
-snippet math_notes "template for math notes" bi
-#import "/templates/math_notes.typ": template, lref
-#import "/templates/libs.typ": *
-#show: template.with(
-  title: "$1",
-)
-
-endsnippet
-
-snippet proj "template for project documents" bi
-#import "/templates/proj.typ": template, lref
 #import "/templates/libs.typ": *
 #show: template.with(
   title: "$1",
@@ -112,10 +24,6 @@ endsnippet
 
 snippet link "link" w
 #link("${1}")[${2}]
-endsnippet
-
-snippet lref "refer to another knowledge base doc" w
-#lref("/${1}")[${2}]
 endsnippet
 
 snippet fig "create new figure" bi
@@ -132,12 +40,11 @@ snippet figp "create new image figure" bi
 ) <$1>
 endsnippet
 
-snippet tabl "create new tablex table" bi
+snippet tabl "create new table" bi
 #figure(
   tablef(columns: $1,
     $0
   ),
   caption: [$2],
-  kind: table,
 ) <$3>
 endsnippet
