@@ -108,6 +108,11 @@ function prob_cpp; echo $EDITOR src/(basename (xsel -b)).cpp; end
 abbr -a cpp --function prob_cpp
 function prob_py; echo $EDITOR src/(basename (xsel -b)).py; end
 abbr -a py --function prob_py
-# see src/.config/nvim/vimspector.vim and search for TestRunner()
-function prob_testdir; echo \~/.cache/termdebug/tests/src/(basename (xsel -b)); end
-abbr -a --position anywhere tesd --function prob_testdir
+
+# creates a debug directory for a file
+# see src/.config/nvim/lua/debugging.lua
+function dbgd
+	set -l dir $XDG_CACHE_HOME/nvimdbg(realpath $argv)
+	mkdir -p $dir
+	cd $dir
+end

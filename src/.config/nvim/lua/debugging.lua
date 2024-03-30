@@ -165,6 +165,29 @@ end
 keymap("<leader>rw", write_input)
 keymap("<leader>ri", run_input)
 
+function run_tests(file)
+	local file = gf(file)
+	local executable
+	if vim.fn.expand("%:e") == "cpp" then
+		executable = M.dbg_dir(file) .. "/binary"
+	else
+		executable = vim.fn.expand("%:p")
+	end
+
+	vim.cmd.vsplit()
+	vim.w.nvimdbg_testdir = M.dbg_dir(file) .. "/tests"
+	vim.w.nvimdbg_exec = executable
+	vim.cmd [[
+		vertical resize 40
+		normal G
+		silent exec "!mkdir -p " .. w:nvimdbg_testdir
+		exec 'terminal ' .. 'testr --exec ' .. w:nvimdbg_exec .. " --testdir " .. w:nvimdbg_testdir
+		exec "norm \<c-w>h"
+	]]
+end
+
+keymap("<leader>dt", run_tests)
+
 
 ----------------
 -- python
