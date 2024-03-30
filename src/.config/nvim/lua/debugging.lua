@@ -22,6 +22,7 @@ keymap("<leader>rs", dap.continue)
 keymap("<leader>rt", function()
 	-- hard restart (lldb just stops when restarted)
 	dap.terminate()
+	vim.cmd.sleep("100m")
 	dap.continue()
 end)
 keymap("<leader>rr", dap.terminate)
@@ -118,22 +119,51 @@ vim.cmd [[ sign define DapBreakpointCondition text=◒ ]]
 ----------------
 -- debug directory utilities
 ----------------
+
+local function gf(file)
+	return file or vim.fn.expand("%:p")
+end
+
 function M.dbg_dir(file)
 	-- get a directory to store files needed for debugging
 	-- like ad hoc test cases, or compiled binaries
 	local dir = assert(vim.env.XDG_CACHE_HOME, "$XDG_CACHE_HOME is unset") .. "/nvimdbg"
-	local file = file or vim.fn.expand("%:p")
+	local file = gf(file)
 	local subdir = dir .. file
 	assert(vim.fn.mkdir(subdir, "p"), "Could not create debug directory.")
 	return subdir
 end
 
 function compile(file)
-	local file = file or vim.fn.expand("%:p")
+	local file = gf(file)
 	local subdir = M.dbg_dir(file)
 	vim.fn.execute("make " .. subdir .. "/binary " .. "-f $XDG_CONFIG_HOME/nvim/makefile")
 end
 keymap("<leader>dc", compile)
+
+function write_input(file)
+	-- store ad hoc test input from clipboard
+	local file = gf(file)
+	local inp_file = M.dbg_dir(file) .. "/input"
+	vim.fn.writefile(vim.fn.getreg("+", 1, 1), inp_file)
+end
+function run_input(file)
+	local file = gf(file)
+	if not dapui.elements.console then
+		print("Unable to feed input: no console found")
+		return
+	end
+	vim.api.nvim_buf_call(dapui.elements.console.buffer(), function()
+		vim.b.nvimdbg_inp_file = M.dbg_dir(file) .. "/input"
+		vim.cmd [[
+		let @x = join(readfile(b:nvimdbg_inp_file), "\n") .. "\n\n"
+		normal G"xp
+		]]
+
+	end)
+end
+keymap("<leader>rw", write_input)
+keymap("<leader>ri", run_input)
 
 
 ----------------
