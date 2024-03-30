@@ -39,8 +39,6 @@ once the dotfiles are installed, see `~/.config/dot_profile.example` for more in
   rather than through conventional means. This has less complexity than a plugin manager since I already manage all my dotfiles under Git.
   Plugins are declared in `.gitmodules`.
 
-- Submodules may take a lot of space (as of writing 0.5GB), so you may want to `git submodule deinit -f` some of them, manually pick the plugins you want, or even forgo all submodules.
-
 **Desktop Preview**
 
 ![preview](https://raw.githubusercontent.com/DogeyStamp/dots/main/preview.png)

@@ -96,9 +96,6 @@
 
 # debug adapter protocol
 # debugging.lua
-[submodule "nvim-dap"]
-	path = nvim-dap
-	url = https://github.com/mfussenegger/nvim-dap.git
 [submodule "src/.local/share/nvim/site/pack/3pp/start/nvim-dap"]
 	path = src/.local/share/nvim/site/pack/3pp/start/nvim-dap
 	url = https://github.com/mfussenegger/nvim-dap.git
