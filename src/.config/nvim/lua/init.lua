@@ -11,16 +11,6 @@ dotprofile, profile_table = confutil.dotprofile, confutil.profile_table
 --------------------------------
 --------------------------------
 
-------
--- url motions
--- plug: urlview.nvim
-------
-require("urlview").setup({
-	jump = {
-		prev = "<leader>uj",
-		next = "<leader>uh",
-	},
-})
 -- bind to copy URL under cursor
 keymap("<leader>uu", ":let @+ = expand('<cfile>')<cr>")
 

@@ -23,12 +23,6 @@
 	path = src/.local/share/nvim/site/pack/3pp/start/plenary.nvim
 	url = https://github.com/nvim-lua/plenary.nvim.git
 
-# url motions
-# init.lua
-[submodule "src/.local/share/nvim/site/pack/3pp/start/urlview.nvim"]
-	path = src/.local/share/nvim/site/pack/3pp/start/urlview.nvim
-	url = https://github.com/axieax/urlview.nvim
-
 # git symbols in the gutter
 [submodule "src/.local/share/nvim/site/pack/3pp/start/vim-gitgutter"]
 	path = src/.local/share/nvim/site/pack/3pp/start/vim-gitgutter
