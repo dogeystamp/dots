@@ -23,21 +23,20 @@ require('dressing').setup({
 		insert_only = false,
 	}
 })
-
 keymap("<leader>ef", "<cmd>Telescope find_files<cr>")
 keymap("<leader>eg", "<cmd>Telescope live_grep<cr>")
 keymap("<leader>em", "<cmd>Telescope buffers<cr>")
 keymap("<leader>eh", "<cmd>Telescope help_tags<cr>")
-keymap("<leader>es", "<cmd>Telescope lsp_document_symbols<cr>")
+keymap("<leader>es", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>")
 keymap("<leader>eb", "<cmd>Telescope keymaps<cr>")
-
-require("theme")
 
 --------------------------------
 --------------------------------
 -- imports (see .config/nvim/lua/)
 --------------------------------
 --------------------------------
+
+require("theme")
 
 if dotprofile >= profile_table.DEFAULT then
 	require("coding")
