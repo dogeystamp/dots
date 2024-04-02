@@ -14,25 +14,25 @@ function M.keymap(key, cmd, params)
 	end
 
 	local default_params = {
-		silent=true,
-		mode={'n'},
-		noremap=true,
+		silent = true,
+		mode = { 'n' },
+		noremap = true,
 	}
 	setmetatable(params, {
-		__index = function (table, k)
+		__index = function(table, k)
 			return default_params[k]
 		end
 	})
 
-	vim.keymap.set(params.mode, key, cmd, { silent=params.silent, noremap=params.noremap })
+	vim.keymap.set(params.mode, key, cmd, { silent = params.silent, noremap = params.noremap })
 end
 
 -- see ~/.config/dot_profile.example for info
 -- enables/disables features based on system profile
 M.profile_table = {
-	DEFAULT=80,
-	SLIM=40,
-	MINIMAL=10,
+	DEFAULT = 80,
+	SLIM = 40,
+	MINIMAL = 10,
 }
 M.dotprofile = M.profile_table[os.getenv("SYSTEM_PROFILE")] or profile_table.SLIM
 

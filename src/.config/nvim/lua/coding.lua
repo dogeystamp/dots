@@ -32,21 +32,21 @@ vim.api.nvim_create_autocmd(
 -- syntax highlighting
 -- plug: nvim-treesitter
 ------
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "cpp", "javascript", "typescript", "python", "vim", "fish", "bash" },
-  sync_install = false,
-  auto_install = false,
-  highlight = {
-    enable = true,
+require 'nvim-treesitter.configs'.setup {
+	ensure_installed = { "c", "cpp", "javascript", "typescript", "python", "vim", "fish", "bash" },
+	sync_install = false,
+	auto_install = false,
+	highlight = {
+		enable = true,
 
-    disable = function(lang, buf)
-        local max_filesize = 100 * 1024 -- 100 KB
-        local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-        if ok and stats and stats.size > max_filesize then
-            return true
-        end
-    end,
-  },
+		disable = function(lang, buf)
+			local max_filesize = 100 * 1024 -- 100 KB
+			local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+			if ok and stats and stats.size > max_filesize then
+				return true
+			end
+		end,
+	},
 }
 
 
@@ -55,18 +55,18 @@ require'nvim-treesitter.configs'.setup {
 -- plug: trouble.nvim
 ------
 require('trouble').setup({
-    icons = false,
-    fold_open = "v", -- icon used for open folds
-    fold_closed = ">", -- icon used for closed folds
-    indent_lines = false, -- add an indent guide below the fold icons
-    signs = {
-        -- icons / text used for a diagnostic
-        error = "error",
-        warning = "warn",
-        hint = "hint",
-        information = "info"
-    },
-    use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
+	icons = false,
+	fold_open = "v",      -- icon used for open folds
+	fold_closed = ">",    -- icon used for closed folds
+	indent_lines = false, -- add an indent guide below the fold icons
+	signs = {
+		-- icons / text used for a diagnostic
+		error = "error",
+		warning = "warn",
+		hint = "hint",
+		information = "info"
+	},
+	use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
 })
 keymap("<leader>dxx", "<cmd>TroubleToggle<cr>")
 keymap("<leader>dxw", "<cmd>TroubleToggle workspace_diagnostics<cr>")
@@ -92,7 +92,7 @@ local on_attach = function(client, bufnr)
 	-- Enable completion triggered by <c-x><c-o>
 	buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-	local opts = { noremap=true, silent=true }
+	local opts = { noremap = true, silent = true }
 	keymap('gD', vim.lsp.buf.declaration, opts)
 	keymap('gd', vim.lsp.buf.definition, opts)
 	keymap('gK', vim.lsp.buf.hover, opts)
@@ -176,8 +176,8 @@ cmp.setup({
 		documentation = cmp.config.window.bordered(),
 	},
 	mapping = cmp.mapping.preset.insert({
-	  ['<C-e>'] = cmp.mapping.abort(),
-	  ['<C-f>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+		['<C-e>'] = cmp.mapping.abort(),
+		['<C-f>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 	}),
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp' },

@@ -5,7 +5,7 @@
 
 require("noirbuddy").setup({
 	colors = {
-		primary="#99AABB"
+		primary = "#99AABB"
 	},
 	styles = {
 		italic = true,
@@ -45,7 +45,7 @@ Group.link("@type.qualifier", groups["keyword.return"])
 Group.new("NormalFloat", colors.noir_1, colors.noir_9, nil)
 
 -- swap undercurls and underlines
-for _, v in ipairs({"Error", "Info", "Hint", "Warn"}) do
+for _, v in ipairs({ "Error", "Info", "Hint", "Warn" }) do
 	local col_name = "diagnostic_" .. string.lower(v)
 	if v == "Warn" then
 		col_name = "diagnostic_warning"

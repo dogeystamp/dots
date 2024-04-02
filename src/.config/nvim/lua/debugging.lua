@@ -35,7 +35,7 @@ keymap("<leader>dsc", dap.clear_breakpoints)
 keymap("<leader>dsF", function()
 	dap.set_breakpoint(vim.fn.input("cond: "))
 end)
-keymap("K", dapui.eval, {mode = {'n', 'v'}})
+keymap("K", dapui.eval, { mode = { 'n', 'v' } })
 
 ----------------
 -- ui setup
@@ -140,6 +140,7 @@ function M.compile(file)
 	local subdir = M.dbg_dir(file)
 	vim.fn.execute("make " .. subdir .. "/binary " .. "-f $XDG_CONFIG_HOME/nvim/makefile")
 end
+
 keymap("<leader>dc", M.compile)
 
 function M.write_input(file)
@@ -148,6 +149,7 @@ function M.write_input(file)
 	local inp_file = M.dbg_dir(file) .. "/input"
 	vim.fn.writefile(vim.fn.getreg("+", 1, 1), inp_file)
 end
+
 function M.run_input(file)
 	file = gf(file)
 	if not dapui.elements.console then
@@ -160,9 +162,9 @@ function M.run_input(file)
 		let @x = join(readfile(b:nvimdbg_inp_file), "\n") .. "\n\n"
 		normal G"xp
 		]]
-
 	end)
 end
+
 keymap("<leader>rw", M.write_input)
 keymap("<leader>ri", M.run_input)
 
@@ -212,15 +214,15 @@ end
 dap.configurations.python = {
 	{
 		-- dap parts
-		type = "python";
-		request = "launch";
-		name = "launch file";
+		type = "python",
+		request = "launch",
+		name = "launch file",
 
 		-- debugger parts
-		program = "${file}";
+		program = "${file}",
 		-- this could be smarter (e.g., try to find a virtual env)
-		pythonPath = function() return "/usr/bin/python" end;
-		console = "integratedTerminal";
+		pythonPath = function() return "/usr/bin/python" end,
+		console = "integratedTerminal",
 	}
 }
 
