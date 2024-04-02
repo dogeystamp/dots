@@ -129,27 +129,27 @@ function M.dbg_dir(file)
 	-- get a directory to store files needed for debugging
 	-- like ad hoc test cases, or compiled binaries
 	local dir = assert(vim.env.XDG_CACHE_HOME, "$XDG_CACHE_HOME is unset") .. "/nvimdbg"
-	local file = gf(file)
+	file = gf(file)
 	local subdir = dir .. file
 	assert(vim.fn.mkdir(subdir, "p"), "Could not create debug directory.")
 	return subdir
 end
 
-function compile(file)
-	local file = gf(file)
+function M.compile(file)
+	file = gf(file)
 	local subdir = M.dbg_dir(file)
 	vim.fn.execute("make " .. subdir .. "/binary " .. "-f $XDG_CONFIG_HOME/nvim/makefile")
 end
-keymap("<leader>dc", compile)
+keymap("<leader>dc", M.compile)
 
-function write_input(file)
+function M.write_input(file)
 	-- store ad hoc test input from clipboard
-	local file = gf(file)
+	file = gf(file)
 	local inp_file = M.dbg_dir(file) .. "/input"
 	vim.fn.writefile(vim.fn.getreg("+", 1, 1), inp_file)
 end
-function run_input(file)
-	local file = gf(file)
+function M.run_input(file)
+	file = gf(file)
 	if not dapui.elements.console then
 		print("Unable to feed input: no console found")
 		return
@@ -163,11 +163,11 @@ function run_input(file)
 
 	end)
 end
-keymap("<leader>rw", write_input)
-keymap("<leader>ri", run_input)
+keymap("<leader>rw", M.write_input)
+keymap("<leader>ri", M.run_input)
 
-function run_tests(file)
-	local file = gf(file)
+function M.run_tests(file)
+	file = gf(file)
 	local executable
 	if vim.fn.expand("%:e") == "cpp" then
 		executable = M.dbg_dir(file) .. "/binary"
@@ -187,7 +187,7 @@ function run_tests(file)
 	]]
 end
 
-keymap("<leader>dt", run_tests)
+keymap("<leader>dt", M.run_tests)
 
 
 ----------------

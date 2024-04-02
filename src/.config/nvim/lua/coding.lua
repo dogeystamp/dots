@@ -88,7 +88,6 @@ keymap("gR", "<cmd>TroubleToggle lsp_references<cr>")
 -- plug: nvim-lspconfig
 ------
 local on_attach = function(client, bufnr)
-	local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 	local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 	-- Enable completion triggered by <c-x><c-o>
 	buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -127,6 +126,21 @@ local servers = {
 	tsserver = {},
 	bashls = {},
 	cssls = {},
+	lua_ls = {
+		settings = {
+			Lua = {
+				runtime = {
+					version = "LuaJIT",
+				},
+				workspace = {
+					checkThirdParty = false,
+					library = {
+						vim.env.VIMRUNTIME,
+					},
+				}
+			}
+		}
+	},
 	rust_analyzer = {
 		settings = {
 			['rust-analyzer'] = {
@@ -140,7 +154,7 @@ local servers = {
 local nvim_lsp = require('lspconfig')
 for lsp, sv_settings in pairs(servers) do
 	-- defaults
-	settings = {
+	local settings = {
 		on_attach = on_attach,
 		flags = {
 			debounce_text_changes = 150,

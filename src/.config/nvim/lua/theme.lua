@@ -15,19 +15,20 @@ require("noirbuddy").setup({
 	},
 	preset = "slate",
 })
+
 -- force transparent bg
 local Color, colors, Group, groups, styles = require("colorbuddy").setup {}
-Group.new("Normal", colors.noir_4, colors.none, no)
+Group.new("Normal", colors.noir_4, colors.none, nil)
 Group.new("StatusLine", colors.noir_4, colors.none, styles.bold)
 -- not selected statusline
 Group.new("StatusLineNC", colors.noir_7, colors.none)
 Group.link("Gutter", groups.normal)
-Group.new("LineNr", colors.noir_8, colors.none, no)
+Group.new("LineNr", colors.noir_8, colors.none, nil)
 Group.link("SignColumn", groups.LineNr)
-Group.new("VertSplit", colors.noir_9, colors.none, no)
+Group.new("VertSplit", colors.noir_9, colors.none, nil)
 
 -- other overrides
-Group.new("identifier", colors.noir_3, nil, no)
+Group.new("identifier", colors.noir_3, nil, nil)
 
 Group.new("function", colors.noir_2, nil)
 Group.link("@function", groups["function"])
@@ -41,11 +42,11 @@ Group.link("@keyword.return", groups["keyword.return"])
 Group.link("type.qualifier", groups["keyword.return"])
 Group.link("@type.qualifier", groups["keyword.return"])
 
-Group.new("NormalFloat", colors.noir_1, colors.noir_9, no)
+Group.new("NormalFloat", colors.noir_1, colors.noir_9, nil)
 
 -- swap undercurls and underlines
 for _, v in ipairs({"Error", "Info", "Hint", "Warn"}) do
-	col_name = "diagnostic_" .. string.lower(v)
+	local col_name = "diagnostic_" .. string.lower(v)
 	if v == "Warn" then
 		col_name = "diagnostic_warning"
 	end
@@ -56,8 +57,8 @@ end
 
 -- DAP-ui colors
 
-Group.new("debugPC", primary, colors.noir_8)
-Group.new("DapUIModifiedValue", primary, nil, styles.bold)
+Group.new("debugPC", colors.primary, colors.noir_8)
+Group.new("DapUIModifiedValue", colors.primary, nil, styles.bold)
 Group.new("DapUIWatchesEmpty", colors.noir_8, nil, nil)
 Group.new("DapUIWatchesError", colors.diff_delete, nil, nil)
 Group.new("DapUISource", colors.primary, nil, nil)

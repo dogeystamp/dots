@@ -1,9 +1,9 @@
 -- lua entry point
 
-confutil = require("confutil")
+local confutil = require("confutil")
 
-keymap = confutil.keymap
-dotprofile, profile_table = confutil.dotprofile, confutil.profile_table
+local keymap = confutil.keymap
+local dotprofile, profile_table = confutil.dotprofile, confutil.profile_table
 
 --------------------------------
 --------------------------------

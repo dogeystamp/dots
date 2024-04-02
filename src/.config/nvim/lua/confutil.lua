@@ -8,14 +8,19 @@ function M.keymap(key, cmd, params)
 		params = {}
 	end
 
-	default_params = {
+	if cmd == nil then
+		-- sometimes a function will be there, sometimes not
+		return
+	end
+
+	local default_params = {
 		silent=true,
 		mode={'n'},
 		noremap=true,
 	}
 	setmetatable(params, {
-		__index = function (table, key)
-			return default_params[key]
+		__index = function (table, k)
+			return default_params[k]
 		end
 	})
 
