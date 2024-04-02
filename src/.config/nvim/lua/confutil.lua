@@ -34,6 +34,6 @@ M.profile_table = {
 	SLIM = 40,
 	MINIMAL = 10,
 }
-M.dotprofile = M.profile_table[os.getenv("SYSTEM_PROFILE")] or profile_table.SLIM
+M.dotprofile = M.profile_table[os.getenv("SYSTEM_PROFILE")] or M.profile_table.SLIM
 
 return M
