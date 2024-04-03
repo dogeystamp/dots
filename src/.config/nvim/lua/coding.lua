@@ -137,7 +137,11 @@ local servers = {
 					library = {
 						vim.env.VIMRUNTIME,
 					},
-				}
+				},
+				diagnostics = {
+					-- get it to stop complaining about luasnip
+					globals = {'s', 'f', 't', "fmt", "c", "sn", "i", "rep", "d"},
+				},
 			}
 		}
 	},
