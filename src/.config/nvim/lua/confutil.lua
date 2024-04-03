@@ -24,7 +24,7 @@ function M.keymap(key, cmd, params)
 		end
 	})
 
-	vim.keymap.set(params.mode, key, cmd, { silent = params.silent, noremap = params.noremap })
+	vim.keymap.set(params.mode, key, cmd, { silent = params.silent, noremap = params.noremap, expr = params.expr })
 end
 
 -- see ~/.config/dot_profile.example for info

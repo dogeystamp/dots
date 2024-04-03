@@ -77,8 +77,6 @@ endif
 
 filetype plugin indent on
 
-source $XDG_CONFIG_HOME/nvim/ultisnips.vim
-
 if $SYSTEM_PROFILE == "DEFAULT"
 	" plugins for IDE-like nvim
 	source $XDG_CONFIG_HOME/nvim/coding.vim

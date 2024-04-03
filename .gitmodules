@@ -73,12 +73,6 @@
 	path = src/.local/share/nvim/site/pack/3pp/start/typst.vim
 	url = https://github.com/kaarmu/typst.vim.git
 
-# snippet engine
-# ultisnips.vim
-[submodule "src/.local/share/nvim/site/pack/3pp/opt/ultisnips"]
-	path = src/.local/share/nvim/site/pack/3pp/opt/ultisnips
-	url = https://github.com/SirVer/ultisnips.git
-
 # color theme
 # init.lua
 [submodule "src/.local/share/nvim/site/pack/3pp/start/nvim-noirbuddy"]
@@ -99,3 +93,13 @@
 [submodule "src/.local/share/nvim/site/pack/3pp/start/nvim-nio"]
 	path = src/.local/share/nvim/site/pack/3pp/start/nvim-nio
 	url = https://github.com/nvim-neotest/nvim-nio
+
+# snippet support
+# snippets.lua
+# (also coding.lua becuase nvim-cmp uses this too)
+[submodule "src/.local/share/nvim/site/pack/3pp/start/LuaSnip"]
+	path = src/.local/share/nvim/site/pack/3pp/start/LuaSnip
+	url = https://github.com/L3MON4D3/LuaSnip
+[submodule "src/.local/share/nvim/site/pack/3pp/start/cmp_luasnip"]
+	path = src/.local/share/nvim/site/pack/3pp/start/cmp_luasnip
+	url = https://github.com/saadparwaiz1/cmp_luasnip

@@ -37,6 +37,7 @@ keymap("<leader>eb", "<cmd>Telescope keymaps<cr>")
 --------------------------------
 
 require("theme")
+require("snippets")
 
 if dotprofile >= profile_table.DEFAULT then
 	require("coding")
