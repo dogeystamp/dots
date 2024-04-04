@@ -23,6 +23,48 @@ local function rep_node(args, snip)
 	return ret
 end
 
+-- see fbox snippet
+local function box_line(args, snip, side)
+	local shorthand = {
+		r = "round",
+		h = "heavy",
+		s = "sharp",
+	}
+	local styles = {
+		round = "╭─╮││╰─╯",
+		heavy = "┏━┓┃┃┗━┛",
+		sharp = "┌─┐││└─┘",
+	}
+
+	type = shorthand[snip.captures[1]] or "round"
+
+	-- array of characters (because lua strings are not c-strings 😔)
+	-- nor does nvim lua have utf-8 support 😔
+	-- https://stackoverflow.com/a/27941567
+	local style = {}
+	for code in styles[type]:gmatch("[%z\1-\127\194-\244][\128-\191]*") do
+		table.insert(style, code)
+	end
+
+	local content = (args[1] or { "" })[1]
+	local content_len = string.len(content)
+
+	if side == "left" then
+		return style[4]
+	elseif side == "right" then
+		return style[5]
+	end
+
+	-- offset into the style
+	local o = 1
+
+	if side == "top" then o = 1 end
+	if side == "bottom" then o = 6 end
+
+	-- +2 for padding
+	return style[o] .. string.rep(style[o + 1], content_len + 2) .. style[o + 2]
+end
+
 return {
 	--------------------------------
 	--------------------------------
@@ -96,4 +138,22 @@ return {
 			cont = i(2),
 			surr2 = f(rep_node, { 1 })
 		})),
+
+	s(
+		{ trig = "fbox(%a?)", regTrig = true, desc = { "draw a unicode box around some text.", "use fboxs for sharp corners (round default), fboxh for heavy" } },
+		fmt([[
+		{topline}
+		{lside} {content} {rside}
+		{bottomline}
+		]], {
+			content = i(1, "contents"),
+			topline = f(box_line, { 1 }, { user_args = { "top" } }),
+			bottomline = f(box_line, { 1 }, { user_args = { "bottom" } }),
+			lside = f(box_line, { 1 }, { user_args = { "left" } }),
+			rside = f(box_line, { 1 }, { user_args = { "right" } }),
+		})),
+
+	s({trig="trigger", desc="human-readable description"}, d(1, f(function (args)
+		return "durr" .. args[1][1] .. "durr"
+	end))),
 }
