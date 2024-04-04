@@ -23,8 +23,18 @@ local function rep_node(args, snip)
 	return ret
 end
 
--- see fbox snippet
-local function box_line(args, snip, side)
+
+--------------------------------
+-- fbox snippet helper functions
+--------------------------------
+
+---format box sides
+---@param style_code string?
+---@param side string
+---@param sz integer
+---@param width integer?
+---@return string
+local function box_line(style_code, side, sz, width)
 	local shorthand = {
 		r = "round",
 		h = "heavy",
@@ -36,7 +46,7 @@ local function box_line(args, snip, side)
 		sharp = "┌─┐││└─┘",
 	}
 
-	type = shorthand[snip.captures[1]] or "round"
+	type = shorthand[style_code] or "round"
 
 	-- array of characters (because lua strings are not c-strings 😔)
 	-- nor does nvim lua have utf-8 support 😔
@@ -46,13 +56,10 @@ local function box_line(args, snip, side)
 		table.insert(style, code)
 	end
 
-	local content = (args[1] or { "" })[1]
-	local content_len = string.len(content)
-
 	if side == "left" then
 		return style[4]
 	elseif side == "right" then
-		return style[5]
+		return string.rep(" ", (width or sz) - sz) .. style[5]
 	end
 
 	-- offset into the style
@@ -62,7 +69,15 @@ local function box_line(args, snip, side)
 	if side == "bottom" then o = 6 end
 
 	-- +2 for padding
-	return style[o] .. string.rep(style[o + 1], content_len + 2) .. style[o + 2]
+	return style[o] .. string.rep(style[o + 1], sz) .. style[o + 2]
+end
+local function box_fct(args, snip, side)
+	local content = args[1] or { "" }
+	local content_width = 0
+	for _, line in ipairs(content) do
+		content_width = math.max(content_width, string.len(line))
+	end
+	return box_line(snip.captures[1], side, content_width - 6)
 end
 
 return {
@@ -140,20 +155,34 @@ return {
 		})),
 
 	s(
-		{ trig = "fbox(%a?)", regTrig = true, desc = { "draw a unicode box around some text.", "use fboxs for sharp corners (round default), fboxh for heavy" } },
+		{ trig = "fbox(%a?)", regTrig = true, name = "format box", desc = { "draw a unicode box around some text.", "use fboxs for sharp corners (round default), fboxh for heavy" } },
 		fmt([[
-		{topline}
-		{lside} {content} {rside}
-		{bottomline}
-		]], {
-			content = i(1, "contents"),
-			topline = f(box_line, { 1 }, { user_args = { "top" } }),
-			bottomline = f(box_line, { 1 }, { user_args = { "bottom" } }),
-			lside = f(box_line, { 1 }, { user_args = { "left" } }),
-			rside = f(box_line, { 1 }, { user_args = { "right" } }),
-		})),
-
-	s({trig="trigger", desc="human-readable description"}, d(1, f(function (args)
-		return "durr" .. args[1][1] .. "durr"
-	end))),
+		{surr1}
+		{content}
+		{surr2}
+		]],
+			{
+				content = i(1, "contents", {
+					node_callbacks = {
+						[events.leave] = function(node)
+							local t = node:get_text()
+							local width = 0
+							for _, line in ipairs(t) do
+								width = math.max(width, string.len(line))
+							end
+							local new_t = {}
+							for _, l in ipairs(t) do
+								local sz = string.len(l)
+								local style_code = node.parent.captures[1]
+								table.insert(new_t,
+									box_line(style_code, "left", sz, width) ..
+									" " .. l .. " " .. box_line(style_code, "right", sz, width))
+							end
+							node:set_text(new_t)
+						end
+					}
+				}),
+				surr1 = f(box_fct, { 1 }, { user_args = { "top" } }),
+				surr2 = f(box_fct, { 1 }, { user_args = { "bottom" } }),
+			})),
 }
