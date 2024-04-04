@@ -86,16 +86,28 @@ return {
 	-- date and timekeeping snippets
 	--------------------------------
 	--------------------------------
-	s({ trig = "today", desc = "YYYY-MM-DD date of today" }, f(function()
+	s({
+		trig = "today",
+		name = "Today date format",
+		desc = "YYYY-MM-DD date of today"
+	}, f(function()
 		return os.date("%Y-%m-%d")
 	end)),
 
-	s({ trig = "yesterday", desc = "YYYY-MM-DD date of yesterday" }, f(function()
+	s({
+		trig = "yesterday",
+		name = "Yesterday date format",
+		desc = "YYYY-MM-DD date of yesterday"
+	}, f(function()
 		local t = os.date("*t")
 		return os.date("%Y-%m-%d", os.time { year = t.year, month = t.month, day = t.day - 1 })
 	end)),
 
-	s({ trig = "timestamp", desc = "Unix day timestamp (locked to midnight)" }, f(function()
+	s({
+		trig = "timestamp",
+		name = "Unix day timestamp",
+		desc = "Unix time for today (locked to midnight)"
+	}, f(function()
 		local t = os.date("*t")
 		return tostring(os.time { year = t.year, month = t.month, day = t.day, hour = 0 })
 	end)),
@@ -103,9 +115,10 @@ return {
 	s(
 		{
 			trig = "datestamp (%d-)-(%d-)-(%d-)",
+			name = "Unix timestamp based on date",
 			regTrig = true,
 			desc =
-			"YYYY-MM-DD to Unix day timestamp (locked to midnight)"
+			"YYYY-MM-DD to Unix day timestamp conversion (locked to midnight)"
 		}, f(function(_, snip)
 			return tostring(os.time { year = snip.captures[1], month = snip.captures[2], day = snip.captures[3], hour = 0 })
 		end)),
@@ -115,14 +128,17 @@ return {
 	-- miscellaneous snippets
 	--------------------------------
 	--------------------------------
-	s({ trig = "shrug", desc = "shrug emoticon (not escaped)" }, t("¯\\_(ツ)_/¯")),
+	s({
+		trig = "shrug",
+		desc = "shrug emoticon (not escaped)"
+	}, t("¯\\_(ツ)_/¯")),
 
 	s(
 		{
 			trig = "(%d*)segm(%d-)",
 			regTrig = true,
+			name = "section/segment header title comment.",
 			desc = {
-				"section/segment header title comment.", "",
 				"number in front is height (default 1), second number is width.",
 				"to use this, type the comment symbol (e.g. # or //) then TAB, then the section title.",
 				"see also: https://www.pathsensitive.com/2023/12/should-you-split-that-file.html",
@@ -155,7 +171,12 @@ return {
 		})),
 
 	s(
-		{ trig = "fbox(%a?)", regTrig = true, name = "format box", desc = { "draw a unicode box around some text.", "use fboxs for sharp corners (round default), fboxh for heavy" } },
+		{
+			trig = "fbox(%a?)",
+			regTrig = true,
+			name = "format box",
+			desc = { "draw a unicode box around some text.", "use fboxs for sharp corners (round default), fboxh for heavy" }
+		},
 		fmt([[
 		{surr1}
 		{content}
