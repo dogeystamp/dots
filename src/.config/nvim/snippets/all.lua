@@ -23,6 +23,9 @@ local function rep_node(args, snip)
 	return ret
 end
 
+-- https://stackoverflow.com/a/5761649
+package.path = "../lua/?.lua;" .. package.path
+local utf8_u = require("utf8-util")
 
 --------------------------------
 -- fbox snippet helper functions
@@ -75,9 +78,10 @@ local function box_fct(args, snip, side)
 	local content = args[1] or { "" }
 	local content_width = 0
 	for _, line in ipairs(content) do
-		content_width = math.max(content_width, string.len(line))
+		content_width = math.max(content_width, utf8_u.mono_len(line))
+		print(content_width)
 	end
-	return box_line(snip.captures[1], side, content_width - 6)
+	return box_line(snip.captures[1], side, content_width - 2)
 end
 
 return {
@@ -189,11 +193,11 @@ return {
 							local t = node:get_text()
 							local width = 0
 							for _, line in ipairs(t) do
-								width = math.max(width, string.len(line))
+								width = math.max(width, utf8_u.mono_len(line))
 							end
 							local new_t = {}
 							for _, l in ipairs(t) do
-								local sz = string.len(l)
+								local sz = utf8_u.mono_len(l)
 								local style_code = node.parent.captures[1]
 								table.insert(new_t,
 									box_line(style_code, "left", sz, width) ..
