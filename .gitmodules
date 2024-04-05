@@ -48,6 +48,10 @@
 [submodule "src/.local/share/nvim/site/pack/3pp/start/nvim-treesitter"]
 	path = src/.local/share/nvim/site/pack/3pp/start/nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+# intelligent motions based on treesitter
+[submodule "src/.local/share/nvim/site/pack/3pp/start/nvim-treesitter-textobjects"]
+	path = src/.local/share/nvim/site/pack/3pp/start/nvim-treesitter-textobjects
+	url = https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 
 # error/warning/info box
 # coding.lua

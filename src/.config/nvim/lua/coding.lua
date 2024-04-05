@@ -33,7 +33,7 @@ vim.api.nvim_create_autocmd(
 -- plug: nvim-treesitter
 ------
 require 'nvim-treesitter.configs'.setup {
-	ensure_installed = { "c", "cpp", "javascript", "typescript", "python", "vim", "fish", "bash" },
+	ensure_installed = { "c", "cpp", "javascript", "typescript", "python", "vim", "fish", "bash", "lua", "rust" },
 	sync_install = false,
 	auto_install = false,
 	highlight = {
@@ -49,6 +49,25 @@ require 'nvim-treesitter.configs'.setup {
 	},
 }
 
+------
+-- treesitter (language intelligent) motions
+-- plug: nvim-treesitter-textobjects
+------
+require("nvim-treesitter.configs").setup {
+	textobjects = {
+		select = {
+			enable = true,
+
+			keymaps = {
+				["af"] = "@function.outer",
+				["if"] = "@function.inner",
+				["ac"] = "@class.outer",
+				["ic"] = "@class.inner",
+			},
+		}
+	}
+}
+
 
 ------
 -- diagnostics box
@@ -56,8 +75,8 @@ require 'nvim-treesitter.configs'.setup {
 ------
 require('trouble').setup({
 	icons = false,
-	fold_open = "v",      -- icon used for open folds
-	fold_closed = ">",    -- icon used for closed folds
+	fold_open = "v",   -- icon used for open folds
+	fold_closed = ">", -- icon used for closed folds
 	indent_lines = false, -- add an indent guide below the fold icons
 	signs = {
 		-- icons / text used for a diagnostic
@@ -140,7 +159,7 @@ local servers = {
 				},
 				diagnostics = {
 					-- get it to stop complaining about luasnip
-					globals = {'s', 'f', 't', "fmt", "c", "sn", "i", "rep", "d", "k", "events"},
+					globals = { 's', 'f', 't', "fmt", "c", "sn", "i", "rep", "d", "k", "events" },
 				},
 			}
 		}
