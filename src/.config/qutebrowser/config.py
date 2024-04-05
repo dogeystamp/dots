@@ -42,13 +42,13 @@ c.fonts.web.family.sans_serif = "Liberation Sans"
 c.fonts.web.family.standard = "Liberation Sans"
 c.fonts.web.family.fixed = "JetBrains Mono"
 
-config.bind('td', 'config-cycle colors.webpage.darkmode.enabled true false;; restart')
+config.bind("td", "config-cycle colors.webpage.darkmode.enabled true false;; restart")
 
 # General settings
 
 c.url.default_page = "~/.config/qutebrowser/homepage.html"
 c.url.start_pages = "~/.config/qutebrowser/homepage.html"
-c.url.searchengines = {"DEFAULT":"https://searx.be/search?q={}"}
+c.url.searchengines = {"DEFAULT": "https://searx.be/search?q={}"}
 c.downloads.location.directory = "~/quar/"
 
 c.zoom.default = "100%"
@@ -62,7 +62,7 @@ c.downloads.remove_finished = 1000
 c.tabs.max_width = 300
 c.tabs.position = "top"
 c.statusbar.show = "in-mode"
-c.statusbar.widgets = [ "keypress", "progress" ]
+c.statusbar.widgets = ["keypress", "progress"]
 c.tabs.indicator.width = 0
 c.tabs.position = "bottom"
 c.tabs.title.format = "{audio}{current_title}"
@@ -98,9 +98,13 @@ c.content.cookies.accept = "no-3rdparty"
 c.content.cookies.store = False
 
 # Less unique headers compared to the defaults
-c.content.headers.user_agent = "Mozilla/5.0 (Android 10; Mobile; rv:91.0) Gecko/91.0 Firefox/91.0"
+c.content.headers.user_agent = (
+    "Mozilla/5.0 (Android 10; Mobile; rv:91.0) Gecko/91.0 Firefox/91.0"
+)
 c.content.headers.accept_language = "en-US,en;q=0.5"
-c.content.headers.custom = {"accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"}
+c.content.headers.custom = {
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+}
 # Sending a Do Not Track header makes your fingerprint more unique according to Panopticlick,
 # and I don't trust sites to respect it, so I think it's better to not include it at all.
 # (True: send DNT, False: Send DNT header set to 0, None: Don't send DNT)
@@ -118,10 +122,7 @@ config.bind(";I", "hint images yank")
 config.bind("p", "open -t {clipboard}")
 
 # code block copying
-c.hints.selectors["code"] = [
-    ":not(pre) > code",
-    "pre"
-]
+c.hints.selectors["code"] = [":not(pre) > code", "pre"]
 config.bind("cc", "hint code userscript code_select.py")
 
 # copy the title
@@ -143,13 +144,37 @@ config.bind("<escape>", "clear-messages;; search")
 
 # homegrown file selector
 c.fileselect.handler = "external"
-c.fileselect.multiple_files.command = ["st", "-e", "fish", "-C", "set -x OUTPUT {}; source ~/.local/bin/fish-fm"]
-c.fileselect.single_file.command = ["st", "-e", "fish", "-C", "set -x OUTPUT {}; source ~/.local/bin/fish-fm"]
+c.fileselect.multiple_files.command = [
+    "st",
+    "-e",
+    "fish",
+    "-C",
+    "set -x OUTPUT {}; source ~/.local/bin/fish-fm",
+]
+c.fileselect.single_file.command = [
+    "st",
+    "-e",
+    "fish",
+    "-C",
+    "set -x OUTPUT {}; source ~/.local/bin/fish-fm",
+]
 
 # smooth scroll for larger increments
 # (thank you very much dima https://github.com/qutebrowser/qutebrowser/issues/6281)
-config.bind("<Ctrl-d>", "jseval -q window.scrollBy({top: window.innerHeight/2, left: 0, behavior: 'smooth'});")
-config.bind("<Ctrl-u>", "jseval -q window.scrollBy({top: -window.innerHeight/2, left: 0, behavior: 'smooth'});")
-config.bind("G", "jseval -q window.scrollBy({top: document.body.scrollHeight + 1e6, left: 0, behavior: 'smooth'});")
-config.bind("gg", "jseval -q window.scrollBy({top: -document.body.scrollHeight - 1e6, left: 0, behavior: 'smooth'});")
+config.bind(
+    "<Ctrl-d>",
+    "jseval -q window.scrollBy({top: window.innerHeight/2, left: 0, behavior: 'smooth'});",
+)
+config.bind(
+    "<Ctrl-u>",
+    "jseval -q window.scrollBy({top: -window.innerHeight/2, left: 0, behavior: 'smooth'});",
+)
+config.bind(
+    "G",
+    "jseval -q window.scrollBy({top: document.body.scrollHeight + 1e6, left: 0, behavior: 'smooth'});",
+)
+config.bind(
+    "gg",
+    "jseval -q window.scrollBy({top: -document.body.scrollHeight - 1e6, left: 0, behavior: 'smooth'});",
+)
 c.scrolling.smooth = True
