@@ -97,5 +97,5 @@ return {
 	  title: "{}",
 	  stat: "{}",
 	)
-	]], { i(1), i(2), i(3, "incomplete") })),
+	]], { i(1), i(2), t("incomplete") })),
 }
