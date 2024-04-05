@@ -27,6 +27,7 @@ set lazyredraw nocursorline ttyfast
 set shortmess+=I
 
 let mapleader = ","
+let maplocalleader = " "
 
 " " use system clipboard instead of internal
 " set clipboard=unnamedplus

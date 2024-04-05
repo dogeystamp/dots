@@ -111,21 +111,21 @@ local on_attach = function(client, bufnr)
 	-- Enable completion triggered by <c-x><c-o>
 	buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-	local opts = { noremap = true, silent = true }
+	local opts = { noremap = true, silent = true, buffer=bufnr }
 	keymap('gD', vim.lsp.buf.declaration, opts)
 	keymap('gd', vim.lsp.buf.definition, opts)
 	keymap('gK', vim.lsp.buf.hover, opts)
 	keymap('gi', vim.lsp.buf.implementation, opts)
 	keymap('gs', vim.lsp.buf.signature_help, opts)
 	keymap('gt', vim.lsp.buf.type_definition, opts)
-	keymap('<space>rn', vim.lsp.buf.rename, opts)
-	keymap('<space>ss', vim.lsp.buf.workspace_symbol, opts)
+	keymap('<localleader>rn', vim.lsp.buf.rename, opts)
+	keymap('<localleader>ss', vim.lsp.buf.workspace_symbol, opts)
 	keymap('gr', vim.lsp.buf.references, opts)
-	keymap('<space>e', vim.lsp.diagnostic.show_line_diagnostics, opts)
+	keymap('<localleader>e', vim.lsp.diagnostic.show_line_diagnostics, opts)
 	keymap('[d', vim.lsp.diagnostic.goto_prev, opts)
 	keymap(']d', vim.lsp.diagnostic.goto_next, opts)
-	keymap('<space>ca', vim.lsp.buf.code_action, opts)
-	keymap('<space>f', vim.lsp.buf.format, opts)
+	keymap('<localleader>ca', vim.lsp.buf.code_action, opts)
+	keymap('<localleader>f', vim.lsp.buf.format, opts)
 end
 
 -- table declares LSPs to be set up

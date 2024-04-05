@@ -17,6 +17,7 @@ function M.keymap(key, cmd, params)
 		silent = true,
 		mode = { 'n' },
 		noremap = true,
+		buffer = false,
 	}
 	setmetatable(params, {
 		__index = function(table, k)
@@ -24,7 +25,12 @@ function M.keymap(key, cmd, params)
 		end
 	})
 
-	vim.keymap.set(params.mode, key, cmd, { silent = params.silent, noremap = params.noremap, expr = params.expr })
+	vim.keymap.set(params.mode, key, cmd, {
+		silent = params.silent,
+		noremap = params.noremap,
+		expr = params.expr,
+		buffer = params.buffer
+	})
 end
 
 -- see ~/.config/dot_profile.example for info
