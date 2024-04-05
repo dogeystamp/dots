@@ -11,7 +11,7 @@ au TermOpen * setlocal nonumber norelativenumber
 tnoremap <silent> <esc> <c-\><c-n><c-\><c-n>
 
 " sign column on top of the line number (gutter for things like breakpoints, warnings)
-" set scl=number
+set scl=number
 
 " enable line numbers
 set number relativenumber
@@ -22,6 +22,9 @@ set showtabline=0
 
 " performance?
 set lazyredraw nocursorline ttyfast
+
+" disable splash screen
+set shortmess+=I
 
 let mapleader = ","
 
@@ -55,9 +58,6 @@ highlight LineNr ctermfg=grey
 " Disable highlighting when searching
 nnoremap <silent> <esc> :noh<return><esc>
 
-" shortcuts to type symbols easier
-source $XDG_CONFIG_HOME/nvim/digraphs.vim
-
 " tab, window management
 set splitbelow splitright
 nnoremap <C-j> <C-w>w
@@ -70,17 +70,11 @@ nnoremap <silent> ZF :qa<cr>
 " see .config/nvim/lua/init.lua
 lua require('init')
 
-" The rest will not be sourced if the system is on minimal settings.
-if $SYSTEM_PROFILE == "MINIMAL"
-	finish
-endif
+" Code folding
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+" unfold by default
+set foldlevel=99
 
-filetype plugin indent on
-
-if $SYSTEM_PROFILE == "DEFAULT"
-	" plugins for IDE-like nvim
-	source $XDG_CONFIG_HOME/nvim/coding.vim
-endif
-
-" personal preference
-set shortmess+=I
+" auto-pairs
+let g:AutoPairsFlyMode = 0
