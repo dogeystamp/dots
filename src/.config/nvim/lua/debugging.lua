@@ -138,16 +138,16 @@ end
 function M.compile(file)
 	file = gf(file)
 	local subdir = M.dbg_dir(file)
-	vim.fn.execute("make " .. subdir .. "/binary " .. "-f $XDG_CONFIG_HOME/nvim/makefile")
+	vim.cmd.make(subdir .. "/binary " .. "-f $XDG_CONFIG_HOME/nvim/makefile")
 end
 
-keymap("<leader>dc", M.compile)
+keymap("<leader>dc", M.compile, { silent = false })
 
 function M.write_input(file)
 	-- store ad hoc test input from clipboard
 	file = gf(file)
 	local inp_file = M.dbg_dir(file) .. "/input"
-	vim.fn.writefile(vim.fn.getreg("+", 1, 1), inp_file)
+	print(vim.fn.writefile(vim.fn.getreg("+", 1, 1), inp_file))
 end
 
 function M.run_input(file)
