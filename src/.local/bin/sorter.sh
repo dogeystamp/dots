@@ -61,6 +61,7 @@ find ~/quar \
 	-name '*.mov' -o \
 	-name '*.MOV' -o \
 	-name '*.mp4' -o \
+	-name '*.MP4' -o \
 	-name '*.jpg' -o \
 	-name '*.png' -o \
 	-name '*.jpeg' -o \
