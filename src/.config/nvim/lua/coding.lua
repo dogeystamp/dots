@@ -170,6 +170,9 @@ local servers = {
 				check = {
 					allTargets = false,
 				},
+				checkOnSave = {
+					command = "clippy",
+				},
 			},
 		},
 	},
