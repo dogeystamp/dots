@@ -45,6 +45,12 @@ vmap <tab>d "+d
 nmap <tab>c "+c
 vmap <tab>c "+c
 
+" 0 is easier to reach so swap these binds
+nnoremap 0 ^
+nnoremap ^ 0
+vnoremap 0 ^
+vnoremap ^ 0
+
 set shell=/bin/sh
 
 hi Search cterm=NONE ctermfg=white ctermbg=blue
