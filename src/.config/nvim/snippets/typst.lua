@@ -5,9 +5,21 @@ return {
 	--------------------------------
 	--------------------------------
 
-	s({ trig = "ss", desc = "superscript", wordTrig = false }, fmt("^({}) ", { i(1) })),
-	s({ trig = "qu", desc = "square (qu-artic) exponent", wordTrig = false }, t("^2 ")),
-	s({ trig = "cub", desc = "cub-ed exponent", wordTrig = false }, t("^3 ")),
+	s({ trig = "ss", name = "superscript", wordTrig = false }, fmt("^({}) ", { i(1) })),
+	s({ trig = "qu", name = "square (qu-artic) exponent", wordTrig = false }, t("^2 ")),
+	s({ trig = "cub", name = "cub-ed exponent", wordTrig = false }, t("^3 ")),
+
+	s({
+			trig = "numb",
+			name = "numbered equation",
+			wordTrig = false
+		},
+		fmt(
+			"#numbered_eq()[${}$ <{}>]",
+			{
+				i(1, "equation"),
+				i(2, "label")
+			})),
 
 	s({ trig = "link", desc = "labelled link" }, fmt('#link("{}{}")[{}]', {
 		i(1),
