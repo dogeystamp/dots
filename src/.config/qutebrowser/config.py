@@ -4,6 +4,7 @@ config.load_autoconfig()
 
 c.window.transparent = True
 
+c.content.user_stylesheets = ["~/.config/qutebrowser/style.css"]
 c.colors.webpage.bg = "#444444"
 c.colors.completion.category.bg = "#111111"
 c.colors.completion.even.bg = "black"
