@@ -16,8 +16,15 @@ require("noirbuddy").setup({
 	preset = "slate",
 })
 
+local colorbuddy = require("colorbuddy")
+
 -- force transparent bg
-local Color, colors, Group, groups, styles = require("colorbuddy").setup {}
+
+local colors = colorbuddy.colors
+local Group = colorbuddy.Group
+local groups = colorbuddy.groups
+local styles = colorbuddy.styles
+
 Group.new("Normal", colors.noir_4, colors.none, nil)
 Group.new("StatusLine", colors.noir_4, colors.none, styles.bold)
 -- not selected statusline
