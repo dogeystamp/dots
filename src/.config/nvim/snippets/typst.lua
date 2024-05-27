@@ -5,9 +5,9 @@ return {
 	--------------------------------
 	--------------------------------
 
-	s({ trig = "ss", name = "superscript", wordTrig = false }, fmt("^({}) ", { i(1) })),
-	s({ trig = "qu", name = "square (qu-artic) exponent", wordTrig = false }, t("^2 ")),
-	s({ trig = "cub", name = "cub-ed exponent", wordTrig = false }, t("^3 ")),
+	s({ trig = "ss", name = "superscript", wordTrig = false }, fmt("^({})", { i(1) })),
+	s({ trig = "qu", name = "square (qu-artic) exponent", wordTrig = false }, t("^2")),
+	s({ trig = "cub", name = "cub-ed exponent", wordTrig = false }, t("^3")),
 
 	s({
 			trig = "numb",
@@ -33,6 +33,31 @@ return {
 		end, { 1 }),
 		i(2),
 	})),
+
+	s({
+			trig = "qty",
+			name = "quantity + unit",
+			wordTrig = false
+		},
+		fmt(
+			[[#qty("{}", "{}")]],
+			{
+				i(1, "numb"),
+				i(2, "unit")
+			})),
+
+	s({
+			trig = "pq",
+			name = "percentage error quantity",
+			wordTrig = false
+		},
+		fmt(
+			[[#pq("{}", "{}", "{}")]],
+			{
+				i(1, "numb"),
+				i(2, "unit"),
+				i(3, "percentage error"),
+			})),
 
 	--------------------------------
 	--------------------------------
