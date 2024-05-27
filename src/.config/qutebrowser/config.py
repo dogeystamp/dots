@@ -34,13 +34,13 @@ c.prompt.radius = 0
 # Fonts
 
 c.fonts.default_size = "13pt"
-c.fonts.default_family = "Liberation Sans"
+c.fonts.default_family = "Inter Display"
 c.fonts.prompts = "default_size default_family"
 c.fonts.tooltip = "default_size default_family"
 
-c.fonts.web.family.serif = "Liberation Sans"
-c.fonts.web.family.sans_serif = "Liberation Sans"
-c.fonts.web.family.standard = "Liberation Sans"
+c.fonts.web.family.serif = "Inter"
+c.fonts.web.family.sans_serif = "Inter"
+c.fonts.web.family.standard = "Inter"
 c.fonts.web.family.fixed = "JetBrains Mono"
 
 config.bind("td", "config-cycle colors.webpage.darkmode.enabled true false;; restart")
