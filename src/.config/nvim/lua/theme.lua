@@ -1,7 +1,9 @@
 ------
 -- color theme
--- plug: nvim-noirbuddy, colorbuddy.nvim
 ------
+
+vim.cmd.packadd("nvim-noirbuddy")
+vim.cmd.packadd("colorbuddy.nvim")
 
 require("noirbuddy").setup({
 	colors = {

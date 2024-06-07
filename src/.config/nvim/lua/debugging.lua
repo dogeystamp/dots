@@ -3,6 +3,12 @@
 local confutil = require("confutil")
 local keymap = confutil.keymap
 
+-- dependency
+vim.cmd.packadd("nvim-nio")
+
+vim.cmd.packadd("nvim-dap")
+vim.cmd.packadd("nvim-dap-ui")
+
 local dap = require("dap")
 local dapui = require("dapui")
 

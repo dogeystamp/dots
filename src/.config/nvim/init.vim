@@ -84,4 +84,5 @@ set foldexpr=nvim_treesitter#foldexpr()
 set foldlevel=99
 
 " auto-pairs
+packadd auto-pairs
 let g:AutoPairsFlyMode = 0

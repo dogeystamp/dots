@@ -1,5 +1,7 @@
 -- lua entry point
 
+vim.cmd.packadd("plenary.nvim")
+
 local confutil = require("confutil")
 
 local keymap = confutil.keymap
@@ -16,13 +18,16 @@ keymap("<leader>uu", ":let @+ = expand('<cfile>')<cr>")
 
 ------
 -- fancy prompts
--- plug: dressing.nvim, telescope.nvim, plenary.nvim
 ------
+vim.cmd.packadd("dressing.nvim")
 require('dressing').setup({
 	input = {
 		insert_only = false,
 	}
 })
+
+-- requires plenary.nvim
+vim.cmd.packadd("telescope.nvim")
 keymap("<leader>ef", "<cmd>Telescope find_files<cr>")
 keymap("<leader>eg", "<cmd>Telescope live_grep<cr>")
 keymap("<leader>em", "<cmd>Telescope buffers<cr>")

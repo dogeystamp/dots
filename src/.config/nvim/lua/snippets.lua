@@ -1,5 +1,7 @@
 -- Snippet engine
 
+vim.cmd.packadd("LuaSnip")
+
 -- see coding.lua because it also uses luasnip
 -- snippets live in .config/nvim/snippets/
 

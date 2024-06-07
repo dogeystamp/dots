@@ -17,52 +17,52 @@
 # prompts
 # telescope.vim
 [submodule "src/.local/share/nvim/site/pack/3pp/start/telescope.nvim"]
-	path = src/.local/share/nvim/site/pack/3pp/start/telescope.nvim
+	path = src/.local/share/nvim/site/pack/3pp/opt/telescope.nvim
 	url = https://github.com/nvim-telescope/telescope.nvim.git
 [submodule "src/.local/share/nvim/site/pack/3pp/start/plenary.nvim"]
-	path = src/.local/share/nvim/site/pack/3pp/start/plenary.nvim
+	path = src/.local/share/nvim/site/pack/3pp/opt/plenary.nvim
 	url = https://github.com/nvim-lua/plenary.nvim.git
 
 # git symbols in the gutter
 [submodule "src/.local/share/nvim/site/pack/3pp/start/vim-gitgutter"]
-	path = src/.local/share/nvim/site/pack/3pp/start/vim-gitgutter
+	path = src/.local/share/nvim/site/pack/3pp/opt/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
 
 # auto close brackets and quotes
 # coding.vim
 [submodule "src/.local/share/nvim/site/pack/3pp/start/auto-pairs"]
-	path = src/.local/share/nvim/site/pack/3pp/start/auto-pairs
+	path = src/.local/share/nvim/site/pack/3pp/opt/auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs
 
 # language smarts
 # coding.lua
 [submodule "src/.local/share/nvim/site/pack/3pp/start/nvim-lspconfig"]
-	path = src/.local/share/nvim/site/pack/3pp/start/nvim-lspconfig
+	path = src/.local/share/nvim/site/pack/3pp/opt/nvim-lspconfig
 	url = https://github.com/neovim/nvim-lspconfig.git
 [submodule "src/.local/share/nvim/site/pack/3pp/start/nvim-cmp"]
-	path = src/.local/share/nvim/site/pack/3pp/start/nvim-cmp
+	path = src/.local/share/nvim/site/pack/3pp/opt/nvim-cmp
 	url = https://github.com/hrsh7th/nvim-cmp.git
 [submodule "src/.local/share/nvim/site/pack/3pp/start/cmp-nvim-lsp"]
-	path = src/.local/share/nvim/site/pack/3pp/start/cmp-nvim-lsp
+	path = src/.local/share/nvim/site/pack/3pp/opt/cmp-nvim-lsp
 	url = https://github.com/hrsh7th/cmp-nvim-lsp.git
 [submodule "src/.local/share/nvim/site/pack/3pp/start/nvim-treesitter"]
-	path = src/.local/share/nvim/site/pack/3pp/start/nvim-treesitter
+	path = src/.local/share/nvim/site/pack/3pp/opt/nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter.git
 # intelligent motions based on treesitter
 [submodule "src/.local/share/nvim/site/pack/3pp/start/nvim-treesitter-textobjects"]
-	path = src/.local/share/nvim/site/pack/3pp/start/nvim-treesitter-textobjects
+	path = src/.local/share/nvim/site/pack/3pp/opt/nvim-treesitter-textobjects
 	url = https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 
 # error/warning/info box
 # coding.lua
 [submodule "src/.local/share/nvim/site/pack/3pp/start/trouble.nvim"]
-	path = src/.local/share/nvim/site/pack/3pp/start/trouble.nvim
+	path = src/.local/share/nvim/site/pack/3pp/opt/trouble.nvim
 	url = https://github.com/folke/trouble.nvim
 
 # aesthetic changes
 # init.lua
 [submodule "src/.local/share/nvim/site/pack/3pp/start/dressing.nvim"]
-	path = src/.local/share/nvim/site/pack/3pp/start/dressing.nvim
+	path = src/.local/share/nvim/site/pack/3pp/opt/dressing.nvim
 	url = https://github.com/stevearc/dressing.nvim.git
 
 # plain-text-accounting ledger ftplugin
@@ -80,30 +80,30 @@
 # color theme
 # init.lua
 [submodule "src/.local/share/nvim/site/pack/3pp/start/nvim-noirbuddy"]
-	path = src/.local/share/nvim/site/pack/3pp/start/nvim-noirbuddy
+	path = src/.local/share/nvim/site/pack/3pp/opt/nvim-noirbuddy
 	url = https://github.com/jesseleite/nvim-noirbuddy.git
 [submodule "src/.local/share/nvim/site/pack/3pp/start/colorbuddy.nvim"]
-	path = src/.local/share/nvim/site/pack/3pp/start/colorbuddy.nvim
+	path = src/.local/share/nvim/site/pack/3pp/opt/colorbuddy.nvim
 	url = https://github.com/tjdevries/colorbuddy.nvim.git
 
 # debug adapter protocol
 # debugging.lua
 [submodule "src/.local/share/nvim/site/pack/3pp/start/nvim-dap"]
-	path = src/.local/share/nvim/site/pack/3pp/start/nvim-dap
+	path = src/.local/share/nvim/site/pack/3pp/opt/nvim-dap
 	url = https://github.com/mfussenegger/nvim-dap.git
 [submodule "src/.local/share/nvim/site/pack/3pp/start/nvim-dap-ui"]
-	path = src/.local/share/nvim/site/pack/3pp/start/nvim-dap-ui
+	path = src/.local/share/nvim/site/pack/3pp/opt/nvim-dap-ui
 	url = https://github.com/rcarriga/nvim-dap-ui.git
 [submodule "src/.local/share/nvim/site/pack/3pp/start/nvim-nio"]
-	path = src/.local/share/nvim/site/pack/3pp/start/nvim-nio
+	path = src/.local/share/nvim/site/pack/3pp/opt/nvim-nio
 	url = https://github.com/nvim-neotest/nvim-nio
 
 # snippet support
 # snippets.lua
 # (also coding.lua becuase nvim-cmp uses this too)
 [submodule "src/.local/share/nvim/site/pack/3pp/start/LuaSnip"]
-	path = src/.local/share/nvim/site/pack/3pp/start/LuaSnip
+	path = src/.local/share/nvim/site/pack/3pp/opt/LuaSnip
 	url = https://github.com/L3MON4D3/LuaSnip
 [submodule "src/.local/share/nvim/site/pack/3pp/start/cmp_luasnip"]
-	path = src/.local/share/nvim/site/pack/3pp/start/cmp_luasnip
+	path = src/.local/share/nvim/site/pack/3pp/opt/cmp_luasnip
 	url = https://github.com/saadparwaiz1/cmp_luasnip

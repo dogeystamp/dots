@@ -27,11 +27,18 @@ vim.api.nvim_create_autocmd(
 	}
 )
 
+------
+-- git gutter
+------
+
+vim.cmd.packadd("vim-gitgutter")
 
 ------
 -- syntax highlighting
--- plug: nvim-treesitter
 ------
+
+vim.cmd.packadd("nvim-treesitter")
+
 require 'nvim-treesitter.configs'.setup {
 	ensure_installed = { "c", "cpp", "javascript", "typescript", "python", "vim", "fish", "bash", "lua", "rust" },
 	sync_install = false,
@@ -51,8 +58,8 @@ require 'nvim-treesitter.configs'.setup {
 
 ------
 -- treesitter (language intelligent) motions
--- plug: nvim-treesitter-textobjects
 ------
+vim.cmd.packadd("nvim-treesitter-textobjects")
 require("nvim-treesitter.configs").setup {
 	textobjects = {
 		select = {
@@ -71,8 +78,8 @@ require("nvim-treesitter.configs").setup {
 
 ------
 -- diagnostics box
--- plug: trouble.nvim
 ------
+vim.cmd.packadd("trouble.nvim")
 require('trouble').setup({
 	icons = false,
 	fold_open = "v",   -- icon used for open folds
@@ -104,8 +111,8 @@ keymap("gR", "<cmd>TroubleToggle lsp_references<cr>")
 
 ------
 -- language server (LSP)
--- plug: nvim-lspconfig
 ------
+vim.cmd.packadd("nvim-lspconfig")
 local on_attach = function(client, bufnr)
 	local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 	-- Enable completion triggered by <c-x><c-o>
@@ -193,8 +200,10 @@ end
 
 ------
 -- completions
--- plug: nvim-cmp, cmp-nvim-lsp
 ------
+vim.cmd.packadd("nvim-cmp")
+vim.cmd.packadd("cmp-nvim-lsp")
+
 local cmp = require('cmp')
 cmp.setup({
 	window = {
