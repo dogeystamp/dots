@@ -38,12 +38,12 @@ let maplocalleader = " "
 " vnoremap s "-s
 
 " easier binds to use system clipboard with
-nmap <tab>y "+y
-vmap <tab>y "+y
-nmap <tab>d "+d
-vmap <tab>d "+d
-nmap <tab>c "+c
-vmap <tab>c "+c
+nmap <C-S>y "+y
+vmap <C-S>y "+y
+nmap <C-S>d "+d
+vmap <C-S>d "+d
+nmap <C-S>c "+c
+vmap <C-S>c "+c
 
 " 0 is easier to reach so swap these binds
 nnoremap 0 ^
