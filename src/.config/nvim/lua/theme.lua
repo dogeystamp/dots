@@ -35,10 +35,13 @@ Group.link("SignColumn", groups.LineNr)
 Group.new("VertSplit", colors.noir_9, colors.none, nil)
 
 -- other overrides
+Group.new("CurSearch", colors.noir_9, colors.primary)
+
 Group.new("identifier", colors.noir_3, nil, nil)
 
 Group.new("function", colors.noir_2, nil)
 Group.link("@function", groups["function"])
+Group.link("String", groups["@string"])
 Group.link("@lsp.type.function", groups["function"])
 
 Group.new("comment", colors.noir_6, nil, styles.italic)
