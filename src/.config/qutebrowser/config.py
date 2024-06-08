@@ -43,7 +43,8 @@ c.fonts.web.family.sans_serif = "Inter"
 c.fonts.web.family.standard = "Inter"
 c.fonts.web.family.fixed = "JetBrains Mono"
 
-config.bind("td", "config-cycle colors.webpage.darkmode.enabled true false;; restart")
+# for QtWebEngine < 6.7, a :restart is needed following this
+config.bind("td", "config-cycle colors.webpage.darkmode.enabled true false")
 
 # General settings
 
@@ -164,11 +165,11 @@ c.fileselect.single_file.command = [
 # (thank you very much dima https://github.com/qutebrowser/qutebrowser/issues/6281)
 config.bind(
     "<Ctrl-d>",
-    "jseval -q window.scrollBy({top: window.innerHeight/2, left: 0, behavior: 'smooth'});",
+    "jseval -q window.scrollBy({top: window.innerHeight/1.5, left: 0, behavior: 'smooth'});",
 )
 config.bind(
     "<Ctrl-u>",
-    "jseval -q window.scrollBy({top: -window.innerHeight/2, left: 0, behavior: 'smooth'});",
+    "jseval -q window.scrollBy({top: -window.innerHeight/1.5, left: 0, behavior: 'smooth'});",
 )
 config.bind(
     "G",
