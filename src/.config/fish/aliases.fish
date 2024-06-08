@@ -14,9 +14,6 @@ alias cp='cp -n'
 # run this before opening, e.g., mpv or zathura
 abbr -a -- ds swal;
 
-# neovide
-alias nv 'swal -c neovide; neovide'
-
 # zathura
 alias thur='zathura'
 # stricter sandbox zathura

@@ -1,0 +1,15 @@
+#!/bin/sh
+# Small wrapper over neovide/neovim
+
+swal() {
+	if command -v dwmswallow > /dev/null; then
+		dwmswallow "$WINDOWID" -c neovide
+	fi
+}
+
+if ! command -v neovide > /dev/null || [ -z "$DISPLAY" ]; then
+	nvim "$@"
+else
+	swal
+	neovide "$@"
+fi

@@ -1,3 +1,6 @@
+local confutil = require("confutil")
+local keymap = confutil.keymap
+
 ------
 -- color theme
 ------
@@ -112,10 +115,13 @@ if vim.g.neovide then
 			once = true,
 			callback = function()
 				vim.g.neovide_scale_factor = 1.01
-				vim.uv.new_timer():start(20, 0, vim.schedule_wrap(function()
+				vim.uv.new_timer():start(40, 0, vim.schedule_wrap(function()
 					vim.g.neovide_scale_factor = 1
 				end))
 			end,
 		}
 	)
+
+	-- no terminal, no Ctrl-Shift-V paste
+	keymap("<C-S-V>", '<Esc>"+p', { mode = { "n", "i" } })
 end

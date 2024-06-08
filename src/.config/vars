@@ -53,9 +53,9 @@ export MRSS_DIR="$HOME/dox/rss"
 export REM_FILE="$HOME/dox/not/rem"
 
 # Set default programs
-export EDITOR="nvim"
+export EDITOR="nv"
 export BROWSER="qutebrowser"
-# man pager
+# man pager (neovide doesn't support this yet https://github.com/neovide/neovide/issues/1865)
 export MANPAGER='nvim +Man!'
 export MANWIDTH=165
 
