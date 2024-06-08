@@ -139,6 +139,7 @@ arc-gtk-theme
 lxappearance-gtk3
 radare2
 typst
+neovide
 
 # .local/bin/pyinstantref script
 python-pydbus

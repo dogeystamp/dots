@@ -1,12 +1,11 @@
 # dynamic swallow (dwm patch)
 function swal
-	return
 	if command -v dwmswallow > /dev/null
 		dwmswallow "$WINDOWID" $argv
 	end
 end
 
-alias mpv='swal -c mpv; command mpv'
+alias mpv='command mpv'
 
 # prevent clobbering files
 alias mv='mv -n'
@@ -15,9 +14,11 @@ alias cp='cp -n'
 # run this before opening, e.g., mpv or zathura
 abbr -a -- ds swal;
 
+# neovide
+alias nv 'swal -c neovide; neovide'
 
 # zathura
-alias thur='swal -c Zathura; zathura'
+alias thur='zathura'
 # stricter sandbox zathura
 alias zathsec='/usr/bin/zathura -c ~/.config/zathura-sec'
 
@@ -59,7 +60,7 @@ function ldg; $EDITOR ~/dox/not/journal.ldg; end
 
 # disable history on units
 alias units='units -H ""'
-alias sxiv='swal; nsxiv'
+alias sxiv='nsxiv'
 
 # music recognition
 # an alternative is available at ~/.local/bin/msrec

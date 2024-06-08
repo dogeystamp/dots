@@ -3,3 +3,4 @@
 
 picom  --window-shader-fg-rule "$HOME/.config/picom/shaders/transparency-sonixd.glsl:class_g = 'feishin'" \
 	--window-shader-fg-rule "$HOME/.config/picom/shaders/transparency.glsl:class_g = 'qutebrowser'" \
+	--window-shader-fg-rule "$HOME/.config/picom/shaders/transparency.glsl:class_g = 'neovide'" \

@@ -44,6 +44,7 @@ nmap <C-S>d "+d
 vmap <C-S>d "+d
 nmap <C-S>c "+c
 vmap <C-S>c "+c
+nmap <C-S>p "+p
 
 " 0 is easier to reach so swap these binds
 nnoremap 0 ^
