@@ -41,6 +41,7 @@ keymap("<leader>eb", "<cmd>Telescope keymaps<cr>")
 --------------------------------
 --------------------------------
 
+require("frontend")
 require("theme")
 require("snippets")
 
