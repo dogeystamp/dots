@@ -1,0 +1,10 @@
+#!/bin/sh
+# Wrapper over neovide for man pages
+# see https://github.com/neovide/neovide/issues/1865
+
+TEMPF=$(mktemp)
+cat > "$TEMPF"
+
+nv +Man! "$TEMPF"
+
+rm "$TEMPF"

@@ -54,9 +54,8 @@ export REM_FILE="$HOME/dox/not/rem"
 
 # Set default programs
 export EDITOR="nv"
+export MANPAGER='nv-man'
 export BROWSER="qutebrowser"
-# man pager (neovide doesn't support this yet https://github.com/neovide/neovide/issues/1865)
-export MANPAGER='nvim +Man!'
 export MANWIDTH=165
 
 # Soundboard
@@ -91,3 +90,6 @@ export PATH="$PATH":"$XDG_DATA_HOME"/cargo/bin
 
 # cppman can't set it itself for some reason
 export MANPATH="$MANPATH":~/.cache/cppman/
+
+# preferences for FZF
+export FZF_DEFAULT_OPTS="--color=pointer:cyan"
