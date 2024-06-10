@@ -3,7 +3,7 @@
     close_all = mod4+shift+m
     history = mod4+shift+n
 
-	font = JetBrains Mono 11 
+	font = Inter Display 12
     alignment = left
     format = "<b>%a:</b> %s\n%b"
 
@@ -26,7 +26,7 @@
     separator_color = frame
 	gap_size = 5
 
-	frame_width = 1
+	frame_width = 2
 
 	origin = bottom-right
 	offset = 60x70
