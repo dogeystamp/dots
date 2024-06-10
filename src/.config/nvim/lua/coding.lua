@@ -114,7 +114,7 @@ keymap("gR", "<cmd>TroubleToggle lsp_references<cr>")
 ------
 vim.cmd.packadd("nvim-lspconfig")
 local on_attach = function(client, bufnr)
-	local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+	local function buf_set_option(name, value) vim.api.nvim_set_option_value(name, value, { buf=bufnr }) end
 	-- Enable completion triggered by <c-x><c-o>
 	buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
