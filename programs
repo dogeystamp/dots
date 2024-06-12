@@ -69,6 +69,10 @@ which
 dnsutils
 man-pages
 zoxide
+# IME input
+fcitx5
+fcitx5-chinese-addons
+fcitx5-configtool
 
 # in the aur
 tmsu
