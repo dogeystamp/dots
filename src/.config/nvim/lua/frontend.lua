@@ -16,6 +16,7 @@ if vim.g.neovide then
 	vim.g.transparency = 0
 	vim.g.neovide_background_color = "#000000" .. 0
 
+	vim.g.neovide_cursor_trail_size = 0.1
 	vim.g.neovide_cursor_animate_in_insert_mode = false
 
 	-- hack to unscrew the scaling issues
