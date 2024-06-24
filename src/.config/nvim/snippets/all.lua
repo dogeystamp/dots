@@ -161,6 +161,7 @@ return {
 					cpp = "//",
 					rust = "//",
 					lua = "--",
+					yaml = "##",
 					python = "##",
 				}
 
