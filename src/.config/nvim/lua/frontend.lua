@@ -17,7 +17,7 @@ if vim.g.neovide then
 	vim.g.neovide_background_color = "#000000" .. 0
 
 	vim.g.neovide_cursor_trail_size = 0.1
-	vim.g.neovide_cursor_animate_in_insert_mode = false
+	vim.g.neovide_cursor_animate_in_insert_mode = true
 
 	-- hack to unscrew the scaling issues
 	-- sometimes opening neovide on a tiling wm makes it not occupy the entire window until resized
@@ -37,10 +37,10 @@ if vim.g.neovide then
 	)
 
 	-- no terminal, no Ctrl-Shift-V paste
-	keymap("<C-S-V>", '<Esc>"+p', { mode = { "n", "i" } })
+	keymap("<C-S-V>", '<Esc>"+pa', { mode = { "n", "i" } })
 
 	-- "new-term" in working directory
 	keymap("<C-S-Return>", function()
-		vim.system({ 'alacritty' }, { detach = true })
+		vim.system({ 'sh', '-c', 'alacritty msg create-window || alacritty' }, { detach = true })
 	end, { mode = { "n", "i", "v", "t" } })
 end
