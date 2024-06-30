@@ -12,20 +12,22 @@ local keymap = confutil.keymap
 -- to turn this off for a session (permanently), run
 -- :autocmd! AutoFormat
 -- https://superuser.com/a/1415274
-vim.api.nvim_create_augroup("AutoFormat", {})
 
-vim.api.nvim_create_autocmd(
-	"BufWritePost",
-	{
-		pattern = "*.py",
-		group = "AutoFormat",
-		callback = function()
-			vim.cmd("silent !black --quiet %")
-			vim.cmd("edit")
-			vim.cmd("norm zz")
-		end,
-	}
-)
+-- vim.api.nvim_create_augroup("AutoFormat", {})
+--
+-- vim.api.nvim_create_autocmd(
+-- 	"BufWritePost",
+-- 	{
+-- 		pattern = "*.py",
+-- 		group = "AutoFormat",
+-- 		callback = function()
+-- 			vim.cmd("silent !black --quiet %")
+-- 			vim.cmd("edit")
+-- 			vim.cmd("norm zz")
+-- 		end,
+-- 	}
+-- )
+
 
 ------
 -- git gutter
@@ -113,12 +115,20 @@ keymap("gR", "<cmd>TroubleToggle lsp_references<cr>")
 -- language server (LSP)
 ------
 vim.cmd.packadd("nvim-lspconfig")
+local nvim_lsp = require('lspconfig')
+
 local on_attach = function(client, bufnr)
-	local function buf_set_option(name, value) vim.api.nvim_set_option_value(name, value, { buf=bufnr }) end
+	local function buf_set_option(name, value) vim.api.nvim_set_option_value(name, value, { buf = bufnr }) end
+
+	if client.name == "ruff" then
+		-- defer hover to pyright
+		client.server_capabilities.hoverProvider = false
+	end
+
 	-- Enable completion triggered by <c-x><c-o>
 	buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-	local opts = { noremap = true, silent = true, buffer=bufnr }
+	local opts = { noremap = true, silent = true, buffer = bufnr }
 	keymap('gD', vim.lsp.buf.declaration, opts)
 	keymap('gd', vim.lsp.buf.definition, opts)
 	keymap('gK', vim.lsp.buf.hover, opts)
@@ -135,10 +145,36 @@ local on_attach = function(client, bufnr)
 	keymap('<localleader>f', vim.lsp.buf.format, opts)
 end
 
+-- find ruff config file path
+local ruff_config = vim.fs.root(0, { ".git", "pyproject.toml" }) or ""
+
 -- table declares LSPs to be set up
 -- as well as settings per server (overrides defaults)
 local servers = {
-	pyright = {},
+	pyright = {
+		settings = {
+			pyright = {
+				-- defer to ruff
+				disableOrganizeImports = true,
+			},
+			python = {
+				analysis = {
+					-- defer to ruff
+					ignore = { '*' },
+				},
+			}
+		}
+	},
+	ruff = {
+		settings = {
+			format = {
+				args = { "--config=" .. ruff_config },
+			},
+			lint = {
+				args = { "--config=" .. ruff_config },
+			},
+		}
+	},
 	-- pylsp = {
 	-- 	settings = {
 	-- 		plugins = {
@@ -184,7 +220,6 @@ local servers = {
 		},
 	},
 }
-local nvim_lsp = require('lspconfig')
 for lsp, sv_settings in pairs(servers) do
 	-- defaults
 	local settings = {
