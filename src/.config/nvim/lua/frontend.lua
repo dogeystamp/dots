@@ -37,10 +37,12 @@ if vim.g.neovide then
 	)
 
 	-- no terminal, no Ctrl-Shift-V paste
-	keymap("<C-S-V>", '<Esc>"+pa', { mode = { "n", "i" } })
+	keymap("<C-S-V>", '<Esc>"+pa', { mode = { "n", "i", "v" } })
+	-- this bind seems to not show the pasted text until the screen is updated, but it works i guess
+	keymap("<C-S-V>", '<c-r>+', { mode = { "c" } })
 
 	-- "new-term" in working directory
 	keymap("<C-S-Return>", function()
-		vim.system({ 'sh', '-c', 'alacritty msg create-window || alacritty' }, { detach = true })
-	end, { mode = { "n", "i", "v", "t" } })
+		vim.system({ 'sh', '-c', 'alacritty msg create-window --working-directory "$(pwd)" || alacritty' }, { detach = true })
+	end, { mode = { "n", "i", "v", "t", "c" } })
 end
