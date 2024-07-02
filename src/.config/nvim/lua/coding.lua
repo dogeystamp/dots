@@ -157,12 +157,6 @@ local servers = {
 				-- defer to ruff
 				disableOrganizeImports = true,
 			},
-			python = {
-				analysis = {
-					-- defer to ruff
-					ignore = { '*' },
-				},
-			}
 		}
 	},
 	ruff = {
