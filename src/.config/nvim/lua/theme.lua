@@ -57,6 +57,8 @@ Group.link("@type.qualifier", groups["keyword.return"])
 
 Group.new("NormalFloat", colors.noir_1, colors.noir_9, nil)
 
+Group.new("NonText", colors.noir_9, nil, nil)
+
 -- swap undercurls and underlines
 for _, v in ipairs({ "Error", "Info", "Hint", "Warn" }) do
 	local col_name = "diagnostic_" .. string.lower(v)

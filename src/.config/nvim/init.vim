@@ -1,5 +1,8 @@
 set tabstop=4 shiftwidth=4 noexpandtab ai nosmd ignorecase smartcase
 
+" visible whitespace
+set list listchars=tab:»\ ,trail:•,leadmultispace:\│\ \ \ ,extends:⇥,precedes:⇤
+
 " Time neovim saves to swapfile in
 " Also time neovim recognizes cursor inactivity
 set updatetime=800
