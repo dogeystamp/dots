@@ -22,7 +22,7 @@ static const char dmenufont[]       = "JetBrains Mono:size=15";
 static const char col_gray1[]       = "#000000";
 static const char col_gray2[]       = "#202020";
 static const char col_gray3[]       = "#505050";
-static const char col_gray4[]       = "#bbbbbb";
+static const char col_gray4[]       = "#99aabb";
 static const char col_gray5[]       = "#eeeeee";
 static const unsigned int baralpha = 0;
 static const unsigned int borderalpha = OPAQUE;
