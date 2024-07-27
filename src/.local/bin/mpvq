@@ -1,5 +1,10 @@
 #!/bin/sh
-# Append link from clipboard to mpv playlist
+# Append link from clipboard/argument to mpv playlist
 
-path="$(xsel -b)"
+if [ -z "$2" ]; then
+	path="$(xsel -b)"
+else
+	path="$2"
+fi
+
 echo "{ command: [ \"loadfile\", \"$path\", \"append-play\" ] }" | socat - $1
