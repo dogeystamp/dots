@@ -3,8 +3,16 @@
 
 TMPFILE="$(mktemp)"
 
-#xsel -b > "$TMPFILE"
-st -g 60x8+0+800 -c popup-bottom-center \
-	-e nvim -c "set binary noeol" -c "startinsert" "$TMPFILE" -c "highlight Normal ctermbg=016"
-cat "$TMPFILE" | xsel -ib
-rm "$TMPFILE"
+xsel -b > "$TMPFILE"
+
+newterm() {
+	alacritty msg create-window "$@" ||
+		alacritty "$@"
+}
+
+newterm \
+	-o 'window.class = { instance = "popup-bottom-center", general="popup-bottom-center" }' \
+	-o 'window.opacity = 1.0' \
+	-o 'window.dimensions = { columns = 84, lines = 10 }' \
+	-o 'window.position = { x = 0, y = 1200 }' \
+	-e sh -c "xsel -b > '$TMPFILE'; nvim -c 'set binary noeol textwidth=80' '$TMPFILE' && cat '$TMPFILE' | xsel -ib && rm '$TMPFILE'"
