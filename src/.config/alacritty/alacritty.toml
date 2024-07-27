@@ -5,8 +5,10 @@ opacity = 0.0
 [font]
 normal = { family = "JetBrains Mono" }
 size = 10
-
 [colors]
+[colors.primary]
+background = "#000000"
+
 [colors.normal]
 black =   "#000000"
 red =     "#949494"
@@ -30,5 +32,31 @@ white =   "#eceff4"
 
 [keyboard]
 bindings = [
-	{ key = "Enter", mods = "Control|Shift", action = "CreateNewWindow" }
+	{ key = "Enter", mods = "Control|Shift", action = "CreateNewWindow" },
+	{ key = "l", mods = "Control|Shift", action = "ClearHistory" },
 ]
+
+[bell]
+animation = "EaseOutQuint"
+duration = 150
+color = "#000000"
+
+# uRls
+[[hints.enabled]]
+action          = "Copy"
+hyperlinks      = true
+post_processing = true
+persist         = false
+mouse.enabled   = true
+binding         = { key = "R", mods = "Control|Shift" }
+regex           = "(ipfs:|ipns:|magnet:|mailto:|gemini://|go‐pher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩‘]+"
+
+# git coMmits
+[[hints.enabled]]
+action          = "Copy"
+post_processing = true
+persist         = false
+mouse.enabled   = true
+hyperlinks=true
+binding         = { key = "M", mods = "Control" }
+regex           = "[0-9a-f]{7,40}"
