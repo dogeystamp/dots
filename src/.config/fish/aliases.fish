@@ -57,7 +57,9 @@ function ldg; $EDITOR ~/dox/not/journal.ldg; end
 
 # disable history on units
 alias units='units -H ""'
+
 alias sxiv='nsxiv'
+alias xxd='tinyxxd'
 
 # music recognition
 # an alternative is available at ~/.local/bin/msrec
