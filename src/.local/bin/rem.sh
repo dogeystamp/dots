@@ -21,7 +21,7 @@ sub_help() {
 	echo "  add                append new entry"
 	echo '  edit               open reminder file in $EDITOR'
 	echo
-	echo "Set $REM_FILE"
+	echo 'Set $REM_FILE' "(currently $REM_FILE)"
 }
 
 sub_show() {
