@@ -96,8 +96,11 @@ $env.NU_PLUGIN_DIRS = [
 # source ($nu.default-config-dir | path join 'custom.nu')
 
 let conf_dir = $nu.config-path | path dirname
-$env.NU_LIB_DIRS | append conf_dir
+$env.NU_LIB_DIRS = ($env.NU_LIB_DIRS | append $conf_dir)
+let zox_conf = ([$conf_dir zoxide.nu] | path join)
 
 if (which zoxide | length) > 0 {
-    zoxide init nushell | save -f ([$conf_dir zoxide.nu] | path join)
+    zoxide init nushell | save -f $zox_conf
+} else {
+	'# DUMMY file (no zoxide support)' | save -f $zox_conf
 }
