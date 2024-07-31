@@ -713,5 +713,4 @@ $env.config = {
     ]
 }
 
-const zoxide_conf = "~/.config/nushell/zoxide.nu"
-source $zoxide_conf
+source zoxide.nu
