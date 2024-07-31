@@ -4,7 +4,9 @@
 
 alias gs = git status
 alias gp = git push
-alias pgh = git push gh
+def `gp pgh` [] {
+	git push; git push gh
+}
 alias ga = git add
 alias gc = git commit
 alias gcs = git commit -S
