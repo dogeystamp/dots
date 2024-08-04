@@ -21,11 +21,14 @@ sub_help() {
 	echo "  add                append new entry"
 	echo '  edit               open reminder file in $EDITOR'
 	echo
-	echo 'Set $REM_FILE' "(currently $REM_FILE)"
+	echo 'Saves to $REM_FILE' "(currently $REM_FILE)."
+	echo
+	echo "rem.sh ignores all contents before the '----' marker in your file."
+	echo "You can use this to archive your reminders."
 }
 
 sub_show() {
-	REMS="$(cat "$REM_FILE" | sed -z 's/^\n$//g')"
+	REMS="$(cat "$REM_FILE" | sed "1,/^----$/d" | sed -z 's/^\n$//g')"
 	if [ ! -z "$REMS" ]; then
 		printf "reminders:\n\n%s\n\n" "$REMS"
 	fi
