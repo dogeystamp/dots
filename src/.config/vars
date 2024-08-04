@@ -5,6 +5,9 @@ if [ -n "$VARS_SET" ]; then
 fi
 export VARS_SET=1
 
+# by default chmod o-rwx
+umask 007
+
 # Set XDG directories
 export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_CACHE_HOME="$HOME"/.cache
