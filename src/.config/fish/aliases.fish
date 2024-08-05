@@ -17,7 +17,7 @@ abbr -a -- ds swal;
 # zathura
 alias thur='zathura'
 # stricter sandbox zathura
-alias zathsec='/usr/bin/zathura -c ~/.config/zathura-sec'
+alias zathsec='/usr/bin/zathura-sandbox -c ~/.config/zathura-sec'
 
 # tmux with 256-color and UTF-8
 function tmx; tmux -u -2 $argv; end
