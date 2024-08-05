@@ -42,7 +42,20 @@ vim.cmd.packadd("vim-gitgutter")
 vim.cmd.packadd("nvim-treesitter")
 
 require 'nvim-treesitter.configs'.setup {
-	ensure_installed = { "c", "cpp", "javascript", "typescript", "python", "vim", "fish", "bash", "lua", "rust" },
+	ensure_installed = {
+		"c",
+		"cpp",
+		"javascript",
+		"typescript",
+		"python",
+		"vim",
+		"fish",
+		"bash",
+		"lua",
+		"rust",
+		"query",
+		"typst",
+	},
 	sync_install = false,
 	auto_install = false,
 	highlight = {
