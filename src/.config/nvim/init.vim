@@ -82,12 +82,6 @@ nnoremap <silent> ZF :qa<cr>
 " see .config/nvim/lua/init.lua
 lua require('init')
 
-" Code folding
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
-" unfold by default
-set foldlevel=99
-
 " auto-pairs
 packadd auto-pairs
 let g:AutoPairsFlyMode = 0

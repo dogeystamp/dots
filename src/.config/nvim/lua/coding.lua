@@ -58,6 +58,11 @@ require 'nvim-treesitter.configs'.setup {
 	},
 }
 
+-- code folding
+vim.wo.foldmethod = 'expr'
+vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.wo.foldlevel = 99 -- unfold by default
+
 ------
 -- treesitter (language intelligent) motions
 ------
@@ -148,6 +153,12 @@ end
 -- find ruff config file path
 local ruff_config = vim.fs.root(0, { ".git", "pyproject.toml" }) or ""
 
+vim.cmd.packadd("cmp-nvim-lsp")
+local cmp_nvim_lsp = require('cmp_nvim_lsp')
+local pyright_cap = cmp_nvim_lsp.default_capabilities()
+-- disable hint level diagnostics in pyright (defer to ruff)
+pyright_cap.textDocument.publishDiagnostics = { tagSupport = { valueSet = { 2 } } }
+
 -- table declares LSPs to be set up
 -- as well as settings per server (overrides defaults)
 local servers = {
@@ -157,7 +168,8 @@ local servers = {
 				-- defer to ruff
 				disableOrganizeImports = true,
 			},
-		}
+		},
+		capabilities = pyright_cap,
 	},
 	ruff = {
 		settings = {
@@ -231,7 +243,6 @@ end
 -- completions
 ------
 vim.cmd.packadd("nvim-cmp")
-vim.cmd.packadd("cmp-nvim-lsp")
 
 local cmp = require('cmp')
 cmp.setup({
