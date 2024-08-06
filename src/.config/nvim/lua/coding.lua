@@ -55,6 +55,7 @@ require 'nvim-treesitter.configs'.setup {
 		"rust",
 		"query",
 		"typst",
+		"toml",
 	},
 	sync_install = false,
 	auto_install = false,
@@ -238,6 +239,12 @@ local servers = {
 			},
 		},
 	},
+	typst_lsp = {
+		settings = {
+			exportPdf = "onSave" -- alternatively onType / never
+		}
+	},
+	nushell = {},
 }
 for lsp, sv_settings in pairs(servers) do
 	-- defaults

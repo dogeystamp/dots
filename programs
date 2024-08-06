@@ -145,6 +145,7 @@ arc-gtk-theme
 lxappearance-gtk3
 radare2
 typst
+typst-lsp
 neovide
 
 # .local/bin/pyinstantref script
