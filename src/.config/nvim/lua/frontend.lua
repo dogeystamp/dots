@@ -13,7 +13,7 @@ if vim.g.neovide then
 	vim.g.neovide_padding_top = 8
 	vim.g.neovide_padding_bottom = 8
 	vim.g.neovide_padding_left = 8
-	vim.g.transparency = 0
+	vim.g.transparency = 1
 	vim.g.neovide_background_color = "#000000" .. 0
 
 	vim.g.neovide_cursor_trail_size = 0.1

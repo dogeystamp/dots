@@ -47,6 +47,7 @@ vmap <C-S>y "+y
 nmap <C-S>d "+d
 vmap <C-S>d "+d
 nmap <C-S>c "+c
+nmap <C-S>C "+C
 vmap <C-S>c "+c
 nmap <C-S>p "+p
 
