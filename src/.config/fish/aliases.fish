@@ -38,8 +38,6 @@ end
 
 # Neomutt configs
 function neomutt.local; neomutt -F .config/neomutt/neomuttrc.local; end
-function neomutt.disroot; neomutt -F .config/neomutt/neomuttrc.disroot; end
-function neomutt.work; neomutt -F .config/neomutt/neomuttrc.work; end
 
 # Specific to my Gentoo system
 function genlop; doas -u portage /usr/bin/genlop; end
