@@ -1,0 +1,4 @@
+nvim-treesitter/parser/**
+nvim-treesitter/parser
+nvim-treesitter/parser-info/**
+nvim-treesitter/parser-info
