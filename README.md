@@ -4,17 +4,19 @@ My dotfiles.
 
 ## Installation
 
-Clone with submodules (this is necessary for Neovim plugins):
+Install [chezmoi](https://chezmoi.io):
 
-```bash
-git clone --recurse-submodules https://github.com/dogeystamp/dots.git
-# alternatively, after cloning:
-git submodule init
-git submodule update
+```
+# pacman -S chezmoi
 ```
 
-Symlink all the files in src/ to your home directory using the provided dotinstall.sh script, or manually.
-Otherwise, copy them manually to your home directory.
+Clone then apply these dotfiles:
+
+```
+chezmoi init dogeystamp/dotfiles --apply
+```
+
+Currently, a legacy `dotinstall.sh` is also available that installs the dotfiles as symlinks.
 
 After, install some packages. A list is provided in the `programs` file.
 This list encompasses all packages needed for a full system, including utilities and games.
