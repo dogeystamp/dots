@@ -11,8 +11,8 @@ background = "#000000"
 
 [colors.normal]
 black =   "#000000"
-red =     "#949494"
-green =   "#505050"
+red =     "#afaaaa"
+green =   "#505559"
 yellow =  "#a7a7a7"
 blue =    "#56698a"
 magenta = "#d5d5d5"

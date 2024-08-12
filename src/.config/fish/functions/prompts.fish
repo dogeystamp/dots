@@ -7,7 +7,7 @@ function fish_prompt
 		set letter '>'
 	end
 
-	set -l usercolor (set_color brgrey)
+	set -l usercolor (set_color brblack)
 
 	set -l stat_code ""
 	if test $cmd_status -ne 0
@@ -43,7 +43,7 @@ function fish_mode_prompt
 		set uniquecol (set_color --bold $col)
 	end
 
-	set_color --bold brgrey
+	set_color --bold brblack
 	echo '['
 	echo $uniquecol
 
@@ -60,7 +60,7 @@ function fish_mode_prompt
 		echo '?'
 	end
 
-	set_color --bold brgrey
+	set_color --bold brblack
 	echo '] '
 	set_color normal
 end

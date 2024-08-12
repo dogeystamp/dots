@@ -18,7 +18,7 @@ if status --is-interactive
 
 	set fish_color_param normal
 	set fish_color_cwd grey
-	set fish_color_command brgrey
+	set fish_color_command blue
 
 	if test $SYSTEM_PROFILE = "DEFAULT"
 		source ~/.config/fish/functions/extra_prompt.fish
