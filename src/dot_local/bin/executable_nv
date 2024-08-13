@@ -2,12 +2,12 @@
 # Small wrapper over neovide/neovim
 
 swal() {
-	if command -v dwmswallow > /dev/null; then
+	if command -v dwmswallow > /dev/null && [ -n "$DISPLAY" ]; then
 		dwmswallow "$WINDOWID" -c neovide
 	fi
 }
 
-if ! command -v neovide > /dev/null || [ -z "$DISPLAY" ]; then
+if ! command -v neovide > /dev/null || [ -z "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ]; then
 	nvim "$@"
 else
 	swal
