@@ -102,25 +102,11 @@ require("nvim-treesitter.configs").setup {
 ------
 vim.cmd.packadd("trouble.nvim")
 require('trouble').setup({
-	icons = false,
-	fold_open = "v",   -- icon used for open folds
-	fold_closed = ">", -- icon used for closed folds
-	indent_lines = false, -- add an indent guide below the fold icons
-	signs = {
-		-- icons / text used for a diagnostic
-		error = "error",
-		warning = "warn",
-		hint = "hint",
-		information = "info"
-	},
-	use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
+	auto_preview = false,
+	-- default config available at https://github.com/folke/trouble.nvim
 })
-keymap("<leader>dxx", "<cmd>TroubleToggle<cr>")
-keymap("<leader>dxw", "<cmd>TroubleToggle workspace_diagnostics<cr>")
-keymap("<leader>dxd", "<cmd>TroubleToggle document_diagnostics<cr>")
-keymap("<leader>dxq", "<cmd>TroubleToggle quickfix<cr>")
-keymap("<leader>dxl", "<cmd>TroubleToggle loclist<cr>")
-keymap("gR", "<cmd>TroubleToggle lsp_references<cr>")
+keymap("<leader>dxx", "<cmd>Trouble diagnostics toggle<cr>")
+keymap("gR", "<cmd>Trouble lsp_references toggle<cr>")
 
 
 
