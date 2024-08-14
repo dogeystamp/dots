@@ -16,8 +16,6 @@ Clone then apply these dotfiles:
 chezmoi init dogeystamp/dotfiles --apply
 ```
 
-Currently, a legacy `dotinstall.sh` is also available that installs the dotfiles as symlinks.
-
 After, install some packages. A list is provided in the `programs` file.
 This list encompasses all packages needed for a full system, including utilities and games.
 Feel free to pick and choose which packages you want.
