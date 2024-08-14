@@ -1,0 +1,5 @@
+{{- $systemprofilechoices := list "DEFAULT" "SLIM" "MINIMAL" -}}
+{{- $systemprofile := promptChoiceOnce . "systemprofile" "Select a system profile (use capital letter)" $systemprofilechoices "SLIM" -}}
+
+[data]
+systemprofile = {{- $systemprofile | quote -}}
