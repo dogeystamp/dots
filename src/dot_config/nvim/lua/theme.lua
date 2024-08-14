@@ -86,3 +86,7 @@ Group.link("DapUIType", groups["@type.builtin"])
 Group.link("DapUIVariable", groups["@variable"])
 Group.link("DapUIValue", groups["@number"])
 Group.link("DapUIFloatBorder", groups.FloatBorder)
+
+-- Trouble.nvim
+Group.link("TroubleNormal", groups.Normal)
+Group.link("TroubleNormalNC", groups.Normal)
