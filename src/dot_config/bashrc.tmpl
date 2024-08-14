@@ -1,0 +1,11 @@
+#!/bin/sh
+
+{{- $fish_path := "/usr/bin/fish" }}
+
+{{- if eq .chezmoi.os "android" }}
+{{- $fish_path = "/data/data/com.termux/files/user/bin/fish" }}
+{{- end }}
+
+# Use fish in place of bash
+# keep this line at the bottom of ~/.bashrc
+[ -x {{ $fish_path }} ] && SHELL={{ $fish_path }} exec fish
