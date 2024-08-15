@@ -13,7 +13,8 @@ if vim.g.neovide then
 	vim.g.neovide_padding_top = 8
 	vim.g.neovide_padding_bottom = 8
 	vim.g.neovide_padding_left = 8
-	vim.g.transparency = 1
+	vim.g.neovide_transparency = 0.1
+	vim.g.neovide_fullscreen = true
 	vim.g.neovide_background_color = "#000000" .. 0
 
 	vim.g.neovide_cursor_trail_size = 0.1
@@ -43,6 +44,7 @@ if vim.g.neovide then
 
 	-- "new-term" in working directory
 	keymap("<C-S-Return>", function()
-		vim.system({ 'sh', '-c', 'alacritty msg create-window --working-directory "$(pwd)" || alacritty' }, { detach = true })
+		vim.system({ 'sh', '-c', 'alacritty msg create-window --working-directory "$(pwd)" || alacritty' },
+			{ detach = true })
 	end, { mode = { "n", "i", "v", "t", "c" } })
 end
