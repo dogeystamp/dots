@@ -27,4 +27,4 @@ keymap("<C-e>", "<Plug>luasnip-next-choice", { mode = { "s", "i" } })
 -- snippets
 --------------------------------
 
-require("luasnip.loaders.from_lua").load({paths = vim.env.XDG_CONFIG_HOME .. "/nvim/snippets"})
+require("luasnip.loaders.from_lua").load({paths = vim.fn.stdpath("config") .. "/snippets"})

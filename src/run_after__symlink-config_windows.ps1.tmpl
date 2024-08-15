@@ -1,0 +1,27 @@
+{{- /* symlink into ~/.config and ~/.local/share/ on windows */ -}}
+
+{{- $roamingconfdirs := list "alacritty" "nushell" -}}
+{{- $localconfdirs := list "nvim" -}}
+
+{{- if eq .chezmoi.os "windows" -}}
+$userdir = ([Environment]::GetFolderPath("UserProfile"))
+$roamingconfdir = ([Environment]::GetFolderPath("ApplicationData"))
+$localconfdir = ([Environment]::GetFolderPath("LocalApplicationData"))
+
+{{ range $roamingconfdirs }}
+If (-Not (Test-Path $roamingconfdir\{{ . }})) {
+	New-Item -Path $roamingconfdir\{{ . }} -ItemType Junction -Value $userdir\.config\{{ . }}
+}
+{{ end }}
+
+{{ range $localconfdirs }}
+If (-Not (Test-Path $localconfdir\{{ . }})) {
+	New-Item -Path $localconfdir\{{ . }} -ItemType Junction -Value $userdir\.config\{{ . }}
+}
+{{ end }}
+
+If (-Not (Test-Path $localconfdir\nvim-data\site)) {
+	New-Item -Path $localconfdir\nvim-data\site -ItemType Junction -Value $userdir\.local\share\nvim\site
+}
+
+{{- end -}}
