@@ -1,8 +1,12 @@
 [window]
 padding = { x = 8, y = 8 }
-opacity = 0.1
-startup_mode = "Maximized"
+dimensions = { columns = 160, lines = 120 }
 decorations = "None"
+{{if eq .chezmoi.os "linux" -}}
+opacity = 0.0
+{{- else -}}
+opacity = 0.75
+{{- end}}
 
 [font]
 normal = { family = "JetBrainsMono NF" }
