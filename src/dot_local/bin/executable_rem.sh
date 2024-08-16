@@ -8,7 +8,7 @@ scriptname=$0
 subcmd=$1
 
 if [ -z "$REM_FILE" ]; then
-	REM_FILE="$HOME/.reminder-file"
+	REM_FILE="$XDG_DATA_HOME/reminder-file"
 	touch "$REM_FILE"
 fi
 

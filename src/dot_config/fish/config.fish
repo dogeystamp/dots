@@ -6,6 +6,7 @@ end
 set fish_greeting ""
 
 if status --is-interactive
+	rem.sh show
 	source ~/.config/fish/aliases.fish
 
 	# Enable Vi bindings
@@ -24,7 +25,6 @@ if status --is-interactive
 		source ~/.config/fish/functions/extra_prompt.fish
 		source ~/.config/fish/functions/fzf_binds.fish
 		fzf_key_bindings
-		rem.sh show
 	end
 	if command -v zoxide > /dev/null
 		zoxide init fish | source
