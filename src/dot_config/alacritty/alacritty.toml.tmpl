@@ -4,12 +4,11 @@ shell = "nu"
 
 [window]
 padding = { x = 8, y = 8 }
-dimensions = { columns = 160, lines = 120 }
-decorations = "None"
+dimensions = { columns = 120, lines = 70 }
 {{if eq .chezmoi.os "linux" -}}
 opacity = 0.0
 {{- else -}}
-opacity = 0.75
+opacity = 1.0
 {{- end}}
 
 [font]
