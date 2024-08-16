@@ -1,0 +1,45 @@
+#!/bin/sh
+# cross-platform clipboard wrapper
+# drop-in replacement for xsel wherever used in my dotfiles
+
+err () {
+	echo $@ 1>&2
+}
+
+no_provider () {
+	err "no providers for clipboard found!"
+	err "supported: termux-api, xsel, wl-clipboard"
+}
+
+if [ -z "$1" ] || [ "$1" = "-b" ]; then
+	if [ -n "$WAYLAND_DISPLAY" ]; then
+		if command -v wl-paste > /dev/null; then
+			wl-paste
+		fi
+	else
+		if command -v xsel > /dev/null; then
+			xsel -b
+		elif command -v termux-clipboard-set > /dev/null; then
+			termux-clipboard-get
+		else
+			no_provider
+		fi
+	fi
+elif [ "$1" = "-i" ] || [ "$1" = "set" ]; then
+	if [ -n "$WAYLAND_DISPLAY" ]; then
+		if command -v wl-copy > /dev/null; then
+			wl-copy
+		fi
+	else
+		if command -v xsel > /dev/null; then
+			xsel -ib
+		elif command -v termux-clipboard-set > /dev/null; then
+			cat /dev/stdin | termux-clipboard-set
+		else
+			no_provider
+		fi
+	fi
+else
+	err "usage: cb [-i] [set] [--help]"
+	err "communicates via stdout/stdin."
+fi

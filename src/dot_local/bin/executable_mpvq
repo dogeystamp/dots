@@ -2,7 +2,7 @@
 # Append link from clipboard/argument to mpv playlist
 
 if [ -z "$2" ]; then
-	path="$(xsel -b)"
+	path="$(cb)"
 else
 	path="$2"
 fi

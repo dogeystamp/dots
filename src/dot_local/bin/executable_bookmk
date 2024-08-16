@@ -1,8 +1,8 @@
 #!/bin/sh
 # Copy a bookmark to clipboard.
 #
-# Requires fzf, xsel
-# Bookmarks are stored in ~/dox/not/bk.txt, commented with #
+# Requires fzf, cb (script in this repo)
+# Bookmarks are stored in ~/dox/not/bk.txt, commented with ^
 # -o: print to stdout
 # -b: open in browser
 
@@ -26,7 +26,7 @@ if [ "$action" = "stdout" ]; then
 	printf "%s" "$output"
 fi
 if [ "$action" = "clip" ]; then
-	printf "%s" "$output" | xsel -ib
+	printf "%s" "$output" | cb set
 fi
 if [ "$action" = "browser" ]; then
 	$BROWSER "$output"
