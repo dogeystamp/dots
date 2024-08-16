@@ -1,3 +1,7 @@
+{{if eq .chezmoi.os "windows" }}
+shell = "nu"
+{{end}}
+
 [window]
 padding = { x = 8, y = 8 }
 dimensions = { columns = 160, lines = 120 }
