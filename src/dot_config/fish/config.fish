@@ -6,7 +6,9 @@ end
 set fish_greeting ""
 
 if status --is-interactive
-	rem.sh show
+	if not test $SYSTEM_PROFILE = "MINIMAL"
+		rem.sh show
+	end
 	source ~/.config/fish/aliases.fish
 
 	# Enable Vi bindings
