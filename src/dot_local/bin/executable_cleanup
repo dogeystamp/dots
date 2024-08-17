@@ -26,7 +26,4 @@ rm -rf \
 ~/.node_repl_history \
 ~/.vimspector.log
 
-# ipython supports XDG_CONFIG just not by default
-mv ~/.ipython "$XDG_CONFIG_HOME"/ipython
-
 rmdir Downloads Desktop 2>/dev/null
