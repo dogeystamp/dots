@@ -104,6 +104,44 @@ vim.cmd.packadd("trouble.nvim")
 require('trouble').setup({
 	auto_preview = false,
 	-- default config available at https://github.com/folke/trouble.nvim
+	icons = {
+		indent        = {
+			middle = " ",
+			last = " ",
+			top = " ",
+			ws = "│  ",
+		},
+		folder_closed = "- ",
+		folder_open   = "@ ",
+		kinds         = {
+			Array         = "a ",
+			Boolean       = "b ",
+			Class         = "C ",
+			Constant      = "π ",
+			Constructor   = "Π ",
+			Enum          = "Σ ",
+			EnumMember    = "Σ ",
+			Event         = "ε ",
+			Field         = "f ",
+			File          = "F ",
+			Function      = "λ ",
+			Interface     = "I ",
+			Key           = "β ",
+			Method        = "λ ",
+			Module        = "M ",
+			Namespace     = "N ",
+			Null          = "0 ",
+			Number        = "1 ",
+			Object        = "O ",
+			Operator      = "% ",
+			Package       = "P ",
+			Property      = "β ",
+			String        = "s ",
+			Struct        = "S ",
+			TypeParameter = "T ",
+			Variable      = "α ",
+		},
+	},
 })
 keymap("<leader>dxx", "<cmd>Trouble diagnostics toggle<cr>")
 keymap("gR", "<cmd>Trouble lsp_references toggle<cr>")

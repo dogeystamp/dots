@@ -4,7 +4,7 @@
 --------------------------------
 --------------------------------
 
-vim.o.guifont = "JetBrainsMono NF:h10"
+vim.o.guifont = "JetBrains Mono:h10"
 
 if vim.g.neovide then
 	local confutil = require("confutil")
