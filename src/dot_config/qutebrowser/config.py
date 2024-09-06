@@ -147,14 +147,14 @@ config.bind("<escape>", "clear-messages;; search")
 # homegrown file selector
 c.fileselect.handler = "external"
 c.fileselect.multiple_files.command = [
-    "st",
+    "alacritty",
     "-e",
     "fish",
     "-C",
     "set -x OUTPUT {}; source ~/.local/bin/fish-fm",
 ]
 c.fileselect.single_file.command = [
-    "st",
+    "alacritty",
     "-e",
     "fish",
     "-C",
