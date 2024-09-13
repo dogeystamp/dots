@@ -9,6 +9,11 @@ return {
 	s({ trig = "qu", name = "square (qu-artic) exponent", wordTrig = false }, t("^2")),
 	s({ trig = "cub", name = "cub-ed exponent", wordTrig = false }, t("^3")),
 
+	-- limits
+	s({ trig = "plus", name = "plus exponent", wordTrig = false }, t("^+")),
+	s({ trig = "min", name = "minus exponent", wordTrig = false }, t("^-")),
+	s({ trig = "lim", name = "limit", wordTrig = false }, fmt("lim_({}) ", { i(1) })),
+
 	s({
 			trig = "numb",
 			name = "numbered equation",
