@@ -53,12 +53,6 @@
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-treesitter-textobjects
 	url = https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 
-# error/warning/info box
-# coding.lua
-[submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_trouble.nvim"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_trouble.nvim
-	url = https://github.com/folke/trouble.nvim
-
 # aesthetic changes
 # init.lua
 [submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_dressing.nvim"]
@@ -134,9 +128,6 @@
 [submodule "submodule.src/dot_local/share/nvim/site/pack/3pp/start/external_nvim-treesitter-textobjects.path"]
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-treesitter-textobjects
 	url = https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-[submodule "submodule.src/dot_local/share/nvim/site/pack/3pp/start/external_trouble.nvim.path"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_trouble.nvim
-	url = https://github.com/folke/trouble.nvim
 [submodule "submodule.src/dot_local/share/nvim/site/pack/3pp/start/external_dressing.nvim.path"]
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_dressing.nvim
 	url = https://github.com/stevearc/dressing.nvim.git
