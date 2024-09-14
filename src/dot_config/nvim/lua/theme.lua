@@ -87,6 +87,19 @@ Group.link("DapUIVariable", groups["@variable"])
 Group.link("DapUIValue", groups["@number"])
 Group.link("DapUIFloatBorder", groups.FloatBorder)
 
--- Trouble.nvim
-Group.link("TroubleNormal", groups.Normal)
-Group.link("TroubleNormalNC", groups.Normal)
+-- LSP window borders
+-- https://vi.stackexchange.com/a/39075
+local _border = "rounded"
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+	vim.lsp.handlers.hover, {
+		border = _border
+	}
+)
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+	vim.lsp.handlers.signature_help, {
+		border = _border
+	}
+)
+vim.diagnostic.config {
+	float = { border = _border }
+}

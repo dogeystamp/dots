@@ -14,15 +14,6 @@
 # neovim plugins
 ################
 
-# prompts
-# telescope.vim
-[submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_telescope.nvim"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_telescope.nvim
-	url = https://github.com/nvim-telescope/telescope.nvim.git
-[submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_plenary.nvim"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_plenary.nvim
-	url = https://github.com/nvim-lua/plenary.nvim.git
-
 # git symbols in the gutter
 [submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_vim-gitgutter"]
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_vim-gitgutter
@@ -89,18 +80,15 @@
 [submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_cmp_luasnip"]
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_cmp_luasnip
 	url = https://github.com/saadparwaiz1/cmp_luasnip
+
+
+
 [submodule "submodule.src/dot_local/bin/external_pyinstantref.path"]
 	path = src/dot_local/bin/external_pyinstantref
 	url = https://github.com/dogeystamp/pyinstantref
 [submodule "submodule.src/dot_local/bin/external_inkscape-shortcut-manager.path"]
 	path = src/dot_local/bin/external_inkscape-shortcut-manager
 	url = https://github.com/dogeystamp/inkscape-shortcut-manager
-[submodule "submodule.src/dot_local/share/nvim/site/pack/3pp/start/external_telescope.nvim.path"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_telescope.nvim
-	url = https://github.com/nvim-telescope/telescope.nvim.git
-[submodule "submodule.src/dot_local/share/nvim/site/pack/3pp/start/external_plenary.nvim.path"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_plenary.nvim
-	url = https://github.com/nvim-lua/plenary.nvim.git
 [submodule "submodule.src/dot_local/share/nvim/site/pack/3pp/start/external_vim-gitgutter.path"]
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git

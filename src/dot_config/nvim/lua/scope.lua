@@ -11,6 +11,7 @@ M = {}
 ---@param s any Thing to print
 ---@param pre string? Message that goes before thing
 ---@diagnostic disable-next-line: unused-function, unused-local
+---@deprecated
 local function dbg_print(s, pre)
 	vim.system({ "sh", "-c", string.format("echo '%s' >> /tmp/nvim_scope_log", (pre or "") .. vim.inspect(s)) })
 end
@@ -41,15 +42,13 @@ function M.scope_fzf(choice_gen, command, scope_opts)
 
 	local buf = vim.api.nvim_create_buf(false, true)
 	if win_mode == "window" then
-		vim.cmd.buf(buf)
+		vim.api.nvim_win_set_buf(0, buf)
 	elseif win_mode == "float" then
 		vim.api.nvim_open_win(buf, true,
 			opts.float_opts or { relative = "cursor", width = 40, height = 20, col = 1, row = 1 })
 	end
 
 	vim.wo.statusline = "Scope"
-
-	vim.cmd("startinsert")
 
 	local fzf_opts = opts.fzf_opts or ""
 
@@ -97,6 +96,8 @@ function M.scope_fzf(choice_gen, command, scope_opts)
 			end
 		end
 	})
+	-- HACK: startinsert is broken here if called after input_new()
+	vim.api.nvim_feedkeys("i", "n", false)
 end
 
 --------------------------------
@@ -195,14 +196,14 @@ local function input_new(opts, on_confirm)
 
 	vim.keymap.set({ "i", "n" }, "<Enter>",
 		function()
-			on_confirm(table.concat(vim.api.nvim_buf_get_lines(buf, 0, -1, true), "\n"))
 			close_win()
+			on_confirm(table.concat(vim.api.nvim_buf_get_lines(buf, 0, -1, true), "\n"))
 		end,
 		map_opts
 	)
-	vim.keymap.set({ "i" }, "<C-c>", function ()
-		on_confirm(nil)
+	vim.keymap.set({ "i" }, "<C-c>", function()
 		close_win()
+		on_confirm(nil)
 	end, map_opts)
 end
 
@@ -234,12 +235,31 @@ function M.buffer_list()
 			return vim.api.nvim_exec2("ls", { output = true }).output
 		end,
 		function(s)
-			local _, _, bufnr = string.find(s, "^%s*(%d+)")
+			local bufnr = string.match(s, "^%s*(%d+)")
 			if bufnr then
 				vim.cmd.buf(bufnr)
 			end
 		end
 	)
+end
+
+---Non-live grep
+function M.rg_search()
+	vim.ui.input({ prompt = "Query: " }, function(query)
+		if not query or query == "" then return end
+		M.scope_fzf(string.format("rg --with-filename --column --null '%s' .", query), function(sel)
+			local _, idx_end1, search_str = string.find(sel, "([^\n]*)\n")
+			local _, idx_end2, file = string.find(sel, "([%g ]*)\0", idx_end1 + 1)
+			if not file then return end
+			local line, column = string.match(sel, "(%d+):(%d+)", idx_end2 + 1)
+
+			vim.cmd.drop(file)
+			vim.fn.cursor(tonumber(line), tonumber(column))
+
+			local highlight = search_str
+			if highlight == "" then highlight = query end
+		end, { fzf_opts = ("--print-query --query '%s'"):format(query) })
+	end)
 end
 
 return M
