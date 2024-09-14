@@ -20,6 +20,25 @@ tnoremap <silent> <esc> <c-\><c-n><c-\><c-n>
 " enable line numbers
 set number relativenumber
 
+" use same colors as alacritty for integrated terminals
+let g:terminal_color_0  = "#000000"
+let g:terminal_color_1  = "#afaaaa"
+let g:terminal_color_2  = "#505559"
+let g:terminal_color_3  = "#a7a7a7"
+let g:terminal_color_4  = "#56698a"
+let g:terminal_color_5  = "#d5d5d5"
+let g:terminal_color_6  = "#99AABB"
+let g:terminal_color_7  = "#e5e9f0"
+
+let g:terminal_color_8  = "#4c566a"
+let g:terminal_color_9  = "#bf616a"
+let g:terminal_color_10 = "#a3be8c"
+let g:terminal_color_11 = "#ebcb8b"
+let g:terminal_color_12 = "#81a1c1"
+let g:terminal_color_13 = "#b48ead"
+let g:terminal_color_14 = "#8fbcbb"
+let g:terminal_color_15 = "#eceff4"
+
 " disable bottom right status line
 set noruler
 set showtabline=0

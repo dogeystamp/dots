@@ -28,12 +28,19 @@ require('dressing').setup({
 
 -- requires plenary.nvim
 vim.cmd.packadd("telescope.nvim")
-keymap("<leader>ef", "<cmd>Telescope find_files<cr>")
+--keymap("<leader>ef", "<cmd>Telescope find_files<cr>")
 keymap("<leader>eg", "<cmd>Telescope live_grep<cr>")
 keymap("<leader>em", "<cmd>Telescope buffers<cr>")
 keymap("<leader>eh", "<cmd>Telescope help_tags<cr>")
 keymap("<leader>es", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>")
 keymap("<leader>eb", "<cmd>Telescope keymaps<cr>")
+
+--------
+-- generic brand fuzzy finder
+--------
+local scope = require("scope")
+keymap("<leader>ef", scope.file_finder)
+
 
 --------------------------------
 --------------------------------
