@@ -53,12 +53,6 @@
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-treesitter-textobjects
 	url = https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 
-# aesthetic changes
-# init.lua
-[submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_dressing.nvim"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_dressing.nvim
-	url = https://github.com/stevearc/dressing.nvim.git
-
 # plain-text-accounting ledger ftplugin
 # ftplugin/ledger.vim
 [submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_vim-ledger"]
@@ -128,9 +122,6 @@
 [submodule "submodule.src/dot_local/share/nvim/site/pack/3pp/start/external_nvim-treesitter-textobjects.path"]
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-treesitter-textobjects
 	url = https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-[submodule "submodule.src/dot_local/share/nvim/site/pack/3pp/start/external_dressing.nvim.path"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_dressing.nvim
-	url = https://github.com/stevearc/dressing.nvim.git
 [submodule "submodule.src/dot_local/share/nvim/site/pack/3pp/start/external_vim-ledger.path"]
 	path = src/dot_local/share/nvim/site/pack/3pp/start/external_vim-ledger
 	url = https://github.com/ledger/vim-ledger.git

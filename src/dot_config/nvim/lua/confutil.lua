@@ -2,7 +2,13 @@
 
 local M = {}
 
--- nnoremap, etc.
+---@class KeymapOpts: vim.keymap.set.Opts
+--- @field mode? string|string[]
+
+---Keymap helper.
+---@param key string
+---@param cmd string|function
+---@param params? KeymapOpts
 function M.keymap(key, cmd, params)
 	if params == nil then
 		params = {}
@@ -20,7 +26,7 @@ function M.keymap(key, cmd, params)
 		buffer = false,
 	}
 	setmetatable(params, {
-		__index = function(table, k)
+		__index = function(_, k)
 			return default_params[k]
 		end
 	})
