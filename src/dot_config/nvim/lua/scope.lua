@@ -1,5 +1,5 @@
 -- telescope without telescope80
--- depends on: fzf, bat
+-- depends on: fzf, bat, rg
 
 M = {}
 
@@ -243,11 +243,26 @@ function M.buffer_list()
 	)
 end
 
----Non-live grep
+---Live fuzzy search
+function M.fzf_search()
+	M.scope_fzf(string.format("rg --with-filename --column --null '.' ."), function(sel)
+		local _, idx_end1, search_str = string.find(sel, "([^\n]*)\n")
+		local _, idx_end2, file = string.find(sel, "([%g ]*)\0", idx_end1 + 1)
+		if not file then return end
+		local line, column = string.match(sel, "(%d+):(%d+)", idx_end2 + 1)
+
+		vim.cmd.drop(file)
+		vim.fn.cursor(tonumber(line), tonumber(column))
+		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(("/%s<CR>"):format(search_str), true, false, true), "n",
+			true)
+	end, { fzf_opts = "--print-query" })
+end
+
+---Exact search (should be faster)
 function M.rg_search()
 	vim.ui.input({ prompt = "Query: " }, function(query)
 		if not query or query == "" then return end
-		M.scope_fzf(string.format("rg --with-filename --column --null '%s' .", query), function(sel)
+		M.scope_fzf(string.format("rg --ignore-case --with-filename --column --null '%s' .", query), function(sel)
 			local _, idx_end1, search_str = string.find(sel, "([^\n]*)\n")
 			local _, idx_end2, file = string.find(sel, "([%g ]*)\0", idx_end1 + 1)
 			if not file then return end
@@ -258,7 +273,7 @@ function M.rg_search()
 
 			local highlight = search_str
 			if highlight == "" then highlight = query end
-		end, { fzf_opts = ("--print-query --query '%s'"):format(query) })
+		end, { fzf_opts = ("--exact --print-query --query '%s'"):format(query) })
 	end)
 end
 
