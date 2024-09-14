@@ -10,6 +10,7 @@ M = {}
 ---Hacky debug print utility (do not use outside testing)
 ---@param s any Thing to print
 ---@param pre string? Message that goes before thing
+---@diagnostic disable-next-line: unused-function, unused-local
 local function dbg_print(s, pre)
 	vim.system({ "sh", "-c", string.format("echo '%s' >> /tmp/nvim_scope_log", (pre or "") .. vim.inspect(s)) })
 end
@@ -24,6 +25,10 @@ end
 ---@class ScopeOpts
 ---@field fzf_opts string? Command-line flags to pass to fzf.
 ---@field allow_empty boolean? If true, will call `command` even if user cancelled. Defaults to false.
+---@field mode ("window" | "float")? Sets the window used to show the scope. Defaults to "window".
+---  - "window": fills the entire window
+---  - "float": floating window
+---@field float_opts vim.api.keyset.win_config? Options if mode is set to "float".
 
 ---Generic brand fuzzy selector
 ---@param choice_gen string | function Lua function or shell command that generates choices to display in fzf.
@@ -32,8 +37,15 @@ end
 function M.scope_fzf(choice_gen, command, scope_opts)
 	local opts = scope_opts or {}
 
+	local win_mode = opts.mode or "window"
+
 	local buf = vim.api.nvim_create_buf(false, true)
-	vim.cmd.buf(buf)
+	if win_mode == "window" then
+		vim.cmd.buf(buf)
+	elseif win_mode == "float" then
+		vim.api.nvim_open_win(buf, true,
+			opts.float_opts or { relative = "cursor", width = 40, height = 20, col = 1, row = 1 })
+	end
 
 	vim.wo.statusline = "Scope"
 
@@ -57,16 +69,18 @@ function M.scope_fzf(choice_gen, command, scope_opts)
 	local stdout_file = vim.fn.tempname()
 
 	local fzf_cmd = choice_cmd .. "fzf " .. fzf_opts .. " > " .. stdout_file
-	dbg_print(fzf_cmd, "fzf_cmd: ")
 
 	vim.fn.termopen(fzf_cmd, {
-		on_stdout = function(_, b, _)
-			dbg_print(b, "stdout: ")
-		end,
 		on_exit = function()
 			local f = io.open(stdout_file, "r")
 			assert(f, "Stdout file could not be opened.")
-			vim.cmd("bp | bd! #") -- see https://stackoverflow.com/a/4468491
+
+			if win_mode == "window" then
+				vim.cmd("bp | bd! #") -- see https://stackoverflow.com/a/4468491
+			elseif win_mode == "float" then
+				vim.api.nvim_win_close(0, false)
+			end
+
 			local stdout = f:read("*all")
 			f:close()
 			os.remove(stdout_file)
@@ -130,7 +144,9 @@ local function picker(items, opts, on_choice)
 		end,
 		{
 			allow_empty = true,
-			fzf_opts = string.format("--border=rounded --border-label '%s'", (opts.prompt or "Select"))
+			fzf_opts = string.format("--border=rounded --border-label '%s'", (opts.prompt or "Select")),
+			mode = "float",
+			float_opts = { relative = "cursor", width = 70, height = #items + 4, col = 1, row = 1 }
 		}
 	)
 end

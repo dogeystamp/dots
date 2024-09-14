@@ -55,7 +55,7 @@ Group.link("@keyword.return", groups["keyword.return"])
 Group.link("type.qualifier", groups["keyword.return"])
 Group.link("@type.qualifier", groups["keyword.return"])
 
-Group.new("NormalFloat", colors.noir_1, colors.noir_9, nil)
+Group.new("NormalFloat", colors.noir_1, colors.none, nil)
 
 Group.new("NonText", colors.noir_9, nil, nil)
 
