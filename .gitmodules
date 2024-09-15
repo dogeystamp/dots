@@ -39,10 +39,6 @@
 [submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_nvim-treesitter"]
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter.git
-# intelligent motions based on treesitter
-[submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_nvim-treesitter-textobjects"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-treesitter-textobjects
-	url = https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 
 # plain-text-accounting ledger ftplugin
 # ftplugin/ledger.vim
@@ -107,9 +103,6 @@
 [submodule "submodule.src/dot_local/share/nvim/site/pack/3pp/start/external_nvim-treesitter.path"]
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter.git
-[submodule "submodule.src/dot_local/share/nvim/site/pack/3pp/start/external_nvim-treesitter-textobjects.path"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-treesitter-textobjects
-	url = https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 [submodule "submodule.src/dot_local/share/nvim/site/pack/3pp/start/external_vim-ledger.path"]
 	path = src/dot_local/share/nvim/site/pack/3pp/start/external_vim-ledger
 	url = https://github.com/ledger/vim-ledger.git

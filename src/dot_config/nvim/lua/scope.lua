@@ -10,8 +10,8 @@ M = {}
 ---Hacky debug print utility (do not use outside testing)
 ---@param s any Thing to print
 ---@param pre string? Message that goes before thing
----@diagnostic disable-next-line: unused-function, unused-local
 ---@deprecated
+---@diagnostic disable-next-line: unused-function, unused-local
 local function dbg_print(s, pre)
 	vim.system({ "sh", "-c", string.format("echo '%s' >> /tmp/nvim_scope_log", (pre or "") .. vim.inspect(s)) })
 end

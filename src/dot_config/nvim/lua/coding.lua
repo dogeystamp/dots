@@ -42,21 +42,6 @@ vim.cmd.packadd("vim-gitgutter")
 vim.cmd.packadd("nvim-treesitter")
 
 require 'nvim-treesitter.configs'.setup {
-	ensure_installed = {
-		"c",
-		"cpp",
-		"javascript",
-		"typescript",
-		"python",
-		"vim",
-		"fish",
-		"bash",
-		"lua",
-		"rust",
-		"query",
-		"typst",
-		"toml",
-	},
 	sync_install = false,
 	auto_install = false,
 	highlight = {
@@ -70,6 +55,18 @@ require 'nvim-treesitter.configs'.setup {
 			end
 		end,
 	},
+	indent = {
+		enable = true
+	},
+	incremental_selection = {
+		enable = true,
+		keymaps = {
+			init_selection = "<CR>", -- set to `false` to disable one of the mappings
+			scope_incremental = "<CR>",
+			node_incremental = "<TAB>",
+			node_decremental = "<S-TAB>",
+		},
+	},
 }
 
 -- code folding
@@ -78,29 +75,9 @@ vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 vim.wo.foldlevel = 99 -- unfold by default
 
 ------
--- treesitter (language intelligent) motions
-------
-vim.cmd.packadd("nvim-treesitter-textobjects")
-require("nvim-treesitter.configs").setup {
-	textobjects = {
-		select = {
-			enable = true,
-
-			keymaps = {
-				["af"] = "@function.outer",
-				["if"] = "@function.inner",
-				["ac"] = "@class.outer",
-				["ic"] = "@class.inner",
-			},
-		}
-	}
-}
-
-
-------
 -- diagnostics box
 ------
-keymap('<leader>dx', vim.diagnostic.open_float, { noremap=true, silent=true })
+keymap('<leader>dx', vim.diagnostic.open_float, { noremap = true, silent = true })
 
 
 --------------------------------

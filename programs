@@ -28,6 +28,7 @@ xkblayout-state
 xss-lock
 qutebrowser
 neovim
+tree-sitter-grammars
 tmux
 fish
 ffmpeg
