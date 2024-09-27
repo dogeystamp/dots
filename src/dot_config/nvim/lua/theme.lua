@@ -30,7 +30,6 @@ local styles = colorbuddy.styles
 Group.new("Normal", colors.noir_4, colors.none, nil)
 Group.new("StatusLine", colors.noir_4, colors.none, styles.bold)
 Group.link("MsgArea", groups.Normal)
--- not selected statusline
 Group.new("StatusLineNC", colors.noir_7, colors.none)
 Group.link("Gutter", groups.normal)
 Group.new("LineNr", colors.noir_8, colors.none, nil)
@@ -58,6 +57,8 @@ Group.link("@type.qualifier", groups["keyword.return"])
 Group.new("NormalFloat", colors.noir_1, colors.none, nil)
 
 Group.new("NonText", colors.noir_9, nil, nil)
+
+Group.new("LineNr", colors.noir_7, colors.none, nil)
 
 -- swap undercurls and underlines
 for _, v in ipairs({ "Error", "Info", "Hint", "Warn" }) do

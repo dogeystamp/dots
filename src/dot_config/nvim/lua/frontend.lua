@@ -13,11 +13,13 @@ if vim.g.neovide then
 	vim.g.neovide_padding_top = 8
 	vim.g.neovide_padding_bottom = 8
 	vim.g.neovide_padding_left = 8
-	vim.g.neovide_transparency = 1.0
+	vim.g.neovide_transparency = 0.6
 	vim.g.neovide_background_color = "#000000" .. 0
 
 	vim.g.neovide_cursor_trail_size = 0.1
 	vim.g.neovide_cursor_animate_in_insert_mode = true
+	vim.g.pumblend = 60
+	vim.g.winblend = 60
 
 	-- hack to unscrew the scaling issues
 	-- sometimes opening neovide on a tiling wm makes it not occupy the entire window until resized

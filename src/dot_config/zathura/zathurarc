@@ -7,18 +7,18 @@ set adjust-open width
 set font "Liberation Sans 13"
 
 set recolor-darkcolor "#dddddd"
-set recolor-lightcolor rgba(0,0,0,0)
-set recolor false
+set recolor-lightcolor rgba(0,0,0,0.6)
+set recolor true
 set recolor-keephue true
 set recolor-reverse-video true
 
-set default-bg "#000000ff"
+set default-bg "#00000099"
 set index-bg "#000000"
 set index-active-bg "#111111"
 set index-active-fg "#FFFFFF"
-set inputbar-bg rgba(0,0,0,0.5)
+set inputbar-bg rgba(0,0,0,0.6)
 set inputbar-fg "#CCCCCC"
-set statusbar-bg rgba(0,0,0,0.5)
+set statusbar-bg rgba(0,0,0,0.6)
 
 set render-loading false
 

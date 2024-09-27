@@ -1,15 +1,10 @@
-{{if eq .chezmoi.os "windows" }}
+{{- if eq .chezmoi.os "windows" }}
 shell = "nu"
-{{end}}
-
+{{end -}}
 [window]
 padding = { x = 8, y = 8 }
 dimensions = { columns = 120, lines = 70 }
-{{if eq .chezmoi.os "linux" -}}
-opacity = 0.0
-{{- else -}}
-opacity = 1.0
-{{- end}}
+opacity = 0.6
 
 [font]
 normal = { family = "JetBrainsMono" }
@@ -47,8 +42,8 @@ bindings = [
 
 [bell]
 animation = "EaseOutQuint"
-duration = 150
-color = "#000000"
+duration = 250
+color = "#666666"
 
 # uRls
 [[hints.enabled]]

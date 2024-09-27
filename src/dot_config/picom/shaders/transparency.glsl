@@ -8,7 +8,7 @@ uniform vec3 max_derivation = vec3(0.01);
 // e.g. (1,0,0)±(0.2,0.2,0.2) -> gradient from #c00 to #f00 to #f33 with #f00 being the least opaque
 // (0,0,0)±(0.25,0.25,0,25) -> gradient from #000 to #444 with #000 being at min_opacity
 // opacity for the median_color
-uniform float min_opacity = 0.1;
+uniform float min_opacity = 0.6;
 // exponent for the gradient (e.g. 1 for linear, 2 for quadratic, etc)
 uniform int power = 2;
 // use mean for a different effect
