@@ -15,7 +15,7 @@ alias cp='cp -n'
 abbr -a -- ds swal;
 
 # zathura
-alias thur='zathura'
+alias thur='swal -c Zathura; zathura'
 # stricter sandbox zathura
 alias zathsec='/usr/bin/zathura-sandbox -c ~/.config/zathura-sec'
 
@@ -38,10 +38,6 @@ end
 
 # Neomutt configs
 function neomutt.local; neomutt -F .config/neomutt/neomuttrc.local; end
-
-# Specific to my Gentoo system
-function genlop; doas -u portage /usr/bin/genlop; end
-function loginctl; doas /bin/loginctl; end
 
 # bootleg meme feed
 function arf; mpv --shuffle --no-resume-playback ~/med/memes/arf; end

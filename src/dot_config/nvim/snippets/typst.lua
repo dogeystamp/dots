@@ -13,6 +13,7 @@ return {
 	s({ trig = "plus", name = "plus exponent", wordTrig = false }, t("^+")),
 	s({ trig = "min", name = "minus exponent", wordTrig = false }, t("^-")),
 	s({ trig = "lim", name = "limit", wordTrig = false }, fmt("lim_({}) ", { i(1) })),
+	s({ trig = "inf", name = "infinity", wordTrig = false }, t("infinity")),
 
 	s({
 			trig = "numb",
