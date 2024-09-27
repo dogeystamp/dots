@@ -27,7 +27,7 @@ you should also build the programs in `suckless/` by running `./compile-suckless
 Alternatively, build the programs with the README instructions in the directory.
 
 Some features are enabled or disabled based on a "system profile":
-once the dotfiles are installed, see `~/.config/dot_profile.example` for more information.
+chezmoi will prompt you for a choice.
 
 ### Notes
 
