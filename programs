@@ -62,6 +62,7 @@ libappimage
 nftables
 sdcv
 ufw
+trash-cli
 rofi
 rink
 progress
@@ -72,11 +73,11 @@ which
 dnsutils
 man-pages
 zoxide
+tinyxxd
 # IME input
 fcitx5
 fcitx5-chinese-addons
 fcitx5-configtool
-tinyxxd
 
 # in the aur
 tmsu

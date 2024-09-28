@@ -1,5 +1,6 @@
 #!/bin/sh
 # Categorize files in the quarantine directory
+# depends: fzf, mpv
 
 # read -n 1 isn't POSIX-compliant so we implement something
 # https://unix.stackexchange.com/questions/464930/can-i-read-a-single-character-from-stdin-in-posix-shell
@@ -56,7 +57,6 @@ PREVNAME=""
 find ~/quar \
 	-maxdepth 1 \
 	-type f \
-	-not -path '*/trash/*' \
 	\( \
 	-name '*.mov' -o \
 	-name '*.MOV' -o \
@@ -97,7 +97,7 @@ while read -r FILE; do
 				break
 			fi;;
 			s ) break;;
-			d ) mv "$FILE" ~/quar/trash/; break;;
+			d ) trash "$FILE"; break;;
 			* )
 				printf "\nInvalid input! Press enter to continue\n";
 				read </dev/tty;
