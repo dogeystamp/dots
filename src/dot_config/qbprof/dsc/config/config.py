@@ -21,3 +21,5 @@ c.fileselect.multiple_files.command = ["alacritty", "-e", "fish", "-C", "set -x 
 c.fileselect.single_file.command = ["alacritty", "-e", "fish", "-C", "set -x OUTPUT {}; source ~/.local/bin/fish-fm"]
 
 c.content.user_stylesheets = ["~/.config/qbprof/dsc/config/amoled-cord.css"]
+
+c.window.title_format = "discord"

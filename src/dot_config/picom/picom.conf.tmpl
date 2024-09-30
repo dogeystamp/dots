@@ -1,0 +1,37 @@
+backend = "glx";
+vsync = false;
+
+# animations
+animations = (
+	{
+		triggers = [ "open", "show" ];
+		preset = "appear";
+		duration = 0.15;
+	},
+	{
+		triggers = [ "close", "hide" ];
+		preset = "disappear";
+		duration = 0.1;
+	},
+)
+
+# shadow
+shadow = true;
+shadow-radius = 12;
+shadow-offset-x = -7;
+shadow-offset-y = -7;
+
+# corner
+corner-radius = 10;
+
+blur: {
+	method = "dual_kawase",
+	strength = 3,
+};
+
+rules = (
+	{ match = "class_g = 'dwm'"; shadow = false; corner-radius = 0; blur-background = false },
+	{ match = "class_i = 'qutebrowser' && ! name = 'discord'"; shader = "{{ env "HOME" }}/.config/picom/shaders/transparency.glsl" },
+	{ match = "class_i = 'neovide'"; shader = "{{ env "HOME" }}/.config/picom/shaders/transparency.glsl" },
+	{ match = "class_g = 'Zathura'"; shader = "/home/dogeystamp/.config/picom/shaders/transparency.glsl" },
+)
