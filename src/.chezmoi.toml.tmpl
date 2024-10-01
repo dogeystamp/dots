@@ -2,4 +2,5 @@
 {{- $systemprofile := promptChoiceOnce . "systemprofile" "Select a system profile (use capital letter)" $systemprofilechoices "MINIMAL" -}}
 
 [data]
-systemprofile = {{- $systemprofile | quote -}}
+systemprofile = {{ $systemprofile | quote }}
+opacity = "0.7"
