@@ -14,22 +14,13 @@
 # neovim plugins
 ################
 
-# git symbols in the gutter
-[submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_vim-gitgutter"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_vim-gitgutter
-	url = https://github.com/airblade/vim-gitgutter.git
-
 # auto close brackets and quotes
-# coding.vim
 [submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_auto-pairs"]
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs
 
 # language smarts
 # coding.lua
-[submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_nvim-lspconfig"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-lspconfig
-	url = https://github.com/neovim/nvim-lspconfig.git
 [submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_nvim-cmp"]
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-cmp
 	url = https://github.com/hrsh7th/nvim-cmp.git
@@ -47,7 +38,7 @@
 	url = https://github.com/ledger/vim-ledger.git
 
 # color theme
-# init.lua
+# theme.lua
 [submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_nvim-noirbuddy"]
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-noirbuddy
 	url = https://github.com/jesseleite/nvim-noirbuddy.git
@@ -85,15 +76,9 @@
 [submodule "submodule.src/dot_local/bin/external_inkscape-shortcut-manager.path"]
 	path = src/dot_local/bin/external_inkscape-shortcut-manager
 	url = https://github.com/dogeystamp/inkscape-shortcut-manager
-[submodule "submodule.src/dot_local/share/nvim/site/pack/3pp/start/external_vim-gitgutter.path"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_vim-gitgutter
-	url = https://github.com/airblade/vim-gitgutter.git
 [submodule "submodule.src/dot_local/share/nvim/site/pack/3pp/start/external_auto-pairs.path"]
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs
-[submodule "submodule.src/dot_local/share/nvim/site/pack/3pp/start/external_nvim-lspconfig.path"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-lspconfig
-	url = https://github.com/neovim/nvim-lspconfig.git
 [submodule "submodule.src/dot_local/share/nvim/site/pack/3pp/start/external_nvim-cmp.path"]
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-cmp
 	url = https://github.com/hrsh7th/nvim-cmp.git

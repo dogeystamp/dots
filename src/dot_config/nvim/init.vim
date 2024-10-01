@@ -106,3 +106,8 @@ lua require('init')
 " auto-pairs
 packadd auto-pairs
 let g:AutoPairsFlyMode = 0
+
+" disable warnings in health check
+let g:loaded_node_provider = 0
+let g:loaded_perl_provider = 0
+let g:loaded_ruby_provider = 0

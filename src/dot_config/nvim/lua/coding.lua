@@ -30,12 +30,6 @@ local keymap = confutil.keymap
 
 
 ------
--- git gutter
-------
-
-vim.cmd.packadd("vim-gitgutter")
-
-------
 -- syntax highlighting
 ------
 
@@ -89,7 +83,6 @@ keymap('<leader>dx', vim.diagnostic.open_float, { noremap = true, silent = true 
 ------
 -- language server (LSP)
 ------
-vim.cmd.packadd("nvim-lspconfig")
 local nvim_lsp = require('lspconfig')
 
 local on_attach = function(client, bufnr)
@@ -161,7 +154,7 @@ local servers = {
 	-- 	},
 	-- },
 	clangd = {},
-	tsserver = {},
+	ts_ls = {},
 	bashls = {},
 	cssls = {},
 	lua_ls = {

@@ -7,7 +7,11 @@ vim.cmd.packadd("colorbuddy.nvim")
 
 require("noirbuddy").setup({
 	colors = {
-		primary = "#99AABB"
+		primary = "#99AABB",
+		diagnostic_error = "#ffaaaa",
+		diagnostic_warning = "#aaaaaa",
+		diagnostic_info = "#77aacc",
+		diagnostic_hint = "#77aacc",
 	},
 	styles = {
 		italic = true,

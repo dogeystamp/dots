@@ -28,6 +28,8 @@ xkblayout-state
 xss-lock
 qutebrowser
 neovim
+neovim-lspconfig
+vim-surround
 tree-sitter-grammars
 tmux
 fish
