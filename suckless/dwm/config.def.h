@@ -126,8 +126,8 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("qbprof mus") },
 	{ MODKEY|ControlMask,           XK_l,      spawn,          {.v = (const char*[]){ "/usr/local/bin/slock", NULL} } },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("~/.local/bin/deskutils/suspend.sh") },
-	{ 0,                            XK_Print,  spawn,          SHCMD("~/.local/bin/deskutils/screenshot.sh") },
-	{ ShiftMask,                    XK_Print,  spawn,          SHCMD("~/.local/bin/deskutils/screenshot-save.sh"  ) },
+	{ 0,                            XK_Print,  spawn,          SHCMD("~/.local/bin/deskutils/screenshot_full.sh") },
+	{ ShiftMask,                    XK_Print,  spawn,          SHCMD("~/.local/bin/deskutils/screenshot.sh"  ) },
 	{ MODKEY,                       XK_z,      spawn,          TERMCMD("bookmk") },
 	// SHCMD because we already start a terminal from inside clipedit.sh
 	{ MODKEY|ShiftMask,             XK_z,      spawn,          SHCMD("clipedit.sh") },
