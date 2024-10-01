@@ -105,7 +105,6 @@ static const char termcmd[]  = "alacritty msg create-window || alacritty";
 static const char *freshtermcmd[]  = { "alacritty", NULL };
 static const char *browsercmd[]  = { "qutebrowser", NULL };
 static const char *pwdcmd[]  = { "keepassxc", NULL };
-static const char *musiccmd[]  = { "sonixd", NULL };
 static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
 static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
@@ -124,7 +123,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = browsercmd } },
 	{ MODKEY|ShiftMask,             XK_k,      spawn,          {.v = pwdcmd } },
 	{ MODKEY|ShiftMask,             XK_d,      spawn,          SHCMD("qbprof dsc") },
-	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = musiccmd } },
+	{ MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("qbprof mus") },
 	{ MODKEY|ControlMask,           XK_l,      spawn,          {.v = (const char*[]){ "/usr/local/bin/slock", NULL} } },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("~/.local/bin/deskutils/suspend.sh") },
 	{ 0,                            XK_Print,  spawn,          SHCMD("~/.local/bin/deskutils/screenshot.sh") },
