@@ -62,6 +62,7 @@ let maplocalleader = " "
 
 " easier binds to use system clipboard with
 nmap <C-S>y "+y
+nmap <C-S>Y "+Y
 vmap <C-S>y "+y
 nmap <C-S>d "+d
 vmap <C-S>d "+d
