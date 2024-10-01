@@ -11,5 +11,5 @@ if ! command -v neovide > /dev/null || [ -z "$DISPLAY" ] && [ -z "$WAYLAND_DISPL
 	nvim "$@"
 else
 	swal
-	neovide "$@"
+	neovide --no-vsync "$@"
 fi

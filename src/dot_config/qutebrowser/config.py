@@ -13,12 +13,12 @@ c.colors.statusbar.command.private.bg = "black"
 c.colors.hints.bg = "black"
 c.colors.hints.fg = "white"
 
-c.colors.tabs.bar.bg = "#00000000"
+c.colors.tabs.bar.bg = "black"
 c.colors.tabs.even.bg = "#11111111"
 c.colors.tabs.odd.bg = c.colors.tabs.even.bg
 c.colors.tabs.even.fg = "#aaaaaa"
 c.colors.tabs.odd.fg = c.colors.tabs.even.fg
-c.colors.tabs.selected.even.bg = "#55333333"
+c.colors.tabs.selected.even.bg = "#222222"
 c.colors.tabs.selected.odd.bg = c.colors.tabs.selected.even.bg
 c.colors.tabs.selected.even.fg = "#ffffff"
 c.colors.tabs.selected.odd.fg = c.colors.tabs.selected.even.fg
