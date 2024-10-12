@@ -63,6 +63,7 @@ let maplocalleader = " "
 " easier binds to use system clipboard with
 nmap <C-S>y "+y
 nmap <C-S>Y "+Y
+nmap <C-S>D "+D
 vmap <C-S>y "+y
 nmap <C-S>d "+d
 vmap <C-S>d "+d
@@ -70,6 +71,14 @@ nmap <C-S>c "+c
 nmap <C-S>C "+C
 vmap <C-S>c "+c
 nmap <C-S>p "+p
+
+" faster indent binds
+" conflicts with motions, e.g. <ip
+nnoremap > >>
+nnoremap < <<
+" don't deselect after a visual indent
+vnoremap < <gv
+vnoremap > >gv
 
 " 0 is easier to reach so swap these binds
 nnoremap 0 ^
@@ -102,10 +111,6 @@ nnoremap <silent> ZF :qa<cr>
 
 " see .config/nvim/lua/init.lua
 lua require('init')
-
-" auto-pairs
-packadd auto-pairs
-let g:AutoPairsFlyMode = 0
 
 " disable warnings in health check
 let g:loaded_node_provider = 0

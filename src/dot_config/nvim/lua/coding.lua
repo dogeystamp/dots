@@ -68,6 +68,17 @@ vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 vim.wo.foldlevel = 99 -- unfold by default
 
+--------
+-- auto-pairs for brackets
+--------
+vim.cmd.packadd("autoclose.nvim")
+require("autoclose").setup({
+	keys = {
+		["$"] = { escape = true, close = true, pair = "$$", enabled_filetypes = {"typst"} },
+	}
+})
+
+
 ------
 -- diagnostics box
 ------

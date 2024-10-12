@@ -15,9 +15,9 @@
 ################
 
 # auto close brackets and quotes
-[submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_auto-pairs"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_auto-pairs
-	url = https://github.com/jiangmiao/auto-pairs
+[submodule "src/dot_local/share/nvim/site/pack/3pp/opt/external_autoclose_nvim"]
+	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_autoclose.nvim
+	url = https://github.com/m4xshen/autoclose.nvim
 
 # language smarts
 # coding.lua
@@ -65,50 +65,5 @@
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_LuaSnip
 	url = https://github.com/L3MON4D3/LuaSnip
 [submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_cmp_luasnip"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_cmp_luasnip
-	url = https://github.com/saadparwaiz1/cmp_luasnip
-
-
-
-[submodule "submodule.src/dot_local/bin/external_pyinstantref.path"]
-	path = src/dot_local/bin/external_pyinstantref
-	url = https://github.com/dogeystamp/pyinstantref
-[submodule "submodule.src/dot_local/bin/external_inkscape-shortcut-manager.path"]
-	path = src/dot_local/bin/external_inkscape-shortcut-manager
-	url = https://github.com/dogeystamp/inkscape-shortcut-manager
-[submodule "submodule.src/dot_local/share/nvim/site/pack/3pp/start/external_auto-pairs.path"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_auto-pairs
-	url = https://github.com/jiangmiao/auto-pairs
-[submodule "submodule.src/dot_local/share/nvim/site/pack/3pp/start/external_nvim-cmp.path"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-cmp
-	url = https://github.com/hrsh7th/nvim-cmp.git
-[submodule "submodule.src/dot_local/share/nvim/site/pack/3pp/start/external_cmp-nvim-lsp.path"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_cmp-nvim-lsp
-	url = https://github.com/hrsh7th/cmp-nvim-lsp.git
-[submodule "submodule.src/dot_local/share/nvim/site/pack/3pp/start/external_nvim-treesitter.path"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-treesitter
-	url = https://github.com/nvim-treesitter/nvim-treesitter.git
-[submodule "submodule.src/dot_local/share/nvim/site/pack/3pp/start/external_vim-ledger.path"]
-	path = src/dot_local/share/nvim/site/pack/3pp/start/external_vim-ledger
-	url = https://github.com/ledger/vim-ledger.git
-[submodule "submodule.src/dot_local/share/nvim/site/pack/3pp/start/external_nvim-noirbuddy.path"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-noirbuddy
-	url = https://github.com/jesseleite/nvim-noirbuddy.git
-[submodule "submodule.src/dot_local/share/nvim/site/pack/3pp/start/external_colorbuddy.nvim.path"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_colorbuddy.nvim
-	url = https://github.com/tjdevries/colorbuddy.nvim.git
-[submodule "submodule.src/dot_local/share/nvim/site/pack/3pp/start/external_nvim-dap.path"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-dap
-	url = https://github.com/mfussenegger/nvim-dap.git
-[submodule "submodule.src/dot_local/share/nvim/site/pack/3pp/start/external_nvim-dap-ui.path"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-dap-ui
-	url = https://github.com/rcarriga/nvim-dap-ui.git
-[submodule "submodule.src/dot_local/share/nvim/site/pack/3pp/start/external_nvim-nio.path"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-nio
-	url = https://github.com/nvim-neotest/nvim-nio
-[submodule "submodule.src/dot_local/share/nvim/site/pack/3pp/start/external_LuaSnip.path"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_LuaSnip
-	url = https://github.com/L3MON4D3/LuaSnip
-[submodule "submodule.src/dot_local/share/nvim/site/pack/3pp/start/external_cmp_luasnip.path"]
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_cmp_luasnip
 	url = https://github.com/saadparwaiz1/cmp_luasnip
