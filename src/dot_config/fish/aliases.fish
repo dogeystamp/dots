@@ -31,6 +31,9 @@ function gpgt; export GPG_TTY=(tty); end
 # Private neovim
 function nvimp; nvim -u NONE -c "setlocal history=0 nobackup nomodeline noshelltemp noswapfile noundofile nowritebackup secure viminfo=\"\"" $argv; end
 
+# Edit configuration file
+alias nvic 'chezmoi edit -a'
+
 # Read pdf file as text
 function pdfr
 	pdftotext $argv - | nvim
