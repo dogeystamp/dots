@@ -108,3 +108,11 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
 vim.diagnostic.config {
 	float = { border = _border }
 }
+
+-- git gutter
+Group.new("DiffChange", colors.secondary, nil, nil)
+Group.new("DiffAdd", colors.primary, nil, nil)
+Group.new("DiffDelete", colors.noir_2, nil, nil)
+Group.link("GitGutterChange", groups.DiffChange)
+Group.link("GitGutterAdd", groups.DiffAdd)
+Group.link("GitGutterDelete", groups.DiffDelete)
