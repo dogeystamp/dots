@@ -71,13 +71,7 @@ vim.wo.foldlevel = 99 -- unfold by default
 --------
 -- auto-pairs for brackets
 --------
-vim.cmd.packadd("autoclose.nvim")
-require("autoclose").setup({
-	keys = {
-		["$"] = { escape = true, close = true, pair = "$$", enabled_filetypes = {"typst"} },
-	}
-})
-
+vim.cmd.packadd("auto-pairs")
 
 ------
 -- diagnostics box

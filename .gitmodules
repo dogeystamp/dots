@@ -15,12 +15,6 @@
 ################
 
 # auto close brackets and quotes
-[submodule "src/dot_local/share/nvim/site/pack/3pp/opt/external_autoclose_nvim"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_autoclose.nvim
-	url = https://github.com/m4xshen/autoclose.nvim
-
-# language smarts
-# coding.lua
 [submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_nvim-cmp"]
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-cmp
 	url = https://github.com/hrsh7th/nvim-cmp.git
@@ -67,3 +61,6 @@
 [submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_cmp_luasnip"]
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_cmp_luasnip
 	url = https://github.com/saadparwaiz1/cmp_luasnip
+[submodule "src/dot_local/share/nvim/site/pack/3pp/opt/external_auto-pairs"]
+	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_auto-pairs
+	url = https://github.com/jiangmiao/auto-pairs
