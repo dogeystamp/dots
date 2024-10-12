@@ -12,7 +12,7 @@ git
 xwallpaper
 dunst
 zathura
-zathura-pdf-poppler
+zathura-pdf-mupdf
 libnotify
 libsecret
 xorg-setxkbmap
