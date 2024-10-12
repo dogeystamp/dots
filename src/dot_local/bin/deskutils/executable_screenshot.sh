@@ -2,5 +2,5 @@
 
 # Screenshot to clipboard, and leave a copy at ~/med/screen/latest.png
 
-rm ~/med/screen/latest.png
-sleep 0.1 && scrot -fs "$HOME/med/screen/latest.png" -e 'xclip -selection clipboard -target image/png -i $f'
+rm ~/med/screen/latest.jpg
+scrot --freeze --select -l style=dash "$HOME/med/screen/latest.jpg" -e 'xclip -selection clipboard -target image/jpeg -i $f'
