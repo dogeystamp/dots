@@ -63,11 +63,6 @@ require 'nvim-treesitter.configs'.setup {
 	},
 }
 
--- code folding
-vim.wo.foldmethod = 'expr'
-vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-vim.wo.foldlevel = 99 -- unfold by default
-
 --------
 -- auto-pairs for brackets
 --------
@@ -200,18 +195,45 @@ local servers = {
 	},
 	nushell = {},
 }
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true
+}
 for lsp, sv_settings in pairs(servers) do
 	-- defaults
 	local settings = {
 		on_attach = on_attach,
 		flags = {
 			debounce_text_changes = 150,
-		}
+		},
+		capabilities=capabilities,
 	}
 	for k, v in pairs(servers[lsp]) do settings[k] = v end
 	nvim_lsp[lsp].setup(settings)
 end
 
+--------
+-- code folding
+--
+-- useful binds include zM (close all folds), zA (recursively toggle fold), and zR (open all folds).
+-- see :h usr_28 for more information about folds.
+--------
+vim.cmd.packadd("promise-async")
+vim.cmd.packadd("nvim-ufo")
+local ufo = require("ufo")
+ufo.setup()
+vim.o.foldenable = true
+vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+-- set to '1' to get a column with arrows for folds
+vim.o.foldcolumn = '0'
+vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+keymap('zM', ufo.closeAllFolds)
+keymap('zR', ufo.openAllFolds)
+keymap('zm', ufo.closeFoldsWith)
+keymap('zr', ufo.openFoldsExceptKinds)
 
 ------
 -- completions

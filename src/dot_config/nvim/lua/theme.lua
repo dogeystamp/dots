@@ -34,6 +34,8 @@ local styles = colorbuddy.styles
 Group.new("Normal", colors.noir_4, colors.none, nil)
 Group.new("StatusLine", colors.noir_4, colors.none, styles.bold)
 Group.link("MsgArea", groups.Normal)
+Group.link("FoldColumn", groups.Normal)
+Group.link("Folded", groups.Normal)
 Group.new("StatusLineNC", colors.noir_7, colors.none)
 Group.link("Gutter", groups.normal)
 Group.new("LineNr", colors.noir_8, colors.none, nil)

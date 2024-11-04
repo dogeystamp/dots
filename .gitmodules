@@ -14,7 +14,6 @@
 # neovim plugins
 ################
 
-# auto close brackets and quotes
 [submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_nvim-cmp"]
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-cmp
 	url = https://github.com/hrsh7th/nvim-cmp.git
@@ -61,6 +60,17 @@
 [submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_cmp_luasnip"]
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_cmp_luasnip
 	url = https://github.com/saadparwaiz1/cmp_luasnip
+
+# auto-close brackets
 [submodule "src/dot_local/share/nvim/site/pack/3pp/opt/external_auto-pairs"]
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs
+
+# code folding
+# coding.lua
+[submodule "src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-ufo"]
+	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-ufo
+	url = https://github.com/kevinhwang91/nvim-ufo
+[submodule "src/dot_local/share/nvim/site/pack/3pp/opt/external_promise-async"]
+	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_promise-async
+	url = https://github.com/kevinhwang91/promise-async
