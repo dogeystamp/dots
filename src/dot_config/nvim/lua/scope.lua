@@ -262,7 +262,7 @@ end
 function M.rg_search()
 	vim.ui.input({ prompt = "Query: " }, function(query)
 		if not query or query == "" then return end
-		M.scope_fzf(string.format("rg --ignore-case --with-filename --column --null '%s' .", query), function(sel)
+		M.scope_fzf(string.format("rg --with-filename --column --null '%s' .", query), function(sel)
 			local _, idx_end1, search_str = string.find(sel, "([^\n]*)\n")
 			local _, idx_end2, file = string.find(sel, "([%g ]*)\0", idx_end1 + 1)
 			if not file then return end
