@@ -12,8 +12,13 @@ return {
 	-- limits
 	s({ trig = "plus", name = "plus exponent", wordTrig = false }, t("^+")),
 	s({ trig = "min", name = "minus exponent", wordTrig = false }, t("^-")),
-	s({ trig = "lim", name = "limit", wordTrig = false }, fmt("lim_({}) ", { i(1) })),
-	s({ trig = "inf", name = "infinity", wordTrig = false }, t("infinity")),
+	s({ trig = "lim", name = "limit", wordTrig = true }, fmt("lim_({}) ", { i(1) })),
+	s({ trig = "inf", name = "infinity", wordTrig = true }, t("infinity")),
+
+	-- derivative
+	s({ trig = "dx", name = "difference x", wordTrig = true }, t("/(dif x)")),
+	s({ trig = "dy", name = "difference y", wordTrig = true }, t("(dif y)")),
+	s({ trig = "der", name = "derivative", wordTrig = true }, t("dif/(dif x)")),
 
 	s({
 			trig = "numb",
