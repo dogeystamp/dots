@@ -42,5 +42,3 @@ chezmoi will prompt you for a choice.
 **Desktop Preview**
 
 ![preview](https://raw.githubusercontent.com/DogeyStamp/dots/main/preview.png)
-
-![preview](https://raw.githubusercontent.com/DogeyStamp/dots/main/preview2.png)

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Example of per-host device configuration
+
+# Map screens
+# xrandr --output eDP-1 --primary --scale 0.75 --mode 2560x1600 --below HDMI-1
+# xrandr --output eDP-1 --primary --scale 0.75 --mode 2560x1600 --left-of HDMI-1 --output HDMI-1 --mode 2560x1440 --rate 144 --left-of DP-1 --output DP-1 --mode 2560x1440
+
+# xinput set-prop "DLL0A81:00 04F3:314B Touchpad" "libinput Accel Speed" 0.5
+# xinput set-prop "DLL0A81:00 04F3:314B Touchpad" "libinput Tapping Enabled" 1
+# xinput set-prop "DLL0A81:00 04F3:314B Touchpad" "libinput Disable While Typing Enabled" 1

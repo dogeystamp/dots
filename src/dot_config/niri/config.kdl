@@ -1,0 +1,261 @@
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Overview
+
+input {
+    keyboard {
+        xkb {
+            options "caps:swapescape, compose:rctrl"
+        }
+
+		repeat-delay 300
+		repeat-rate 50
+    }
+
+    touchpad {
+        tap
+    }
+
+	mouse {}
+
+    warp-mouse-to-focus
+}
+
+output "HDMI-A-1" {
+    // off
+
+	mode "2560x1440@143.912"
+}
+
+layout {
+    gaps 36
+
+	struts {
+		left 4
+		right 4
+		top 4
+		bottom 4
+	}
+
+    default-column-width { proportion 0.5; }
+
+    focus-ring {
+        // off
+
+        width 2
+
+        active-color "#cceeee"
+        inactive-color "#505050"
+    }
+}
+
+spawn-at-startup "waybar"
+spawn-at-startup "wallpaper"
+spawn-at-startup "swayidle" "-w" "timeout" "600" "swaylock -f & niri msg action power-off-monitors" "before-sleep" "swaylock -f" "lock" "swaylock -f"
+
+// no client side decoration
+prefer-no-csd
+
+// screenshot-path "~/med/screen/niri-%Y-%m-%d %H-%M-%S.png"
+
+// You can also set this to null to disable saving screenshots to disk.
+screenshot-path null
+
+window-rule {
+    match app-id=r#"qutebrowser"#
+	opacity 0.8
+}
+
+animations {
+	window-resize {
+		custom-shader r"
+			// Example: cropped next texture if it's bigger than the current geometry, and
+			// crossfade between previous and next texture otherwise.
+			vec4 crossfade_or_crop_next(vec3 coords_curr_geo, vec3 size_curr_geo) {
+				vec3 coords_next_geo = niri_curr_geo_to_next_geo * coords_curr_geo;
+				vec3 coords_prev_geo = niri_curr_geo_to_prev_geo * coords_curr_geo;
+
+				vec3 coords_crop = niri_geo_to_tex_next * coords_next_geo;
+				vec3 coords_stretch = niri_geo_to_tex_next * coords_curr_geo;
+				vec3 coords_stretch_prev = niri_geo_to_tex_prev * coords_curr_geo;
+
+				// We can crop if the current window size is smaller than the next window
+				// size. One way to tell is by comparing to 1.0 the X and Y scaling
+				// coefficients in the current-to-next transformation matrix.
+				bool can_crop_by_x = niri_curr_geo_to_next_geo[0][0] <= 1.0;
+				bool can_crop_by_y = niri_curr_geo_to_next_geo[1][1] <= 1.0;
+				bool crop = can_crop_by_x && can_crop_by_y;
+
+				vec4 color;
+
+				if (crop) {
+					// However, when we crop, we also want to crop out anything outside the
+					// current geometry. This is because the area of the shader is unspecified
+					// and usually bigger than the current geometry, so if we don't fill pixels
+					// outside with transparency, the texture will leak out.
+					//
+					// When crossfading, this is not an issue because the area outside will
+					// correspond to client-side decoration shadows, which are already supposed
+					// to be outside.
+					if (coords_curr_geo.x < 0.0 || 1.0 < coords_curr_geo.x ||
+							coords_curr_geo.y < 0.0 || 1.0 < coords_curr_geo.y) {
+						color = vec4(0.0);
+					} else {
+						color = texture2D(niri_tex_next, coords_crop.st);
+					}
+				} else {
+					// If we can't crop, then crossfade.
+					color = texture2D(niri_tex_next, coords_stretch.st);
+					vec4 color_prev = texture2D(niri_tex_prev, coords_stretch_prev.st);
+					color = mix(color_prev, color, niri_clamped_progress);
+				}
+
+				return color;
+			}
+			vec4 resize_color(vec3 coords_curr_geo, vec3 size_curr_geo) {
+				// You can pick one of the example functions or write your own.
+				return crossfade_or_crop_next(coords_curr_geo, size_curr_geo);
+			}
+		"
+	}
+}
+
+window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+
+    block-out-from "screen-capture"
+}
+
+binds {
+    Alt+Shift+Slash { show-hotkey-overlay; }
+
+    Alt+Shift+Return { spawn "newterm.sh"; }
+    Alt+P            { spawn "fuzzel"; }
+    Alt+Shift+B { spawn "qutebrowser"; }
+    Alt+Shift+P { spawn "keepassxc"; }
+    Alt+Shift+D { spawn "qbprof" "dsc"; }
+    Ctrl+Alt+L { spawn "swaylock"; }
+
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
+    XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+    XF86AudioPlay        allow-when-locked=true { spawn "playerctl" "play-pause"; }
+    XF86AudioNext        allow-when-locked=true { spawn "playerctl" "next"; }
+    XF86AudioPrev        allow-when-locked=true { spawn "playerctl" "previous"; }
+
+    Alt+Shift+C { close-window; }
+
+    Alt+K           { focus-column-left; }
+    Alt+Period      { focus-window-down; }
+    Alt+Comma       { focus-window-up; }
+    Alt+J           { focus-column-right; }
+
+    Alt+Shift+Left   { move-column-left; }
+    Alt+Shift+Down   { move-window-down; }
+    Alt+Shift+Up     { move-window-up; }
+    Alt+Shift+Right  { move-column-right; }
+    Alt+Shift+K      { move-column-left; }
+    Alt+Return       { move-column-left; } // dwm muscle memory
+    Alt+Shift+Period { move-window-down; }
+    Alt+Shift+Comma  { move-window-up; }
+    Alt+Shift+J      { move-column-right; }
+
+    Alt+Home { focus-column-first; }
+    Alt+End  { focus-column-last; }
+    Alt+Ctrl+Home { move-column-to-first; }
+    Alt+Ctrl+End  { move-column-to-last; }
+
+    Alt+H              { focus-monitor-left; }
+    Alt+L              { focus-monitor-right; }
+
+    Alt+Shift+H        { move-column-to-monitor-left; }
+    Alt+Shift+L        { move-column-to-monitor-right; }
+
+    Alt+Page_Down      { focus-workspace-down; }
+    Alt+Page_Up        { focus-workspace-up; }
+    Alt+U              { focus-workspace-down; }
+    Alt+I              { focus-workspace-up; }
+    Alt+Ctrl+Page_Down { move-column-to-workspace-down; }
+    Alt+Ctrl+Page_Up   { move-column-to-workspace-up; }
+    Alt+Ctrl+U         { move-column-to-workspace-down; }
+    Alt+Ctrl+I         { move-column-to-workspace-up; }
+
+    Alt+Shift+Page_Down { move-workspace-down; }
+    Alt+Shift+Page_Up   { move-workspace-up; }
+    Alt+Shift+U         { move-workspace-down; }
+    Alt+Shift+I         { move-workspace-up; }
+
+    // You can bind mouse wheel scroll ticks using the following syntax.
+    // These binds will change direction based on the natural-scroll setting.
+    //
+    // To avoid scrolling through workspaces really fast, you can use
+    // the cooldown-ms property. The bind will be rate-limited to this value.
+    // You can set a cooldown on any bind, but it's most useful for the wheel.
+    Alt+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+    Alt+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+    Alt+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+    Alt+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+
+    Alt+WheelScrollRight      { focus-column-right; }
+    Alt+WheelScrollLeft       { focus-column-left; }
+    Alt+Ctrl+WheelScrollRight { move-column-right; }
+    Alt+Ctrl+WheelScrollLeft  { move-column-left; }
+
+    Alt+Shift+WheelScrollDown      { focus-column-right; }
+    Alt+Shift+WheelScrollUp        { focus-column-left; }
+    Alt+Ctrl+Shift+WheelScrollDown { move-column-right; }
+    Alt+Ctrl+Shift+WheelScrollUp   { move-column-left; }
+
+    // Mod+TouchpadScrollDown { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"; }
+    // Mod+TouchpadScrollUp   { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"; }
+
+    Alt+1 { focus-workspace 1; }
+    Alt+2 { focus-workspace 2; }
+    Alt+3 { focus-workspace 3; }
+    Alt+4 { focus-workspace 4; }
+    Alt+5 { focus-workspace 5; }
+    Alt+6 { focus-workspace 6; }
+    Alt+7 { focus-workspace 7; }
+    Alt+8 { focus-workspace 8; }
+    Alt+9 { focus-workspace 9; }
+    Alt+0 { focus-workspace 10; }
+    Alt+Shift+1 { move-column-to-workspace 1; }
+    Alt+Shift+2 { move-column-to-workspace 2; }
+    Alt+Shift+3 { move-column-to-workspace 3; }
+    Alt+Shift+4 { move-column-to-workspace 4; }
+    Alt+Shift+5 { move-column-to-workspace 5; }
+    Alt+Shift+6 { move-column-to-workspace 6; }
+    Alt+Shift+7 { move-column-to-workspace 7; }
+    Alt+Shift+8 { move-column-to-workspace 8; }
+    Alt+Shift+9 { move-column-to-workspace 9; }
+    Alt+Shift+0 { move-column-to-workspace 10; }
+
+    Mod+Tab { focus-workspace-previous; }
+
+    Alt+Ctrl+Comma  { consume-window-into-column; }
+    Alt+Ctrl+Period { expel-window-from-column; }
+
+    Alt+BracketLeft  { consume-or-expel-window-left; }
+    Alt+BracketRight { consume-or-expel-window-right; }
+
+    Alt+R { switch-preset-column-width; }
+    Alt+Shift+R { switch-preset-window-height; }
+    Alt+Ctrl+R { reset-window-height; }
+    Alt+F { maximize-column; }
+    Alt+Shift+F { fullscreen-window; }
+    Alt+C { center-column; }
+
+    Alt+Minus { set-column-width "-10%"; }
+    Alt+Equal { set-column-width "+10%"; }
+
+    Alt+Shift+Minus { set-window-height "-10%"; }
+    Alt+Shift+Equal { set-window-height "+10%"; }
+
+    Print { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
+
+    Alt+Shift+Q { quit; }
+
+    Alt+Shift+S { spawn "suspend.sh"; }
+}

@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Per host wallpaper configuration example
+
+PREFIX="$HOME/med/wall"
+if [ -z "$1" ]; then
+	WALL="landscape"
+else
+	WALL="$1"
+fi
+
+FOLDER="$PREFIX"/"$WALL"
+
+if [ -n "$WAYLAND_DISPLAY" ]; then
+	swaybg -o HDMI-A-1 -m center -i "$FOLDER"/l.jpg &
+	swaybg -o DP-1 -m center -i "$FOLDER"/r.jpg &
+	swaybg -o eDP-1 -m fill -i "$FOLDER"/s.jpg &
+else
+	xwallpaper --output HDMI-1 --center "$FOLDER"/l.jpg \
+		--output DP-1 --center "$FOLDER"/r.jpg \
+		--output eDP-1 --zoom "$FOLDER"/s.jpg
+fi

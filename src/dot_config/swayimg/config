@@ -1,0 +1,25 @@
+[viewer]
+window = #000000ff
+fixed = no
+
+[font]
+name = JetBrains Mono
+
+[keys.gallery]
+h = step_left
+l = step_right
+j = step_down
+k = step_up
+g = first_file
+Shift+g = last_file
+Ctrl+u = page_up
+Ctrl+d = page_down
+
+[keys.viewer]
+h = step_left
+l = step_right
+j = step_down
+k = step_up
+n = next_file
+p = prev_file
+Shift+plus = zoom +10

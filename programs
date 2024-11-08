@@ -195,6 +195,25 @@ patch
 pkgconf
 texinfo
 
+
+#
+# wayland
+#
+
+niri
+fuzzel
+swaylock
+swayidle
+swaybg
+waybar
+
+# utilities
+wlr-randr
+wl-clipboard
+swayimg
+wev
+
+
 #
 # for new systems
 #

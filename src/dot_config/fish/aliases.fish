@@ -1,21 +1,23 @@
-# dynamic swallow (dwm patch)
-function swal
-	if command -v dwmswallow > /dev/null
-		dwmswallow "$WINDOWID" $argv
+# dynamic swallow
+function hide
+	if test -n "$NIRI_SOCKET"
+		niri-swal.sh $argv
+	else if command -v dwmswallow > /dev/null; then
+		dwmswallow "$WINDOWID" $argv[2..-1]
+	else
+		eval $argv[2..-1]
 	end
 end
 
-alias mpv='command mpv'
+alias mpv='hide mpv mpv'
+alias imvi='hide swayimg imgv.sh'
 
 # prevent clobbering files
 alias mv='mv -n'
 alias cp='cp -n'
 
-# run this before opening, e.g., mpv or zathura
-abbr -a -- ds swal;
-
 # zathura
-alias thur='swal -c Zathura; zathura'
+alias thur='hide org.pwmt.zathura zathura'
 # stricter sandbox zathura
 alias zathsec='/usr/bin/zathura-sandbox -c ~/.config/zathura-sec'
 
@@ -23,7 +25,7 @@ alias zathsec='/usr/bin/zathura-sandbox -c ~/.config/zathura-sec'
 function tmx; tmux -u -2 $argv; end
 
 # Run mpv from clipboard
-function mpvy; mpv $argv (xsel -b); end
+function mpvy; mpv $argv (cb -b); end
 
 # Set gpg tty so curses pinentry works
 function gpgt; export GPG_TTY=(tty); end

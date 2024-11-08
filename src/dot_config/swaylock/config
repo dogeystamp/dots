@@ -1,0 +1,10 @@
+color=000000
+
+line-uses-ring
+indicator-thickness=20
+indicator-radius=10
+font-size=1
+
+key-hl-color=99AABB
+ring-color=99AABB
+separator-color=99AABB
