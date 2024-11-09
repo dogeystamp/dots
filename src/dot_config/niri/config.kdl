@@ -60,6 +60,11 @@ prefer-no-csd
 screenshot-path null
 
 window-rule {
+	geometry-corner-radius 5
+	clip-to-geometry true
+}
+
+window-rule {
     match app-id=r#"qutebrowser"#
 	opacity 0.8
 }
@@ -168,6 +173,9 @@ binds {
     Alt+H              { focus-monitor-left; }
     Alt+L              { focus-monitor-right; }
 
+    Win+M              { spawn "dunstctl" "close"; }
+    Win+N              { spawn "dunstctl" "history-pop"; }
+
     Alt+Shift+H        { move-column-to-monitor-left; }
     Alt+Shift+L        { move-column-to-monitor-right; }
 
@@ -230,7 +238,7 @@ binds {
     Alt+Shift+9 { move-column-to-workspace 9; }
     Alt+Shift+0 { move-column-to-workspace 10; }
 
-    Mod+Tab { focus-workspace-previous; }
+    Alt+Tab { focus-workspace-previous; }
 
     Alt+Ctrl+Comma  { consume-window-into-column; }
     Alt+Ctrl+Period { expel-window-from-column; }

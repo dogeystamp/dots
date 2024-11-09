@@ -9,4 +9,4 @@ if [ "$DUNST_APP_NAME" = "prod" ]; then
 	exit
 fi
 
-paplay ~/.local/bin/deskutils/notif.mp3
+paplay ~/.local/bin/deskutils/notif.wav
