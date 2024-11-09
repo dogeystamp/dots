@@ -5,12 +5,7 @@ TMPFILE="$(mktemp)"
 
 cb > "$TMPFILE"
 
-newterm() {
-	alacritty msg create-window "$@" ||
-		alacritty "$@"
-}
-
-newterm \
+newterm.sh \
 	-o 'window.class = { instance = "popup-bottom-center", general="popup-bottom-center" }' \
 	-o 'window.opacity = 1.0' \
 	-o 'window.dimensions = { columns = 84, lines = 10 }' \
