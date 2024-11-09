@@ -6,6 +6,7 @@
 {{- $fish_path = "/data/data/com.termux/files/usr/bin/fish" }}
 {{- end }}
 
-# Use fish in place of bash
-# keep this line at the bottom of ~/.bashrc
-[ -x {{ $fish_path }} ] && SHELL={{ $fish_path }} exec fish -l
+# use fish interactively
+[ -x {{ $fish_path }} ] && export SHELL={{ $fish_path }}
+[[ -z $DISPLAY && $XDG_VTNR -eq 2 ]] && exec startx
+[[ -z $WAYLAND_DISPLAY && $XDG_VTNR -eq 1 ]] && exec niri-session

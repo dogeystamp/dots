@@ -206,6 +206,8 @@ swaylock
 swayidle
 swaybg
 waybar
+# needed for niri screencasting
+xdg-desktop-portal-gnome
 
 # utilities
 wlr-randr
