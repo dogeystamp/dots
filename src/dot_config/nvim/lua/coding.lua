@@ -93,6 +93,11 @@ local on_attach = function(client, bufnr)
 		client.server_capabilities.hoverProvider = false
 	end
 
+	if client.name == "typst_lsp" then
+		-- this breaks on special characters outside english
+		client.server_capabilities.semanticTokensProvider = false
+	end
+
 	-- Enable completion triggered by <c-x><c-o>
 	buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -190,7 +195,7 @@ local servers = {
 	},
 	typst_lsp = {
 		settings = {
-			exportPdf = "onSave" -- alternatively onType / never
+			exportPdf = "onSave", -- alternatively onType / never
 		}
 	},
 	nushell = {},
