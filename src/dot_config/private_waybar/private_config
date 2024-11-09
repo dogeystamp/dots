@@ -1,0 +1,38 @@
+{
+	"layer": "top",
+	"reload_style_on_change": true,
+	"modules-left": ["niri/workspaces"],
+	"modules-center": ["niri/window"],
+	"modules-right": ["mpris", "network", "battery", "clock"],
+	"niri/window": {
+		 "max-length": 50
+	},
+	"niri/workspaces": {
+		"format": "{icon}",
+		"format-icons": {
+		}
+	},
+	"battery": {
+		 "format": "{capacity}% {icon}",
+		 "format-icons": ["", "", "", "", ""],
+		 "states": {
+		 	"warning": 40,
+			"critical": 10,
+		 }
+	},
+	"clock": {
+		"format": "{:%H:%M}",
+	},
+	"network": {
+		"format-wifi": "⇌",
+		"format-disconnected": "⚠"
+	},
+	"mpris": {
+		"format": "{artist} - {title} {status_icon}",
+		"format-paused": "{artist} - {title} {status_icon}",
+		"status-icons": {
+			 "playing": "✗",
+			 "paused": "•"
+		},
+	}
+}

@@ -1,0 +1,27 @@
+@import url("file:///etc/xdg/waybar/style.css");
+
+.modules-left {
+	padding-left: 0.5em;
+}
+.modules-right {
+	padding-right: 0.5em;
+}
+
+#network,
+#battery,
+#clock {
+	background-color: transparent;
+	color: #ffffff;
+}
+
+#mpris {
+	margin-right: 0.5em;
+}
+
+#battery.warning:not(.charging) {
+	background-color: #99AABB;
+}
+
+window#waybar.chromium {
+	background-color: rgba(43, 48, 59, 0.5);
+}
