@@ -193,11 +193,12 @@ local servers = {
 			},
 		},
 	},
-	typst_lsp = {
-		settings = {
-			exportPdf = "onSave", -- alternatively onType / never
-		}
-	},
+	-- too battery intensive
+	-- typst_lsp = {
+	-- 	settings = {
+	-- 		exportPdf = "onSave", -- alternatively onType / never
+	-- 	}
+	-- },
 	nushell = {},
 }
 local capabilities = vim.lsp.protocol.make_client_capabilities()
