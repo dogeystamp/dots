@@ -5,6 +5,8 @@ end
 # Disable fish greeting
 set fish_greeting ""
 
+umask 007
+
 if status --is-interactive
 	if not test $SYSTEM_PROFILE = "MINIMAL"
 		rem.sh show
