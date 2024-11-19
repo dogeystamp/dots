@@ -74,7 +74,6 @@ $env.config = {
         vi_normal: block
     }
 
-    use_grid_icons: true
     footer_mode: 25 # always, never, number_of_rows, auto
     float_precision: 2 # the precision for displaying floats in tables
     use_ansi_coloring: true
