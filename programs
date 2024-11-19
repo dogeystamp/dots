@@ -105,7 +105,7 @@ nss-mdns
 python-pynvim
 xorg-xinput
 xorg-xbacklight
-neofetch
+fastfetch
 cloc
 
 aerc
