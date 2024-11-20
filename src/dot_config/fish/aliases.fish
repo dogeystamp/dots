@@ -9,8 +9,19 @@ function hide
 	end
 end
 
+function darkmode
+	niri msg action do-screen-transition
+	gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+end
+function lightmode
+	niri msg action do-screen-transition
+	gsettings set org.gnome.desktop.interface color-scheme 'default'
+end
+
 alias mpv='hide mpv mpv'
 alias imvi='hide swayimg imgv.sh'
+
+alias neofetch='fastfetch'
 
 # prevent clobbering files
 alias mv='mv -n'

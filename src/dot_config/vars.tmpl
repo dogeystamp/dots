@@ -72,10 +72,6 @@ if [ -r "$XDG_CONFIG_HOME"/identity ]; then
 	. "$XDG_CONFIG_HOME"/identity
 fi
 
-if command -v gsettings > /dev/null; then
-	gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-fi
-
 # Profile to enable/disable features on certain devices
 export SYSTEM_PROFILE={{ .systemprofile | quote }}
 
