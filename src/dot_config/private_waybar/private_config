@@ -28,8 +28,12 @@
 		"format-disconnected": "⚠"
 	},
 	"mpris": {
-		"format": "{artist} - {title} {status_icon}",
-		"format-paused": "{artist} - {title} {status_icon}",
+		"title-len": 65,
+		"album-len": 0,
+		"dynamic-len": 65,
+		"dynamic-order": ["artist", "title"],
+		"format": "{dynamic} {status_icon}",
+		"format-paused": "{dynamic} {status_icon}",
 		"status-icons": {
 			 "playing": "✗",
 			 "paused": "•"
