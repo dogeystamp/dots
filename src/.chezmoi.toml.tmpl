@@ -1,6 +1,10 @@
 {{- $systemprofilechoices := list "DEFAULT" "SLIM" "MINIMAL" -}}
 {{- $systemprofile := promptChoiceOnce . "systemprofile" "Select a system profile (use capital letter)" $systemprofilechoices "MINIMAL" -}}
+{{- $email := promptStringOnce . "email" "Email address for Git" -}}
+{{- $fullname := promptStringOnce . "email" "Full name for Git" -}}
 
 [data]
 systemprofile = {{ $systemprofile | quote }}
+email = {{ $email | quote }}
+fullname = {{ $fullname | quote }}
 opacity = "0.7"

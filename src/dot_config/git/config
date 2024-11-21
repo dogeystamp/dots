@@ -1,9 +1,0 @@
-[user]
-	email = dogeystamp@disroot.org
-	name = dogeystamp
-[gpg]
-	program = passphrase2pgp
-[merge]
-    tool = nvimmerge
-[mergetool "nvimmerge"]
-	cmd = "nvim -d -c \"wincmd l\" -c \"norm ]c\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\""

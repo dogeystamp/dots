@@ -1,0 +1,12 @@
+[user]
+	email = {{ .email }}
+	name = {{ .fullname }}
+	signingkey = "~/.ssh/keys/sign.pub"
+[gpg]
+	format = ssh
+[gpg.ssh]
+	allowedSignersFile = "~/.ssh/allowed_signers"
+[merge]
+    tool = nvimmerge
+[mergetool "nvimmerge"]
+	cmd = "nvim -d -c \"wincmd l\" -c \"norm ]c\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\""
