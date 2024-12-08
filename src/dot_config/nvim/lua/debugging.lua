@@ -25,12 +25,7 @@ local M = {}
 ----------------
 
 keymap("<leader>rs", dap.continue)
-keymap("<leader>rt", function()
-	-- hard restart (lldb just stops when restarted)
-	dap.terminate()
-	vim.cmd.sleep("100m")
-	dap.continue()
-end)
+keymap("<leader>rt", dap.restart)
 keymap("<leader>rr", dap.terminate)
 keymap("<F11>", dap.step_into)
 keymap("<c-n>", dap.step_over)
@@ -165,8 +160,9 @@ function M.run_input(file)
 	vim.api.nvim_buf_call(dapui.elements.console.buffer(), function()
 		vim.b.nvimdbg_inp_file = M.dbg_dir(file) .. "/input"
 		vim.cmd [[
-		let @x = join(readfile(b:nvimdbg_inp_file), "\n") .. "\n\n"
-		normal G"xp
+		" 0x4 is eof
+		let @x = join(readfile(b:nvimdbg_inp_file), "\n") .. "\n\n" .. "\x04"
+		normal! G"xp
 		]]
 	end)
 end
@@ -238,7 +234,7 @@ dap.configurations.python = {
 ----------------
 dap.adapters.lldb = {
 	type = "executable",
-	command = "/usr/bin/lldb-vscode",
+	command = "/usr/bin/lldb-dap",
 	name = "lldb"
 }
 
