@@ -1,7 +1,7 @@
 #!/bin/bash
 # window swallow emulation for Niri
 # (https://github.com/YaLTeR/niri/discussions/762)
-# requires at least commit d5cbc35
+# requires at least commit d5cbc35 / version 0.1.10
 #
 # this script shrinks the terminal into a column with the new window.
 # bind it in your shell as an alias like "hide".
@@ -43,4 +43,4 @@ shift
 
 "$@"
 
-niri msg action set-window-height --id "$TERM_ID" 100%
+niri msg action reset-window-height --id "$TERM_ID"

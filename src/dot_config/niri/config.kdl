@@ -12,11 +12,14 @@ input {
 
     touchpad {
         tap
+		// disable while typing
+		dwt
     }
 
 	mouse {}
 
     warp-mouse-to-focus
+	focus-follows-mouse max-scroll-amount="10%"
 }
 
 output "HDMI-A-1" {
@@ -137,13 +140,8 @@ window-rule {
     block-out-from "screen-capture"
 }
 
-workspace "chat" {
-	open-on-output "HDMI-A-1"
-}
-
 window-rule {
 	match title="discord"
-	open-on-workspace "chat"
 	open-maximized true
 }
 
@@ -157,7 +155,7 @@ binds {
     Alt+7 { focus-workspace 7; }
     Alt+8 { focus-workspace 8; }
     Alt+9 { focus-workspace 9; }
-    Alt+0 { focus-workspace "chat"; }
+    Alt+0 { focus-workspace 10; }
     Alt+Shift+1 { move-column-to-workspace 1; }
     Alt+Shift+2 { move-column-to-workspace 2; }
     Alt+Shift+3 { move-column-to-workspace 3; }
@@ -167,7 +165,7 @@ binds {
     Alt+Shift+7 { move-column-to-workspace 7; }
     Alt+Shift+8 { move-column-to-workspace 8; }
     Alt+Shift+9 { move-column-to-workspace 9; }
-    Alt+Shift+0 { move-column-to-workspace "chat"; }
+    Alt+Shift+0 { move-column-to-workspace 10; }
     Alt+Shift+Slash { show-hotkey-overlay; }
 
     Alt+Shift+Return { spawn "newterm.sh"; }
@@ -176,6 +174,8 @@ binds {
     Alt+Shift+P { spawn "keepassxc"; }
     Alt+Shift+D { spawn "qbprof" "dsc"; }
     Ctrl+Alt+L { spawn "swaylock"; }
+
+    Alt+V { spawn "style.sh"; }
 
     Alt+Shift+Z { spawn "clipedit.sh"; }
     Alt+Z { spawn "newterm.sh" "-e" "bookmk"; }
