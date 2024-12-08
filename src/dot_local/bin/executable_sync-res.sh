@@ -16,7 +16,7 @@ if [ -z "$1" ]; then
 	die usage: $PROGNAME file.sync-conflict-XXXXXXXX-XXXXXX-XXXXXXX
 fi
 
-ORIG=$(echo "$1" | sed -E 's/\.sync-conflict-[0-9]{8}-[0-9]{6}-[A-Z]{7}//')
+ORIG=$(echo "$1" | sed -E 's/\.sync-conflict-[0-9]{8}-[0-9]{6}-[A-Z0-9]{7}//')
 
 if [ "$ORIG" = "$1" ]; then
 	die Could not find original file. Is this a sync-conflict file?
