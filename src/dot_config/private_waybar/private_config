@@ -22,21 +22,28 @@
 	},
 	"clock": {
 		"format": "{:%H:%M}",
+		"tooltip-format": "{:%a %b %d, %Y (%Z / UTC%z)}",
+		"tooltip": true,
 	},
 	"network": {
-		"format-wifi": "⇌",
-		"format-disconnected": "⚠"
+		"format-wifi": "{signalStrength}% ",
+		"format-disconnected": "⚠",
+		"max-length": 20
+	},
+	"inhibitor": {
+		"format": "{icon} ",
+		"format-icons": {
+			"activated": "",
+			"deactivated": ""
+		},
+		"what": "idle",
 	},
 	"mpris": {
 		"title-len": 65,
 		"album-len": 0,
 		"dynamic-len": 65,
 		"dynamic-order": ["artist", "title"],
-		"format": "{dynamic} {status_icon}",
-		"format-paused": "{dynamic} {status_icon}",
-		"status-icons": {
-			 "playing": "✗",
-			 "paused": "•"
-		},
+		"format": "{dynamic} ♫",
+		"format-paused": "{dynamic}",
 	}
 }
