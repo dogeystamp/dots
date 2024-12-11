@@ -3,6 +3,8 @@
 {{- $email := promptStringOnce . "email" "Email address for Git" -}}
 {{- $fullname := promptStringOnce . "email" "Full name for Git" -}}
 
+mode = "symlink"
+
 [data]
 systemprofile = {{ $systemprofile | quote }}
 email = {{ $email | quote }}
