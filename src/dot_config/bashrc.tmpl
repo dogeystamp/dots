@@ -10,3 +10,4 @@
 [ -x {{ $fish_path }} ] && export SHELL={{ $fish_path }}
 [[ -z $DISPLAY && $XDG_VTNR -eq 2 ]] && exec startx
 [[ -z $WAYLAND_DISPLAY && $XDG_VTNR -eq 1 ]] && exec niri-session
+exec "$SHELL"
