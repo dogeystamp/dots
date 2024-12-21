@@ -1,10 +1,11 @@
 @import url("file:///etc/xdg/waybar/style.css");
 
+* {
+	font-family: FontAwesome, Inter Display
+}
+
 .modules-left {
 	padding-left: 0.5em;
-}
-.modules-right {
-	padding-right: 0.5em;
 }
 
 #network,
@@ -24,4 +25,30 @@
 
 window#waybar.chromium {
 	background-color: rgba(43, 48, 59, 0.5);
+}
+
+#pulseaudio, #pulseaudio.muted, #pulseaudio:hover {
+    background-color: inherit;
+    color: inherit;
+}
+
+#workspaces * {
+	font-size: 0.8em;
+}
+
+#workspaces button:hover {
+	box-shadow: inherit;
+}
+
+#workspaces button.focused {
+	background-color: inherit;
+	box-shadow: inherit;
+}
+
+window#waybar {
+	border-bottom: none;
+}
+
+#window, #workspaces {
+	margin: 0;
 }
