@@ -1,0 +1,21 @@
+[general]
+status_path = "~/.local/share/vdirsyncer/status"
+
+[pair calendar]
+a = "calendar_local"
+b = "calendar_remote"
+conflict_resolution = "b wins"
+collections = ["from a", "from b"]
+metadata = ["color", "displayname"]
+
+[storage calendar_local]
+type = "filesystem"
+path = "~/.local/share/vdirsyncer/cal/"
+fileext=".ics"
+
+[storage calendar_remote]
+type = "caldav"
+
+url = ""
+username = "user"
+password = ""
