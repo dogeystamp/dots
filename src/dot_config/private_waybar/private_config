@@ -15,7 +15,8 @@
 		}
 	},
 	"battery": {
-		 "format": "{icon}",
+		 "format-full": "{icon}",
+		 "format": "<small>{capacity}%</small> {icon} ",
 		 "tooltip-format": "{capacity}%",
 		 "format-icons": ["", "", "", "", ""],
 		 "states": {
@@ -30,7 +31,7 @@
 	},
 	"network": {
 		"format-wifi": "",
-		"tooltip-format": "{essid} {signalStrength}%",
+		"tooltip-format": "{essid} ({signalStrength}%)",
 		"format-disconnected": "⚠",
 		"max-length": 20
 	},

@@ -5,18 +5,32 @@
 }
 
 .modules-left {
-	padding-left: 0.5em;
+	padding-left: 0.2em;
+}
+
+.modules-right {
+	padding-right: 0.2em;
 }
 
 #network,
 #battery,
+#pulseaudio, #pulseaudio.muted, #pulseaudio:hover,
+#mpris,
 #clock {
-	background-color: transparent;
-	color: #ffffff;
+	background-color: inherit;
+	color: inherit;
+}
+
+/* icon fonts */
+#network,
+#battery,
+#pulseaudio, #pulseaudio.muted, #pulseaudio:hover,
+#mpris {
+	font-size: 0.9em;
 }
 
 #mpris {
-	margin-right: 0.5em;
+	margin-right: .6em;
 }
 
 #battery.warning:not(.charging) {
@@ -25,11 +39,6 @@
 
 window#waybar.chromium {
 	background-color: rgba(43, 48, 59, 0.5);
-}
-
-#pulseaudio, #pulseaudio.muted, #pulseaudio:hover {
-    background-color: inherit;
-    color: inherit;
 }
 
 #workspaces * {
