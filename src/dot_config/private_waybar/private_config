@@ -3,17 +3,20 @@
 	"reload_style_on_change": true,
 	"modules-left": ["niri/workspaces"],
 	"modules-center": ["niri/window"],
-	"modules-right": ["mpris", "network", "battery", "clock"],
+	"modules-right": ["mpris", "pulseaudio", "network", "battery", "clock"],
 	"niri/window": {
 		 "max-length": 50
 	},
 	"niri/workspaces": {
 		"format": "{icon}",
 		"format-icons": {
+			"active": "",
+			"default": ""
 		}
 	},
 	"battery": {
-		 "format": "{capacity}% {icon}",
+		 "format": "{icon}",
+		 "tooltip-format": "{capacity}%",
 		 "format-icons": ["", "", "", "", ""],
 		 "states": {
 		 	"warning": 40,
@@ -21,12 +24,13 @@
 		 }
 	},
 	"clock": {
-		"format": "{:%H:%M}",
+		"format": "{:%a %d %b  %H:%M}",
 		"tooltip-format": "{:%a %b %d, %Y (%Z / UTC%z)}",
 		"tooltip": true,
 	},
 	"network": {
-		"format-wifi": "{signalStrength}% ",
+		"format-wifi": "",
+		"tooltip-format": "{essid} {signalStrength}%",
 		"format-disconnected": "⚠",
 		"max-length": 20
 	},
@@ -43,7 +47,16 @@
 		"album-len": 0,
 		"dynamic-len": 65,
 		"dynamic-order": ["artist", "title"],
-		"format": "{dynamic} ♫",
-		"format-paused": "{dynamic}",
-	}
+		"tooltip-format": "{dynamic}",
+		"format": "",
+		"format-paused": "",
+	},
+	"pulseaudio": {
+		"format": "{icon}",
+		"tooltip-format": "{volume}%",
+		"format-muted": "",
+		"format-icons": {
+			"default": ["", ""]
+		},
+	},
 }
