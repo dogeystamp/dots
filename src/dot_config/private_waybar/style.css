@@ -1,7 +1,7 @@
 @import url("file:///etc/xdg/waybar/style.css");
 
 * {
-	font-family: FontAwesome, Inter Display
+font-family: Symbols Nerd Font, Inter Display
 }
 
 .modules-left {
@@ -21,20 +21,26 @@
 	color: inherit;
 }
 
-/* icon fonts */
+/* icons */
 #network,
 #battery,
 #pulseaudio, #pulseaudio.muted, #pulseaudio:hover,
 #mpris {
-	font-size: 0.9em;
-}
-
-#mpris {
-	margin-right: .6em;
+	padding: 0.1em;
+	margin: 0.3em;
+	min-width: 1em;
 }
 
 #battery.warning:not(.charging) {
 	background-color: #99AABB;
+}
+
+#battery.charging {
+	background-color: inherit;
+}
+
+#network.disconnected {
+	background-color: inherit;
 }
 
 window#waybar.chromium {
@@ -42,7 +48,7 @@ window#waybar.chromium {
 }
 
 #workspaces * {
-	font-size: 0.8em;
+	font-size: 0.9em;
 }
 
 #workspaces button:hover {

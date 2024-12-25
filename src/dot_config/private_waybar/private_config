@@ -3,22 +3,26 @@
 	"reload_style_on_change": true,
 	"modules-left": ["niri/workspaces"],
 	"modules-center": ["niri/window"],
-	"modules-right": ["mpris", "pulseaudio", "network", "battery", "clock"],
+	"modules-right": ["pulseaudio", "network", "battery", "clock"],
 	"niri/window": {
 		 "max-length": 50
 	},
 	"niri/workspaces": {
 		"format": "{icon}",
 		"format-icons": {
-			"active": "",
-			"default": ""
+			"active": "󱓻",
+			"default": "󱓼"
 		}
 	},
 	"battery": {
 		 "format-full": "{icon}",
-		 "format": "<small>{capacity}%</small> {icon} ",
+		 "format": "{icon} <small> {capacity}%</small>",
+		 "format-charging": "󰂄 <small> {capacity}%</small>",
 		 "tooltip-format": "{capacity}%",
-		 "format-icons": ["", "", "", "", ""],
+		 "format-icons": {
+			 "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+			 "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂋", "󰂅"],
+		 },
 		 "states": {
 		 	"warning": 40,
 			"critical": 10,
@@ -30,9 +34,10 @@
 		"tooltip": true,
 	},
 	"network": {
-		"format-wifi": "",
+		"format-wifi": "{icon}",
+		 "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
 		"tooltip-format": "{essid} ({signalStrength}%)",
-		"format-disconnected": "⚠",
+		"format-disconnected": "󱡺",
 		"max-length": 20
 	},
 	"inhibitor": {
@@ -55,9 +60,9 @@
 	"pulseaudio": {
 		"format": "{icon}",
 		"tooltip-format": "{volume}%",
-		"format-muted": "",
+		"format-muted": "󰖁",
 		"format-icons": {
-			"default": ["", ""]
+			"default": ["󰕿", "󰖀", "󰕾"]
 		},
 	},
 }
