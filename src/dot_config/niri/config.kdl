@@ -175,7 +175,7 @@ binds {
     Alt+Shift+D { spawn "qbprof" "dsc"; }
     Ctrl+Alt+L { spawn "swaylock"; }
 
-    Alt+V { spawn "style.sh"; }
+    Alt+A { spawn "style.sh"; }
 
     Alt+Shift+Z { spawn "clipedit.sh"; }
     Alt+Z { spawn "newterm.sh" "-e" "bookmk"; }
