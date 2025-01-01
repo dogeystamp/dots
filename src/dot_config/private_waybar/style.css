@@ -1,7 +1,7 @@
 @import url("file:///etc/xdg/waybar/style.css");
 
 * {
-font-family: Symbols Nerd Font, Inter Display
+	font-family: Symbols Nerd Font, Inter Display;
 }
 
 .modules-left {
@@ -44,11 +44,11 @@ font-family: Symbols Nerd Font, Inter Display
 }
 
 window#waybar.chromium {
-	background-color: rgba(43, 48, 59, 0.5);
+	background-color: inherit;
 }
 
-#workspaces * {
-	font-size: 0.9em;
+#workspaces button {
+	color: inherit;
 }
 
 #workspaces button:hover {
@@ -61,6 +61,7 @@ window#waybar.chromium {
 }
 
 window#waybar {
+	background-color: rgba(0, 0, 0, 0.0);
 	border-bottom: none;
 }
 
