@@ -5,6 +5,9 @@ Runs on both Python and IPython.
 """
 
 from os import environ
+from pathlib import Path
+
+P = Path
 
 print(f"\nUsing PYTHONSTARTUP file: {environ.get("PYTHONSTARTUP")}")
 print("Read this file for information about custom macros/utilities.")
@@ -32,6 +35,12 @@ def math_mode():
     global radians
     def radians(angle):
         return angle * 2 * pi / 360
+
+def rel():
+    """Enable autoreloading of libraries."""
+    if ipy:
+        ipy.run_line_magic("load_ext", "autoreload")
+        ipy.run_line_magic("autoreload", "2")
 
 def data_mode():
     try:
