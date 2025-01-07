@@ -90,7 +90,7 @@ vdirsyncer
 tmsu
 
 # for qutebrowser copy code block
-python-pyperclip
+python-plumbum
 
 termdown
 rsync

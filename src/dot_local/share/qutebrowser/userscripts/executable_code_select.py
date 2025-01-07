@@ -1,21 +1,17 @@
 #!/usr/bin/env python3
+# Copy code blocks in Qutebrowser to clipboard.
+
+# A clipboard wrapper called `cb` is required. This is a script that switches
+# between xsel and wl-copy, depending on the platform.
+
+# See https://github.com/qutebrowser/qutebrowser/blob/master/doc/userscripts.asciidoc
 
 import os
 import html
-import re
-import sys
 import xml.etree.ElementTree as ET
-try:
-    import pyperclip
-except ImportError:
-    try:
-        import pyclip as pyperclip
-    except ImportError:
-        PYPERCLIP = False
-    else:
-        PYPERCLIP = True
-else:
-    PYPERCLIP = True
+from plumbum import local
+
+clipboard = local.cmd.cb["-i"]
 
 
 def parse_text_content(element):
@@ -26,32 +22,18 @@ def parse_text_content(element):
 
 
 def send_command_to_qute(command):
-    with open(os.environ.get("QUTE_FIFO"), "w") as f:
+    fifo = os.environ.get("QUTE_FIFO")
+    if not fifo:
+        raise RuntimeError("Can't read $QUTE_FIFO.")
+    with open(fifo, "w") as f:
         f.write(command)
 
 
 def main():
-    delimiter = sys.argv[1] if len(sys.argv) > 1 else ";"
-    # For info on qute environment vairables, see
-    # https://github.com/qutebrowser/qutebrowser/blob/master/doc/userscripts.asciidoc
     element = os.environ.get("QUTE_SELECTED_HTML")
     code_text = parse_text_content(element)
-    if PYPERCLIP:
-        pyperclip.copy(code_text)
-        send_command_to_qute(
-            "message-info 'copied to clipboard: {info}{suffix}'".format(
-                # message-info doesn't support escape codes for ' so we replace them
-                info=code_text.splitlines()[0].replace("'", "\""),
-                suffix="..." if len(code_text.splitlines()) > 1 else ""
-            )
-        )
-    else:
-        # Qute's yank command  won't copy accross multiple lines so we
-        # compromise by placing lines on a single line seperated by the
-        # specified delimiter
-        code_text = re.sub("(\n)+", delimiter, code_text)
-        code_text = code_text.replace("'", "\"")
-        send_command_to_qute("yank inline '{code}'\n".format(code=code_text))
+    (clipboard << code_text)()
+    send_command_to_qute("message-info 'Copied to clipboard.'")
 
 
 if __name__ == "__main__":
