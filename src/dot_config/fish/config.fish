@@ -8,6 +8,9 @@ set fish_greeting ""
 umask 007
 
 if status --is-interactive
+	# prevent mistakes. use -f to override
+	alias rm 'rm -i'
+
 	if not test $SYSTEM_PROFILE = "MINIMAL"
 		rem.sh show
 	end
