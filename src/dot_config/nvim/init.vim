@@ -72,6 +72,11 @@ nmap <C-S>C "+C
 vmap <C-S>c "+c
 nmap <C-S>p "+p
 
+" delete (do not save to register) bind
+vnoremap X "_d
+nnoremap X "_d
+nnoremap XX "_dd
+
 " faster indent binds
 " conflicts with motions, e.g. <ip
 nnoremap > >>
