@@ -27,7 +27,7 @@
 	gap_size = 5
 
 	frame_width = 2
-	corner_radius = 5
+	corner_radius = 2
 
 	origin = bottom-right
 	offset = 60x70
