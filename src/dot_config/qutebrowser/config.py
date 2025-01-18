@@ -5,7 +5,7 @@ config.load_autoconfig()
 c.window.transparent = True
 
 c.content.user_stylesheets = ["~/.config/qutebrowser/style.css"]
-c.colors.webpage.bg = "#444444"
+c.colors.webpage.bg = "black"
 c.colors.completion.category.bg = "#111111"
 c.colors.completion.even.bg = "black"
 c.colors.statusbar.private.bg = "black"
@@ -50,10 +50,10 @@ config.bind("td", "config-cycle colors.webpage.darkmode.enabled true false")
 
 c.url.default_page = "~/.config/qutebrowser/homepage.html"
 c.url.start_pages = "~/.config/qutebrowser/homepage.html"
-c.url.searchengines = {"DEFAULT": "https://searx.be/search?q={}"}
+c.url.searchengines = {"DEFAULT": "https://html.duckduckgo.com/html?q={}"}
 c.downloads.location.directory = "~/quar/"
 
-c.zoom.default = "100%"
+c.zoom.default = "90%"
 
 # Downloads
 
