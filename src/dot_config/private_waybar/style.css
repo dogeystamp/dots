@@ -25,10 +25,16 @@
 #network,
 #battery,
 #pulseaudio, #pulseaudio.muted, #pulseaudio:hover,
+#custom-next-event
 #mpris {
 	padding: 0.1em;
 	margin: 0.3em;
 	min-width: 1em;
+}
+
+#custom-next-event
+{
+	margin: 0.3em 0.75em;
 }
 
 #battery.warning:not(.charging) {

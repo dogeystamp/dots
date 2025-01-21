@@ -4,7 +4,7 @@
 	"reload_style_on_change": true,
 	"modules-left": ["niri/workspaces"],
 	"modules-center": ["niri/window"],
-	"modules-right": ["pulseaudio", "network", "battery", "clock"],
+	"modules-right": ["custom/next-event", "pulseaudio", "network", "battery", "clock"],
 	"niri/window": {
 		 "max-length": 50
 	},
@@ -66,4 +66,9 @@
 			"default": ["󰕿", "󰖀", "󰕾"]
 		},
 	},
+	"custom/next-event": {
+		"format": "󰃭 <small>{}</small>",
+		"exec": "$HOME/.local/bin/next_event.sh",
+		"interval": 360,
+	}
 }
