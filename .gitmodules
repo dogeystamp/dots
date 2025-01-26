@@ -74,3 +74,8 @@
 [submodule "src/dot_local/share/nvim/site/pack/3pp/opt/external_promise-async"]
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_promise-async
 	url = https://github.com/kevinhwang91/promise-async
+
+# library code (needed by other plugins)
+[submodule "src/dot_local/share/nvim/site/pack/3pp/opt/external_plenary.nvim"]
+	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim
