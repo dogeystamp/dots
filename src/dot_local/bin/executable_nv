@@ -10,7 +10,7 @@ swal() {
 	fi
 }
 
-if ! command -v neovide > /dev/null || [ -z "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ]; then
+if [ -z "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] || ! command -v neovide > /dev/null; then
 	nvim "$@"
 else
 	swal "$@"
