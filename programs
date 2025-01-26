@@ -142,7 +142,11 @@ gimp
 blender
 audacity
 syncthing
+
+# inkscape and extension stuff
 inkscape
+python-tinycss2
+
 typescript
 typescript-language-server
 pyright
