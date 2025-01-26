@@ -69,6 +69,6 @@
 	"custom/next-event": {
 		"format": "󰃭 <small>{}</small>",
 		"exec": "$HOME/.local/bin/next_event.sh",
-		"interval": 360,
+		"interval": 60,
 	}
 }

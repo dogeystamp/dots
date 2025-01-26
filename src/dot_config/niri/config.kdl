@@ -65,6 +65,23 @@ layout {
 	}
 }
 
+layer-rule {
+	shadow {
+		on
+		softness 10
+	}
+}
+
+layer-rule {
+    match namespace="waybar"
+
+	shadow {
+		on
+		color "#00000044"
+		inactive-color "#00000044"
+	}
+}
+
 cursor {
 	xcursor-theme "capitaine-cursors"
 	xcursor-size 28

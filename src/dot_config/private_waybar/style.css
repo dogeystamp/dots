@@ -49,10 +49,6 @@
 	background-color: inherit;
 }
 
-window#waybar.chromium {
-	background-color: inherit;
-}
-
 #workspaces button {
 	color: inherit;
 }
@@ -67,8 +63,12 @@ window#waybar.chromium {
 }
 
 window#waybar {
-	background-color: rgba(0, 0, 0, 0.0);
+	background-color: rgba(0, 0, 0, 0.1);
 	border-bottom: none;
+}
+
+window#waybar.chromium {
+	background-color: rgba(0, 0, 0, 0.1);
 }
 
 #window, #workspaces {
