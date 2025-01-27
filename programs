@@ -218,6 +218,8 @@ swaybg
 waybar
 # needed for niri screencasting
 xdg-desktop-portal-gnome
+# needed for qutebrowser
+qt6-wayland
 
 # utilities
 wlr-randr
