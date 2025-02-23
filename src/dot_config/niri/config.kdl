@@ -31,6 +31,18 @@ output "HDMI-A-1" {
 }
 
 layout {
+	default-column-display "tabbed"
+	tab-indicator {
+		hide-when-single-tab
+		position "bottom"
+		gap 8
+		gaps-between-tabs 10
+		width 4
+		length total-proportion=0.25
+		active-color "#aabbee99"
+		inactive-color "#aaaaaa44"
+	}
+
     gaps 36
 
 	struts {
@@ -50,7 +62,11 @@ layout {
         proportion 1.0
 	}
 
-    focus-ring {
+	focus-ring {
+		off
+	}
+
+    border {
         // off
 
         width 3
@@ -176,6 +192,7 @@ window-rule {
 }
 
 binds {
+	Mod+W { toggle-column-tabbed-display; }
     Mod+1 { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }
     Mod+3 { focus-workspace 3; }
