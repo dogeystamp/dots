@@ -112,11 +112,11 @@ abbr -a --position anywhere -- rbsign "--exec 'git commit --amend --no-edit -n -
 # this allows retrieving the files accessed from history
 # instead of (basename (xsel -b))
 
-function prob_typ; echo $EDITOR (basename (xsel -b)).typ; end
+function prob_typ; echo $EDITOR (basename (cb -b)).typ; end
 abbr -a typ --function prob_typ
-function prob_cpp; echo $EDITOR src/(basename (xsel -b)).cpp; end
+function prob_cpp; echo $EDITOR src/(basename (cb -b)).cpp; end
 abbr -a cpp --function prob_cpp
-function prob_py; echo $EDITOR src/(basename (xsel -b)).py; end
+function prob_py; echo $EDITOR src/(basename (cb -b)).py; end
 abbr -a py --function prob_py
 
 # creates a debug directory for a file
