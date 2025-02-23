@@ -11,6 +11,7 @@ capitaine-cursors
 ttf-nerd-fonts-symbols
 gsfonts
 git
+git-lfs
 xwallpaper
 dunst
 zathura
@@ -226,6 +227,9 @@ wlr-randr
 wl-clipboard
 swayimg
 wev
+
+# X11 compatibility
+xwayland-satellite
 
 
 #
