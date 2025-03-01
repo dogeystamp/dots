@@ -2,11 +2,55 @@
 	email = {{ .email }}
 	name = {{ .fullname }}
 	signingkey = "~/.ssh/keys/sign.pub"
+
 [gpg]
 	format = ssh
+
 [gpg.ssh]
 	allowedSignersFile = "~/.ssh/allowed_signers"
+
 [merge]
     tool = nvimmerge
+
 [mergetool "nvimmerge"]
 	cmd = "nvim -d -c \"wincmd l\" -c \"norm ]c\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\""
+
+[diff]
+algorithm = histogram
+# colors moved lines differently from added lines
+colorMoved = plain
+# detects file renames
+renames = true
+# renames a/, b/ in diffs to i/ (index), w/ (working dir) c/ (commit)
+mnemonicPrefix = true
+
+[column]
+# formats lists of tags, branches as columns
+ui = auto
+
+[branch]
+sort = -committerdate
+
+[tag]
+# numeric sort
+sort = version:refname
+
+[init]
+defaultBranch = main
+
+[push]
+# if we don't have upstream, set upstream to origin
+autoSetupRemote = true
+# automatically push tags
+followTags = true
+
+[commit]
+# show the diff every time you write a commit message
+verbose = true
+
+# git lfs stuff (remove if you don't have lfs)
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
