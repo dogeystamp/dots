@@ -34,8 +34,9 @@ if status --is-interactive
 	set fish_color_cwd grey
 	set fish_color_command blue
 
+	source ~/.config/fish/functions/extra_prompt.fish
+
 	if test $SYSTEM_PROFILE = "DEFAULT"
-		source ~/.config/fish/functions/extra_prompt.fish
 		source ~/.config/fish/functions/fzf_binds.fish
 		fzf_key_bindings
 	end
