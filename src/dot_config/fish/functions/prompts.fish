@@ -7,60 +7,27 @@ function fish_prompt
 		set letter '>'
 	end
 
-	set -l usercolor (set_color brblack)
+	set -l fish_color_cwd cyan
 
 	set -l stat_code ""
 	if test $cmd_status -ne 0
-		set stat_code " "(set_color red)(fish_status_to_signal $cmd_status)
+		set stat_code (set_color red)(fish_status_to_signal $cmd_status)(set_color normal)" "
 	end
 
-	printf '%s%s@%s%s%s%s '\
-		$usercolor \
-		(echo $USER | string shorten -m 5 -c '') \
-		(echo $hostname | string shorten -m 3 -c '') \
-		$stat_code \
-		(set_color normal) \
-		(fish_git_prompt)
+	set -l git_prompt (string trim (fish_git_prompt))
+	if test -n $fish_git_prompt
+		set git_prompt $git_prompt" "
+	end
+
+	printf '%s%s%s'\
+		$git_prompt \
+		$stat_code
 		
-	printf '%s%s%s%s ' (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) $letter
+	printf '%s%s%s%s%s ' (set_color $fish_color_cwd) (prompt_pwd) (set_color cyan) $letter (set_color normal)
 end
 
 # https://fishshell.com/docs/3.2/cmds/fish_mode_prompt.html
 function fish_mode_prompt
-	if command -sq cksum
-		# randomised color for user/hostname based on disco.fish
-		set -l shas (echo $USER$hostname | cksum | string split -f1 ' ' | math --base=hex | string sub -s 3 | string pad -c 0 -w 6 | string match -ra ..)
-		set -l col 0x$shas[1..3]
-
-		# ensure luminance is readable
-		while test (math 0.2126 x $col[1] + 0.7152 x $col[2] + 0.0722 x $col[3]) -lt 120
-			set col[1] (math --base=hex "min(255, $col[1] + 60)")
-			set col[2] (math --base=hex "min(255, $col[2] + 60)")
-			set col[3] (math --base=hex "min(255, $col[3] + 60)")
-		end
-		set -l col (string replace 0x '' $col | string pad -c 0 -w 2 | string join "")
-
-		set uniquecol (set_color --bold $col)
-	end
-
-	set_color --bold brblack
-	echo '['
-	echo $uniquecol
-
-	switch $fish_bind_mode
-	case default
-		echo 'N'
-	case insert
-		echo 'I'
-	case replace_one
-		echo 'R'
-	case visual
-		echo 'V'
-	case '*'
-		echo '?'
-	end
-
-	set_color --bold brblack
-	echo '] '
-	set_color normal
+	# i usually consider the cursor to be good enough for distinguishing visual/insert.
+	# no-op.
 end

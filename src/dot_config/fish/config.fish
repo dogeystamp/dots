@@ -19,10 +19,16 @@ if status --is-interactive
 	# Enable Vi bindings
 	fish_hybrid_key_bindings
 
+	bind -M default dW kill-token
+	bind -M default dB backward-kill-token
+	bind -M default B backward-token
+	bind -M default W forward-token
+
 	source ~/.config/fish/functions/prompts.fish
 
 	set __fish_git_prompt_showdirtystate 1
 	set __fish_git_prompt_showupstream auto
+	set __fish_git_prompt_showstashstate 1
 
 	set fish_color_param normal
 	set fish_color_cwd grey
