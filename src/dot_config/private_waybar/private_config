@@ -1,6 +1,6 @@
 {
 	"layer": "top",
-	"position": "top",
+	"position": "bottom",
 	"reload_style_on_change": true,
 	"modules-left": ["niri/workspaces"],
 	"modules-center": ["niri/window"],
@@ -25,8 +25,7 @@
 			 "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂋", "󰂅"],
 		 },
 		 "states": {
-		 	"warning": 40,
-			"critical": 10,
+			"critical": 15,
 		 }
 	},
 	"clock": {

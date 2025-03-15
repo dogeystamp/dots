@@ -36,6 +36,7 @@ layout {
 		hide-when-single-tab
 		position "bottom"
 		gap 8
+		corner-radius 2
 		gaps-between-tabs 10
 		width 4
 		length total-proportion=0.25
@@ -92,9 +93,11 @@ layer-rule {
     match namespace="waybar"
 
 	shadow {
-		on
+		off
 		color "#00000044"
 		inactive-color "#00000044"
+		offset x=-5 y=-5
+		softness 10
 	}
 }
 
@@ -122,7 +125,7 @@ window-rule {
 
 window-rule {
     match app-id=r#"qutebrowser"#
-	opacity 0.8
+	opacity 1.0
 }
 
 animations {

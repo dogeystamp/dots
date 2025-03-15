@@ -38,7 +38,7 @@
 	margin: 0.3ex 1.6ex;
 }
 
-#battery.warning:not(.charging) {
+#battery.critical:not(.charging) {
 	background-color: #99AABB;
 }
 
@@ -64,12 +64,12 @@
 }
 
 window#waybar {
-	background-color: rgba(0, 0, 0, 0.1);
+	background-color: rgba(0, 0, 0, 0.0);
 	border-bottom: none;
 }
 
 window#waybar.chromium {
-	background-color: rgba(0, 0, 0, 0.1);
+	background-color: rgba(0, 0, 0, 0.0);
 }
 
 #window, #workspaces {
