@@ -2,10 +2,10 @@
 # window swallow emulation for Niri
 # (https://github.com/YaLTeR/niri/discussions/762)
 #
-# - requires at least commit d5cbc35 / version 0.1.10
+# - works best with commit fd3b1f2b or later
 # - depends on `jq`, `socat`
 #
-# this script shrinks the terminal into a column with the new window.
+# this script consumes the app into the terminal's column as a new tab.
 # bind it in your shell as an alias like "hide".
 #
 # example:
@@ -56,11 +56,9 @@ sock_printf() {
 	# move the new window onto the terminal's workspace
 	sock_printf '{"Action":{"MoveWindowToWorkspace":{"window_id":%s,"reference":{"Id":%s}}}}' "$APP_WIN_ID" "$TERM_WORKSPACE_ID"
 
-	niri msg action focus-window --id "$TERM_ID"
 	niri msg action consume-or-expel-window-left --id "$APP_WIN_ID"
-	niri msg action move-window-down
-	niri msg action set-window-height --id "$TERM_ID" 0%
-	niri msg action focus-window-up
+	niri msg action set-column-display tabbed
+	niri msg action focus-window --id "$APP_WIN_ID"
 
 	# focus back onto the workspace the app spawned on
 	sock_printf '{"Action":{"FocusWorkspace":{"reference":{"Id":%s}}}}' "$WORKSPACE_ID"
@@ -72,7 +70,5 @@ set +e
 STATUS="$?"
 
 set -e
-
-niri msg action reset-window-height --id "$TERM_ID"
 
 exit $STATUS
