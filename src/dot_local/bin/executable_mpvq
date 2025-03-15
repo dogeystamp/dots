@@ -7,4 +7,9 @@ else
 	path="$2"
 fi
 
+if [ ! -S "$1" ]; then
+	echo "'$1' is not a socket"
+	exit 1
+fi
+
 echo "{ command: [ \"loadfile\", \"$path\", \"append-play\" ] }" | socat - $1
