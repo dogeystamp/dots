@@ -10,14 +10,17 @@ from pathlib import Path
 P = Path
 
 print(f"\nUsing PYTHONSTARTUP file: {environ.get("PYTHONSTARTUP")}")
-print("Read this file for information about custom macros/utilities.")
+print("Try `math_mode()`, `data_mode()`, `rel()`, and see the above file for more information")
 
 ipy = None
 
 try:
+    __IPYTHON__  # noqa
     from IPython.core.getipython import get_ipython
     ipy = get_ipython()
 except ImportError:
+    pass
+except NameError:
     pass
 
 def math_mode():
@@ -43,6 +46,10 @@ def rel():
         ipy.run_line_magic("autoreload", "2")
 
 def data_mode():
+    global np
+    global pd
+    global plt
+
     try:
         import numpy as np
     except ImportError:
