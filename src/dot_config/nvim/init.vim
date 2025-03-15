@@ -1,5 +1,8 @@
 set tabstop=4 shiftwidth=4 noexpandtab ai nosmd ignorecase smartcase
 
+" Persist undos
+set undofile
+
 " visible whitespace
 set list listchars=tab:»\ ,trail:•,leadmultispace:\│\ \ \ ,extends:⇥,precedes:⇤
 
