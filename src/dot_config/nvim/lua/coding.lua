@@ -63,11 +63,6 @@ require 'nvim-treesitter.configs'.setup {
 	},
 }
 
---------
--- auto-pairs for brackets
---------
-vim.cmd.packadd("auto-pairs")
-
 ------
 -- diagnostics box
 ------

@@ -28,6 +28,10 @@ keymap("<leader>ef", scope.file_finder)
 keymap("<leader>em", scope.buffer_list)
 keymap("<leader>es", vim.lsp.buf.workspace_symbol)
 
+--------
+-- auto-pairs for brackets
+--------
+vim.cmd.packadd("auto-pairs")
 
 --------------------------------
 --------------------------------
