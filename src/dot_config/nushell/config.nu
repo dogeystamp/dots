@@ -1,0 +1,53 @@
+# Nushell Config File
+#
+# version = "0.96.1"
+
+alias gs = git status
+alias gp = git push
+def `gp pgh` [] {
+	git push; git push gh
+}
+alias ga = git add
+alias gc = git commit
+alias gcs = git commit -S
+alias gas = git commit -aS
+alias gt = git switch
+alias gl = git log
+
+alias mv = mv -np
+alias cp = cp -np
+alias thur = zathura
+alias xxd = tinyxxd
+
+$env.config = {
+    show_banner: false
+
+    rm: {
+        always_trash: true # override with -p (permanent)
+    }
+
+    edit_mode: vi
+
+	table: {
+		mode: "none"
+	}
+
+	keybindings: [
+		{
+			name: accept_completion
+			modifier: control
+			keycode: char_f
+			mode: [vi_insert vi_normal]
+			event: {
+				send: HistoryHintComplete
+			}
+		}
+	]
+
+
+	cursor_shape: {
+		vi_insert: line
+		vi_normal: block
+		emacs: line
+	}
+}
