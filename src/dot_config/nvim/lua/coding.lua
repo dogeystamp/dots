@@ -90,34 +90,12 @@ vim.diagnostic.config({
 -- language server (LSP)
 ------
 
--- LSP window borders
--- https://vi.stackexchange.com/a/46181
-local _border = "rounded"
-local function bordered_hover(_opts)
-	_opts = _opts or {}
-	return vim.lsp.buf.hover(vim.tbl_deep_extend("force", _opts, {
-		border = _border
-	}))
-end
-
-local function bordered_signature_help(_opts)
-	_opts = _opts or {}
-	return vim.lsp.buf.signature_help(vim.tbl_deep_extend("force", _opts, {
-		border = _border
-	}))
-end
-
-vim.diagnostic.config {
-	float = { border = _border }
-}
-
 local opts = { noremap = true, silent = true }
 keymap('gD', vim.lsp.buf.declaration, opts)
 keymap('gd', vim.lsp.buf.definition, opts)
-keymap('gK', bordered_hover, opts)
+keymap('gK', vim.lsp.buf.hover, opts)
 keymap('gi', vim.lsp.buf.implementation, opts)
 keymap('gt', vim.lsp.buf.type_definition, opts)
-keymap('<C-s>', bordered_signature_help, { noremap = true, silent = true, mode = 'i' })
 keymap('<localleader>rn', vim.lsp.buf.rename, opts)
 keymap('<localleader>ss', vim.lsp.buf.workspace_symbol, opts)
 keymap('gr', vim.lsp.buf.references, opts)

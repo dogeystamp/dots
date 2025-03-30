@@ -106,3 +106,6 @@ Group.new("DiffDelete", colors.noir_2, nil, nil)
 Group.link("GitGutterChange", groups.DiffChange)
 Group.link("GitGutterAdd", groups.DiffAdd)
 Group.link("GitGutterDelete", groups.DiffDelete)
+
+-- window borders
+vim.o.winborder = 'rounded'
