@@ -63,10 +63,21 @@ require 'nvim-treesitter.configs'.setup {
 	},
 }
 
+--------
+-- auto-pairs for brackets
+--------
+vim.cmd.packadd("auto-pairs")
+
 ------
 -- diagnostics box
 ------
-keymap('<leader>dx', vim.diagnostic.open_float, { noremap = true, silent = true })
+vim.diagnostic.config({
+	virtual_text = false,
+	virtual_lines = {
+		-- Only show virtual line diagnostics for the current cursor line
+		current_line = false,
+	},
+})
 
 
 --------------------------------
@@ -78,63 +89,63 @@ keymap('<leader>dx', vim.diagnostic.open_float, { noremap = true, silent = true 
 ------
 -- language server (LSP)
 ------
-local nvim_lsp = require('lspconfig')
 
-local on_attach = function(client, bufnr)
-	local function buf_set_option(name, value) vim.api.nvim_set_option_value(name, value, { buf = bufnr }) end
-
-	if client.name == "ruff" then
-		-- defer hover to pyright
-		client.server_capabilities.hoverProvider = false
-	end
-
-	if client.name == "typst_lsp" then
-		-- this breaks on special characters outside english
-		client.server_capabilities.semanticTokensProvider = false
-	end
-
-	-- Enable completion triggered by <c-x><c-o>
-	buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-	local opts = { noremap = true, silent = true, buffer = bufnr }
-	keymap('gD', vim.lsp.buf.declaration, opts)
-	keymap('gd', vim.lsp.buf.definition, opts)
-	keymap('gK', vim.lsp.buf.hover, opts)
-	keymap('gi', vim.lsp.buf.implementation, opts)
-	keymap('gs', vim.lsp.buf.signature_help, opts)
-	keymap('gt', vim.lsp.buf.type_definition, opts)
-	keymap('<localleader>rn', vim.lsp.buf.rename, opts)
-	keymap('<localleader>ss', vim.lsp.buf.workspace_symbol, opts)
-	keymap('gr', vim.lsp.buf.references, opts)
-	keymap('<localleader>e', vim.lsp.diagnostic.show_line_diagnostics, opts)
-	keymap('[d', vim.lsp.diagnostic.goto_prev, opts)
-	keymap(']d', vim.lsp.diagnostic.goto_next, opts)
-	keymap('<localleader>ca', vim.lsp.buf.code_action, opts)
-	keymap('<localleader>f', vim.lsp.buf.format, opts)
+-- LSP window borders
+-- https://vi.stackexchange.com/a/46181
+local _border = "rounded"
+local function bordered_hover(_opts)
+	_opts = _opts or {}
+	return vim.lsp.buf.hover(vim.tbl_deep_extend("force", _opts, {
+		border = _border
+	}))
 end
+
+local function bordered_signature_help(_opts)
+	_opts = _opts or {}
+	return vim.lsp.buf.signature_help(vim.tbl_deep_extend("force", _opts, {
+		border = _border
+	}))
+end
+
+vim.diagnostic.config {
+	float = { border = _border }
+}
+
+local opts = { noremap = true, silent = true }
+keymap('gD', vim.lsp.buf.declaration, opts)
+keymap('gd', vim.lsp.buf.definition, opts)
+keymap('gK', bordered_hover, opts)
+keymap('gi', vim.lsp.buf.implementation, opts)
+keymap('gt', vim.lsp.buf.type_definition, opts)
+keymap('<C-s>', bordered_signature_help, { noremap = true, silent = true, mode = 'i' })
+keymap('<localleader>rn', vim.lsp.buf.rename, opts)
+keymap('<localleader>ss', vim.lsp.buf.workspace_symbol, opts)
+keymap('gr', vim.lsp.buf.references, opts)
+keymap('<localleader>e', vim.lsp.diagnostic.show_line_diagnostics, opts)
+keymap('[d', vim.lsp.diagnostic.goto_prev, opts)
+keymap(']d', vim.lsp.diagnostic.goto_next, opts)
+keymap('<localleader>ca', vim.lsp.buf.code_action, opts)
+keymap('<localleader>f', vim.lsp.buf.format, opts)
 
 -- find ruff config file path
 local ruff_config = vim.fs.root(0, { ".git", "pyproject.toml" }) or ""
-
-vim.cmd.packadd("cmp-nvim-lsp")
-local cmp_nvim_lsp = require('cmp_nvim_lsp')
-local pyright_cap = cmp_nvim_lsp.default_capabilities()
--- disable hint level diagnostics in pyright (defer to ruff)
-pyright_cap.textDocument.publishDiagnostics = { tagSupport = { valueSet = { 2 } } }
 
 -- table declares LSPs to be set up
 -- as well as settings per server (overrides defaults)
 local servers = {
 	pyright = {
+		cmd = { 'pyright-langserver', '--stdio' },
 		settings = {
 			pyright = {
 				-- defer to ruff
 				disableOrganizeImports = true,
 			},
 		},
-		capabilities = pyright_cap,
+		root_markers = { 'pyproject.toml' },
+		filetypes = { 'python' },
 	},
 	ruff = {
+		cmd = { 'ruff', 'server' },
 		settings = {
 			format = {
 				args = { "--config=" .. ruff_config },
@@ -142,7 +153,9 @@ local servers = {
 			lint = {
 				args = { "--config=" .. ruff_config },
 			},
-		}
+		},
+		root_markers = { 'pyproject.toml' },
+		filetypes = { 'python' },
 	},
 	-- pylsp = {
 	-- 	settings = {
@@ -153,11 +166,26 @@ local servers = {
 	-- 		},
 	-- 	},
 	-- },
-	clangd = {},
-	ts_ls = {},
-	bashls = {},
-	cssls = {},
+	clangd = {
+		cmd = { 'clangd', '--background-index' },
+		root_markers = { 'compile_commands.json', 'compile_flags.txt' },
+		filetypes = { 'c', 'cpp' },
+	},
+	ts_ls = {
+		cmd = { 'typescript-language-server', '--stdio' },
+		filetypes = { 'typescript', 'javascript' },
+	},
+	bashls = {
+		cmd = { 'bash-language-server', 'start' },
+		filetypes = { 'sh' },
+	},
+	cssls = {
+		cmd = { 'vscode-css-language-server', '--stdio' },
+		filetypes = { 'css' },
+	},
 	lua_ls = {
+		cmd = { 'lua-language-server' },
+		filetypes = { 'lua' },
 		settings = {
 			Lua = {
 				runtime = {
@@ -177,6 +205,9 @@ local servers = {
 		}
 	},
 	rust_analyzer = {
+		cmd = { 'rust-analyzer' },
+		root_markers = { 'Cargo.toml' },
+		filetypes = { 'rust' },
 		settings = {
 			['rust-analyzer'] = {
 				check = {
@@ -188,30 +219,14 @@ local servers = {
 			},
 		},
 	},
-	-- too battery intensive
-	-- typst_lsp = {
-	-- 	settings = {
-	-- 		exportPdf = "onSave", -- alternatively onType / never
-	-- 	}
-	-- },
-	nushell = {},
-}
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.foldingRange = {
-    dynamicRegistration = false,
-    lineFoldingOnly = true
+	nushell = {
+		cmd = { 'nu', '--lsp' },
+		filetypes = { 'nu' },
+	},
 }
 for lsp, sv_settings in pairs(servers) do
-	-- defaults
-	local settings = {
-		on_attach = on_attach,
-		flags = {
-			debounce_text_changes = 150,
-		},
-		capabilities=capabilities,
-	}
-	for k, v in pairs(servers[lsp]) do settings[k] = v end
-	nvim_lsp[lsp].setup(settings)
+	vim.lsp.config[lsp] = sv_settings
+	vim.lsp.enable(lsp)
 end
 
 --------
@@ -240,6 +255,7 @@ keymap('zr', ufo.openFoldsExceptKinds)
 -- completions
 ------
 vim.cmd.packadd("nvim-cmp")
+vim.cmd.packadd("cmp-nvim-lsp")
 
 local cmp = require('cmp')
 cmp.setup({
