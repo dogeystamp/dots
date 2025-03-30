@@ -78,6 +78,8 @@ vim.diagnostic.config({
 		current_line = false,
 	},
 })
+-- fallback for if virtual text doesn't work
+keymap('<leader>dx', vim.diagnostic.open_float, { noremap = true, silent = true })
 
 
 --------------------------------

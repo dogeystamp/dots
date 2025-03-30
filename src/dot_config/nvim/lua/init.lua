@@ -16,6 +16,14 @@ local dotprofile, profile_table = confutil.dotprofile, confutil.profile_table
 -- bind to copy URL under cursor
 keymap("<leader>uu", ":let @+ = expand('<cfile>')<cr>")
 
+-- disable modelines (vim headers) in files
+vim.o.modeline = false
+-- manually trigger modeline
+keymap("<leader>ml", function()
+	vim.o.modeline = true
+	vim.cmd.doautocmd("BufRead")
+end)
+
 --------
 -- generic brand fuzzy finder
 --------

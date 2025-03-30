@@ -1,3 +1,5 @@
+# vim: set ft=nu:
+
 # Nushell Config File
 #
 # version = "0.96.1"
@@ -44,10 +46,11 @@ $env.config = {
 		}
 	]
 
-
 	cursor_shape: {
 		vi_insert: line
 		vi_normal: block
 		emacs: line
 	}
 }
+
+$env.SYSTEM_PROFILE = {{ .systemprofile | quote }}
