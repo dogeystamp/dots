@@ -5,7 +5,7 @@ config.load_autoconfig()
 c.window.transparent = True
 
 c.content.user_stylesheets = ["~/.config/qutebrowser/style.css"]
-c.colors.webpage.bg = "black"
+# c.colors.webpage.bg = "black"
 c.colors.completion.category.bg = "#111111"
 c.colors.completion.even.bg = "black"
 c.colors.statusbar.private.bg = "black"
@@ -29,8 +29,9 @@ c.statusbar.show = "never"
 # make closing tabs a no-op (last tab detection is broken)
 config.bind("d", "nop")
 
+c.colors.webpage.preferred_color_scheme = "light"
 c.colors.webpage.darkmode.algorithm = "lightness-hsl"
-c.colors.webpage.darkmode.contrast = 0.5
+c.colors.webpage.darkmode.contrast = 0.6
 c.colors.webpage.darkmode.policy.images = "smart"
 
 c.colors.prompts.bg = "black"
