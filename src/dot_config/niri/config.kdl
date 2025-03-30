@@ -5,12 +5,16 @@ spawn-at-startup "niri" "msg" "action" "do-screen-transition" "-d" "800"
 input {
     keyboard {
         xkb {
-            options "caps:swapescape, compose:rctrl, altwin:swap_alt_win"
+            options "caps:swapescape, compose:rctrl"
         }
 
 		repeat-delay 300
 		repeat-rate 50
     }
+
+
+    mod-key "Alt"
+    mod-key-nested "Super"
 
     touchpad {
         tap
@@ -56,7 +60,6 @@ layout {
     default-column-width { proportion 0.5; }
 
 	preset-window-heights {
-        proportion 0.0
         proportion 0.33333
         proportion 0.5
         proportion 0.66667
@@ -64,17 +67,9 @@ layout {
 	}
 
 	focus-ring {
-		off
-	}
-
-    border {
-        // off
-
-        width 3
-
         active-color "#ffffff44"
-        inactive-color "#50505044"
-    }
+		width 3
+	}
 
 	shadow {
 		on
@@ -223,6 +218,7 @@ binds {
     Mod+Shift+B { spawn "qutebrowser"; }
     Mod+Shift+P { spawn "keepassxc"; }
     Mod+Shift+D { spawn "qbprof" "dsc"; }
+    Mod+Shift+M { spawn "qbprof" "mus"; }
     Ctrl+Mod+L { spawn "swaylock"; }
 
     Mod+A { spawn "style.sh"; }
@@ -241,8 +237,8 @@ binds {
     Mod+Shift+C { close-window; }
 
     Mod+K           { focus-column-left; }
-    Mod+Period      { focus-window-down; }
-    Mod+Comma       { focus-window-up; }
+    Mod+Period      { focus-window-down-or-column-right; }
+    Mod+Comma       { focus-window-up-or-column-left; }
     Mod+J           { focus-column-right; }
 
     Mod+Shift+Space { toggle-window-floating; }
