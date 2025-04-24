@@ -4,3 +4,5 @@ include "%L"
 include "%H/.config/xcompose/emoji"
 
 include "%H/.config/xcompose/letters"
+
+include "%H/.config/xcompose/greek"
