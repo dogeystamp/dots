@@ -29,9 +29,12 @@ input {
 }
 
 output "HDMI-A-1" {
-    // off
-
 	mode "2560x1440@143.912"
+	background-color "#000000"
+}
+
+output "eDP-1" {
+	background-color "#000000"
 }
 
 layout {
@@ -121,6 +124,13 @@ window-rule {
 window-rule {
     match app-id=r#"qutebrowser"#
 	opacity 1.0
+}
+
+// clipedit.sh alacritty popup
+window-rule {
+    match app-id=r#"popup-bottom-center"#
+	open-floating true
+	tiled-state false
 }
 
 animations {
