@@ -5,7 +5,7 @@ function EditFig()
 	" expands filename under cursor
 	let figure_fname = expand('<cfile>')
 	exec "silent !typst-figure " .. figure_fname
-	vsp
+	sp
 	exec "term inkscape-shortcut-single"
 	quit
 endfunc
