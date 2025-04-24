@@ -101,6 +101,7 @@ qpwgraph
 jq
 fzf
 yt-dlp
+brightnessctl
 ripgrep
 netcat
 nmap
@@ -109,7 +110,6 @@ freerdp
 nss-mdns
 python-pynvim
 xorg-xinput
-xorg-xbacklight
 fastfetch
 cloc
 
