@@ -22,4 +22,6 @@ j = step_down
 k = step_up
 n = next_file
 p = prev_file
+r = rotate_right
+Shift+r = reload
 Shift+plus = zoom +10
