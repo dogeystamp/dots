@@ -18,7 +18,7 @@ function lightmode
 	gsettings set org.gnome.desktop.interface color-scheme 'default'
 end
 
-alias mpv='hide mpv mpv'
+# alias mpv='hide mpv mpv'
 alias imvi='hide swayimg imgv.sh'
 
 alias neofetch='fastfetch'
