@@ -72,14 +72,30 @@ vim.cmd.packadd("auto-pairs")
 -- diagnostics box
 ------
 vim.diagnostic.config({
-	virtual_text = false,
-	virtual_lines = {
-		-- Only show virtual line diagnostics for the current cursor line
-		current_line = false,
-	},
+	virtual_text = true,
+	virtual_lines = false,
 })
 -- fallback for if virtual text doesn't work
 keymap('<leader>dx', vim.diagnostic.open_float, { noremap = true, silent = true })
+
+local diagnostic_virtual_text = true
+
+-- toggle diagnostic display between virtual text and virtual lines
+keymap('<leader>dv', function ()
+	if diagnostic_virtual_text then
+		vim.diagnostic.config({
+			virtual_text = false,
+			virtual_lines = true,
+		})
+		diagnostic_virtual_text = false
+	else
+		vim.diagnostic.config({
+			virtual_text = true,
+			virtual_lines = false,
+		})
+		diagnostic_virtual_text = true
+	end
+end, { noremap = true, silent = true })
 
 
 --------------------------------
