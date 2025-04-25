@@ -135,6 +135,8 @@ window-rule {
 
 animations {
 	window-resize {
+		spring damping-ratio=1.0 stiffness=1200 epsilon=0.0001
+
 		custom-shader r"
 			// Example: cropped next texture if it's bigger than the current geometry, and
 			// crossfade between previous and next texture otherwise.
@@ -155,26 +157,19 @@ animations {
 
 				vec4 color;
 
-				if (crop) {
-					// However, when we crop, we also want to crop out anything outside the
-					// current geometry. This is because the area of the shader is unspecified
-					// and usually bigger than the current geometry, so if we don't fill pixels
-					// outside with transparency, the texture will leak out.
-					//
-					// When crossfading, this is not an issue because the area outside will
-					// correspond to client-side decoration shadows, which are already supposed
-					// to be outside.
-					if (coords_curr_geo.x < 0.0 || 1.0 < coords_curr_geo.x ||
-							coords_curr_geo.y < 0.0 || 1.0 < coords_curr_geo.y) {
-						color = vec4(0.0);
-					} else {
-						color = texture2D(niri_tex_next, coords_crop.st);
-					}
+				// However, when we crop, we also want to crop out anything outside the
+				// current geometry. This is because the area of the shader is unspecified
+				// and usually bigger than the current geometry, so if we don't fill pixels
+				// outside with transparency, the texture will leak out.
+				//
+				// When crossfading, this is not an issue because the area outside will
+				// correspond to client-side decoration shadows, which are already supposed
+				// to be outside.
+				if (coords_next_geo.x < 0.0 || 1.0 < coords_next_geo.x ||
+						coords_next_geo.y < 0.0 || 1.0 < coords_next_geo.y) {
+					color = vec4(0.0);
 				} else {
-					// If we can't crop, then crossfade.
-					color = texture2D(niri_tex_next, coords_stretch.st);
-					vec4 color_prev = texture2D(niri_tex_prev, coords_stretch_prev.st);
-					color = mix(color_prev, color, niri_clamped_progress);
+					color = texture2D(niri_tex_next, coords_crop.st);
 				}
 
 				return color;
@@ -184,6 +179,23 @@ animations {
 				return crossfade_or_crop_next(coords_curr_geo, size_curr_geo);
 			}
 		"
+	}
+
+	horizontal-view-movement {
+		spring damping-ratio=1.0 stiffness=1200 epsilon=0.0001
+	}
+
+	window-movement {
+		spring damping-ratio=1.0 stiffness=1200 epsilon=0.0001
+	}
+
+	workspace-switch {
+		spring damping-ratio=1.0 stiffness=1200 epsilon=0.0001
+	}
+
+	window-open {
+		curve "ease-out-expo"
+		duration-ms 100
 	}
 }
 
@@ -201,6 +213,7 @@ window-rule {
 
 binds {
 	Mod+W { toggle-column-tabbed-display; }
+	Mod+O { toggle-overview; }
     Mod+1 { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }
     Mod+3 { focus-workspace 3; }
@@ -329,6 +342,7 @@ binds {
     Mod+Ctrl+R { reset-window-height; }
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
+    Mod+Ctrl+Shift+F { toggle-windowed-fullscreen; }
     Mod+C { center-column; }
 
     Mod+Minus { set-column-width "-10%"; }
