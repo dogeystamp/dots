@@ -194,8 +194,52 @@ animations {
 	}
 
 	window-open {
-		curve "ease-out-expo"
-		duration-ms 100
+		spring damping-ratio=1.0 stiffness=1400 epsilon=0.0001
+		custom-shader r"
+		vec4 default_open(vec3 coords_geo, vec3 size_geo) {
+			float scale = max(0.0, (niri_progress / 100.0 + 0.99));
+
+			vec2 offset = vec2(0.5, scale - 0.5);
+
+			coords_geo = vec3((coords_geo.xy - vec2(0.5)) / scale + offset, 1.0);
+
+			vec3 coords_tex = niri_geo_to_tex * coords_geo;
+			vec4 color = texture2D(niri_tex, coords_tex.st);
+
+			color *= niri_clamped_progress;
+
+			return color;
+		}
+
+		vec4 open_color(vec3 coords_geo, vec3 size_geo) {
+			return default_open(coords_geo, size_geo);
+		}
+		"
+	}
+
+	window-close {
+		spring damping-ratio=1.0 stiffness=1200 epsilon=0.0001
+
+		custom-shader r"
+		vec4 default_close(vec3 coords_geo, vec3 size_geo) {
+			float scale = max(0.0, ((1.0 - niri_progress) / 100.0 + 0.99));
+
+			vec2 offset = vec2(0.5, scale - 0.5);
+
+			coords_geo = vec3((coords_geo.xy - vec2(0.5)) / scale + offset, 1.0);
+
+			vec3 coords_tex = niri_geo_to_tex * coords_geo;
+			vec4 color = texture2D(niri_tex, coords_tex.st);
+
+			color *= 1.0 - niri_clamped_progress;
+
+			return color;
+		}
+
+		vec4 close_color(vec3 coords_geo, vec3 size_geo) {
+			return default_close(coords_geo, size_geo);
+		}
+		"
 	}
 }
 
@@ -207,7 +251,12 @@ window-rule {
 }
 
 window-rule {
-	match title="discord"
+	match title="Navidrome"
+	open-maximized true
+}
+
+window-rule {
+	match title="Discord"
 	open-maximized true
 }
 

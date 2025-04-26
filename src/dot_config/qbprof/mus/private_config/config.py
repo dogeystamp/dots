@@ -10,3 +10,5 @@ c.bindings.commands["passthrough"] = {
 
 c.auto_save.session = True
 c.url.start_pages = "https://mus.dogeystamp.com"
+
+c.window.title_format = "Navidrome"

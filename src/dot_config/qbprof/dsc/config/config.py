@@ -22,4 +22,4 @@ c.fileselect.single_file.command = ["alacritty", "-e", "fish", "-C", "set -x OUT
 
 c.content.user_stylesheets = ["~/.config/qbprof/dsc/config/amoled-cord.css"]
 
-c.window.title_format = "discord"
+c.window.title_format = "Discord"
