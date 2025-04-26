@@ -13,8 +13,6 @@ set updatetime=800
 " terminal settings
 " disable line numbers
 au TermOpen * setlocal nonumber norelativenumber
-" make ESC go to normal mode
-tnoremap <silent> <esc> <c-\><c-n><c-\><c-n>
 
 " sign column on top of the line number (gutter for things like breakpoints, warnings)
 " this can be an issue because it blocks line numbers
@@ -24,23 +22,23 @@ tnoremap <silent> <esc> <c-\><c-n><c-\><c-n>
 set number relativenumber
 
 " use same colors as alacritty for integrated terminals
-let g:terminal_color_0  = "#000000"
-let g:terminal_color_1  = "#afaaaa"
-let g:terminal_color_2  = "#505559"
-let g:terminal_color_3  = "#a7a7a7"
-let g:terminal_color_4  = "#56698a"
-let g:terminal_color_5  = "#d5d5d5"
-let g:terminal_color_6  = "#99AABB"
-let g:terminal_color_7  = "#e5e9f0"
+let g:terminal_color_0  = {{ .term_n_black | quote }}
+let g:terminal_color_1  = {{ .term_n_red | quote }}
+let g:terminal_color_2  = {{ .term_n_green | quote }}
+let g:terminal_color_3  = {{ .term_n_yellow | quote }}
+let g:terminal_color_4  = {{ .term_n_blue | quote }}
+let g:terminal_color_5  = {{ .term_n_magenta | quote }}
+let g:terminal_color_6  = {{ .term_n_cyan | quote }}
+let g:terminal_color_7  = {{ .term_n_white | quote }}
 
-let g:terminal_color_8  = "#4c566a"
-let g:terminal_color_9  = "#bf616a"
-let g:terminal_color_10 = "#a3be8c"
-let g:terminal_color_11 = "#ebcb8b"
-let g:terminal_color_12 = "#81a1c1"
-let g:terminal_color_13 = "#b48ead"
-let g:terminal_color_14 = "#8fbcbb"
-let g:terminal_color_15 = "#eceff4"
+let g:terminal_color_8  = {{ .term_b_black | quote }}
+let g:terminal_color_9  = {{ .term_b_red | quote }}
+let g:terminal_color_10 = {{ .term_b_green | quote }}
+let g:terminal_color_11 = {{ .term_b_yellow | quote }}
+let g:terminal_color_12 = {{ .term_b_blue | quote }}
+let g:terminal_color_13 = {{ .term_b_magenta | quote }}
+let g:terminal_color_14 = {{ .term_b_cyan | quote }}
+let g:terminal_color_15 = {{ .term_b_white | quote }}
 
 " disable bottom right status line
 set noruler
@@ -51,6 +49,9 @@ set lazyredraw nocursorline ttyfast
 
 " disable splash screen
 set shortmess+=I
+
+" disable command line when not in use
+set cmdheight=0
 
 let mapleader = ","
 let maplocalleader = " "

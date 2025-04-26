@@ -1,3 +1,5 @@
+# vim: set ft=lua:
+
 --------------------------------
 --------------------------------
 -- gui frontend settings
@@ -18,8 +20,13 @@ if vim.g.neovide then
 
 	vim.g.neovide_cursor_animate_in_insert_mode = false
 	-- heavy blur as a workaround for not being able to set the opacity
-	vim.g.pumblend = 200
-	vim.g.winblend = 200
+	vim.g.pumblend = 2000
+	vim.g.winblend = 2000
+
+	-- in embedded terminals, ESC is often used for vi-mode,
+	-- so to toggle real nvim normal mode we have this alacritty-like bind
+	keymap("<C-S-Space>", "<c-\\><c-n><c-\\><c-n>", { mode = { "t" } })
+	keymap("<C-S-Space>", "i", { mode = { "n" } })
 
 	-- no terminal, no Ctrl-Shift-V paste
 	keymap("<C-S-V>", '<Esc>"+pa', { mode = { "n", "i", "v" } })

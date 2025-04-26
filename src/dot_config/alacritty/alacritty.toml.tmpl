@@ -15,25 +15,25 @@ size = 10
 background = "#000000"
 
 [colors.normal]
-black =   "#000000"
-red =     "#afaaaa"
-green =   "#505559"
-yellow =  "#a7a7a7"
-blue =    "#767d8a"
-magenta = "#d5d5d5"
-cyan =    "#a3afbb"
-white =   "#e5e9f0"
+black =   {{ .term_n_black | quote }}
+red =     {{ .term_n_red | quote }}
+green =   {{ .term_n_green | quote }}
+yellow =  {{ .term_n_yellow | quote }}
+blue =    {{ .term_n_blue | quote }}
+magenta = {{ .term_n_magenta | quote }}
+cyan =    {{ .term_n_cyan | quote }}
+white =   {{ .term_n_white | quote }}
 
 
 [colors.bright]
-black =   "#4c566a"
-red =     "#bf616a"
-green =   "#a3be8c"
-yellow =  "#ebcb8b"
-blue =    "#81a1c1"
-magenta = "#b48ead"
-cyan =    "#8fbcbb"
-white =   "#eceff4"
+black =   {{ .term_b_black | quote }}
+red =     {{ .term_b_red | quote }}
+green =   {{ .term_b_green | quote }}
+yellow =  {{ .term_b_yellow | quote }}
+blue =    {{ .term_b_blue | quote }}
+magenta = {{ .term_b_magenta | quote }}
+cyan =    {{ .term_b_cyan | quote }}
+white =   {{ .term_b_white | quote }}
 
 [keyboard]
 bindings = [
