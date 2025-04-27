@@ -24,6 +24,8 @@ if status --is-interactive
 	bind -M default B backward-token
 	bind -M default W forward-token
 
+	bind -M default -M insert ctrl-shift-enter newterm.sh
+
 	source ~/.config/fish/functions/prompts.fish
 
 	set __fish_git_prompt_showdirtystate 1

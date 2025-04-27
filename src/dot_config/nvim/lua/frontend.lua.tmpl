@@ -26,16 +26,17 @@ if vim.g.neovide then
 	-- in embedded terminals, ESC is often used for vi-mode,
 	-- so to toggle real nvim normal mode we have this alacritty-like bind
 	keymap("<C-S-Space>", "<c-\\><c-n><c-\\><c-n>", { mode = { "t" } })
-	keymap("<C-S-Space>", "i", { mode = { "n" } })
+	keymap("<C-S-Space>", "i", { mode = { "n", "v" } })
 
 	-- no terminal, no Ctrl-Shift-V paste
-	keymap("<C-S-V>", '<Esc>"+pa', { mode = { "n", "i", "v" } })
+	keymap("<C-S-V>", '<Esc>"+pa', { mode = { "n", "i", "t" } })
+	keymap("<C-S-V>", 'd<Esc>"+Pa', { mode = { "v" } })
 	-- this bind seems to not show the pasted text until the screen is updated, but it works i guess
 	keymap("<C-S-V>", '<c-r>+', { mode = { "c" } })
 
 	-- "new-term" in working directory
 	keymap("<C-S-Return>", function()
-		vim.system({ 'sh', '-c', 'alacritty msg create-window --working-directory "$(pwd)" || alacritty' },
+		vim.system({ 'sh', '-c', 'newterm.sh' },
 			{ detach = true })
-	end, { mode = { "n", "i", "v", "t", "c" } })
+	end, { mode = { "n", "i", "v", "c" } })
 end

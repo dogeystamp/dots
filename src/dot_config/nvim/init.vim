@@ -21,25 +21,6 @@ au TermOpen * setlocal nonumber norelativenumber
 " enable line numbers
 set number relativenumber
 
-" use same colors as alacritty for integrated terminals
-let g:terminal_color_0  = {{ .term_n_black | quote }}
-let g:terminal_color_1  = {{ .term_n_red | quote }}
-let g:terminal_color_2  = {{ .term_n_green | quote }}
-let g:terminal_color_3  = {{ .term_n_yellow | quote }}
-let g:terminal_color_4  = {{ .term_n_blue | quote }}
-let g:terminal_color_5  = {{ .term_n_magenta | quote }}
-let g:terminal_color_6  = {{ .term_n_cyan | quote }}
-let g:terminal_color_7  = {{ .term_n_white | quote }}
-
-let g:terminal_color_8  = {{ .term_b_black | quote }}
-let g:terminal_color_9  = {{ .term_b_red | quote }}
-let g:terminal_color_10 = {{ .term_b_green | quote }}
-let g:terminal_color_11 = {{ .term_b_yellow | quote }}
-let g:terminal_color_12 = {{ .term_b_blue | quote }}
-let g:terminal_color_13 = {{ .term_b_magenta | quote }}
-let g:terminal_color_14 = {{ .term_b_cyan | quote }}
-let g:terminal_color_15 = {{ .term_b_white | quote }}
-
 " disable bottom right status line
 set noruler
 set showtabline=0
@@ -125,3 +106,5 @@ lua require('init')
 let g:loaded_node_provider = 0
 let g:loaded_perl_provider = 0
 let g:loaded_ruby_provider = 0
+
+source $XDG_CONFIG_HOME/nvim/termcolors.vim
