@@ -14,6 +14,7 @@
 
 #network,
 #battery,
+#memory,
 #pulseaudio, #pulseaudio.muted, #pulseaudio:hover,
 #mpris,
 #clock {
@@ -24,6 +25,7 @@
 /* icons */
 #network,
 #battery,
+#memory,
 #pulseaudio, #pulseaudio.muted, #pulseaudio:hover,
 #custom-next-event
 #mpris {
@@ -38,11 +40,29 @@
 	margin: 0.3ex 1.6ex;
 }
 
+#memory.high {
+	color: #99AABB;
+}
+
+@keyframes blink {
+    to {
+        color: #ff0000;
+    }
+}
+
+#memory.critical {
+	animation-name: blink;
+    animation-duration: 0.2s;
+    animation-timing-function: steps(3);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
 #battery.critical:not(.charging) {
 	background-color: #99AABB;
 }
 
-#battery.charging {
+#battery.charging, #battery.plugged {
 	background-color: inherit;
 }
 
