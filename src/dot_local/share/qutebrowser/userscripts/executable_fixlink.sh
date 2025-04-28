@@ -27,6 +27,7 @@ LINK="$(printf "%s" "$QUTE_URL" | sed \
 	-e "s/medium.com/$MEDIUM/g" \
 	-e "s/www.quora.com/$QUORA/g" \
 	-e "s/stackoverflow.com/$OVERFLOW/g" \
+	-e "s/m.youtube.com/$YOUTUBE/g" \
 	-e "s/youtube.com/$YOUTUBE/g")"
 
 echo "open $1 $LINK" >> "$QUTE_FIFO"
