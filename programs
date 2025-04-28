@@ -51,6 +51,8 @@ pipewire-pulse
 #
 # utility
 #
+tlp
+smartmontools
 cups
 sane
 ghostscript
