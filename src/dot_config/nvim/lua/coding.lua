@@ -81,7 +81,7 @@ keymap('<leader>dx', vim.diagnostic.open_float, { noremap = true, silent = true 
 local diagnostic_virtual_text = true
 
 -- toggle diagnostic display between virtual text and virtual lines
-keymap('<leader>dv', function ()
+keymap('<leader>dv', function()
 	if diagnostic_virtual_text then
 		vim.diagnostic.config({
 			virtual_text = false,
@@ -218,6 +218,16 @@ local servers = {
 	nushell = {
 		cmd = { 'nu', '--lsp' },
 		filetypes = { 'nu' },
+	},
+	tinymist = {
+		-- typst language server
+		root_markers = { '.git' },
+		cmd = { 'tinymist', 'lsp' },
+		filetypes = { 'typst' },
+		settings = {
+			formatterMode = "typstyle",
+			semanticTokens = "disable",
+		},
 	},
 }
 for lsp, sv_settings in pairs(servers) do
