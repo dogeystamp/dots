@@ -9,12 +9,14 @@
 }
 
 #clock {
-	padding: 0 1ex 0 1ex;
+	padding: 0 1ex 0 0.75ex;
 }
 
 #network,
 #battery,
 #memory,
+#cpu,
+#backlight,
 #pulseaudio, #pulseaudio.muted, #pulseaudio:hover,
 #mpris,
 #clock {
@@ -24,8 +26,10 @@
 
 /* icons */
 #network,
-#battery,
 #memory,
+#battery,
+#cpu,
+#backlight,
 #pulseaudio, #pulseaudio.muted, #pulseaudio:hover,
 #custom-next-event
 #mpris {
@@ -35,11 +39,22 @@
 	font-size: 1.8ex;
 }
 
-#custom-next-event
-{
-	margin: 0.3ex 1.6ex;
+#custom-arrow {
+	padding: 0.1ex 0.0ex 0.4ex 0.0ex;
+	min-width: 1em;
+	font-size: 1.8ex;
 }
 
+#custom-next-event
+{
+	margin: 0.3ex 0.0ex;
+}
+
+#battery {
+	padding: 0.1ex 0.1ex 0.3ex 0.6ex;
+}
+
+#cpu.high,
 #memory.high {
 	color: #99AABB;
 }
@@ -56,6 +71,10 @@
     animation-timing-function: steps(3);
     animation-iteration-count: infinite;
     animation-direction: alternate;
+}
+
+#cpu.critical {
+	color: #AA0000;
 }
 
 #battery.critical:not(.charging) {
@@ -81,6 +100,10 @@
 #workspaces button.focused {
 	background-color: inherit;
 	box-shadow: inherit;
+}
+
+#workspaces button:not(.focused).empty {
+	opacity: 0;
 }
 
 window#waybar {

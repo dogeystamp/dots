@@ -4,9 +4,21 @@
 	"reload_style_on_change": true,
 	"modules-left": ["niri/workspaces"],
 	"modules-center": ["niri/window"],
-	"modules-right": ["custom/next-event", "pulseaudio", "network", "battery", "clock"],
+	"modules-right": ["custom/next-event", "group/sliders", "cpu", "memory", "network", "battery", "clock"],
+	"group/sliders": {
+		"orientation": "horizontal",
+		"transition-left-to-right": false,
+		"drawer": {
+			"transition-duration": 500,
+		},
+		"modules": [
+			"custom/arrow",
+			"backlight",
+			"pulseaudio",
+		],
+	},
 	"niri/window": {
-		 "max-length": 50
+		"max-length": 50
 	},
 	"niri/workspaces": {
 		"format": "{icon}",
@@ -27,6 +39,22 @@
 		 "states": {
 			"critical": 15,
 		 }
+	},
+	"memory": {
+		 "format": "",
+		 "tooltip-format": "{percentage}% ({used} / {total} GiB, {avail} GiB left)",
+		 "states": {
+			"high": 50,
+			"critical": 75,
+		 },
+		 "interval": 5,
+	},
+	"cpu": {
+		 "format": "󰍛",
+		 "states": {
+			"high": 70,
+			"critical": 90,
+		 },
 	},
 	"clock": {
 		"format": "{:%a %d %b  %H:%M}",
@@ -57,6 +85,11 @@
 		"format": "",
 		"format-paused": "",
 	},
+	"custom/arrow": {
+		"format": "<small> </small>",
+		"exec-on-event": false,
+		"tooltip": false,
+	},
 	"pulseaudio": {
 		"format": "{icon}",
 		"tooltip-format": "{volume}%",
@@ -64,6 +97,15 @@
 		"format-icons": {
 			"default": ["󰕿", "󰖀", "󰕾"]
 		},
+		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+		"on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-",
+		"on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+",
+	},
+	"backlight": {
+		"device": "intel_backlight",
+		"format": "{icon}",
+		"tooltip-format": "{percent}%",
+		"format-icons": ["󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖"]
 	},
 	"custom/next-event": {
 		"format": "󰃭 <small>{}</small>",
