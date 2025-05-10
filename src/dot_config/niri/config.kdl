@@ -28,16 +28,12 @@ input {
 	focus-follows-mouse max-scroll-amount="10%"
 }
 
-output "HDMI-A-1" {
-	mode "2560x1440@143.912"
-	background-color "#000000"
-}
-
-output "eDP-1" {
-	background-color "#000000"
+overview {
+	backdrop-color "#000000"
 }
 
 layout {
+	background-color "transparent"
 	default-column-display "tabbed"
 	tab-indicator {
 		hide-when-single-tab
@@ -62,8 +58,14 @@ layout {
 
     default-column-width { proportion 0.5; }
 
+	preset-column-widths {
+		fixed 640
+        proportion 0.5
+        proportion 0.66667
+	}
+
 	preset-window-heights {
-        proportion 0.33333
+		fixed 360
         proportion 0.5
         proportion 0.66667
         proportion 1.0
@@ -85,6 +87,12 @@ layer-rule {
 		on
 		softness 10
 	}
+}
+
+layer-rule {
+	match namespace="^wallpaper$"
+
+	place-within-backdrop true
 }
 
 layer-rule {
@@ -194,7 +202,7 @@ animations {
 	}
 
 	window-open {
-		spring damping-ratio=1.0 stiffness=1400 epsilon=0.0001
+		spring damping-ratio=1.0 stiffness=1200 epsilon=0.0001
 		custom-shader r"
 		vec4 default_open(vec3 coords_geo, vec3 size_geo) {
 			float scale = max(0.0, (niri_progress / 100.0 + 0.99));
@@ -273,16 +281,16 @@ binds {
     Mod+8 { focus-workspace 8; }
     Mod+9 { focus-workspace 9; }
     Mod+0 { focus-workspace 10; }
-    Mod+Shift+1 { move-column-to-workspace 1; }
-    Mod+Shift+2 { move-column-to-workspace 2; }
-    Mod+Shift+3 { move-column-to-workspace 3; }
-    Mod+Shift+4 { move-column-to-workspace 4; }
-    Mod+Shift+5 { move-column-to-workspace 5; }
-    Mod+Shift+6 { move-column-to-workspace 6; }
-    Mod+Shift+7 { move-column-to-workspace 7; }
-    Mod+Shift+8 { move-column-to-workspace 8; }
-    Mod+Shift+9 { move-column-to-workspace 9; }
-    Mod+Shift+0 { move-column-to-workspace 10; }
+    Mod+Shift+1 { move-column-to-workspace focus=false 1; }
+    Mod+Shift+2 { move-column-to-workspace focus=false 2; }
+    Mod+Shift+3 { move-column-to-workspace focus=false 3; }
+    Mod+Shift+4 { move-column-to-workspace focus=false 4; }
+    Mod+Shift+5 { move-column-to-workspace focus=false 5; }
+    Mod+Shift+6 { move-column-to-workspace focus=false 6; }
+    Mod+Shift+7 { move-column-to-workspace focus=false 7; }
+    Mod+Shift+8 { move-column-to-workspace focus=false 8; }
+    Mod+Shift+9 { move-column-to-workspace focus=false 9; }
+    Mod+Shift+0 { move-column-to-workspace focus=false 10; }
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+Shift+Return { spawn "newterm.sh"; }
@@ -393,6 +401,10 @@ binds {
     Mod+Shift+F { fullscreen-window; }
     Mod+Ctrl+Shift+F { toggle-windowed-fullscreen; }
     Mod+C { center-column; }
+
+	Mod+F1 { set-dynamic-cast-window; }
+	Mod+F2 { set-dynamic-cast-monitor; }
+	Mod+F3 { clear-dynamic-cast-target; }
 
     Mod+Minus { set-column-width "-10%"; }
     Mod+Equal { set-column-width "+10%"; }
