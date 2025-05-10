@@ -153,15 +153,6 @@ local servers = {
 		root_markers = { 'pyproject.toml' },
 		filetypes = { 'python' },
 	},
-	-- pylsp = {
-	-- 	settings = {
-	-- 		plugins = {
-	-- 			['python-lsp-black'] = {},
-	-- 			['python-pyflakes'] = {},
-	-- 			['pylsp-mypy'] = {},
-	-- 		},
-	-- 	},
-	-- },
 	clangd = {
 		cmd = { 'clangd', '--background-index' },
 		root_markers = { 'compile_commands.json', 'compile_flags.txt' },
@@ -200,6 +191,26 @@ local servers = {
 			}
 		}
 	},
+	nushell = {
+		cmd = { 'nu', '--lsp' },
+		filetypes = { 'nu' },
+	},
+}
+
+-- These servers are disabled by default;
+-- enable with the keybind (after this table)
+local optional_servers = {
+	tinymist = {
+		-- Typst language server. Battery-intensive
+		root_markers = { '.git' },
+		cmd = { 'tinymist', 'lsp' },
+		filetypes = { 'typst' },
+		settings = {
+			formatterMode = "typstyle",
+			semanticTokens = "disable",
+		},
+	},
+	-- Rust language server. Disabled by default for security reasons
 	rust_analyzer = {
 		cmd = { 'rust-analyzer' },
 		root_markers = { 'Cargo.toml' },
@@ -215,21 +226,19 @@ local servers = {
 			},
 		},
 	},
-	nushell = {
-		cmd = { 'nu', '--lsp' },
-		filetypes = { 'nu' },
-	},
-	tinymist = {
-		-- typst language server
-		root_markers = { '.git' },
-		cmd = { 'tinymist', 'lsp' },
-		filetypes = { 'typst' },
-		settings = {
-			formatterMode = "typstyle",
-			semanticTokens = "disable",
-		},
-	},
 }
+
+keymap('<leader>l', function()
+	for lsp, _ in pairs(optional_servers) do
+		vim.lsp.enable(lsp)
+	end
+	vim.notify("Enabled optional language servers.", vim.log.levels.INFO)
+	vim.cmd.doautocmd("BufRead")
+end, { silent = false })
+
+for lsp, sv_settings in pairs(optional_servers) do
+	vim.lsp.config[lsp] = sv_settings
+end
 for lsp, sv_settings in pairs(servers) do
 	vim.lsp.config[lsp] = sv_settings
 	vim.lsp.enable(lsp)
