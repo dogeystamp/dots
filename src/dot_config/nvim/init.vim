@@ -13,6 +13,8 @@ set updatetime=800
 " terminal settings
 " disable line numbers
 au TermOpen * setlocal nonumber norelativenumber
+" escape
+tnoremap <Esc> <c-\><c-n><c-\><c-n>
 
 " sign column on top of the line number (gutter for things like breakpoints, warnings)
 " this can be an issue because it blocks line numbers
