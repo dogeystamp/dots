@@ -16,6 +16,9 @@ return {
 	s({ trig = "integral", name = "integral (definite)", wordTrig = true }, fmt("integral_({})^({}) ", { i(1), i(2) })),
 	s({ trig = "sum", name = "summation", wordTrig = true }, fmt("sum_({})^({}) ", { i(1), i(2) })),
 	s({ trig = "inf", name = "infinity", wordTrig = true }, t("infinity")),
+	s({ trig = "abs", name = "absolute value", wordTrig = true }, fmt("abs({})", { i(1) })),
+	s({ trig = "frk", name = "fraction", wordTrig = true }, fmt("({})/({}) ", { i(1), i(2) })),
+	s({ trig = "inv", name = "inverse (reciprocal)", wordTrig = true }, fmt("1/({})", { i(1) })),
 
 	-- derivative
 	s({ trig = "dx", name = "difference x", wordTrig = true }, t("/(dif x)")),
