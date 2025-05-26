@@ -111,5 +111,6 @@
 		"format": "󰃭 <small>{}</small>",
 		"exec": "$HOME/.local/bin/next_event.sh",
 		"interval": 60,
+		"escape": true,
 	}
 }
