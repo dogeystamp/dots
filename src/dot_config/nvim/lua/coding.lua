@@ -219,8 +219,6 @@ local optional_servers = {
 			['rust-analyzer'] = {
 				check = {
 					allTargets = false,
-				},
-				checkOnSave = {
 					command = "clippy",
 				},
 			},
