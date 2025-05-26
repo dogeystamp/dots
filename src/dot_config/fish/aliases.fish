@@ -65,6 +65,8 @@ function bk; $EDITOR ~/dox/not/bk.txt; end
 function rem; $EDITOR ~/dox/not/rem; end
 function ldg; $EDITOR ~/dox/not/journal.ldg; end
 
+alias ev "khal list"
+
 # disable history on units
 alias units='units -H ""'
 
