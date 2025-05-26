@@ -14,6 +14,8 @@
 
 #network,
 #battery,
+#idle_inhibitor,
+#idle_inhibitor.activated,
 #memory,
 #cpu,
 #backlight,
@@ -28,6 +30,7 @@
 #network,
 #memory,
 #battery,
+#idle_inhibitor,
 #cpu,
 #backlight,
 #pulseaudio, #pulseaudio.muted, #pulseaudio:hover,
