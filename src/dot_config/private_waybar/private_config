@@ -4,7 +4,7 @@
 	"reload_style_on_change": true,
 	"modules-left": ["niri/workspaces"],
 	"modules-center": ["niri/window"],
-	"modules-right": ["custom/next-event", "group/sliders", "cpu", "memory", "network", "battery", "clock"],
+	"modules-right": ["custom/next-event", "group/sliders", "idle_inhibitor", "cpu", "memory", "network", "battery", "clock"],
 	"group/sliders": {
 		"orientation": "horizontal",
 		"transition-left-to-right": false,
@@ -68,13 +68,13 @@
 		"format-disconnected": "󱡺",
 		"max-length": 20
 	},
-	"inhibitor": {
+	"idle_inhibitor": {
 		"format": "{icon} ",
 		"format-icons": {
 			"activated": "",
 			"deactivated": ""
 		},
-		"what": "idle",
+		"timeout": 30.5,
 	},
 	"mpris": {
 		"title-len": 65,
