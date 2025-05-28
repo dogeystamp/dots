@@ -30,16 +30,16 @@
 	corner_radius = 2
 
 	origin = bottom-right
-	offset = 60x70
+	offset = 80
 
 [urgency_low]
-    background = "#000000aa"
-    foreground = "#dddddd"
+    background = "#ffffffaa"
+    foreground = "#000000"
     timeout = 10
 
 [urgency_normal]
-    background = "#000000aa"
-    foreground = "#ffffff"
+    background = "#ffffffaa"
+    foreground = "#000000"
     timeout = 10
 
 [urgency_critical]
