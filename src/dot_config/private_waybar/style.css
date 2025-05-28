@@ -86,6 +86,7 @@
 
 #battery.charging, #battery.plugged {
 	background-color: inherit;
+	color: inherit;
 }
 
 #network.disconnected {
