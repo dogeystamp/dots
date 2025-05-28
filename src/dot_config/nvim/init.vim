@@ -80,14 +80,8 @@ vnoremap ^ 0
 
 set shell=/bin/sh
 
-hi Search cterm=NONE ctermfg=white ctermbg=blue
-hi StatusLine ctermbg=NONE cterm=italic
-hi SignColumn ctermbg=NONE
-
 autocmd InsertEnter * hi StatusLine cterm=bold
 autocmd InsertLeave * hi StatusLine cterm=italic
-
-highlight LineNr ctermfg=grey
 
 " Disable highlighting when searching
 nnoremap <silent> <esc> :noh<return><esc>
@@ -109,4 +103,4 @@ let g:loaded_node_provider = 0
 let g:loaded_perl_provider = 0
 let g:loaded_ruby_provider = 0
 
-source $XDG_CONFIG_HOME/nvim/termcolors.vim
+source $XDG_CONFIG_HOME/nvim/theme.vim

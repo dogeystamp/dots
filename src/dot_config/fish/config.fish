@@ -34,7 +34,7 @@ if status --is-interactive
 
 	set fish_color_param normal
 	set fish_color_cwd grey
-	set fish_color_command blue
+	set fish_color_command white
 
 	source ~/.config/fish/functions/extra_prompt.fish
 

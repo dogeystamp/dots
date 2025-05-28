@@ -48,7 +48,6 @@ vim.cmd.packadd("auto-pairs")
 --------------------------------
 
 require("frontend")
-require("theme")
 require("snippets")
 
 if dotprofile >= profile_table.DEFAULT then

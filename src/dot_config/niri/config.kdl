@@ -29,31 +29,30 @@ input {
 }
 
 overview {
-	backdrop-color "#000000"
+	backdrop-color "#eeeeee"
 }
 
 layout {
 	background-color "transparent"
+
 	default-column-display "tabbed"
 	tab-indicator {
 		hide-when-single-tab
 		position "bottom"
 		gap 8
-		corner-radius 2
+		corner-radius 0
 		gaps-between-tabs 10
 		width 4
 		length total-proportion=0.25
-		active-color "#aabbee99"
-		inactive-color "#aaaaaa44"
+		active-color "black"
+		inactive-color "gray"
 	}
 
     gaps 36
 
 	struts {
-		left 4
-		right 4
-		top 4
-		bottom 4
+		left 10
+		right 10
 	}
 
     default-column-width { proportion 0.5; }
@@ -72,14 +71,15 @@ layout {
 	}
 
 	focus-ring {
-        active-color "#ffffff44"
+        active-color "#00000044"
         inactive-color "#ffffff00"
 		width 3
 	}
 
 	shadow {
 		on
-		softness 10
+		softness 15
+		offset x=1 y=7
 	}
 }
 

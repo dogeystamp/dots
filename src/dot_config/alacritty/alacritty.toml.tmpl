@@ -11,8 +11,11 @@ normal = { family = "JetBrainsMono" }
 size = 10
 
 [colors]
+draw_bold_text_with_bright_colors = false
+
 [colors.primary]
-background = "#000000"
+background = {{ .term_n_black | quote }}
+foreground = {{ .term_n_white | quote }}
 
 [colors.normal]
 black =   {{ .term_n_black | quote }}

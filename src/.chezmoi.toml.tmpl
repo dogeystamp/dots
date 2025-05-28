@@ -1,3 +1,5 @@
+# vim: set ft=toml:
+
 {{- $systemprofilechoices := list "DEFAULT" "SLIM" "MINIMAL" -}}
 {{- $systemprofile := promptChoiceOnce . "systemprofile" "Select a system profile (use capital letter)" $systemprofilechoices "MINIMAL" -}}
 {{- $email := promptStringOnce . "email" "Email address for Git" "jsmith@example.com" -}}
@@ -9,22 +11,25 @@ mode = "symlink"
 systemprofile = {{ $systemprofile | quote }}
 email = {{ $email | quote }}
 fullname = {{ $fullname | quote }}
-opacity = "0.7"
+opacity = "1.0"
 
-term_n_black =   "#000000"
-term_n_red =     "#afaaaa"
-term_n_green =   "#505559"
-term_n_yellow =  "#a7a7a7"
-term_n_blue =    "#767d8a"
-term_n_magenta = "#d5d5d5"
-term_n_cyan =    "#a3afbb"
-term_n_white =   "#e5e9f0"
+# theme: base16 grayscale light (Alexandre Gavioli (https://github.com/Alexx2/)
+# slightly modified by me (dogeystamp)
 
-term_b_black =   "#4c566a"
-term_b_red =     "#bf616a"
-term_b_green =   "#a3be8c"
-term_b_yellow =  "#ebcb8b"
-term_b_blue =    "#81a1c1"
-term_b_magenta = "#b48ead"
-term_b_cyan =    "#8fbcbb"
-term_b_white =   "#eceff4"
+term_n_black =   "#f7f7f7"
+term_n_red =     "#7c7c7c"
+term_n_green =   "#8e8e8e"
+term_n_yellow =  "#a0a0a0"
+term_n_blue =    "#686868"
+term_n_magenta = "#747474"
+term_n_cyan =    "#868686"
+term_n_white =   "#000000"
+
+term_b_black =   "#ababab"
+term_b_red =     "#999999"
+term_b_green =   "#e3e3e3"
+term_b_yellow =  "#b9b9b9"
+term_b_blue =    "#525252"
+term_b_magenta = "#252525"
+term_b_cyan =    "#5e5e5e"
+term_b_white =   "#101010"

@@ -2,6 +2,7 @@
 
 * {
 	font-family: Symbols Nerd Font, Inter Display;
+	color: black;
 }
 
 .modules-left {
@@ -10,6 +11,7 @@
 
 #clock {
 	padding: 0 1ex 0 0.75ex;
+	font-weight: 600;
 }
 
 #network,
@@ -55,6 +57,7 @@
 
 #battery {
 	padding: 0.1ex 0.1ex 0.3ex 0.6ex;
+	font-weight: 600;
 }
 
 #cpu.high,

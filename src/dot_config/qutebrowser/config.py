@@ -8,10 +8,12 @@ c.content.user_stylesheets = ["~/.config/qutebrowser/style.css"]
 # c.colors.webpage.bg = "black"
 c.colors.completion.category.bg = "#111111"
 c.colors.completion.even.bg = "black"
-c.colors.statusbar.private.bg = "black"
-c.colors.statusbar.command.private.bg = "black"
-c.colors.hints.bg = "black"
-c.colors.hints.fg = "white"
+c.colors.statusbar.private.bg = "white"
+c.colors.statusbar.private.fg = "black"
+c.colors.statusbar.command.private.bg = "white"
+c.colors.statusbar.command.private.fg = "black"
+c.colors.hints.bg = "white"
+c.colors.hints.fg = "black"
 
 c.colors.tabs.bar.bg = "black"
 c.colors.tabs.even.bg = "#11111111"
@@ -34,8 +36,9 @@ c.colors.webpage.darkmode.algorithm = "lightness-hsl"
 c.colors.webpage.darkmode.contrast = 0.6
 c.colors.webpage.darkmode.policy.images = "smart"
 
-c.colors.prompts.bg = "black"
-c.colors.prompts.border = "1px solid white"
+c.colors.prompts.bg = "white"
+c.colors.prompts.fg = "black"
+c.colors.prompts.border = "1px solid black"
 c.prompt.radius = 0
 
 # Fonts
@@ -86,7 +89,7 @@ c.tabs.favicons.show = "always"
 
 # Hints
 
-c.hints.border = "1px solid white"
+c.hints.border = "1px solid black"
 c.hints.chars = "asdfghjklweu"
 
 # Privacy settings
