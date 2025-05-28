@@ -3,7 +3,7 @@
 # Requires: swayimg, nsxiv
 
 if [ -n "$WAYLAND_DISPLAY" ]; then
-	swayimg $@
+	exec swayimg "$@"
 else
-	nsxiv $@
+	exec nsxiv "$@"
 fi
