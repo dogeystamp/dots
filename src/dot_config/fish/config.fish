@@ -32,9 +32,9 @@ if status --is-interactive
 	set __fish_git_prompt_showupstream auto
 	set __fish_git_prompt_showstashstate 1
 
-	set fish_color_param normal
-	set fish_color_cwd grey
-	set fish_color_command white
+	set fish_color_param white
+	set fish_color_command white --bold
+	set fish_color_autosuggestion blue --italics
 
 	source ~/.config/fish/functions/extra_prompt.fish
 
