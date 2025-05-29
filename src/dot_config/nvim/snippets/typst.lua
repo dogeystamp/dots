@@ -100,7 +100,7 @@ return {
 						path = f(function()
 							return "fig/" .. vim.fn.expand("%:r") .. "/" .. (args[1][1] or nil)
 						end),
-						ext = c(1, { t("svg"), t("jpg") })
+						ext = c(1, { t("svg"), t("jpg"), t("png") })
 					})
 				)
 			elseif snip.captures[1] == "t" then
@@ -140,6 +140,7 @@ return {
 	  prefix: "{}",
 	  suffix: "{}",
 	)
+
 	]], { i(1), i(2), i(3) })),
 
 	s({ trig = "problem", desc = "Problem write-up template" }, fmt([[
@@ -150,5 +151,6 @@ return {
 	  title: "{}",
 	  stat: "{}",
 	)
+
 	]], { i(1), i(2), t("incomplete") })),
 }

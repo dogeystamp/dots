@@ -5,31 +5,6 @@ local keymap = confutil.keymap
 
 
 ------
--- python format-on-save
--- https://stackoverflow.com/a/77467553
-------
-
--- to turn this off for a session (permanently), run
--- :autocmd! AutoFormat
--- https://superuser.com/a/1415274
-
--- vim.api.nvim_create_augroup("AutoFormat", {})
---
--- vim.api.nvim_create_autocmd(
--- 	"BufWritePost",
--- 	{
--- 		pattern = "*.py",
--- 		group = "AutoFormat",
--- 		callback = function()
--- 			vim.cmd("silent !black --quiet %")
--- 			vim.cmd("edit")
--- 			vim.cmd("norm zz")
--- 		end,
--- 	}
--- )
-
-
-------
 -- syntax highlighting
 ------
 
@@ -63,10 +38,22 @@ require 'nvim-treesitter.configs'.setup {
 	},
 }
 
+
 --------
 -- auto-pairs for brackets
 --------
-vim.cmd.packadd("auto-pairs")
+vim.cmd.packadd("nvim-autopairs")
+local npairs = require("nvim-autopairs")
+local Rule = require("nvim-autopairs.rule")
+local cond = require("nvim-autopairs.conds")
+npairs.setup { check_ts = true }
+
+-- https://github.com/windwp/nvim-autopairs/wiki/Rules-API
+npairs.add_rules({
+	Rule("$", "$", "typst"):with_move(cond.done()),
+	Rule("```", "```", "typst"),
+})
+
 
 ------
 -- diagnostics box

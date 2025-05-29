@@ -12,10 +12,14 @@ endfunc
 
 nnoremap <silent><leader>ff :call EditFig()<cr>
 
-" imports latest screenshot into a figure
+" imports latest screenshot (from clipboard) into a figure
 function ScreenshotFig()
-	call system("mkdir -p " . expand("<cfile>:h"))
-	call system("ffmpeg -y -i ~/med/screen/latest.png " . expand("<cfile>"))
+	call system("mkdir -p " . expand("<cfile>:h") . ";"
+		\ . "TEMP=$(mktemp --suffix=.png)" . ";"
+		\ . 'cb > "$TEMP"' . ";"
+		\ . 'ffmpeg -y -i $TEMP "'.expand("<cfile>").'";'
+		\ . 'rm "$TEMP"' . ";"
+	\ )
 endf
 nnoremap <silent><leader>fs :call ScreenshotFig()<cr>
 

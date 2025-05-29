@@ -2,6 +2,8 @@
 
 vim.cmd.packadd("LuaSnip")
 
+local ls = require("luasnip")
+
 -- see coding.lua because it also uses luasnip
 -- snippets live in .config/nvim/snippets/
 
@@ -12,19 +14,26 @@ local keymap = confutil.keymap
 -- key bindings
 --------------------------------
 
--- could not manage to replicate this behaviour in lua
--- if you nvim_feedkeys to pass through the <Tab> it infinite-loops
--- and also expr seems broken on my keymap() func
-vim.cmd([[
-imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
-]])
-
-keymap("<Tab>", "<Plug>luasnip-jump-next", { mode = { "s" } })
-keymap("<S-Tab>", "<Plug>luasnip-jump-prev", { mode = { "s", "i" } })
-keymap("<C-e>", "<Plug>luasnip-next-choice", { mode = { "s", "i" } })
+keymap("<Tab>", function()
+	if ls.expandable() then
+		ls.expand()
+	elseif ls.locally_jumpable(1) then
+		ls.jump(1)
+	else
+		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n", false)
+	end
+end, { mode = { "i" } })
+keymap("<S-Tab>", function()
+	ls.jump(-1)
+end, { mode = { "s", "i" } })
+keymap("<C-1>", function()
+	if ls.choice_active() then
+		ls.change_choice(1)
+	end
+end, { mode = { "s", "i" } })
 
 --------------------------------
 -- snippets
 --------------------------------
 
-require("luasnip.loaders.from_lua").load({paths = vim.fn.stdpath("config") .. "/snippets"})
+require("luasnip.loaders.from_lua").load({ paths = vim.fn.stdpath("config") .. "/snippets" })
