@@ -1,3 +1,29 @@
+local MATH_NODES = {
+	formula = true,
+	math = true,
+}
+
+local NON_MATH_NODES = {
+	code = true,
+	text = true,
+	raw_blck = true,
+	source_file = true,
+}
+
+local function is_math_mode()
+	local node = vim.treesitter.get_node({ ignore_injections = false })
+	while node do
+		print(node:type())
+		if NON_MATH_NODES[node:type()] then
+			return false
+		elseif MATH_NODES[node:type()] then
+			return true
+		end
+		node = node:parent()
+	end
+	return true
+end
+
 return {
 	--------------------------------
 	--------------------------------
@@ -5,9 +31,72 @@ return {
 	--------------------------------
 	--------------------------------
 
-	s({ trig = "ss", name = "superscript", wordTrig = false }, fmt("^({})", { i(1) })),
-	s({ trig = "qu", name = "square (qu-artic) exponent", wordTrig = false }, t("^2")),
-	s({ trig = "cub", name = "cub-ed exponent", wordTrig = false }, t("^3")),
+	-- if you don't want to trigger some of these automatic snippets,
+	-- for example the subscript `_`, type ctrl-v _ and it will type
+	-- a raw underscore
+
+	s(
+		{
+			-- this is python's exponentiation syntax
+			trig = "**",
+			name = "superscript",
+			wordTrig = false,
+			snippetType = "autosnippet",
+			condition = function(_, _, _)
+				return is_math_mode()
+			end
+		}, fmt("^({})", { i(1) })),
+	s(
+		{
+			trig = "qu",
+			name = "s-qu-are exponent",
+			wordTrig = false,
+			snippetType = "autosnippet",
+			condition = function(_, _, _)
+				return is_math_mode()
+			end
+		}, t("^2")),
+	s(
+		{
+			trig = "cub",
+			name = "cub-ed exponent",
+			wordTrig = false,
+			snippetType = "autosnippet",
+			condition = function(_, _, _)
+				return is_math_mode()
+			end
+		}, t("^3")),
+	s(
+		{
+			trig = "_",
+			name = "subscript",
+			wordTrig = false,
+			snippetType = "autosnippet",
+			condition = function(_, _, _)
+				return is_math_mode()
+			end
+		}, fmt("_({})", { i(1) })),
+	s(
+		{
+			trig = "/",
+			name = "fraction",
+			wordTrig = false,
+			snippetType = "autosnippet",
+			condition = function(_, _, _)
+				return is_math_mode()
+			end
+		}, fmt("/({})", { i(1) })),
+	s(
+		{
+			trig = "#",
+			name = "code (inline math)",
+			desc = "Tells tree-sitter that we are in a code block, to prevent completing math elements.",
+			wordTrig = false,
+			snippetType = "autosnippet",
+			condition = function(_, _, _)
+				return is_math_mode()
+			end
+		}, fmt("#({})", { i(1) })),
 
 	-- limits
 	s({ trig = "plus", name = "plus exponent", wordTrig = false }, t("^+")),
@@ -17,25 +106,6 @@ return {
 	s({ trig = "sum", name = "summation", wordTrig = true }, fmt("sum_({})^({}) ", { i(1), i(2) })),
 	s({ trig = "inf", name = "infinity", wordTrig = true }, t("infinity")),
 	s({ trig = "abs", name = "absolute value", wordTrig = true }, fmt("abs({})", { i(1) })),
-	s({ trig = "frk", name = "fraction", wordTrig = true }, fmt("({})/({}) ", { i(1), i(2) })),
-	s({ trig = "inv", name = "inverse (reciprocal)", wordTrig = true }, fmt("1/({})", { i(1) })),
-
-	-- derivative
-	s({ trig = "dx", name = "difference x", wordTrig = true }, t("/(dif x)")),
-	s({ trig = "dy", name = "difference y", wordTrig = true }, t("(dif y)")),
-	s({ trig = "der", name = "derivative", wordTrig = true }, t("dif/(dif x)")),
-
-	s({
-			trig = "numb",
-			name = "numbered equation",
-			wordTrig = false
-		},
-		fmt(
-			"#numbered_eq()[${}$ <{}>]",
-			{
-				i(1, "equation"),
-				i(2, "label")
-			})),
 
 	s({ trig = "link", desc = "labelled link" }, fmt('#link("{}{}")[{}]', {
 		i(1),
@@ -49,31 +119,6 @@ return {
 		end, { 1 }),
 		i(2),
 	})),
-
-	s({
-			trig = "qty",
-			name = "quantity + unit",
-			wordTrig = false
-		},
-		fmt(
-			[[#qty("{}", "{}")]],
-			{
-				i(1, "numb"),
-				i(2, "unit")
-			})),
-
-	s({
-			trig = "pq",
-			name = "percentage error quantity",
-			wordTrig = false
-		},
-		fmt(
-			[[#pq("{}", "{}", "{}")]],
-			{
-				i(1, "numb"),
-				i(2, "unit"),
-				i(3, "percentage error"),
-			})),
 
 	--------------------------------
 	--------------------------------
@@ -132,6 +177,8 @@ return {
 	-- document templates
 	--------------------------------
 	--------------------------------
+
+	-- this template is deprecated
 	s({ trig = "general", desc = "General document template" }, fmt([[
 	#import "/templates/general.typ": template, lref
 	#import "/templates/libs.typ": *
@@ -143,6 +190,7 @@ return {
 
 	]], { i(1), i(2), i(3) })),
 
+	-- this template is deprecated
 	s({ trig = "problem", desc = "Problem write-up template" }, fmt([[
 	#import "/templates/problems.typ": template, source_code, status, lref
 	#import "/templates/libs.typ": *
@@ -153,4 +201,18 @@ return {
 	)
 
 	]], { i(1), i(2), t("incomplete") })),
+
+	s({ trig = "book", desc = "New notes template" }, fmt([[
+	#import "@local/mousse-notes:0.1.0": *
+	#set page(paper: "us-letter")
+	#show: book.with(
+	  title: [{}],
+	  subtitle: {},
+	  subsubtitle: {},
+	  subsubsubtitle: {},
+	  author: {},
+	)
+
+
+	]], { i(1), i(2, "none"), i(3, "none"), i(4, "none"), i(5, "none") })),
 }

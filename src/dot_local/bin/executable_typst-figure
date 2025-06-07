@@ -15,9 +15,9 @@ else
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="100mm"
-   height="100mm"
-   viewBox="0 0 100 100"
+   width="80mm"
+   height="50mm"
+   viewBox="0 0 80 50"
    version="1.1"
    id="svg5"
    inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
@@ -34,18 +34,8 @@ else
      inkscape:showpageshadow="2"
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#252525"
+     inkscape:deskcolor="#dddddd"
      inkscape:document-units="mm"
-     showgrid="false"
-     inkscape:zoom="0.62272556"
-     inkscape:cx="353.28564"
-     inkscape:cy="546.78983"
-     inkscape:window-width="1836"
-     inkscape:window-height="986"
-     inkscape:window-x="40"
-     inkscape:window-y="30"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
   <defs
      id="defs2" />
   <g

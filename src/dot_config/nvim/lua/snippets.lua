@@ -17,12 +17,12 @@ local keymap = confutil.keymap
 keymap("<Tab>", function()
 	if ls.expandable() then
 		ls.expand()
-	elseif ls.locally_jumpable(1) then
+	elseif ls.locally_jumpable(1) and ls.in_snippet() then
 		ls.jump(1)
 	else
 		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n", false)
 	end
-end, { mode = { "i" } })
+end, { mode = { "i", "s" } })
 keymap("<S-Tab>", function()
 	ls.jump(-1)
 end, { mode = { "s", "i" } })
@@ -37,3 +37,4 @@ end, { mode = { "s", "i" } })
 --------------------------------
 
 require("luasnip.loaders.from_lua").load({ paths = vim.fn.stdpath("config") .. "/snippets" })
+ls.config.setup({ enable_autosnippets = true })
