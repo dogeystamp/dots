@@ -2,7 +2,7 @@
 
 * {
 	font-family: Symbols Nerd Font, Inter Display;
-	color: black;
+	color: @theme_fg_color;
 }
 
 .modules-left {
@@ -12,6 +12,10 @@
 #clock {
 	padding: 0 1ex 0 0.75ex;
 	font-weight: 600;
+}
+
+tooltip {
+	background: @theme_bg_color;
 }
 
 #network,
