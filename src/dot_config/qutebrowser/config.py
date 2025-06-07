@@ -113,9 +113,6 @@ c.content.cookies.accept = "no-3rdparty"
 c.content.cookies.store = False
 
 # Less unique headers compared to the defaults
-c.content.headers.user_agent = (
-    "Mozilla/5.0 (Android 10; Mobile; rv:91.0) Gecko/91.0 Firefox/91.0"
-)
 c.content.headers.accept_language = "en-US,en;q=0.5"
 c.content.headers.custom = {
     "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
