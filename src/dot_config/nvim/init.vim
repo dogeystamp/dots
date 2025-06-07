@@ -1,4 +1,7 @@
-set tabstop=4 shiftwidth=4 noexpandtab ai nosmd ignorecase smartcase
+set tabstop=4 shiftwidth=4 noexpandtab ai ignorecase smartcase
+
+" Disable mode indicator
+set noshowmode
 
 " Persist undos
 set undofile
@@ -77,6 +80,10 @@ nnoremap 0 ^
 nnoremap ^ 0
 vnoremap 0 ^
 vnoremap ^ 0
+snoremap 0 0
+
+" steal the emacs end-of-line bind (easier to type than <Esc>A)
+inoremap <C-e> <C-o>A
 
 set shell=/bin/sh
 
