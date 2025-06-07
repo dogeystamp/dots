@@ -25,7 +25,7 @@ require 'nvim-treesitter.configs'.setup {
 		end,
 	},
 	indent = {
-		enable = true
+		enable = false
 	},
 	incremental_selection = {
 		enable = true,
@@ -57,14 +57,42 @@ npairs.add_rules({
 })
 
 --------
--- custom backspace behaviour
+-- custom backspace behaviour inspired by JetBrains IDEA
+-- deletes lines that are just indents.
+-- to circumvent this, use ctrl-backspace.
+--
+-- depends on: nvim-treesitter, nvim-autopairs (optional)
 --------
 keymap('<BS>', function()
 	-- delete lines if they are solely whitespace
-	vim.cmd[[ silent! s/^\s\+$// ]]
+	local indent_baseline = require("nvim-treesitter.indent").get_indent(vim.fn.line("."))
+	if indent_baseline ~= -1 then
+		local line = vim.api.nvim_get_current_line()
 
-	-- clear the pattern highlight
-	vim.cmd[[ nohlsearch ]]
+		local WHITESPACE = {
+			[" "] = 1,
+			["\t"] = vim.o.shiftwidth,
+		}
+
+		local indent_size = 0
+		local is_empty = true
+
+		for c = line:len(), 1, -1 do
+			local spaces = WHITESPACE[line:sub(c, c)]
+			if spaces ~= nil then
+				indent_size = indent_size + spaces
+			else
+				print(vim.inspect(line:sub(c, c)))
+				is_empty = false
+				break
+			end
+		end
+
+		if is_empty and indent_size <= indent_baseline then
+			vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-o>dd<C-o>k<C-o>A", true, false, true), "n", false)
+			return
+		end
+	end
 
 	-- hook into autopairs to actually backspace now.
 	-- if you delete this line you have to replace `npairs.autopairs_bs()`

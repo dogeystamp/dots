@@ -1,4 +1,5 @@
-set tabstop=4 shiftwidth=4 noexpandtab ai ignorecase smartcase
+set tabstop=4 shiftwidth=4 noexpandtab smartindent
+set ignorecase smartcase
 
 " Disable mode indicator
 set noshowmode
