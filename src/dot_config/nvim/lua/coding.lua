@@ -46,13 +46,31 @@ vim.cmd.packadd("nvim-autopairs")
 local npairs = require("nvim-autopairs")
 local Rule = require("nvim-autopairs.rule")
 local cond = require("nvim-autopairs.conds")
-npairs.setup { check_ts = true }
+npairs.setup { check_ts = true, map_bs = false }
 
 -- https://github.com/windwp/nvim-autopairs/wiki/Rules-API
 npairs.add_rules({
 	Rule("$", "$", "typst"):with_move(cond.done()),
 	Rule("```", "```", "typst"),
+	Rule("(", ")", "typst"),
+	Rule('"', '"', "-vim"),
 })
+
+--------
+-- custom backspace behaviour
+--------
+keymap('<BS>', function()
+	-- delete lines if they are solely whitespace
+	vim.cmd[[ silent! s/^\s\+$// ]]
+
+	-- clear the pattern highlight
+	vim.cmd[[ nohlsearch ]]
+
+	-- hook into autopairs to actually backspace now.
+	-- if you delete this line you have to replace `npairs.autopairs_bs()`
+	-- so that a backspace is generated.
+	vim.api.nvim_feedkeys(npairs.autopairs_bs(), "n", false)
+end, { noremap = false, mode = { 'i' } })
 
 
 ------
