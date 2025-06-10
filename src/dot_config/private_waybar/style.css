@@ -8,14 +8,14 @@
 .modules-left {
 	padding-left: 0.2em;
 }
-
-#clock {
-	padding: 0 1ex 0 0.75ex;
-	font-weight: 600;
+.modules-right {
+	padding-right: 0.0em;
 }
 
 tooltip {
 	background: @theme_bg_color;
+	border: 1px solid @theme_fg_color;
+	border-radius: 0.5ex;
 }
 
 #network,
@@ -30,6 +30,15 @@ tooltip {
 #clock {
 	background-color: inherit;
 	color: inherit;
+}
+
+#clock {
+	color: @theme_bg_color;
+	background: @theme_fg_color;
+	border-radius: 0.5ex;
+	padding: 0.25ex 1ex 0.25ex 0.75ex;
+	margin: 0.75ex;
+	font-weight: 600;
 }
 
 /* icons */
@@ -57,6 +66,11 @@ tooltip {
 #custom-next-event
 {
 	margin: 0.3ex 0.0ex;
+}
+
+#window {
+	font-style: italic;
+	font-weight: 600;
 }
 
 #battery {
