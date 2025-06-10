@@ -32,8 +32,8 @@ return {
 	--------------------------------
 
 	-- if you don't want to trigger some of these automatic snippets,
-	-- for example the subscript `_`, type ctrl-v _ and it will type
-	-- a raw underscore
+	-- for example to type a literaly 'uq', type ctrl-v q and it will type
+	-- a 'q' without triggering
 
 	s(
 		{
@@ -46,10 +46,15 @@ return {
 				return is_math_mode()
 			end
 		}, fmt("^({})", { i(1) })),
+
+	-- note there is no subscript snippet because unlike the ^ key, _ is pretty easy to reach
+
 	s(
 		{
-			trig = "qu",
-			name = "s-qu-are exponent",
+			-- this used to be qu, but you should avoid ending triggers with u
+			-- because ctrl-v u is already a bind (:h i_CTRL-V_digit)
+			trig = "uq",
+			name = "s-uq-are exponent",
 			wordTrig = false,
 			snippetType = "autosnippet",
 			condition = function(_, _, _)
@@ -68,19 +73,9 @@ return {
 		}, t("^3")),
 	s(
 		{
-			trig = "_",
-			name = "subscript",
-			wordTrig = false,
-			snippetType = "autosnippet",
-			condition = function(_, _, _)
-				return is_math_mode()
-			end
-		}, fmt("_({})", { i(1) })),
-	s(
-		{
-			trig = "/",
+			-- you need to type a space before to trigger this
+			trig = " /",
 			name = "fraction",
-			wordTrig = false,
 			snippetType = "autosnippet",
 			condition = function(_, _, _)
 				return is_math_mode()
