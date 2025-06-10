@@ -85,6 +85,7 @@ snoremap 0 0
 
 " steal the emacs end-of-line bind (easier to type than <Esc>A)
 inoremap <C-e> <C-o>A
+snoremap <C-e> <C-o>A
 
 set shell=/bin/sh
 
