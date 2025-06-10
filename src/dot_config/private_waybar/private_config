@@ -47,7 +47,7 @@
 			"high": 50,
 			"critical": 75,
 		 },
-		 "interval": 5,
+		 "interval": 1,
 	},
 	"cpu": {
 		 "format": "󰍛",
@@ -57,7 +57,7 @@
 		 },
 	},
 	"clock": {
-		"format": "{:%a %d %b  %H:%M}",
+		"format": "{:%a %d %b<small>  </small>%H:%M}",
 		"tooltip-format": "{:%a %b %d, %Y (%Z / UTC%z)}",
 		"tooltip": true,
 	},

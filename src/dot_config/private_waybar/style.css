@@ -15,7 +15,7 @@
 tooltip {
 	background: @theme_bg_color;
 	border: 1px solid @theme_fg_color;
-	border-radius: 0.5ex;
+	border-radius: 0.3ex;
 }
 
 #network,
@@ -35,10 +35,10 @@ tooltip {
 #clock {
 	color: @theme_bg_color;
 	background: @theme_fg_color;
-	border-radius: 0.5ex;
+	border-radius: 0.3ex;
 	padding: 0.25ex 1ex 0.25ex 0.75ex;
 	margin: 0.75ex;
-	font-weight: 600;
+	font-weight: 700;
 }
 
 /* icons */
@@ -58,14 +58,15 @@ tooltip {
 }
 
 #custom-arrow {
-	padding: 0.1ex 0.0ex 0.4ex 0.0ex;
-	min-width: 1em;
+	padding: 0;
+	min-width: 1.2ex;
 	font-size: 1.8ex;
 }
 
 #custom-next-event
 {
 	margin: 0.3ex 0.0ex;
+	font-weight: 700;
 }
 
 #window {
