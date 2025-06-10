@@ -88,7 +88,7 @@ keymap('<BS>', function()
 			end
 		end
 
-		if is_empty and indent_size <= indent_baseline then
+		if is_empty and indent_size <= indent_baseline and indent_size > 0 then
 			vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-o>dd<C-o>k<C-o>A", true, false, true), "n", false)
 			return
 		end
