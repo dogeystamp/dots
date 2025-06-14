@@ -217,7 +217,7 @@ fuzzel
 swaylock
 swayidle
 swaybg
-swayosd-server
+swayosd
 waybar
 # needed for niri screencasting
 xdg-desktop-portal-gnome
