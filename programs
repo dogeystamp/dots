@@ -59,7 +59,7 @@ sane
 ghostscript
 imagemagick
 perl-image-exiftool
-glances
+btop
 wavemon
 usbutils
 translate-shell
