@@ -1,6 +1,9 @@
 set tabstop=4 shiftwidth=4 noexpandtab smartindent
 set ignorecase smartcase
 
+" Enable custom window title
+set title
+
 " Disable mode indicator
 set noshowmode
 
@@ -38,7 +41,7 @@ set lazyredraw nocursorline ttyfast
 set shortmess+=I
 
 " disable command line when not in use
-set cmdheight=0
+" set cmdheight=0
 
 let mapleader = ","
 let maplocalleader = " "
@@ -52,16 +55,16 @@ let maplocalleader = " "
 " vnoremap s "-s
 
 " easier binds to use system clipboard with
-nmap <C-S>y "+y
-nmap <C-S>Y "+Y
-nmap <C-S>D "+D
-vmap <C-S>y "+y
-nmap <C-S>d "+d
-vmap <C-S>d "+d
-nmap <C-S>c "+c
-nmap <C-S>C "+C
-vmap <C-S>c "+c
-nmap <C-S>p "+p
+nnoremap <C-S>y "+y
+nnoremap <C-S>Y "+Y
+nnoremap <C-S>D "+D
+vnoremap <C-S>y "+y
+nnoremap <C-S>d "+d
+vnoremap <C-S>d "+d
+nnoremap <C-S>c "+c
+nnoremap <C-S>C "+C
+vnoremap <C-S>c "+c
+nnoremap <C-S>p "+p
 
 " delete (do not save to register) bind
 vnoremap X "_d
@@ -86,6 +89,16 @@ snoremap 0 0
 " steal the emacs end-of-line bind (easier to type than <Esc>A)
 inoremap <C-e> <C-o>A
 snoremap <C-e> <C-o>A
+
+" steal the jetbrains surround binds (uses the a register)
+vnoremap " "adi""<Esc>"aPla
+vnoremap ( "adi()<Esc>"aPla
+" offer a way to access the " bind we clobbered
+vnoremap cs "
+
+" git gutter motions
+nnoremap ]h <Plug>(GitGutterNextHunk)
+nnoremap [h <Plug>(GitGutterPrevHunk)
 
 set shell=/bin/sh
 
