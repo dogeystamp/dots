@@ -6,7 +6,7 @@
 # - depends on `jq`, `socat`
 #
 # this script consumes the app into the terminal's column as a new tab.
-# bind it in your shell as an alias like "hide".
+# you should bind mpv, swayimg, zathura, etc. to aliases that call this script.
 #
 # example:
 #
