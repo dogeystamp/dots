@@ -2,7 +2,7 @@
 # window swallow emulation for Niri
 # (https://github.com/YaLTeR/niri/discussions/762)
 #
-# - works best with commit fd3b1f2b or later
+# - tested on niri 25.05.1 (8ba57fc) as of 2025-06-22
 # - depends on `jq`, `socat`
 #
 # this script consumes the app into the terminal's column as a new tab.
