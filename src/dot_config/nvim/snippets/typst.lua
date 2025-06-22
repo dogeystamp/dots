@@ -87,7 +87,6 @@ return {
 			name = "code (inline math)",
 			desc = "Tells tree-sitter that we are in a code block, to prevent completing math elements.",
 			wordTrig = false,
-			snippetType = "autosnippet",
 			condition = function(_, _, _)
 				return is_math_mode()
 			end
@@ -198,7 +197,7 @@ return {
 	]], { i(1), i(2), t("incomplete") })),
 
 	s({ trig = "book", desc = "New notes template" }, fmt([[
-	#import "@local/mousse-notes:0.1.0": *
+	#import "@local/mousse-notes:0.2.0": *
 	#set page(paper: "us-letter")
 	#show: book.with(
 	  title: [{}],
