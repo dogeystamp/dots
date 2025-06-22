@@ -12,4 +12,4 @@
 [[ -z $DISPLAY && $XDG_VTNR -eq 2 ]] && exec startx
 [[ -z $WAYLAND_DISPLAY && $XDG_VTNR -eq 1 ]] && EYECANDY="" exec niri-session
 [[ -z $WAYLAND_DISPLAY && $XDG_VTNR -eq 3 ]] && EYECANDY=1 exec niri-session
-exec "$SHELL"
+exec "$SHELL" -l
