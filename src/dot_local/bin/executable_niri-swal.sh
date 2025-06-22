@@ -38,12 +38,12 @@ sock_printf() {
 }
 
 {
-	# if within 30 events, we don't see the window open, give up to avoid swallowing unexpectedly later
+	# if within 50 events, we don't see the window open, give up to avoid swallowing unexpectedly later
 	WIN_DATA=$(
 		# without the bashism, this will wait for a second event before terminating
 		# https://superuser.com/a/275962
 		jq --null-input "input" <(
-			niri msg --json event-stream | jq --unbuffered --null-input "range(30) as \$i | input | .WindowOpenedOrChanged | select(.) | select (.window.app_id == \"$APP_ID\")"
+			niri msg --json event-stream | jq --unbuffered --null-input "range(50) as \$i | input | .WindowOpenedOrChanged | select(.) | select (.window.app_id == \"$APP_ID\")"
 		)
 	)
 
@@ -57,8 +57,16 @@ sock_printf() {
 	# save the currently focused monitor
 	FOCUSED_OUTPUT=$(niri msg --json focused-output | jq -r .name)
 
-	# make the new window appear next to the terminal
-	niri msg action focus-window --id "$TERM_ID"
+	printf "seconds: %s\n" "$SECONDS" > /dev/stderr
+	if (( $SECONDS > 1 )); then
+		# make the new window appear next to the terminal (if the terminal isn't focused).
+		# this only triggers if the window took more than 1 second to appear,
+		# because this focus makes Niri's viewport shift;
+		# without the focus, the viewport is not changed.
+		# so we only want to do this if we have to:
+		# the user usually doesn't have time to focus away from the terminal in 1 second.
+		niri msg action focus-window --id "$TERM_ID"
+	fi
 
 	# move the window to the correct monitor
 	niri msg action move-window-to-monitor --id "$APP_WIN_ID" "$TERM_OUTPUT"
@@ -75,7 +83,6 @@ sock_printf() {
 
 	# focus back onto the monitor that was focused
 	niri msg action focus-monitor "$FOCUSED_OUTPUT"
-	echo "$FOCUSED_OUTPUT"
 } &
 
 set +e
