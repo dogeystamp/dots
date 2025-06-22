@@ -33,7 +33,7 @@ APP_ID="$1"
 shift
 
 sock_printf() {
-	printf $@ | socat - "$NIRI_SOCKET" > /dev/null
+	printf $@ | socat - "$NIRI_SOCKET" > /dev/tty
 }
 
 {
@@ -53,8 +53,11 @@ sock_printf() {
 		exit 1
 	fi
 
+	# make the new window appear next to the terminal
+	niri msg action focus-window --id "$TERM_ID"
+
 	# move the new window onto the terminal's workspace
-	sock_printf '{"Action":{"MoveWindowToWorkspace":{"window_id":%s,"reference":{"Id":%s}}}}' "$APP_WIN_ID" "$TERM_WORKSPACE_ID"
+	sock_printf '{"Action":{"MoveWindowToWorkspace":{"window_id":%s,"reference":{"Id":%s},"focus":true}}}' "$APP_WIN_ID" "$TERM_WORKSPACE_ID"
 
 	niri msg action consume-or-expel-window-left --id "$APP_WIN_ID"
 	niri msg action set-column-display tabbed
