@@ -28,6 +28,7 @@ TERM_DATA=$(niri msg --json focused-window)
 
 TERM_ID="$(printf "%s" "$TERM_DATA" | jq -r .id)"
 TERM_WORKSPACE_ID="$(printf "%s" "$TERM_DATA" | jq -r .workspace_id)"
+TERM_OUTPUT="$(niri msg --json workspaces | jq -r ".[] | select(.id == $TERM_WORKSPACE_ID) | .output")"
 
 APP_ID="$1"
 shift
@@ -53,8 +54,14 @@ sock_printf() {
 		exit 1
 	fi
 
+	# save the currently focused monitor
+	FOCUSED_OUTPUT=$(niri msg --json focused-output | jq -r .name)
+
 	# make the new window appear next to the terminal
 	niri msg action focus-window --id "$TERM_ID"
+
+	# move the window to the correct monitor
+	niri msg action move-window-to-monitor --id "$APP_WIN_ID" "$TERM_OUTPUT"
 
 	# move the new window onto the terminal's workspace
 	sock_printf '{"Action":{"MoveWindowToWorkspace":{"window_id":%s,"reference":{"Id":%s},"focus":true}}}' "$APP_WIN_ID" "$TERM_WORKSPACE_ID"
@@ -65,6 +72,10 @@ sock_printf() {
 
 	# focus back onto the workspace the app spawned on
 	sock_printf '{"Action":{"FocusWorkspace":{"reference":{"Id":%s}}}}' "$WORKSPACE_ID"
+
+	# focus back onto the monitor that was focused
+	niri msg action focus-monitor "$FOCUSED_OUTPUT"
+	echo "$FOCUSED_OUTPUT"
 } &
 
 set +e
