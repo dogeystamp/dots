@@ -32,15 +32,6 @@
 
 # color theme
 # theme.lua
-[submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_nvim-noirbuddy"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-noirbuddy
-	url = https://github.com/jesseleite/nvim-noirbuddy.git
-[submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_colorbuddy.nvim"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_colorbuddy.nvim
-	url = https://github.com/tjdevries/colorbuddy.nvim.git
-
-# debug adapter protocol
-# debugging.lua
 [submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_nvim-dap"]
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-dap
 	url = https://github.com/mfussenegger/nvim-dap.git
