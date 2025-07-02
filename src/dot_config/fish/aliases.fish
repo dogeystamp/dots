@@ -18,7 +18,7 @@ function lightmode
 	gsettings set org.gnome.desktop.interface color-scheme 'default'
 end
 
-# alias mpv='hide mpv mpv'
+alias mpv='hide mpv mpv'
 alias imvi='hide swayimg imgv.sh'
 
 alias neofetch='fastfetch'
@@ -36,7 +36,7 @@ alias zathsec='/usr/bin/zathura-sandbox -c ~/.config/zathura-sec'
 function tmx; tmux -u -2 $argv; end
 
 # Run mpv from clipboard
-function mpvy; mpv $argv (cb -b); end
+function mpvy; mpv --profile=network $argv -- (cb -b); end
 
 # Set gpg tty so curses pinentry works
 function gpgt; export GPG_TTY=(tty); end
