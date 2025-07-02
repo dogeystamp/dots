@@ -30,8 +30,8 @@
 	path = src/dot_local/share/nvim/site/pack/3pp/start/external_vim-ledger
 	url = https://github.com/ledger/vim-ledger.git
 
-# color theme
-# theme.lua
+# debug adapter protocol
+# debugging.lua
 [submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_nvim-dap"]
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-dap
 	url = https://github.com/mfussenegger/nvim-dap.git
@@ -52,7 +52,6 @@
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_cmp_luasnip
 	url = https://github.com/saadparwaiz1/cmp_luasnip
 
-# auto-close brackets
 [submodule "src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-ufo"]
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-ufo
 	url = https://github.com/kevinhwang91/nvim-ufo
@@ -64,6 +63,8 @@
 [submodule "src/dot_local/share/nvim/site/pack/3pp/opt/external_plenary.nvim"]
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_plenary.nvim
 	url = https://github.com/nvim-lua/plenary.nvim
+
+# auto-close brackets
 [submodule "src/dot_local/share/nvim/site/pack/3pp/opt/nvim-autopairs"]
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/nvim-autopairs
 	url = https://github.com/windwp/nvim-autopairs
