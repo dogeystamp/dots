@@ -2,15 +2,6 @@ if status is-login
 	if test -z "$SYSTEM_PROFILE"
 		set -x SYSTEM_PROFILE SLIM
 	end
-
-	umask 007
-
-	if command -v zoxide > /dev/null
-		zoxide init fish | source
-	end
-	if command -v gsettings > /dev/null
-		gsettings set org.gnome.desktop.sound theme-name ocean > /dev/null 2>&1
-	end
 end
 
 # Disable fish greeting
@@ -19,7 +10,7 @@ set fish_greeting ""
 umask 007
 
 if status is-interactive
-	# prevent mistakes. use -f to override
+	# prevent mistakes. use -f (or -I) to override
 	alias rm 'rm -i'
 
 	if not test $SYSTEM_PROFILE = "MINIMAL"

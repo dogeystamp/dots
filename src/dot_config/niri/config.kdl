@@ -2,6 +2,7 @@
 
 spawn-at-startup "niri" "msg" "action" "do-screen-transition" "-d" "800"
 spawn-at-startup "swayosd-server"
+spawn-at-startup "gsettings" "set" "org.gnome.desktop.sound" "theme-name" "ocean"
 
 input {
     keyboard {
