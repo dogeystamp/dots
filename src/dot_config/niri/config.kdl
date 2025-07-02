@@ -1,11 +1,13 @@
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Overview
 
 spawn-at-startup "niri" "msg" "action" "do-screen-transition" "-d" "800"
+spawn-at-startup "swayosd-server"
 
 input {
     keyboard {
         xkb {
-            options "caps:swapescape, compose:rctrl"
+			// see xkeyboard-config(7), "OPTIONS"
+            options "caps:swapescape, compose:rctrl, altwin:swap_alt_win, mouse_btn:extraalt"
         }
 
 		repeat-delay 300
@@ -13,8 +15,8 @@ input {
     }
 
 
-    mod-key "Alt"
-    mod-key-nested "Super"
+    mod-key "Super"
+    mod-key-nested "Alt"
 
     touchpad {
         tap
@@ -33,7 +35,7 @@ overview {
 }
 
 layout {
-	background-color "transparent"
+	background-color "#eeeeee"
 
 	default-column-display "tabbed"
 	tab-indicator {
@@ -203,7 +205,7 @@ animations {
 	}
 
 	window-open {
-		spring damping-ratio=1.0 stiffness=1200 epsilon=0.0001
+		spring damping-ratio=1.0 stiffness=2500 epsilon=0.0001
 		custom-shader r"
 		vec4 default_open(vec3 coords_geo, vec3 size_geo) {
 			float scale = max(0.0, (niri_progress / 100.0 + 0.99));
