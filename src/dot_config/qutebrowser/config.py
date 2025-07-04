@@ -93,7 +93,7 @@ c.tabs.favicons.show = "always"
 # Hints
 
 c.hints.border = "1px solid black"
-c.hints.chars = "asdfghjklweu"
+c.hints.chars = "asdfhklpoqwerzxcnm"
 
 # Privacy settings
 
