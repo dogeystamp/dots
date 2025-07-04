@@ -113,6 +113,7 @@ tooltip {
 
 #network.disconnected {
 	background-color: inherit;
+	color: #AA0000;
 }
 
 #workspaces button {

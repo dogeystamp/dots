@@ -62,10 +62,11 @@
 		"tooltip": true,
 	},
 	"network": {
+		"format": "󰀂",
 		"format-wifi": "{icon}",
-		 "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+		"format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
 		"tooltip-format": "{essid} ({signalStrength}%)",
-		"format-disconnected": "󱡺",
+		"format-disconnected": "󰤮",
 		"max-length": 20
 	},
 	"idle_inhibitor": {
