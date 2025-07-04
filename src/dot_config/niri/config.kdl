@@ -8,7 +8,7 @@ input {
     keyboard {
         xkb {
 			// see xkeyboard-config(7), "OPTIONS"
-            options "caps:swapescape, compose:rctrl, altwin:swap_alt_win, mouse_btn:extraalt"
+            options "caps:swapescape, compose:rctrl, altwin:swap_alt_win"
         }
 
 		repeat-delay 300
@@ -303,7 +303,8 @@ binds {
     Mod+Shift+P { spawn "keepassxc"; }
     Mod+Shift+D { spawn "qbprof" "dsc"; }
     Mod+Shift+M { spawn "qbprof" "mus"; }
-    Ctrl+Mod+L { spawn "swaylock"; }
+	// avoid using ctrl for this bind because ctrl-m counts as enter in swaylock
+    Alt+L { spawn "swaylock"; }
 
     Mod+A { spawn "style.sh"; }
 
