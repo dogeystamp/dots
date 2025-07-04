@@ -197,7 +197,7 @@ return {
 	]], { i(1), i(2), t("incomplete") })),
 
 	s({ trig = "book", desc = "New notes template" }, fmt([[
-	#import "@local/mousse-notes:0.2.0": *
+	#import "@local/mousse-notes:0.6.0": *
 	#set page(paper: "us-letter")
 	#show: book.with(
 	  title: [{}],
