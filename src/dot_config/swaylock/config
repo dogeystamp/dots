@@ -9,19 +9,19 @@ font-size=40
 
 line-uses-ring
 
-color=ffffff
+color=000000
 inside-color=ff000000
 inside-clear-color=ff000000
 inside-ver-color=ff000000
 inside-wrong-color=ff000000
 key-hl-color=ff000000
 bs-hl-color=ff000000
-separator-color=000000
-ring-color=000000
+separator-color=ffffff
+ring-color=ffffff
 ring-ver-color=99aabb
-ring-wrong-color=000000
-ring-clear-color=dddddd
-text-color=000000
+ring-wrong-color=ffffff
+ring-clear-color=444444
+text-color=ffffff
 text-clear-color=ff000000
 text-ver-color=ff000000
 text-wrong-color=ff000000
