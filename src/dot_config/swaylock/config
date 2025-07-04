@@ -1,10 +1,27 @@
-color=000000
+ignore-empty-password
+show-failed-attempts
+
+indicator-radius=50
+indicator-thickness=2
+
+font=sans-serif
+font-size=40
 
 line-uses-ring
-indicator-thickness=20
-indicator-radius=10
-font-size=1
 
-key-hl-color=99AABB
-ring-color=99AABB
-separator-color=99AABB
+color=ffffff
+inside-color=ff000000
+inside-clear-color=ff000000
+inside-ver-color=ff000000
+inside-wrong-color=ff000000
+key-hl-color=ff000000
+bs-hl-color=ff000000
+separator-color=000000
+ring-color=000000
+ring-ver-color=99aabb
+ring-wrong-color=000000
+ring-clear-color=dddddd
+text-color=000000
+text-clear-color=ff000000
+text-ver-color=ff000000
+text-wrong-color=ff000000
