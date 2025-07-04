@@ -90,12 +90,6 @@ snoremap 0 0
 inoremap <C-e> <C-o>A
 snoremap <C-e> <C-o>A
 
-" steal the jetbrains surround binds (uses the a register)
-vnoremap " "adi""<Esc>"aPla
-vnoremap ( "adi()<Esc>"aPla
-" offer a way to access the " bind we clobbered
-vnoremap cs "
-
 " git gutter motions
 nnoremap ]h <Plug>(GitGutterNextHunk)
 nnoremap [h <Plug>(GitGutterPrevHunk)
