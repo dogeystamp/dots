@@ -237,6 +237,12 @@ dap.adapters.lldb = {
 	command = "/usr/bin/lldb-dap",
 	name = "lldb"
 }
+dap.adapters.gdb = {
+	type = "executable",
+	command = "gdb",
+	name = "gdb",
+	args = { '--quiet', '--interpreter=dap' },
+}
 
 dap.configurations.cpp = {
 	{
