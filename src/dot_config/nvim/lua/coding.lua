@@ -66,7 +66,8 @@ npairs.add_rules({
 --------
 keymap('<BS>', function()
 	-- delete lines if they are solely whitespace
-	local indent_baseline = require("nvim-treesitter.indent").get_indent(vim.fn.line("."))
+	local orig_linenr = vim.fn.line(".")
+	local indent_baseline = require("nvim-treesitter.indent").get_indent(orig_linenr)
 	if indent_baseline ~= -1 then
 		local line = vim.api.nvim_get_current_line()
 
@@ -88,8 +89,17 @@ keymap('<BS>', function()
 			end
 		end
 
+		local feedkeys = function (keys)
+			vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(keys, true, false, true), "n", false)
+		end
+
 		if is_empty and indent_size <= indent_baseline and indent_size > 0 then
-			vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-o>dd<C-o>k<C-o>A", true, false, true), "n", false)
+			feedkeys("<C-o>dd")
+			-- if line number hasn't changed, and this isn't the last line in the file, move up to last line
+			if orig_linenr == vim.fn.line(".") and orig_linenr ~= vim.fn.line("$") then
+				feedkeys("<C-o>k")
+			end
+			feedkeys("<C-o>A")
 			return
 		end
 	end
