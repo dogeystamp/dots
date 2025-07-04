@@ -52,7 +52,8 @@ npairs.setup { check_ts = true, map_bs = false }
 npairs.add_rules({
 	Rule("$", "$", "typst"):with_move(cond.done()),
 	Rule("```", "```", "typst"),
-	Rule("(", ")", "typst"),
+	Rule("(", ")"),
+	Rule("[", "]"),
 	Rule('"', '"', "-vim"),
 })
 
@@ -82,7 +83,6 @@ keymap('<BS>', function()
 			if spaces ~= nil then
 				indent_size = indent_size + spaces
 			else
-				print(vim.inspect(line:sub(c, c)))
 				is_empty = false
 				break
 			end
