@@ -30,6 +30,7 @@ c.colors.tabs.selected.odd.fg = c.colors.tabs.selected.even.fg
 
 # on niri wm we can just infinitely tile tabs and it's more efficient
 c.tabs.tabs_are_windows = True
+c.tabs.show = "never"
 c.statusbar.show = "never"
 # make closing tabs a no-op (last tab detection is broken)
 config.bind("d", "nop")
