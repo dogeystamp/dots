@@ -4,7 +4,7 @@
 	"reload_style_on_change": true,
 	"modules-left": ["niri/workspaces"],
 	"modules-center": ["niri/window"],
-	"modules-right": ["custom/next-event", "group/sliders", "idle_inhibitor", "cpu", "memory", "network", "battery", "clock"],
+	"modules-right": ["custom/next-event", "group/sliders", "custom/help", "cpu", "memory", "network", "battery", "clock"],
 	"group/sliders": {
 		"orientation": "horizontal",
 		"transition-left-to-right": false,
@@ -15,6 +15,7 @@
 			"custom/arrow",
 			"backlight",
 			"pulseaudio",
+			"idle_inhibitor",
 		],
 	},
 	"niri/window": {
@@ -42,7 +43,7 @@
 	},
 	"memory": {
 		 "format": "",
-		 "tooltip-format": "{percentage}% ({used} / {total} GiB, {avail} GiB left)",
+		 "tooltip-format": "Memory: {percentage}% ({used} / {total} GiB, {avail} GiB left)",
 		 "states": {
 			"high": 50,
 			"critical": 75,
@@ -50,7 +51,7 @@
 		 "interval": 1,
 	},
 	"cpu": {
-		 "format": "󰍛",
+		 "format": "",
 		 "states": {
 			"high": 70,
 			"critical": 90,
@@ -65,7 +66,8 @@
 		"format": "󰀂",
 		"format-wifi": "{icon}",
 		"format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
-		"tooltip-format": "{essid} ({signalStrength}%)",
+		"tooltip-format": "{ifname} ({signalStrength}%)",
+		"tooltip-format-wifi": "{essid} ({signalStrength}%)",
 		"format-disconnected": "󰤮",
 		"max-length": 20
 	},
@@ -85,6 +87,11 @@
 		"tooltip-format": "{dynamic}",
 		"format": "",
 		"format-paused": "",
+	},
+	"custom/help": {
+		"format": "󰡾",
+		"tooltip-format": "Show keyboard shortcuts.",
+		"on-click": "niri msg action show-hotkey-overlay"
 	},
 	"custom/arrow": {
 		"format": "<small> </small>",

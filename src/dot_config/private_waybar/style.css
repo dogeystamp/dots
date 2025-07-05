@@ -50,6 +50,7 @@ tooltip {
 #backlight,
 #pulseaudio, #pulseaudio.muted, #pulseaudio:hover,
 #custom-next-event
+#custom-help,
 #mpris {
 	padding: 0.1ex 0.1ex 0.3ex 0.2ex;
 	margin: 0.5ex;
@@ -63,8 +64,12 @@ tooltip {
 	font-size: 1.8ex;
 }
 
-#custom-next-event
-{
+#custom-help {
+	margin: 0.0ex 1ex 0ex 0.7ex;
+	font-size: 95%
+}
+
+#custom-next-event {
 	margin: 0.3ex 0.0ex;
 	font-weight: 700;
 }

@@ -1,4 +1,4 @@
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Overview
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
 
 spawn-at-startup "niri" "msg" "action" "do-screen-transition" "-d" "800"
 spawn-at-startup "swayosd-server"
@@ -297,26 +297,27 @@ binds {
     Mod+Shift+0 { move-column-to-workspace focus=false 10; }
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    Mod+Shift+Return { spawn "newterm.sh"; }
-    Mod+P            { spawn "fuzzel"; }
-    Mod+Shift+B { spawn "qutebrowser"; }
-    Mod+Shift+P { spawn "keepassxc"; }
-    Mod+Shift+D { spawn "qbprof" "dsc"; }
-    Mod+Shift+M { spawn "qbprof" "mus"; }
+    Mod+Shift+Return hotkey-overlay-title="Spawn Terminal"           { spawn "newterm.sh"; }
+    Mod+P                                                            { spawn "fuzzel"; }
+    Mod+Shift+B                                                      { spawn "qutebrowser"; }
+    Mod+Shift+P                                                      { spawn "keepassxc"; }
+    Mod+Shift+D hotkey-overlay-title="Spawn Discord"                 { spawn "qbprof" "dsc"; }
+    Mod+Shift+M hotkey-overlay-title="Spawn Navidrome (music)"       { spawn "qbprof" "mus"; }
+
 	// avoid using ctrl for this bind because ctrl-m counts as enter in swaylock
-    Alt+L { spawn "swaylock"; }
+    Alt+L       hotkey-overlay-title="Lock session"                  { spawn "swaylock"; }
 
-    Mod+A { spawn "style.sh"; }
+    Mod+A       hotkey-overlay-title="Run Inkscape style switcher"   { spawn "style.sh"; }
 
-    Mod+Shift+Z { spawn "clipedit.sh"; }
-    Mod+Z { spawn "newterm.sh" "-e" "bookmk"; }
+    Mod+Shift+Z hotkey-overlay-title="Edit clipboard contents"       { spawn "clipedit.sh"; }
+    Mod+Z       hotkey-overlay-title="Open bookmarks"                { spawn "newterm.sh" "-e" "bookmk"; }
 
-    XF86AudioRaiseVolume { spawn "swayosd-client" "--output-volume" "raise" "--max-volume" "120"; }
-    XF86AudioLowerVolume { spawn "swayosd-client" "--output-volume" "lower" "--max-volume" "120"; }
-    XF86AudioMute        { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
-    XF86AudioPlay        { spawn "playerctl" "play-pause"; }
-    XF86AudioNext        { spawn "playerctl" "next"; }
-    XF86AudioPrev        { spawn "playerctl" "previous"; }
+    XF86AudioRaiseVolume  { spawn "swayosd-client" "--output-volume" "raise" "--max-volume" "120"; }
+    XF86AudioLowerVolume  { spawn "swayosd-client" "--output-volume" "lower" "--max-volume" "120"; }
+    XF86AudioMute         { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
+    XF86AudioPlay         { spawn "playerctl" "play-pause"; }
+    XF86AudioNext         { spawn "playerctl" "next"; }
+    XF86AudioPrev         { spawn "playerctl" "previous"; }
 	XF86MonBrightnessDown { spawn "swayosd-client" "--brightness" "lower"; }
 	XF86MonBrightnessUp   { spawn "swayosd-client" "--brightness" "raise"; }
 
@@ -348,8 +349,8 @@ binds {
     Mod+H              { focus-monitor-left; }
     Mod+L              { focus-monitor-right; }
 
-    Win+M              { spawn "dunstctl" "close"; }
-    Win+N              { spawn "dunstctl" "history-pop"; }
+    Win+M hotkey-overlay-title="Close notification"    { spawn "dunstctl" "close"; }
+    Win+N hotkey-overlay-title="Restore notification"  { spawn "dunstctl" "history-pop"; }
 
     Mod+Shift+H        { move-column-to-monitor-left; }
     Mod+Shift+L        { move-column-to-monitor-right; }
@@ -424,7 +425,7 @@ binds {
 
     Mod+Shift+Q { quit; }
 
-    Mod+Shift+S { spawn "suspend.sh"; }
+    Mod+Shift+S hotkey-overlay-title="Suspend session" { spawn "suspend.sh"; }
 }
 
 hotkey-overlay {
