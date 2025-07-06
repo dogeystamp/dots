@@ -16,6 +16,7 @@ Ctrl+u = page_up
 Ctrl+d = page_down
 
 [keys.viewer]
+s = zoom width
 h = step_left
 l = step_right
 j = step_down
