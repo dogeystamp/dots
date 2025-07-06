@@ -6,7 +6,9 @@ function play_sfx
 		return
 	end
 
-	canberra-gtk-play -i $argv > /dev/null 2>&1 & disown
+	if command -v canberra-gtk-play > /dev/null
+		canberra-gtk-play -i $argv > /dev/null 2>&1 & disown
+	end
 end
 
 function sfx_fail_syntax --on-event fish_posterror
