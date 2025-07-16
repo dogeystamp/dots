@@ -34,7 +34,7 @@ APP_ID="$1"
 shift
 
 sock_printf() {
-	printf "$@" | socat - "$NIRI_SOCKET" > /dev/stderr
+	printf "$@" | socat - "$NIRI_SOCKET" # > /dev/stderr
 }
 
 err_printf() {
@@ -50,7 +50,7 @@ err_printf() {
 		# https://superuser.com/a/275962
 		jq --null-input "input" <(
 			niri msg --json event-stream | jq --unbuffered --null-input "range(30) as \$i | input | .WindowOpenedOrChanged | select(.) | select (.window.app_id == \"$APP_ID\")"
-		) || true
+		)  2> /dev/null  || true
 	)
 
 	APP_WIN_ID=$(printf "%s" "$WIN_DATA" | jq ".window.id")
