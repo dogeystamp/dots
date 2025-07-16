@@ -247,7 +247,26 @@ dap.adapters.gdb = {
 dap.configurations.cpp = {
 	{
 		name = "launch binary",
-		type = "lldb",
+		type = "gdb",
+		request = "launch",
+		program = function()
+			local binary = M.dbg_dir() .. "/binary"
+			if not vim.fn.filereadable(binary) then
+				binary = vim.fn.input("binary: ", vim.fn.getcwd() .. "/", "file")
+			end
+
+			return binary
+		end,
+		cwd = "${workspaceFolder}",
+		stopOnEntry = false,
+		runInTerminal = true,
+	}
+}
+
+dap.configurations.c = {
+	{
+		name = "launch binary",
+		type = "gdb",
 		request = "launch",
 		program = function()
 			local binary = M.dbg_dir() .. "/binary"
