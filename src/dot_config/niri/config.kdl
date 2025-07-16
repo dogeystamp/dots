@@ -31,6 +31,11 @@ input {
 	focus-follows-mouse max-scroll-amount="10%"
 }
 
+output "HDMI-A-1" {
+	mode "2560x1440@143.912003"
+	focus-at-startup
+}
+
 overview {
 	backdrop-color "#eeeeee"
 }
