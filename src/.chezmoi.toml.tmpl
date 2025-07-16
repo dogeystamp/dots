@@ -3,7 +3,7 @@
 {{- $systemprofilechoices := list "DEFAULT" "SLIM" "MINIMAL" -}}
 {{- $systemprofile := promptChoiceOnce . "systemprofile" "Select a system profile (use capital letter)" $systemprofilechoices "MINIMAL" -}}
 {{- $email := promptStringOnce . "email" "Email address for Git" "jsmith@example.com" -}}
-{{- $fullname := promptStringOnce . "fullname" "Full name for Git" "Johnson" -}}
+{{- $fullname := promptStringOnce . "fullname" "Full name for Git" "Johnson"}}
 
 mode = "symlink"
 
