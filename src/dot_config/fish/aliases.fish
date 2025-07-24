@@ -23,6 +23,8 @@ alias imvi='hide swayimg imgv.sh'
 
 alias neofetch='fastfetch'
 
+alias hx='helix'
+
 # prevent clobbering files
 alias mv='mv -n'
 alias cp='cp -n'

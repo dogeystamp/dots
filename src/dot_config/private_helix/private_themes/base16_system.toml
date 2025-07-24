@@ -1,0 +1,60 @@
+"string" = { fg = "term_n_cyan", modifiers = ["bold"] }
+"comment" = { fg = "term_n_red", modifiers = ["bold", "italic"] }
+"ui.virtual.inlay-hint" = { fg = "#aaaaaa", modifiers = ["italic"] }
+"keyword" = { fg = "term_n_magenta" }
+"variable.builtin" = { fg = "term_n_magenta" }
+"type" = { fg = "term_n_white", modifiers = ["bold"] }
+"label" = { fg = "term_n_white", modifiers = ["bold"] }
+"function" = { fg = "term_n_white", modifiers = ["bold"] }
+"constant" = { fg = "term_n_cyan", modifiers = ["bold"]}
+
+"ui.selection" = { bg = "term_b_yellow" }
+"ui.highlight" = { bg = "term_b_yellow" }
+"ui.menu.selected" = { bg = "term_b_yellow" }
+"ui.virtual.whitespace" = { fg = "term_b_yellow" }
+"ui.cursor" = { bg = "term_b_yellow" }
+"ui.cursor.primary" = { modifiers = ["reversed"] }
+
+"diff.plus" = { fg = "term_b_green" }
+"diff.minus" = { fg = "term_n_red" }
+"diff.delta" = { fg = "term_b_yellow" }
+"diff.delta.conflict" = { fg = "#cc4444" }
+
+"error" = { fg = "#cc4444" }
+"diagnostic.error" = { fg = "#cc4444" }
+"warning" = { fg = "#aa9944" }
+"diagnostic.warning" = { fg = "#aa9944" }
+"hint" = { fg = "#4444ff" }
+"diagnostic.hint" = { fg = "#4444ff" }
+"diagnostic" = { fg = "term_n_yellow" }
+
+"markup.heading" = { fg = "term_n_white", modifiers = ["bold"] }
+"markup.bold" = { modifiers = ["bold"] }
+"markup.italic" = { modifiers = ["italic"] }
+"markup.strikethrough" = { modifiers = ["crossed_out"] }
+"markup.link.url" = { fg = "term_n_cyan", modifiers = ["underlined"] }
+
+"ui.statusline" = { modifiers = ["bold"] }
+"ui.statusline.inactive" = { modifiers = [] }
+
+"tabstop" = { modifiers = ["italic"], fg = "term_n_yellow "}
+"ui.virtual.jump-label" = { fg = "term_n_yellow", modifiers = ["reversed", "bold"] }
+
+[palette]
+term_n_black =   "#f7f7f7"
+term_n_red =     "#7c7c7c"
+term_n_green =   "#8e8e8e"
+term_n_yellow =  "#a0a0a0"
+term_n_blue =    "#686868"
+term_n_magenta = "#747474"
+term_n_cyan =    "#868686"
+term_n_white =   "#000000"
+
+term_b_black =   "#ababab"
+term_b_red =     "#999999"
+term_b_green =   "#e3e3e3"
+term_b_yellow =  "#b9b9b9"
+term_b_blue =    "#525252"
+term_b_magenta = "#252525"
+term_b_cyan =    "#5e5e5e"
+term_b_white =   "#101010"

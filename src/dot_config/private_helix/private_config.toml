@@ -1,0 +1,63 @@
+theme = "base16_system"
+
+[editor]
+line-number = "relative"
+scrolloff = 0
+completion-timeout = 5
+end-of-line-diagnostics = "hint"
+jump-label-alphabet = "asdfghjklqweruio"
+popup-border = "all"
+
+[editor.inline-diagnostics]
+cursor-line = "warning"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "block"
+
+[editor.statusline]
+left = ["file-name", "file-modification-indicator", "read-only-indicator"]
+right = ["version-control", "spacer", "diagnostics", "spacer", "spinner"]
+
+[editor.lsp]
+display-inlay-hints = true
+
+[editor.indent-guides]
+render = true
+
+[editor.gutters.line-numbers]
+min-width = 2
+
+################
+# stolen vim binds
+################
+
+[keys.normal]
+
+# note these are switched from the default vim binds
+"^" = "goto_line_start"
+0 = "goto_first_nonwhitespace"
+
+"$" = "goto_line_end"
+G = "goto_file_end"
+S = "surround_add"
+"C-r" = "redo"
+"C-f" = "redo"
+"C-j" = "rotate_view"
+"C-k" = "rotate_view_reverse"
+"V" = ["select_mode", "select_line_below"]
+
+[keys.select]
+0 = "goto_line_start"
+"$" = "goto_line_end"
+S = "surround_add"
+
+[keys.normal.Z]
+Z = [":write", ":quit"]
+Q = [":quit!"]
+# this is my bind
+F = [":quit-all"]
+
+[keys.insert]
+esc = ["move_char_left", "normal_mode"]
