@@ -5,7 +5,7 @@ line-number = "relative"
 scrolloff = 0
 completion-timeout = 5
 end-of-line-diagnostics = "hint"
-jump-label-alphabet = "asdfghjklqweruio"
+jump-label-alphabet = "asdfghjkl"
 popup-border = "all"
 
 [editor.inline-diagnostics]
@@ -29,10 +29,6 @@ render = true
 [editor.gutters.line-numbers]
 min-width = 2
 
-################
-# stolen vim binds
-################
-
 [keys.normal]
 
 # note these are switched from the default vim binds
@@ -47,14 +43,17 @@ S = "surround_add"
 "C-j" = "rotate_view"
 "C-k" = "rotate_view_reverse"
 "V" = ["select_mode", "select_line_below"]
+C = ["collapse_selection", "extend_to_line_end", "yank_main_selection_to_clipboard", "delete_selection", "insert_mode"]
+"C-c" = ["copy_selection_on_next_line"] # enter multi-cursor mode
 
 [keys.select]
-0 = "goto_line_start"
+"^" = "goto_line_start"
+0 = "goto_first_nonwhitespace"
 "$" = "goto_line_end"
 S = "surround_add"
 
 [keys.normal.Z]
-Z = [":write", ":quit"]
+Z = [":write-quit"]
 Q = [":quit!"]
 # this is my bind
 F = [":quit-all"]

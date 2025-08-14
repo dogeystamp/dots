@@ -30,3 +30,12 @@ preview = true
 quote-style = "double"
 docstring-code-format = true
 indent-style = "space"
+
+
+[[language]]
+name = "c"
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "cpp"
+indent = { tab-width = 4, unit = "    " }
