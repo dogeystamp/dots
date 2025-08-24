@@ -24,7 +24,7 @@ end
 
 cat "$TMPFILE" | cb -i
 for line in (cat "$TMPFILE" | string split "\n")
-	khal new $argv $line; or die $status
+	khal new $argv (echo "$line" | string split " "); or die $status
 end
 
 die 0

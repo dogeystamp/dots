@@ -13,7 +13,6 @@ local NON_MATH_NODES = {
 local function is_math_mode()
 	local node = vim.treesitter.get_node({ ignore_injections = false })
 	while node do
-		print(node:type())
 		if NON_MATH_NODES[node:type()] then
 			return false
 		elseif MATH_NODES[node:type()] then
@@ -51,10 +50,8 @@ return {
 
 	s(
 		{
-			-- this used to be qu, but you should avoid ending triggers with u
-			-- because ctrl-v u is already a bind (:h i_CTRL-V_digit)
-			trig = "uq",
-			name = "s-uq-are exponent",
+			trig = "*2",
+			name = "square exponent",
 			wordTrig = false,
 			snippetType = "autosnippet",
 			condition = function(_, _, _)
@@ -63,8 +60,8 @@ return {
 		}, t("^2")),
 	s(
 		{
-			trig = "cub",
-			name = "cub-ed exponent",
+			trig = "*3",
+			name = "cubed exponent",
 			wordTrig = false,
 			snippetType = "autosnippet",
 			condition = function(_, _, _)
@@ -73,11 +70,24 @@ return {
 		}, t("^3")),
 	s(
 		{
-			-- you need to type a space before to trigger this
-			trig = " /",
-			name = "fraction",
+			trig = "*4",
+			name = "quartic exponent",
+			wordTrig = false,
 			snippetType = "autosnippet",
 			condition = function(_, _, _)
+				return is_math_mode()
+			end
+		}, t("^4")),
+	s(
+		{
+			-- you need to type a bracket before to trigger this
+			trig = "/",
+			name = "fraction",
+			snippetType = "autosnippet",
+			condition = function(line, _, _)
+				if string.sub(line, -2, -2) ~= ')' then
+					return false
+				end
 				return is_math_mode()
 			end
 		}, fmt("/({})", { i(1) })),

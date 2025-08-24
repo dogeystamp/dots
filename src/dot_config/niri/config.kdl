@@ -41,7 +41,7 @@ overview {
 }
 
 layout {
-	background-color "#eeeeee"
+	background-color "transparent"
 
 	default-column-display "tabbed"
 	tab-indicator {
@@ -61,12 +61,14 @@ layout {
 	struts {
 		left 10
 		right 10
+		top -15 // space for the bar
 	}
 
     default-column-width { proportion 0.5; }
 
 	preset-column-widths {
 		fixed 640
+        proportion 0.33333
         proportion 0.5
         proportion 0.66667
 	}
@@ -81,6 +83,7 @@ layout {
 	focus-ring {
         active-color "#00000011"
         inactive-color "#ffffff00"
+		urgent-gradient from="fbb" to="#fff0" angle=135
 		width 3
 	}
 
@@ -136,11 +139,6 @@ screenshot-path null
 window-rule {
 	geometry-corner-radius 2
 	clip-to-geometry true
-}
-
-window-rule {
-    match app-id=r#"qutebrowser"#
-	opacity 1.0
 }
 
 // clipedit.sh alacritty popup

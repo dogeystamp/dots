@@ -32,6 +32,7 @@ xkblayout-state
 xss-lock
 qutebrowser
 neovim
+helix
 tree-sitter-grammars
 tmux
 fish
@@ -54,6 +55,7 @@ pipewire-pulse
 #
 tlp
 smartmontools
+dust
 cups
 sane
 ghostscript
@@ -98,7 +100,7 @@ python-plumbum
 termdown
 rsync
 unzip
-wget
+curl
 playerctl
 qpwgraph
 jq

@@ -3,11 +3,13 @@
 * {
 	font-family: Symbols Nerd Font, Inter Display;
 	color: @theme_fg_color;
+	font-size: 10pt;
 }
 
 .modules-left {
 	padding-left: 0.2em;
 }
+
 .modules-right {
 	padding-right: 0.0em;
 }
@@ -25,7 +27,9 @@ tooltip {
 #memory,
 #cpu,
 #backlight,
-#pulseaudio, #pulseaudio.muted, #pulseaudio:hover,
+#pulseaudio,
+#pulseaudio.muted,
+#pulseaudio:hover,
 #mpris,
 #clock {
 	background-color: inherit;
@@ -48,9 +52,10 @@ tooltip {
 #idle_inhibitor,
 #cpu,
 #backlight,
-#pulseaudio, #pulseaudio.muted, #pulseaudio:hover,
-#custom-next-event
-#custom-help,
+#pulseaudio,
+#pulseaudio.muted,
+#pulseaudio:hover,
+#custom-next-event #custom-help,
 #mpris {
 	padding: 0.1ex 0.1ex 0.3ex 0.2ex;
 	margin: 0.5ex;
@@ -90,17 +95,17 @@ tooltip {
 }
 
 @keyframes blink {
-    to {
-        color: #ff0000;
-    }
+	to {
+		color: #ff0000;
+	}
 }
 
 #memory.critical {
 	animation-name: blink;
-    animation-duration: 0.2s;
-    animation-timing-function: steps(3);
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+	animation-duration: 0.2s;
+	animation-timing-function: steps(3);
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
 }
 
 #cpu.critical {
@@ -111,7 +116,8 @@ tooltip {
 	background-color: #99AABB;
 }
 
-#battery.charging, #battery.plugged {
+#battery.charging,
+#battery.plugged {
 	background-color: inherit;
 	color: inherit;
 }
@@ -138,6 +144,10 @@ tooltip {
 	opacity: 0;
 }
 
+#workspaces button.urgent {
+	background: #fbb
+}
+
 window#waybar {
 	background-color: rgba(0, 0, 0, 0.0);
 	border-bottom: none;
@@ -147,6 +157,7 @@ window#waybar.chromium {
 	background-color: rgba(0, 0, 0, 0.0);
 }
 
-#window, #workspaces {
+#window,
+#workspaces {
 	margin: 0;
 }
