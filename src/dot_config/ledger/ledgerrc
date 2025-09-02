@@ -1,4 +1,4 @@
---file ~/dox/not/journal.ldg
+--file ~/core/not/journal.ldg
 commodity $
 	note Canadian Dollars
 	format $1,000.00
