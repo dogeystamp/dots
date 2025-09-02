@@ -29,7 +29,7 @@ if [ -z "$INSTRUMENT_IDX" ]; then
 fi
 
 if [ -z "$INSTRUMENT_VOLUME" ]; then
-	INSTRUMENT_VOLUME=0.15
+	INSTRUMENT_VOLUME=0.20
 fi
 
 if [ -z "$PIANO_PATCH" ]; then
