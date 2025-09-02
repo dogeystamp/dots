@@ -34,7 +34,7 @@ APP_ID="$1"
 shift
 
 sock_printf() {
-	printf "$@" | socat - "$NIRI_SOCKET" # > /dev/stderr
+	printf "$@" | socat - "$NIRI_SOCKET" > /dev/null
 }
 
 err_printf() {
