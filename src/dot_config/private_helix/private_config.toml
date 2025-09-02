@@ -39,14 +39,13 @@ min-width = 2
 G = "goto_file_end"
 S = "surround_add"
 "C-r" = "redo"
-"C-f" = "redo"
 "C-j" = "rotate_view"
 "C-k" = "rotate_view_reverse"
-"V" = ["select_mode", "select_line_below"]
 C = ["collapse_selection", "extend_to_line_end", "yank_main_selection_to_clipboard", "delete_selection", "insert_mode"]
 "C-c" = ["copy_selection_on_next_line"] # enter multi-cursor mode
 
 [keys.select]
+G = "goto_file_end"
 "^" = "goto_line_start"
 0 = "goto_first_nonwhitespace"
 "$" = "goto_line_end"
@@ -60,3 +59,5 @@ F = [":quit-all"]
 
 [keys.insert]
 esc = ["move_char_left", "normal_mode"]
+"C-s" = "signature_help"
+"C-f" = "completion"
