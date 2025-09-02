@@ -6,7 +6,7 @@
 # -o: print to stdout
 # -b: open in browser
 
-output=$(cat ~/dox/not/bk.txt | fzf | awk -F'^' '{print $1}')
+output=$(cat ~/core/not/bk.txt | fzf | awk -F'^' '{print $1}')
 
 # default action: clip, stdout, browser
 action="clip"
