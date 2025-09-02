@@ -61,11 +61,11 @@ function neomutt.local; neomutt -F .config/neomutt/neomuttrc.local; end
 function arf; mpv --shuffle --no-resume-playback ~/med/memes/arf; end
 
 # aliases for logs and notes
-function xx; $EDITOR ~/dox/not/xx.tsv; end
-function dr; $EDITOR ~/dox/not/dr.txt; end
-function bk; $EDITOR ~/dox/not/bk.txt; end
-function rem; $EDITOR ~/dox/not/rem; end
-function ldg; $EDITOR ~/dox/not/journal.ldg; end
+function xx; $EDITOR  ~/core/not/xx.tsv; end
+function dr; $EDITOR  ~/core/not/dr.txt; end
+function bk; $EDITOR  ~/core/not/bk.txt; end
+function rem; $EDITOR ~/core/not/rem; end
+function ldg; $EDITOR ~/core/not/journal.ldg; end
 
 alias ev "khal list"
 
