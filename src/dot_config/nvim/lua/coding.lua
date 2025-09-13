@@ -53,6 +53,7 @@ npairs.add_rules({
 	Rule("$", "$", "typst"):with_move(cond.done()),
 	Rule("```", "```", "typst"),
 	Rule("(", ")"),
+	Rule("{", "}"),
 	Rule("[", "]"),
 	Rule('"', '"', "-vim"),
 })
