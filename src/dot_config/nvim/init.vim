@@ -1,4 +1,4 @@
-set tabstop=4 shiftwidth=4 noexpandtab smartindent
+set tabstop=4 shiftwidth=4 noexpandtab
 set ignorecase smartcase
 
 " Enable custom window title
