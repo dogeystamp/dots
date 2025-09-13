@@ -29,8 +29,8 @@
 	frame_width = 2
 	corner_radius = 2
 
-	origin = bottom-right
-	offset = 80
+	origin = top-right
+	offset = 20
 
 [urgency_low]
     background = "#ffffffaa"
