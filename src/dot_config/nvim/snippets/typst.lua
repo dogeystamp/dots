@@ -49,6 +49,17 @@ return {
 	-- note there is no subscript snippet because unlike the ^ key, _ is pretty easy to reach
 
 	s(
+		-- this is different because i think shift-8 then 2 is a reach
+		{
+			trig = "uq",
+			name = "square exponent",
+			wordTrig = false,
+			snippetType = "autosnippet",
+			condition = function(_, _, _)
+				return is_math_mode()
+			end
+		}, t("^2")),
+	s(
 		{
 			trig = "*2",
 			name = "square exponent",
@@ -80,17 +91,14 @@ return {
 		}, t("^4")),
 	s(
 		{
-			-- you need to type a bracket before to trigger this
-			trig = "/",
-			name = "fraction",
+			trig = "*5",
+			name = "quintic exponent",
+			wordTrig = false,
 			snippetType = "autosnippet",
-			condition = function(line, _, _)
-				if string.sub(line, -2, -2) ~= ')' then
-					return false
-				end
+			condition = function(_, _, _)
 				return is_math_mode()
 			end
-		}, fmt("/({})", { i(1) })),
+		}, t("^5")),
 	s(
 		{
 			trig = "#",
@@ -101,6 +109,17 @@ return {
 				return is_math_mode()
 			end
 		}, fmt("#({})", { i(1) })),
+
+	s(
+		{
+			trig = "=3",
+			name = "triple equals",
+			wordTrig = false,
+			snippetType = "autosnippet",
+			condition = function(_, _, _)
+				return is_math_mode()
+			end
+		}, t("eq.triple")),
 
 	-- limits
 	s({ trig = "plus", name = "plus exponent", wordTrig = false }, t("^+")),
@@ -207,7 +226,7 @@ return {
 	]], { i(1), i(2), t("incomplete") })),
 
 	s({ trig = "book", desc = "New notes template" }, fmt([[
-	#import "@local/mousse-notes:0.6.0": *
+	#import "@local/mousse-notes:0.6.2": *
 	#set page(paper: "us-letter")
 	#show: book.with(
 	  title: [{}],
