@@ -19,17 +19,9 @@ zathura
 zathura-pdf-mupdf
 libnotify
 libsecret
-xorg-setxkbmap
-xorg-xrandr
-xorg-xset
-xorg-xsetroot
 doas
 alacritty
 
-# in the aur
-xkblayout-state
-
-xss-lock
 qutebrowser
 neovim
 helix
@@ -39,10 +31,6 @@ fish
 ffmpeg
 mpv
 mpv-mpris
-scrot
-xsel
-xclip
-nsxiv
 pulsemixer
 
 # battery status
@@ -114,7 +102,6 @@ remmina
 freerdp
 nss-mdns
 python-pynvim
-xorg-xinput
 fastfetch
 cloc
 
@@ -127,9 +114,6 @@ httpie
 
 # for mpvq script
 socat
-
-# for appimage opening
-fuse2
 
 w3m
 elinks
@@ -170,28 +154,15 @@ typst
 tinymist
 neovide
 
-# .local/bin/pyinstantref script
-python-pydbus
-xorg-xprop
-xdotool
-xsel
-python-pymupdf
-
-# inkscape shortcut manager
-python-xlib
-pdf2svg
-
 chromium
 go
 npm
 rustup
+uv
 ansible
 
 # for personal website compilation
 lowdown
-
-# for lobster.sh
-html-xml-utils
 
 # for general compiling from source
 clang
@@ -249,17 +220,11 @@ xorg-server
 xorg-xinit
 man
 
-# for compiling suckless utilities
-freetype2
-libxft
-libxinerama
-
 #
 # personal
 #
 sof-firmware
 xonotic
-python-pipx
 xf86-input-wacom
 
 # for raspberry pi pico dev

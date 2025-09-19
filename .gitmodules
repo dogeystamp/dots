@@ -1,19 +1,6 @@
 ################
 # note-taking setup
 ################
-[submodule "src/dot_local/bin/external_pyinstantref"]
-	path = src/dot_local/bin/external_pyinstantref
-	url = https://github.com/dogeystamp/pyinstantref
-[submodule "src/dot_local/bin/external_inkscape-shortcut-manager"]
-	path = src/dot_local/bin/external_inkscape-shortcut-manager
-	url = https://github.com/dogeystamp/inkscape-shortcut-manager
-
-
-
-################
-# neovim plugins
-################
-
 [submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_nvim-cmp"]
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-cmp
 	url = https://github.com/hrsh7th/nvim-cmp.git

@@ -1,7 +1,0 @@
-*.rej
-*.orig
-*.o
-*.tar.gz
-*.diff
-dwm
-config.h

@@ -1,8 +1,6 @@
 # dots
 
 My dotfiles.
-Currently in the process of migrating to Wayland using the [Niri](https://github.com/yalter/niri) compositor.
-The configurations for dwm and other X11 utilities are still here for now.
 
 ## Installation
 

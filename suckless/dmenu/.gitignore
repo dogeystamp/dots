@@ -1,8 +1,0 @@
-*.rej
-*.orig
-*.o
-*.tar.gz
-*.diff
-dmenu
-stest
-config.h
