@@ -10,6 +10,7 @@ case "$1" in
     export BK_CORE=1
     export BK_STANDARD=1
     export BK_ARCHIVE=1
+    export BK_SERVER=1
     export BK_LOWTIER=1
     ;;
 
@@ -29,11 +30,11 @@ SCR_BORG_PATHS=""
 SCR_BORG_TIERS=""
 
 if [ -n "$BK_CORE" ]; then
-  SCR_BORG_PATHS="$SCR_BORG_PATHS $HOME/core"
+  SCR_BORG_PATHS="$SCR_BORG_PATHS $HOME/core $HOME/.ssh"
   SCR_BORG_TIERS="$SCR_BORG_TIERS CORE"
 fi
 if [ -n "$BK_STANDARD" ]; then
-  SCR_BORG_PATHS="$SCR_BORG_PATHS $HOME/med $HOME/proj $HOME/src"
+  SCR_BORG_PATHS="$SCR_BORG_PATHS $HOME/med $HOME/proj $HOME/src $HOME/nt"
   SCR_BORG_TIERS="$SCR_BORG_TIERS STANDARD"
 fi
 if [ -n "$BK_ARCHIVE" ]; then
@@ -43,6 +44,10 @@ fi
 if [ -n "$BK_LOWTIER" ]; then
   SCR_BORG_PATHS="$SCR_BORG_PATHS $HOME/thi"
   SCR_BORG_TIERS="$SCR_BORG_TIERS LOWTIER"
+fi
+if [ -n "$BK_SERVER" ]; then
+  SCR_BORG_PATHS="$SCR_BORG_PATHS $HOME/sv"
+  SCR_BORG_TIERS="$SCR_BORG_TIERS SERVER"
 fi
 
 info() {
