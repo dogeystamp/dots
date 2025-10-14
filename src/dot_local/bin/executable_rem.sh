@@ -30,7 +30,6 @@ sub_help() {
 sub_show() {
 	REMS="$(cat "$REM_FILE" | sed "1,/^----$/d" | sed -z 's/^\n$//g')"
 	if [ ! -z "$REMS" ]; then
-		notify-send -a "rem.sh" "Complete tasks"
 		printf "reminders:\n\n%s\n\n" "$REMS"
 	fi
 }
