@@ -58,7 +58,7 @@
 		 },
 	},
 	"clock": {
-		"format": "{:%a %d %b<small>  </small>%H:%M}",
+		"format": "{:%a %d %b<small>  </small>%H:%M %Z}",
 		"tooltip-format": "{:%a %b %d, %Y (%Z / UTC%z)}",
 		"tooltip": true,
 	},
