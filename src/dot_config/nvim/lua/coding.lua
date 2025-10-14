@@ -10,7 +10,7 @@ local keymap = confutil.keymap
 
 vim.cmd.packadd("nvim-treesitter")
 
-require 'nvim-treesitter.configs'.setup {
+require 'nvim-treesitter'.setup {
 	sync_install = false,
 	auto_install = false,
 	highlight = {
@@ -68,7 +68,12 @@ npairs.add_rules({
 keymap('<BS>', function()
 	-- delete lines if they are solely whitespace
 	local orig_linenr = vim.fn.line(".")
-	local indent_baseline = require("nvim-treesitter.indent").get_indent(orig_linenr)
+
+	-- WARNING: we're short-circuiting this entire function because
+	-- the latest tree-sitter broke everything...
+	local indent_baseline = -1
+
+	-- local indent_baseline = require("nvim-treesitter.indent").get_indent(orig_linenr)
 	if indent_baseline ~= -1 then
 		local line = vim.api.nvim_get_current_line()
 
