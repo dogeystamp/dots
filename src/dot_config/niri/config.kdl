@@ -34,10 +34,11 @@ input {
 output "HDMI-A-1" {
 	focus-at-startup
 	position x=0 y=0
+	mode "2560x1440@143.912"
 }
 
 output "eDP-1" {
-	position x=1920 y=0
+	position x=2560 y=0
 }
 
 overview {
