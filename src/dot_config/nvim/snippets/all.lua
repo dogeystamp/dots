@@ -108,6 +108,15 @@ return {
 	end)),
 
 	s({
+		trig = "tomorrow",
+		name = "Tomorrow date format",
+		desc = "YYYY-MM-DD date of tomorrow"
+	}, f(function()
+		local t = os.date("*t")
+		return os.date("%Y-%m-%d", os.time { year = t.year, month = t.month, day = t.day + 1 })
+	end)),
+
+	s({
 		trig = "timestamp",
 		name = "Unix day timestamp",
 		desc = "Unix time for today (locked to midnight)"
