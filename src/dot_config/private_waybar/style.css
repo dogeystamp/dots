@@ -21,6 +21,7 @@ tooltip {
 }
 
 #network,
+#bluetooth,
 #battery,
 #idle_inhibitor,
 #idle_inhibitor.activated,
@@ -45,8 +46,15 @@ tooltip {
 	font-weight: 700;
 }
 
+#clock.week {
+	background: transparent;
+	color: @theme_fg_color;
+	border: 1pt solid @theme_fg_color;
+}
+
 /* icons */
 #network,
+#bluetooth,
 #memory,
 #battery,
 #idle_inhibitor,
@@ -85,6 +93,11 @@ tooltip {
 }
 
 #battery {
+	padding: 0.1ex 0.1ex 0.3ex 0.6ex;
+	font-weight: 600;
+}
+
+#bluetooth {
 	padding: 0.1ex 0.1ex 0.3ex 0.6ex;
 	font-weight: 600;
 }

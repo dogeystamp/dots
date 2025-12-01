@@ -4,7 +4,7 @@
 	"reload_style_on_change": true,
 	"modules-left": ["niri/workspaces"],
 	"modules-center": ["niri/window"],
-	"modules-right": ["custom/next-event", "group/sliders", "custom/help", "cpu", "memory", "network", "battery", "clock"],
+	"modules-right": ["custom/next-event", "group/sliders", "custom/help", "cpu", "memory", "network", "bluetooth", "battery", "clock"],
 	"group/sliders": {
 		"orientation": "horizontal",
 		"transition-left-to-right": false,
@@ -61,6 +61,16 @@
 		"format": "{:%a %d %b<small>  </small>%H:%M %Z}",
 		"tooltip-format": "{:%a %b %d, %Y (%Z / UTC%z)}",
 		"tooltip": true,
+	},
+	"bluetooth": {
+		"format": "",
+		"format-connected": "",
+		"format-connected-battery": " <small> {device_battery_percentage}%</small>",
+		"tooltip-format": "{controller_alias}\t{status}",
+		"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+		"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+		"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+		"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
 	},
 	"network": {
 		"format": "󰀂",
