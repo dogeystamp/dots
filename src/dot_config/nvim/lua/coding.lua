@@ -48,14 +48,18 @@ local Rule = require("nvim-autopairs.rule")
 local cond = require("nvim-autopairs.conds")
 npairs.setup { check_ts = true, map_bs = false }
 
+npairs.remove_rule("'")
+
 -- https://github.com/windwp/nvim-autopairs/wiki/Rules-API
 npairs.add_rules({
 	Rule("$", "$", "typst"):with_move(cond.done()),
 	Rule("```", "```", "typst"),
-	Rule("(", ")"),
-	Rule("{", "}"),
-	Rule("[", "]"),
-	Rule('"', '"', "-vim"),
+	Rule("{", "}"):with_pair(cond.not_after_regex("[a-zA-Z0-9]")),
+	Rule("(", ")"):with_pair(cond.not_after_regex("[a-zA-Z0-9]")),
+	Rule("[", "]"):with_pair(cond.not_after_regex("[a-zA-Z0-9]")),
+	Rule("'", "'", {"-scheme", "-racket"})
+		:with_pair(cond.not_after_regex("[a-zA-Z0-9]"))
+		:with_pair(cond.not_before_regex("[$a-zA-Z]")),
 })
 
 --------
