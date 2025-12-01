@@ -99,7 +99,10 @@ err_printf() {
 	niri msg action focus-window --id "$APP_WIN_ID"
 
 	# focus back onto the workspace the app spawned on
-	sock_printf '{"Action":{"FocusWorkspace":{"reference":{"Id":%s}}}}' "$WORKSPACE_ID"
+	CURRENT_FOCUSED_WORKSPACE=$(niri msg --json focused-window | jq -r .workspace_id)
+	if [ "$CURRENT_FOCUSED_WORKSPACE" != "$WORKSPACE_ID" ]; then
+		sock_printf '{"Action":{"FocusWorkspace":{"reference":{"Id":%s}}}}' "$WORKSPACE_ID"
+	fi
 
 	# focus back onto the monitor that was focused
 	niri msg action focus-monitor "$FOCUSED_OUTPUT"
