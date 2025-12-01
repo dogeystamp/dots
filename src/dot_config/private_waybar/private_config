@@ -4,7 +4,7 @@
 	"reload_style_on_change": true,
 	"modules-left": ["niri/workspaces"],
 	"modules-center": ["niri/window"],
-	"modules-right": ["custom/next-event", "group/sliders", "custom/help", "cpu", "memory", "network", "bluetooth", "battery", "clock"],
+	"modules-right": ["custom/next-event", "group/sliders", "custom/help", "cpu", "memory", "network", "bluetooth", "battery", "clock#week", "clock"],
 	"group/sliders": {
 		"orientation": "horizontal",
 		"transition-left-to-right": false,
@@ -61,6 +61,10 @@
 		"format": "{:%a %d %b<small>  </small>%H:%M %Z}",
 		"tooltip-format": "{:%a %b %d, %Y (%Z / UTC%z)}",
 		"tooltip": true,
+	},
+	"clock#week": {
+		"format": "W{:%V}",
+		"tooltip": false,
 	},
 	"bluetooth": {
 		"format": "",
