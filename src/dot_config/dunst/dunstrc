@@ -1,52 +1,53 @@
 [global]
-    close = mod4+m
-    close_all = mod4+shift+m
-    history = mod4+shift+n
+close = mod4+m
+close_all = mod4+shift+m
+history = mod4+shift+n
 
-	font = Inter Display 12
-    alignment = left
-    format = "<b>%a:</b> %s\n%b"
+font = IBM Plex Mono 12
+alignment = left
+format = "<b>%a:</b> %s\n%b"
+markup = full
 
-    ignore_newline = no
-    word_wrap = yes
+ignore_newline = no
+word_wrap = yes
 
-    sort = yes
+sort = yes
 
-    show_age_threshold = 60
-    idle_threshold = 120
+show_age_threshold = 60
+idle_threshold = 120
 
-    follow = keyboard
+follow = keyboard
 
-    sticky_history = yes
+sticky_history = yes
 
-    padding = 8
-    horizontal_padding = 8
+padding = 8
+horizontal_padding = 8
 
-    separator_height = 2
-    separator_color = frame
-	gap_size = 5
+separator_height = 2
+separator_color = frame
+gap_size = 5
 
-	frame_width = 2
-	corner_radius = 2
+frame_width = 2
+corner_radius = 2
 
-	origin = top-right
-	offset = 20
+origin = bottom-right
+offset = 20
 
 [urgency_low]
-    background = "#ffffffaa"
-    foreground = "#000000"
-    timeout = 10
+background = "#ffffffaa"
+foreground = "#000000"
+timeout = 10
+
 
 [urgency_normal]
-    background = "#ffffffaa"
-    foreground = "#000000"
-    timeout = 10
+background = "#ffffff"
+foreground = "#000000"
+timeout = 10
+script = /home/dogeystamp/.local/bin/deskutils/notification-sound.sh
+
 
 [urgency_critical]
-    background = "#000000"
-    foreground = "#ff0000"
-    timeout = 0
-
-[play_sound]
-    summary = "*"
-    script = /home/dogeystamp/.local/bin/deskutils/notification-sound.sh
+background = "#000000"
+foreground = "#ff0000"
+timeout = 0
+script = /home/dogeystamp/.local/bin/deskutils/notification-sound.sh
