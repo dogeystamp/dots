@@ -86,6 +86,9 @@ function musrec
 	end
 end
 
+# generate schedule
+alias sched='~/src/kindle-schedule/kindle_schedule.py ~/.local/share/schedule.pdf'
+
 #
 # qutebrowser profiles
 #
