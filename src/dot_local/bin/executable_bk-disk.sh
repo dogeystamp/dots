@@ -59,14 +59,14 @@ info ">>> tiers: $SCR_BORG_TIERS"
 info ">>> paths: $SCR_BORG_PATHS"
 sleep 5
 
-if [ -n "$BK_CORE" ]; then
-  borg create \
-    --progress \
-    --stats \
-    --show-rc \
-    ::'{hostname}-{now}' \
-    $SCR_BORG_PATHS
-fi
+borg create \
+	--list \
+	--filter AMCE \
+	--progress \
+	--stats \
+	--show-rc \
+	::'{hostname}-{now}' \
+	$SCR_BORG_PATHS
 
 info "Done backup. Remember to unmount disks."
 
