@@ -1,6 +1,7 @@
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
 
 spawn-at-startup "niri" "msg" "action" "do-screen-transition" "-d" "800"
+spawn-sh-at-startup "prod.sh"
 spawn-at-startup "swayosd-server"
 spawn-at-startup "gsettings" "set" "org.gnome.desktop.sound" "theme-name" "ocean"
 
@@ -96,6 +97,8 @@ layout {
 		on
 		softness 15
 		offset x=1 y=7
+		color "#00000088"
+		inactive-color "#00000044"
 	}
 }
 
@@ -131,7 +134,7 @@ cursor {
 
 spawn-at-startup "wallpaper"
 spawn-at-startup "waybar"
-spawn-at-startup "swayidle" "-w" "timeout" "550" "notify-send -a lock 'Idle, preparing to lock.'" "timeout" "600" "swaylock -f & niri msg action power-off-monitors" "before-sleep" "swaylock -f" "lock" "swaylock -f"
+spawn-at-startup "swayidle"
 
 // no client side decoration
 prefer-no-csd
@@ -144,6 +147,15 @@ screenshot-path null
 window-rule {
 	geometry-corner-radius 2
 	clip-to-geometry true
+}
+
+window-rule {
+	match title="swayimg: max.jpg"
+	baba-is-float true
+	open-floating true
+	tiled-state false
+	default-window-height { fixed 412; }
+	default-column-width { fixed 353; }
 }
 
 // clipedit.sh alacritty popup
@@ -313,12 +325,15 @@ binds {
     Mod+Shift+Return hotkey-overlay-title="Spawn Terminal"           { spawn "newterm.sh"; }
     Mod+P                                                            { spawn "fuzzel"; }
     Mod+Shift+B                                                      { spawn "qutebrowser"; }
+    Mod+B                                                            { spawn "chromium"; }
     Mod+Shift+P                                                      { spawn "keepassxc"; }
     Mod+Shift+D hotkey-overlay-title="Spawn Discord"                 { spawn "qbprof" "dsc"; }
     Mod+Shift+M hotkey-overlay-title="Spawn Navidrome (music)"       { spawn "qbprof" "mus"; }
+	Mod+Shift+T hotkey-overlay-title="Spawn Timetable"               { spawn "zathura" "~/.local/share/schedule.pdf"; }
+    Mod+Ctrl+Shift+M                                                 { spawn-sh "swayimg -c info.show=no ~/.config/max.jpg"; }
 
 	// avoid using ctrl for this bind because ctrl-m counts as enter in swaylock
-    Alt+L       hotkey-overlay-title="Lock session"                  { spawn "swaylock"; }
+    Alt+L       hotkey-overlay-title="Lock session"                  { spawn "loginctl" "lock-session"; }
 
     Mod+A       hotkey-overlay-title="Run Inkscape style switcher"   { spawn "style.sh"; }
 
