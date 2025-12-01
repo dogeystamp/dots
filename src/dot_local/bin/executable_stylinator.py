@@ -8,10 +8,10 @@ def gen_style(combination):
     """This creates the style depending on the combination of keys."""
 
     # Stolen from TikZ
-    pt = 1.327  # pixels
-    w = 0.4 * pt
-    thick_width = 0.8 * pt
-    very_thick_width = 1.2 * pt
+    mm = 3.78  # pixels
+    w = 0.4 * mm
+    thick_width = 0.8 * mm
+    very_thick_width = 1.2 * mm
 
     style: dict[str, Any] = {"stroke-opacity": 1}
 
@@ -40,10 +40,10 @@ def gen_style(combination):
         style["marker-end"] = "url(#ArrowWideAgain)"
 
     if "d" in combination:
-        style["stroke-dasharray"] = f"{w},{2 * pt}"
+        style["stroke-dasharray"] = f"{w},{2 * mm}"
 
     if "e" in combination:
-        style["stroke-dasharray"] = f"{3 * pt},{3 * pt}"
+        style["stroke-dasharray"] = f"{3 * mm},{3 * mm}"
 
     if "f" in combination:
         style["fill"] = "black"
