@@ -34,7 +34,7 @@ if [ -n "$BK_CORE" ]; then
   SCR_BORG_TIERS="$SCR_BORG_TIERS CORE"
 fi
 if [ -n "$BK_STANDARD" ]; then
-  SCR_BORG_PATHS="$SCR_BORG_PATHS $HOME/med $HOME/proj $HOME/src $HOME/nt"
+  SCR_BORG_PATHS="$SCR_BORG_PATHS $HOME/med $HOME/proj $HOME/src $HOME/nt $HOME/.local/share/anki-sync"
   SCR_BORG_TIERS="$SCR_BORG_TIERS STANDARD"
 fi
 if [ -n "$BK_ARCHIVE" ]; then
