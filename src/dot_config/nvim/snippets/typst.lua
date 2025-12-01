@@ -110,17 +110,6 @@ return {
 			end
 		}, fmt("#({})", { i(1) })),
 
-	s(
-		{
-			trig = "=3",
-			name = "triple equals",
-			wordTrig = false,
-			snippetType = "autosnippet",
-			condition = function(_, _, _)
-				return is_math_mode()
-			end
-		}, t("eq.triple")),
-
 	-- limits
 	s({ trig = "plus", name = "plus exponent", wordTrig = false }, t("^+")),
 	s({ trig = "min", name = "minus exponent", wordTrig = false }, t("^-")),
