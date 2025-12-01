@@ -9,6 +9,7 @@
 "constant" = { fg = "term_n_cyan", modifiers = ["bold"]}
 
 "ui.selection" = { bg = "term_b_yellow" }
+"ui.cursor.match" = { bg = "term_b_yellow" }
 "ui.highlight" = { bg = "term_b_yellow" }
 "ui.menu.selected" = { bg = "term_b_yellow" }
 "ui.virtual.whitespace" = { fg = "term_b_yellow" }
