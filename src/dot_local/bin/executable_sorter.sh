@@ -63,8 +63,11 @@ find ~/quar \
 	-name '*.mp4' -o \
 	-name '*.MP4' -o \
 	-name '*.jpg' -o \
+	-name '*.JPG' -o \
 	-name '*.png' -o \
+	-name '*.PNG' -o \
 	-name '*.jpeg' -o \
+	-name '*.JPEG' -o \
 	-name '*.webp' -o \
 	-name '*.webm' -o \
 	-name '*.gif' \
