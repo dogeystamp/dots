@@ -1,0 +1,16 @@
+#!/bin/sh
+# Smoothly set brightness using brightnessctl.
+# Example: bright 50
+
+CUR="$(brightnessctl -m | cut -d',' -f4 | tr -d '%')"
+TGT=$1
+
+if [ "$CUR" -lt "$TGT" ]; then
+	SEQ="$(seq "$CUR" "$TGT")"
+else
+	SEQ="$(seq "$CUR" -1 "$TGT")"
+fi
+
+for i in $SEQ; do
+	brightnessctl set $i% 2&> /dev/null
+done
