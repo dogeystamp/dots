@@ -22,9 +22,15 @@ end
 
 "$EDITOR" "$TMPFILE"; or die $status
 
+if not test -s "$TMPFILE"
+	die 1
+end
+
 cat "$TMPFILE" | cb -i
-for line in (cat "$TMPFILE" | string split "\n")
-	khal new $argv (echo "$line" | string split " "); or die $status
+for line in (cat "$TMPFILE" | string trim | string split "\n")
+	if test -n "$line"
+		khal new $argv (echo "$line" | string split " "); or die $status
+	end
 end
 
 die 0
