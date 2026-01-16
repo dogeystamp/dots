@@ -34,12 +34,16 @@ input {
 
 output "HDMI-A-1" {
 	focus-at-startup
-	position x=0 y=0
+	position x=1920 y=0
 	mode "2560x1440@143.912"
 }
 
 output "eDP-1" {
-	position x=2560 y=0
+	position x=4480 y=0 // 1920 + 2560 = 4480
+}
+
+output "DP-1" {
+	position x=0 y=0
 }
 
 overview {
@@ -67,7 +71,8 @@ layout {
 	struts {
 		left 10
 		right 10
-		top -15 // space for the bar
+		top -15    // space for the bar
+		bottom -15 // space for the bar
 	}
 
     default-column-width { proportion 0.5; }
@@ -340,12 +345,12 @@ binds {
     Mod+Shift+Z hotkey-overlay-title="Edit clipboard contents"       { spawn "clipedit.sh"; }
     Mod+Z       hotkey-overlay-title="Open bookmarks"                { spawn "newterm.sh" "-e" "bookmk"; }
 
-    XF86AudioRaiseVolume  { spawn "swayosd-client" "--output-volume" "raise" "--max-volume" "120"; }
-    XF86AudioLowerVolume  { spawn "swayosd-client" "--output-volume" "lower" "--max-volume" "120"; }
-    XF86AudioMute         { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
-    XF86AudioPlay         { spawn "playerctl" "play-pause"; }
-    XF86AudioNext         { spawn "playerctl" "next"; }
-    XF86AudioPrev         { spawn "playerctl" "previous"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "raise" "--max-volume" "120"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "lower" "--max-volume" "120"; }
+    XF86AudioMute        allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
+    XF86AudioPlay        allow-when-locked=true { spawn "playerctl" "play-pause"; }
+    XF86AudioNext        allow-when-locked=true { spawn "playerctl" "next"; }
+    XF86AudioPrev        allow-when-locked=true { spawn "playerctl" "previous"; }
 	XF86MonBrightnessDown { spawn "swayosd-client" "--brightness" "lower"; }
 	XF86MonBrightnessUp   { spawn "swayosd-client" "--brightness" "raise"; }
 
@@ -420,8 +425,6 @@ binds {
 
     // Mod+TouchpadScrollDown { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"; }
     // Mod+TouchpadScrollUp   { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"; }
-
-    Mod+Tab { focus-workspace-previous; }
 
     Mod+Ctrl+Comma  { consume-window-into-column; }
     Mod+Ctrl+Period { expel-window-from-column; }
