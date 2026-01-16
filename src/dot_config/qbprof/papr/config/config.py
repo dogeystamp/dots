@@ -14,7 +14,7 @@ c.downloads.location.directory = "~/quar/"
 c.downloads.remove_finished = 1000
 c.scrolling.smooth = True
 
-c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.darkmode.enabled = False
 
 # homegrown file selector
 c.fileselect.handler = "external"

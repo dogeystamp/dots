@@ -55,7 +55,7 @@ c.fonts.tooltip = "default_size default_family"
 c.fonts.web.family.serif = "Inter"
 c.fonts.web.family.sans_serif = "Inter"
 c.fonts.web.family.standard = "Inter"
-c.fonts.web.family.fixed = "JetBrains Mono"
+c.fonts.web.family.fixed = "IBM Plex Mono"
 
 # for QtWebEngine < 6.7, a :restart is needed following this
 config.bind("td", "config-cycle colors.webpage.darkmode.enabled true false")

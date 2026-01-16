@@ -1,9 +1,9 @@
 #!/usr/bin/env fish
 # Use a text editor to invoke `khal new` multiple times.
 #
-# Each line in the text buffer will be treated as arguments passed to khal. By
-# default, khal operates on today. See khal(1) for more information on the
-# options you may use.
+# Each line in the text buffer will be treated as arguments passed to khal.
+# Separate arguments with tabs. By default, khal operates on today. See khal(1)
+# for more information on the options you may use.
 
 # Arguments given to this script will automatically be prepended to each
 # invocation of `khal new`. For example, to add events for tomorrow, use
@@ -29,7 +29,7 @@ end
 cat "$TMPFILE" | cb -i
 for line in (cat "$TMPFILE" | string trim | string split "\n")
 	if test -n "$line"
-		khal new $argv (echo "$line" | string split " "); or die $status
+		khal new $argv (echo "$line" | string split (printf "\t")); or die $status
 	end
 end
 

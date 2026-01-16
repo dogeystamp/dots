@@ -2,4 +2,4 @@
 
 # Dunst notification sound script.
 
-paplay ~/.local/bin/deskutils/notif.wav
+paplay ~/.local/bin/deskutils/notif.opus

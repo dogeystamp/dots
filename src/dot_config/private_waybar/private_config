@@ -1,138 +1,150 @@
-{
-	"layer": "top",
-	"position": "top",
-	"reload_style_on_change": true,
-	"modules-left": ["niri/workspaces"],
-	"modules-center": ["niri/window"],
-	"modules-right": ["custom/next-event", "group/sliders", "custom/help", "cpu", "memory", "network", "bluetooth", "battery", "clock#week", "clock"],
-	"group/sliders": {
-		"orientation": "horizontal",
-		"transition-left-to-right": false,
-		"drawer": {
-			"transition-duration": 500,
+[
+	{
+		"layer": "top",
+		"position": "bottom",
+		"reload_style_on_change": true,
+		"modules-center": ["custom/next-event", "clock#time"],
+		"custom/next-event": {
+			"format": "󰃭 <small>{}</small>",
+			"exec": "$HOME/.local/bin/next_event.sh",
+			"interval": 60,
+			"escape": true,
 		},
-		"modules": [
-			"custom/arrow",
-			"backlight",
-			"pulseaudio",
-			"idle_inhibitor",
-		],
-	},
-	"niri/window": {
-		"max-length": 50
-	},
-	"niri/workspaces": {
-		"format": "{icon}",
-		"format-icons": {
-			"active": "󱓻",
-			"default": "󱓼"
-		}
-	},
-	"battery": {
-		 "format-full": "{icon}",
-		 "format": "{icon} <small> {capacity}%</small>",
-		 "format-charging": "󰂄 <small> {capacity}%</small>",
-		 "tooltip-format": "{capacity}%",
-		 "format-icons": {
-			 "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-			 "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂋", "󰂅"],
-		 },
-		 "states": {
-			"critical": 15,
-		 }
-	},
-	"memory": {
-		 "format": "",
-		 "tooltip-format": "Memory: {percentage}% ({used} / {total} GiB, {avail} GiB left)",
-		 "states": {
-			"high": 50,
-			"critical": 75,
-		 },
-		 "interval": 1,
-	},
-	"cpu": {
-		 "format": "",
-		 "states": {
-			"high": 70,
-			"critical": 90,
-		 },
-	},
-	"clock": {
-		"format": "{:%a %d %b<small>  </small>%H:%M %Z}",
-		"tooltip-format": "{:%a %b %d, %Y (%Z / UTC%z)}",
-		"tooltip": true,
-	},
-	"clock#week": {
-		"format": "W{:%V}",
-		"tooltip": false,
-	},
-	"bluetooth": {
-		"format": "",
-		"format-connected": "",
-		"format-connected-battery": " <small> {device_battery_percentage}%</small>",
-		"tooltip-format": "{controller_alias}\t{status}",
-		"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
-		"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-		"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-		"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
-	},
-	"network": {
-		"format": "󰀂",
-		"format-wifi": "{icon}",
-		"format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
-		"tooltip-format": "{ifname} ({signalStrength}%)",
-		"tooltip-format-wifi": "{essid} ({signalStrength}%)",
-		"format-disconnected": "󰤮",
-		"max-length": 20
-	},
-	"idle_inhibitor": {
-		"format": "{icon} ",
-		"format-icons": {
-			"activated": "",
-			"deactivated": ""
+		"clock#time": {
+			"format": "{:%H:%M}",
+			"tooltip": false,
 		},
-		"timeout": 60.5,
 	},
-	"mpris": {
-		"title-len": 65,
-		"album-len": 0,
-		"dynamic-len": 65,
-		"dynamic-order": ["artist", "title"],
-		"tooltip-format": "{dynamic}",
-		"format": "",
-		"format-paused": "",
-	},
-	"custom/help": {
-		"format": "󰡾",
-		"tooltip-format": "Show keyboard shortcuts.",
-		"on-click": "niri msg action show-hotkey-overlay"
-	},
-	"custom/arrow": {
-		"format": "<small> </small>",
-		"exec-on-event": false,
-		"tooltip": false,
-	},
-	"pulseaudio": {
-		"format": "{icon}",
-		"tooltip-format": "{volume}%",
-		"format-muted": "󰖁",
-		"format-icons": {
-			"default": ["󰕿", "󰖀", "󰕾"]
+	{
+		"layer": "top",
+		"position": "top",
+		"reload_style_on_change": true,
+		"modules-left": ["niri/workspaces"],
+		"modules-center": ["niri/window"],
+		"modules-right": ["group/sliders", "custom/help", "cpu", "memory", "network", "bluetooth", "battery", "clock"],
+		"clock": {
+			"format": "{:%a %d %b<small>  </small>%H:%M %Z}",
+			"tooltip-format": "{:%a %b %d, %Y (%Z / UTC%z)}",
+			"tooltip": true,
 		},
-		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-		"on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-",
-		"on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+",
-	},
-	"backlight": {
-		"device": "intel_backlight",
-		"format": "{icon}",
-		"tooltip-format": "{percent}%",
-		"format-icons": ["󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖"]
-	},
-	"custom/next-event": {
-		"format": "󰃭 <small>{}</small>",
-		"exec": "$HOME/.local/bin/next_event.sh",
-		"interval": 60,
-		"escape": true,
+		"clock#week": {
+			"format": "W{:%V}",
+			"tooltip": false,
+		},
+		"group/sliders": {
+			"orientation": "horizontal",
+			"transition-left-to-right": false,
+			"drawer": {
+				"transition-duration": 500,
+			},
+			"modules": [
+				"custom/arrow",
+				"backlight",
+				"pulseaudio",
+				"idle_inhibitor",
+			],
+		},
+		"niri/window": {
+			"max-length": 50
+		},
+		"niri/workspaces": {
+			"format": "{icon}",
+			"format-icons": {
+				"active": "󱓻",
+				"default": "󱓼"
+			}
+		},
+		"battery": {
+			 "format-full": "{icon}",
+			 "format": "{icon} <small> {capacity}%</small>",
+			 "format-charging": "󰂄 <small> {capacity}%</small>",
+			 "tooltip-format": "{capacity}%",
+			 "format-icons": {
+				 "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+				 "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂋", "󰂅"],
+			 },
+			 "states": {
+				"critical": 15,
+			 }
+		},
+		"memory": {
+			 "format": "",
+			 "tooltip-format": "Memory: {percentage}% ({used} / {total} GiB, {avail} GiB left)",
+			 "states": {
+				"high": 50,
+				"critical": 75,
+			 },
+			 "interval": 1,
+		},
+		"cpu": {
+			 "format": "",
+			 "states": {
+				"high": 70,
+				"critical": 90,
+			 },
+		},
+		"bluetooth": {
+			"format": "",
+			"format-connected": "",
+			"format-connected-battery": " <small> {device_battery_percentage}%</small>",
+			"tooltip-format": "{controller_alias}\t{status}",
+			"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+			"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+			"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+			"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+		},
+		"network": {
+			"format": "󰀂",
+			"format-wifi": "{icon}",
+			"format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+			"tooltip-format": "{ifname} ({signalStrength}%)",
+			"tooltip-format-wifi": "{essid} ({signalStrength}%)",
+			"format-disconnected": "󰤮",
+			"max-length": 20
+		},
+		"idle_inhibitor": {
+			"format": "{icon} ",
+			"format-icons": {
+				"activated": "",
+				"deactivated": ""
+			},
+			"timeout": 60.5,
+		},
+		"mpris": {
+			"title-len": 65,
+			"album-len": 0,
+			"dynamic-len": 65,
+			"dynamic-order": ["artist", "title"],
+			"tooltip-format": "{dynamic}",
+			"format": "",
+			"format-paused": "",
+		},
+		"custom/help": {
+			"format": "󰡾",
+			"tooltip-format": "Show keyboard shortcuts.",
+			"on-click": "niri msg action show-hotkey-overlay"
+		},
+		"custom/arrow": {
+			"format": "<small> </small>",
+			"exec-on-event": false,
+			"tooltip": false,
+		},
+		"pulseaudio": {
+			"format": "{icon}",
+			"tooltip-format": "{volume}%",
+			"format-muted": "󰖁",
+			"format-icons": {
+				"default": ["󰕿", "󰖀", "󰕾"]
+			},
+			"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+			"on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-",
+			"on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+",
+		},
+		"backlight": {
+			"device": "intel_backlight",
+			"format": "{icon}",
+			"tooltip-format": "{percent}%",
+			"format-icons": ["󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖"]
+		},
 	}
-}
+]

@@ -1,4 +1,4 @@
-timeout 554 'bright 5' resume 'bright 25'
+timeout 554 'bright idle' resume 'bright default'
 timeout 600 'loginctl lock-session'
 timeout 1800 'systemctl sleep'
 before-sleep 'swaylock'

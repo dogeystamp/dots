@@ -6,4 +6,11 @@ if [ -z "$1" ]; then
 	exit 1
 fi
 
+if [ "$1" = "dsc" ]; then
+	if [ "$(timew get dom.active)" = "1" ]; then
+		notify-send -a "QBPROF" "clock out first"
+		exit 1
+	fi
+fi
+
 qutebrowser --basedir ~/.config/qbprof/"$1"

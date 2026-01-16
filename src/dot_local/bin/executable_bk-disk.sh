@@ -62,6 +62,7 @@ sleep 5
 borg create \
 	--list \
 	--filter AMCE \
+	--exclude-caches \
 	--progress \
 	--stats \
 	--show-rc \

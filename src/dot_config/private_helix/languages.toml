@@ -24,6 +24,7 @@ logLevel = "debug"
 
 [language-server.ruff.config.settings.lint]
 select = ["E", "F", "W", "B", "I", "RUF", "N", "LOG", "ERA", "W", "D", "UP", "ANN", "ASYNC", "S", "RET", "TCH", "ARG", "PTH", "DOC"]
+ignore = ["D103"]
 
 [language-server.ruff.config.settings.format]
 preview = true
@@ -39,3 +40,9 @@ indent = { tab-width = 4, unit = "    " }
 [[language]]
 name = "cpp"
 indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "rust"
+
+[language-server.rust-analyzer.config]
+check.command = "clippy"

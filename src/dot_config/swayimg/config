@@ -1,6 +1,5 @@
 [viewer]
 window = #ffffffff
-fixed = no
 
 [font]
 name = JetBrains Mono

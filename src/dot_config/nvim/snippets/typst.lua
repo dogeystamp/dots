@@ -101,6 +101,16 @@ return {
 		}, t("^5")),
 	s(
 		{
+			trig = "*n",
+			name = "exponent n",
+			wordTrig = false,
+			snippetType = "autosnippet",
+			condition = function(_, _, _)
+				return is_math_mode()
+			end
+		}, t("^n")),
+	s(
+		{
 			trig = "#",
 			name = "code (inline math)",
 			desc = "Tells tree-sitter that we are in a code block, to prevent completing math elements.",
@@ -215,7 +225,7 @@ return {
 	]], { i(1), i(2), t("incomplete") })),
 
 	s({ trig = "book", desc = "New notes template" }, fmt([[
-	#import "@local/mousse-notes:0.6.2": *
+	#import "@preview/mousse-notes:1.1.0": *
 	#set page(paper: "us-letter")
 	#show: book.with(
 	  title: [{}],

@@ -17,16 +17,16 @@ while true; do
 	if [ "$(timew get dom.active)" = "1" ]; then
 		notify-send -a "TRACK" -r "$NOTIF1_ID" -u low "" "$(timew)"
 	else
-		MINUTE="$(date +"%M" | tr -d '\n' | tail -c1)"
-		if [ $MINUTE = 0 ] || [ $MINUTE = 5 ] ; then
-			# periodically nag
-			notify-send -a "TRACK" -r "$NOTIF1_ID" -u low "" "NO TRACKING" -t 6000
+		SCHED="$(khal list -a Timeblock now 1m -f {title} -df "" | head -n 1)"
+		if [ -n "$SCHED" ]; then
+			# notify-send -a "SCHED" -r "$NOTIF2_ID"  -u low "" "$SCHED"
+			MINUTE="$(date +"%M" | tr -d '\n' | tail -c1)"
+			if [ $MINUTE = 0 ] || [ $MINUTE = 5 ] ; then
+				# if there is a timeblock event, and no time tracking is happening, nag
+				notify-send -a "TRACK" -r "$NOTIF1_ID" "" "No tracking during timeblock" -t 6000
+			fi
 		fi
 	fi
 
-	SCHED="$(khal list -a Personal now 10m -f {title} -df "" | head -n 1)"
-	if [ -n "$SCHED" ]; then
-		notify-send -a "SCHED" -r "$NOTIF2_ID"  -u low "" "$SCHED"
-	fi
 	sleep 5
 done

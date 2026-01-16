@@ -6,6 +6,9 @@ if command -v khal > /dev/null; then
 		-df "" \
 		-f "{cancelled}{title} {location} ({start-style} {to-style} {end-style})" \
 		now eod \
-		| grep -v "(→ - →)" \
+		| grep -v -- "- →)" \
+		| grep -v -- "(→ -" \
+		| grep -v -- "(↦ " \
 		| head -n 2
 fi
+

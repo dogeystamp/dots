@@ -1,16 +1,35 @@
 #!/bin/sh
 # Smoothly set brightness using brightnessctl.
 # Example: bright 50
+#
+# Or set to a preset brightness idle, default, which varies based on if
+# the computer is on AC or battery, e.g. bright idle
 
 CUR="$(brightnessctl -m | cut -d',' -f4 | tr -d '%')"
-TGT=$1
 
-if [ "$CUR" -lt "$TGT" ]; then
-	SEQ="$(seq "$CUR" "$TGT")"
-else
-	SEQ="$(seq "$CUR" -1 "$TGT")"
+inner() {
+	TGT=$1
+	if [ "$CUR" -lt "$TGT" ]; then
+		SEQ="$(seq "$CUR" "$TGT")"
+	else
+		SEQ="$(seq "$CUR" -1 "$TGT")"
+	fi
+
+	for i in $SEQ; do
+		brightnessctl set $i% 2&> /dev/null
+	done
+}
+
+if [ "$1" = "default" ]; then
+	if [ "$(cat /sys/class/power_supply/AC/online)" = 1 ]; then
+		inner 50
+	else
+		inner 10
+	fi
+	exit
+elif [ "$1" = "idle" ]; then
+	inner 1
+	exit
 fi
 
-for i in $SEQ; do
-	brightnessctl set $i% 2&> /dev/null
-done
+inner "$1"

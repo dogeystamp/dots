@@ -38,17 +38,28 @@ tooltip {
 }
 
 #clock {
-	color: @theme_bg_color;
-	background: @theme_fg_color;
 	border-radius: 0.3ex;
-	padding: 0.25ex 1ex 0.25ex 0.75ex;
+	padding: 0.25ex 0.5ex 0.25ex 0.25ex;
 	margin: 0.75ex;
 	font-weight: 700;
 }
 
-#clock.week {
+#clock.time {
 	background: transparent;
 	color: @theme_fg_color;
+	border-radius: 0.3ex;
+	font-weight: 900;
+	padding: 0;
+	padding: 0.25ex 0.75ex 0.25ex 0.75ex;
+	border: 1pt solid @theme_fg_color;
+}
+
+#clock.week {
+	background: transparent;
+	font-weight: 400;
+	border-radius: 0.3ex;
+	margin-left: 0.75em;
+	padding: 0.25ex 0.75ex 0.25ex 0.75ex;
 	border: 1pt solid @theme_fg_color;
 }
 
@@ -83,7 +94,7 @@ tooltip {
 }
 
 #custom-next-event {
-	margin: 0.3ex 0.0ex;
+	margin: 0.3ex 1.0ex;
 	font-weight: 700;
 }
 
