@@ -3,7 +3,7 @@ close = mod4+m
 close_all = mod4+shift+m
 history = mod4+shift+n
 
-font = IBM Plex Mono 12
+font = Inter Display 12
 alignment = left
 format = "<b>%a:</b> %s\n%b"
 markup = full
