@@ -1,4 +1,4 @@
--- telescope without telescope80
+-- telescope without telescope
 -- depends on: fzf, bat, rg
 
 M = {}
@@ -69,6 +69,7 @@ function M.scope_fzf(choice_gen, command, scope_opts)
 
 	local fzf_cmd = choice_cmd .. "fzf " .. fzf_opts .. " > " .. stdout_file
 
+    -- https://github.com/mikesmithgh/kitty-scrollback.nvim/issues/295
 	vim.fn.termopen(fzf_cmd, {
 		on_exit = function()
 			local f = io.open(stdout_file, "r")

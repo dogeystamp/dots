@@ -30,11 +30,11 @@ end)
 local scope = require("scope")
 scope.setup()
 
-keymap("<leader>eg", scope.fzf_search)
-keymap("<leader>eG", scope.rg_search)
-keymap("<leader>ef", scope.file_finder)
-keymap("<leader>em", scope.buffer_list)
-keymap("<leader>es", vim.lsp.buf.workspace_symbol)
+keymap("<localleader>/", scope.fzf_search)
+keymap("<localleader>?", scope.rg_search)
+keymap("<localleader>f", scope.file_finder)
+keymap("<localleader>m", scope.buffer_list)
+keymap("<localleader>s", vim.lsp.buf.workspace_symbol)
 
 --------------------------------
 --------------------------------
