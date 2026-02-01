@@ -23,8 +23,7 @@ environment = { "RUFF_TRACE" = "messages" }
 logLevel = "debug"
 
 [language-server.ruff.config.settings.lint]
-select = ["E", "F", "W", "B", "I", "RUF", "N", "LOG", "ERA", "W", "D", "UP", "ANN", "ASYNC", "S", "RET", "TCH", "ARG", "PTH", "DOC"]
-ignore = ["D103"]
+select = ["E", "F", "W", "B", "I", "RUF", "N", "LOG", "ERA", "W", "UP", "ASYNC", "S", "RET", "TCH", "ARG", "PTH", "DOC"]
 
 [language-server.ruff.config.settings.format]
 preview = true
