@@ -57,7 +57,7 @@ npairs.add_rules({
 	Rule("{", "}"):with_pair(cond.not_after_regex("[a-zA-Z0-9]")),
 	Rule("(", ")"):with_pair(cond.not_after_regex("[a-zA-Z0-9]")),
 	Rule("[", "]"):with_pair(cond.not_after_regex("[a-zA-Z0-9]")),
-	Rule("'", "'", {"-scheme", "-racket"})
+	Rule("'", "'", {"-scheme", "-racket", "-coq"})
 		:with_pair(cond.not_after_regex("[a-zA-Z0-9]"))
 		:with_pair(cond.not_before_regex("[$a-zA-Z]")),
 })
@@ -174,7 +174,7 @@ keymap('<localleader>e', vim.lsp.diagnostic.show_line_diagnostics, opts)
 keymap('[d', vim.lsp.diagnostic.goto_prev, opts)
 keymap(']d', vim.lsp.diagnostic.goto_next, opts)
 keymap('<localleader>ca', vim.lsp.buf.code_action, opts)
-keymap('<localleader>f', vim.lsp.buf.format, opts)
+keymap('<leader>f', vim.lsp.buf.format, opts)
 
 -- find ruff config file path
 local ruff_config = vim.fs.root(0, { ".git", "pyproject.toml" }) or ""
