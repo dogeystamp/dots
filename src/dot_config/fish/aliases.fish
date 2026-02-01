@@ -113,18 +113,9 @@ abbr -a -- gp git push
 abbr -a --position anywhere -- pgh "&& git push gh"
 abbr -a --position anywhere -- rbsign "--exec 'git commit --amend --no-edit -n -S'"
 
-# problem solving
-# ---------------
-# use abbreviations instead of aliases/functions because
-# this allows retrieving the files accessed from history
-# instead of (basename (xsel -b))
-
-function prob_typ; echo $EDITOR (basename (cb -b)).typ; end
-abbr -a typ --function prob_typ
-function prob_cpp; echo $EDITOR src/(basename (cb -b)).cpp; end
-abbr -a cpp --function prob_cpp
-function prob_py; echo $EDITOR src/(basename (cb -b)).py; end
-abbr -a py --function prob_py
+# datetime
+function __date_today; date "+%Y-%m-%d"; end
+abbr -a --position anywhere today --function __date_today
 
 # creates a debug directory for a file
 # see src/.config/nvim/lua/debugging.lua
