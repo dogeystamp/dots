@@ -47,18 +47,6 @@ return {
 		}, fmt("^({})", { i(1) })),
 
 	-- note there is no subscript snippet because unlike the ^ key, _ is pretty easy to reach
-
-	s(
-		-- this is different because i think shift-8 then 2 is a reach
-		{
-			trig = "uq",
-			name = "square exponent",
-			wordTrig = false,
-			snippetType = "autosnippet",
-			condition = function(_, _, _)
-				return is_math_mode()
-			end
-		}, t("^2")),
 	s(
 		{
 			trig = "*2",
