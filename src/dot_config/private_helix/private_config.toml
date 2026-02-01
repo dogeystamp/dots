@@ -50,8 +50,14 @@ G = "goto_file_end"
 "^" = "goto_line_start"
 0 = "goto_first_nonwhitespace"
 "$" = "goto_line_end"
+"%" = "match_brackets"
 S = "surround_add"
 D = "delete_selection_noyank"
+k = ["extend_line_up", "extend_to_line_bounds"]
+j = ["extend_line_down", "extend_to_line_bounds"]
+[keys.select.g]
+u = ["switch_to_lowercase", "collapse_selection", "normal_mode"]
+U = ["switch_to_uppercase", "collapse_selection", "normal_mode"]
 
 [keys.normal.Z]
 Z = [":write-quit"]
@@ -60,6 +66,6 @@ Q = [":quit!"]
 F = [":quit-all"]
 
 [keys.insert]
-esc = ["move_char_left", "normal_mode"]
+esc = ["collapse_selection", "keep_primary_selection", "move_char_left", "normal_mode"]
 "C-s" = "signature_help"
 "C-f" = "completion"
