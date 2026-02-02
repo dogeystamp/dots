@@ -30,11 +30,15 @@ end)
 local scope = require("scope")
 scope.setup()
 
+-- all of these binds are very helix-y
 keymap("<localleader>/", scope.fzf_search)
 keymap("<localleader>?", scope.rg_search)
 keymap("<localleader>f", scope.file_finder)
 keymap("<localleader>m", scope.buffer_list)
 keymap("<localleader>s", vim.lsp.buf.workspace_symbol)
+
+-- switch to last file
+keymap("ga", "<c-^>")
 
 --------------------------------
 --------------------------------
