@@ -19,13 +19,17 @@ function fish_prompt
 		set git_prompt $git_prompt" "
 	end
 
+    if status is-login
+        set login_prompt (prompt_login)" "
+    end
+
 	printf '%s%s%s%s'\
 		(set_color --italic red) \
 		$git_prompt \
 		$stat_code \
 		(set_color normal)
 		
-	printf '%s%s%s%s%s ' (set_color $fish_color_cwd) (prompt_pwd) (set_color cyan) $letter (set_color normal)
+	printf '%s%s%s%s%s%s ' $login_prompt (set_color $fish_color_cwd) (prompt_pwd) (set_color cyan) $letter (set_color normal)
 end
 
 # https://fishshell.com/docs/3.2/cmds/fish_mode_prompt.html
