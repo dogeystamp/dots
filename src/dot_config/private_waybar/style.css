@@ -76,7 +76,7 @@ tooltip {
 #pulseaudio:hover,
 #custom-next-event #custom-help,
 #mpris {
-	padding: 0.1ex 0.1ex 0.3ex 0.2ex;
+	padding: 0.1ex 0.1ex 0.0ex 0.2ex;
 	margin: 0.5ex;
 	min-width: 1em;
 	font-size: 1.8ex;
@@ -115,7 +115,7 @@ tooltip {
 
 #cpu.high,
 #memory.high {
-	color: #99AABB;
+	color: gray;
 }
 
 @keyframes blink {
@@ -137,7 +137,7 @@ tooltip {
 }
 
 #battery.critical:not(.charging) {
-	background-color: #99AABB;
+	background-color: red;
 }
 
 #battery.charging,
