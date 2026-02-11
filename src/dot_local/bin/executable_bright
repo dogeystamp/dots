@@ -22,7 +22,7 @@ inner() {
 
 if [ "$1" = "default" ]; then
 	if [ "$(cat /sys/class/power_supply/AC/online)" = 1 ]; then
-		inner 50
+		inner 70
 	else
 		inner 10
 	fi
