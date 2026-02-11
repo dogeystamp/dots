@@ -1,6 +1,5 @@
 #!/bin/sh
-# simple todo utility
-# nags me every time i start a shell
+# simple reminder utility
 
 set -e
 
