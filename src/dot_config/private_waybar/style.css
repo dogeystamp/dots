@@ -39,7 +39,7 @@ tooltip {
 
 #clock {
 	border-radius: 0.3ex;
-	padding: 0.25ex 0.5ex 0.25ex 0.25ex;
+	padding: 0.1ex 0.5ex 0.25ex 0.25ex;
 	margin: 0.75ex;
 	font-weight: 700;
 }
@@ -76,7 +76,7 @@ tooltip {
 #pulseaudio:hover,
 #custom-next-event #custom-help,
 #mpris {
-	padding: 0.1ex 0.1ex 0.0ex 0.2ex;
+	padding: 0.0ex 0.2ex 0.0ex 0.2ex;
 	margin: 0.5ex;
 	min-width: 1em;
 	font-size: 1.8ex;
@@ -104,12 +104,12 @@ tooltip {
 }
 
 #battery {
-	padding: 0.1ex 0.1ex 0.3ex 0.6ex;
+	padding: 0.0ex 0.1ex 0.0ex 0.6ex;
 	font-weight: 600;
 }
 
 #bluetooth {
-	padding: 0.1ex 0.1ex 0.3ex 0.6ex;
+	padding: 0.0ex 0.0ex 0.0ex 0.6ex;
 	font-weight: 600;
 }
 
@@ -153,15 +153,16 @@ tooltip {
 
 #workspaces button {
 	color: inherit;
+	box-shadow: none;
+}
+
+#workspaces button.focused, #workspaces button.current_output {
+	background: transparent;
+	box-shadow: none;
 }
 
 #workspaces button:hover {
-	box-shadow: inherit;
-}
-
-#workspaces button.focused {
-	background-color: inherit;
-	box-shadow: inherit;
+    background: rgba(0.5, 0.5, 0.5, 0.1);
 }
 
 #workspaces button:not(.focused).empty {
@@ -169,7 +170,7 @@ tooltip {
 }
 
 #workspaces button.urgent {
-	background: #fbb
+	background: #fbb;
 }
 
 window#waybar {
