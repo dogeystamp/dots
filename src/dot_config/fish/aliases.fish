@@ -36,7 +36,7 @@ function arf; mpv --shuffle --no-resume-playback ~/med/memes/arf; end
 function xx; $EDITOR  ~/core/not/xx.tsv; end
 function dr; $EDITOR  ~/core/not/dr.txt; end
 function bk; $EDITOR  ~/core/not/bk.txt; end
-function rem; $EDITOR ~/core/not/rem; end
+function rem; rem.sh edit; end
 function ldg; $EDITOR ~/core/not/journal.ldg; end
 alias ev "khal list"
 alias units='units -H ""'
