@@ -1,12 +1,20 @@
 # dynamic swallow
 function hide
+    if test $argv[-1] = "--list-options"
+        return
+    end
+
 	if test -n "$NIRI_SOCKET"
 		niri-swal.sh $argv
-	else if command -v dwmswallow > /dev/null; then
+	else if command -v dwmswallow > /dev/null
 		dwmswallow "$WINDOWID" $argv[2..-1]
 	else
 		eval $argv[2..-1]
 	end
+end
+
+function mpv
+    hide mpv mpv $argv
 end
 
 function darkmode
@@ -18,8 +26,10 @@ function lightmode
 	gsettings set org.gnome.desktop.interface color-scheme 'default'
 end
 
-alias mpv='hide mpv mpv'
 alias imvi='hide swayimg imgv.sh'
+function imvi --wraps swayimg
+    hide swayimg swayimg $argv
+end
 
 alias neofetch='fastfetch'
 
@@ -38,7 +48,7 @@ alias zathsec='/usr/bin/zathura-sandbox -c ~/.config/zathura-sec'
 function tmx; tmux -u -2 $argv; end
 
 # Run mpv from clipboard
-function mpvy; mpv --profile=network $argv -- (cb -b); end
+function mpvy; mpv --profile=network $argv -- (cb -b | sed 's/yewtu\\.be/www.youtube\\.com/g'); end
 
 # Set gpg tty so curses pinentry works
 function gpgt; export GPG_TTY=(tty); end
