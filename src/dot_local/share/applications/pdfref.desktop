@@ -1,6 +1,0 @@
-[Desktop Entry]
-Name=PDF Instant Reference
-Exec=pdfref_handler
-Type=Application
-Terminal=false
-MimeType=x-scheme-handler/pdfref;

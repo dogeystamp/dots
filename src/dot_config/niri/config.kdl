@@ -1,9 +1,13 @@
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
 
 spawn-at-startup "niri" "msg" "action" "do-screen-transition" "-d" "800"
-spawn-sh-at-startup "prod.sh"
 spawn-at-startup "swayosd-server"
 spawn-at-startup "gsettings" "set" "org.gnome.desktop.sound" "theme-name" "ocean"
+// spawn-at-startup "wallpaper"
+spawn-at-startup "waybar"
+spawn-at-startup "swayidle"
+spawn-sh-at-startup "wlsunset -l 45.5 -L -73.5 -t 3000"
+
 
 input {
     keyboard {
@@ -137,10 +141,6 @@ cursor {
 	xcursor-theme "capitaine-cursors"
 	xcursor-size 28
 }
-
-spawn-at-startup "wallpaper"
-spawn-at-startup "waybar"
-spawn-at-startup "swayidle"
 
 // no client side decoration
 prefer-no-csd

@@ -1,7 +1,7 @@
 [calendars]
 
 [[calendar_local]]
-path = ~/.local/share/vdirsyncer/cal/*
+path = ~/.local/share/calendars/*
 type = discover
 
 [locale]

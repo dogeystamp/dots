@@ -1,6 +1,3 @@
-################
-# note-taking setup
-################
 [submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_nvim-cmp"]
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-cmp
 	url = https://github.com/hrsh7th/nvim-cmp.git
@@ -19,19 +16,6 @@
 
 # debug adapter protocol
 # debugging.lua
-[submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_nvim-dap"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-dap
-	url = https://github.com/mfussenegger/nvim-dap.git
-[submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_nvim-dap-ui"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-dap-ui
-	url = https://github.com/rcarriga/nvim-dap-ui.git
-[submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_nvim-nio"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-nio
-	url = https://github.com/nvim-neotest/nvim-nio
-
-# snippet support
-# snippets.lua
-# (also coding.lua becuase nvim-cmp uses this too)
 [submodule "src/dot_local/share/nvim/site/pack/3pp/start/external_LuaSnip"]
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_LuaSnip
 	url = https://github.com/L3MON4D3/LuaSnip
@@ -39,19 +23,6 @@
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_cmp_luasnip
 	url = https://github.com/saadparwaiz1/cmp_luasnip
 
-[submodule "src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-ufo"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_nvim-ufo
-	url = https://github.com/kevinhwang91/nvim-ufo
-[submodule "src/dot_local/share/nvim/site/pack/3pp/opt/external_promise-async"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_promise-async
-	url = https://github.com/kevinhwang91/promise-async
-
-# library code (needed by other plugins)
-[submodule "src/dot_local/share/nvim/site/pack/3pp/opt/external_plenary.nvim"]
-	path = src/dot_local/share/nvim/site/pack/3pp/opt/external_plenary.nvim
-	url = https://github.com/nvim-lua/plenary.nvim
-
-# auto-close brackets
 [submodule "src/dot_local/share/nvim/site/pack/3pp/opt/nvim-autopairs"]
 	path = src/dot_local/share/nvim/site/pack/3pp/opt/nvim-autopairs
 	url = https://github.com/windwp/nvim-autopairs

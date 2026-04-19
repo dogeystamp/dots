@@ -301,21 +301,12 @@ end
 -- useful binds include zM (close all folds), zA (recursively toggle fold), and zR (open all folds).
 -- see :h usr_28 for more information about folds.
 --------
-vim.cmd.packadd("promise-async")
-vim.cmd.packadd("nvim-ufo")
-local ufo = require("ufo")
-ufo.setup()
-vim.o.foldenable = true
+vim.o.foldenable = false
+vim.o.foldmethod = "expr"
 vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
--- set to '1' to get a column with arrows for folds
 vim.o.foldcolumn = '0'
+vim.o.foldtext = ""
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-vim.o.foldlevel = 99
-vim.o.foldlevelstart = 99
-keymap('zM', ufo.closeAllFolds)
-keymap('zR', ufo.openAllFolds)
-keymap('zm', ufo.closeFoldsWith)
-keymap('zr', ufo.openFoldsExceptKinds)
 
 ------
 -- completions

@@ -1,3 +1,0 @@
-# Configuration for reading local mail on servers
-
-source ~/.config/neomutt/common.muttrc

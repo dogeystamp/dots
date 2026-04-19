@@ -13,13 +13,11 @@ ttf-ibm-plex
 gsfonts
 git
 git-lfs
-xwallpaper
 dunst
 zathura
 zathura-pdf-mupdf
 libnotify
 libsecret
-doas
 alacritty
 
 qutebrowser
@@ -60,7 +58,6 @@ nftables
 sdcv
 ufw
 trash-cli
-rofi
 rink
 progress
 speedtest-cli
@@ -77,8 +74,7 @@ fcitx5-chinese-addons
 fcitx5-configtool
 # calendaring/todo management
 khal
-todoman
-vdirsyncer
+pimsync
 
 # in the aur
 tmsu
@@ -106,10 +102,6 @@ python-pynvim
 fastfetch
 cloc
 
-aerc
-# use w3m for aerc and disallow network
-dante
-
 python-pip
 httpie
 
@@ -122,11 +114,9 @@ elinks
 #
 # extras
 #
-gomuks
 beets
 # for beets
 python-pylast
-picom
 keepassxc
 gimp
 blender
@@ -138,22 +128,15 @@ ocean-sound-theme
 inkscape
 python-tinycss2
 
-typescript
-typescript-language-server
 pyright
 ruff
-bash-language-server
-vscode-css-languageserver
-rust-analyzer
 gdb
 lldb
-python-debugpy
 arc-gtk-theme
 lxappearance-gtk3
 radare2
 typst
 tinymist
-neovide
 
 chromium
 go
@@ -217,8 +200,6 @@ networkmanager
 os-prober
 efibootmgr
 grub
-xorg-server
-xorg-xinit
 man
 
 #
@@ -226,7 +207,6 @@ man
 #
 sof-firmware
 xonotic
-xf86-input-wacom
 
 # for raspberry pi pico dev
 arm-none-eabi-binutils

@@ -60,14 +60,9 @@ export MRSS_DIR="$HOME/thi/rss"
 export REM_FILE="$HOME/core/not/rem"
 
 # Set default programs
-export EDITOR="nv"
-export MANPAGER='nv-man'
+export EDITOR="nvim"
 export BROWSER="qutebrowser"
 export MANWIDTH=165
-
-# Soundboard
-export SB_DIR="$HOME"/med/sb
-export SXHKD_SHELL='/bin/sh'
 
 export KEEPASSDB="$HOME"/core/sec/pass.kdbx
 # Identity (see ~/.local/bin/identity.sh)
@@ -81,15 +76,10 @@ export SYSTEM_PROFILE={{ .systemprofile | quote }}
 # Add .local/bin to path
 export PATH="$PATH":~/.local/bin
 export PATH="$PATH":~/.local/bin/deskutils
-export PATH="$PATH":~/.local/bin/deskutils/soundboard
-export PATH="$PATH":~/.local/bin/pyinstantref
 
 export PATH="$PATH":"$XDG_DATA_HOME"/npm/bin
 export PATH="$PATH":"$XDG_DATA_HOME"/go/bin
 export PATH="$PATH":"$XDG_DATA_HOME"/cargo/bin
-
-# cppman can't set it itself for some reason
-export MANPATH="$MANPATH":~/.cache/cppman/
 
 # preferences for FZF
 export FZF_DEFAULT_OPTS="--color=pointer:cyan"

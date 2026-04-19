@@ -1,23 +1,17 @@
-# dynamic swallow
-function hide
+function hide --description "swallow window"
     if test $argv[-1] = "--list-options"
         return
     end
 
 	if test -n "$NIRI_SOCKET"
 		niri-swal.sh $argv
-	else if command -v dwmswallow > /dev/null
-		dwmswallow "$WINDOWID" $argv[2..-1]
 	else
 		eval $argv[2..-1]
 	end
 end
 
-function mpv
-    hide mpv mpv $argv
-end
-
-function darkmode
+function mpv; hide mpv mpv $argv; end
+function darkmode;
 	niri msg action do-screen-transition
 	gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 end
@@ -25,65 +19,29 @@ function lightmode
 	niri msg action do-screen-transition
 	gsettings set org.gnome.desktop.interface color-scheme 'default'
 end
-
-alias imvi='hide swayimg imgv.sh'
-function imvi --wraps swayimg
-    hide swayimg swayimg $argv
-end
-
+function imvi --wraps swayimg; hide swayimg swayimg $argv; end
 alias neofetch='fastfetch'
-
+function mann --wraps man; nvim "+hide Man $argv"; end
 alias hx='helix'
-
-# prevent clobbering files
 alias mv='mv -n'
 alias cp='cp -n'
-
-# zathura
 alias thur='hide org.pwmt.zathura zathura'
-# stricter sandbox zathura
 alias zathsec='/usr/bin/zathura-sandbox -c ~/.config/zathura-sec'
-
-# tmux with 256-color and UTF-8
 function tmx; tmux -u -2 $argv; end
-
-# Run mpv from clipboard
 function mpvy; mpv --profile=network $argv -- (cb -b | sed 's/yewtu\\.be/www.youtube\\.com/g'); end
-
-# Set gpg tty so curses pinentry works
-function gpgt; export GPG_TTY=(tty); end
-
-# Private neovim
 function nvimp; nvim -u NONE -c "setlocal history=0 nobackup nomodeline noshelltemp noswapfile noundofile nowritebackup secure viminfo=\"\"" $argv; end
-
-# Edit configuration file
 alias nvic 'chezmoi edit -a'
-
-# Read pdf file as text
-function pdfr
-	pdftotext $argv - | nvim
-end
-
-# Neomutt configs
-function neomutt.local; neomutt -F .config/neomutt/neomuttrc.local; end
-
-# bootleg meme feed
+function pdfr; pdftotext $argv - | nvim; end
 function arf; mpv --shuffle --no-resume-playback ~/med/memes/arf; end
-
-# aliases for logs and notes
 function xx; $EDITOR  ~/core/not/xx.tsv; end
 function dr; $EDITOR  ~/core/not/dr.txt; end
 function bk; $EDITOR  ~/core/not/bk.txt; end
 function rem; $EDITOR ~/core/not/rem; end
 function ldg; $EDITOR ~/core/not/journal.ldg; end
-
 alias ev "khal list"
-
-# disable history on units
 alias units='units -H ""'
-
-alias sxiv='nsxiv'
 alias xxd='tinyxxd'
+alias sched='~/src/kindle-schedule/kindle_schedule.py ~/.local/share/schedule.pdf'
 
 # music recognition
 # an alternative is available at ~/.local/bin/msrec
@@ -96,8 +54,6 @@ function musrec
 	end
 end
 
-# generate schedule
-alias sched='~/src/kindle-schedule/kindle_schedule.py ~/.local/share/schedule.pdf'
 
 #
 # qutebrowser profiles
@@ -126,11 +82,3 @@ abbr -a --position anywhere -- rbsign "--exec 'git commit --amend --no-edit -n -
 # datetime
 function __date_today; date "+%Y-%m-%d"; end
 abbr -a --position anywhere today --function __date_today
-
-# creates a debug directory for a file
-# see src/.config/nvim/lua/debugging.lua
-function dbgd
-	set -l dir $XDG_CACHE_HOME/nvimdbg(realpath $argv)
-	mkdir -p $dir
-	cd $dir
-end

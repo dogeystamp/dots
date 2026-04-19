@@ -48,10 +48,8 @@ end)
 --------------------------------
 --------------------------------
 
-require("frontend")
 require("snippets")
 
 if dotprofile >= profile_table.DEFAULT then
 	require("coding")
-	require("debugging")
 end
