@@ -38,7 +38,9 @@ keymap("<localleader>m", scope.buffer_list)
 keymap("<localleader>s", vim.lsp.buf.workspace_symbol)
 
 -- switch to last file
-keymap("ga", "<c-^>")
+keymap("ga", function ()
+    vim.cmd[[:b#]]
+end)
 
 --------------------------------
 --------------------------------
