@@ -37,14 +37,14 @@ tooltip {
 	color: inherit;
 }
 
-#clock {
+#clock, #custom-track {
 	border-radius: 0.3ex;
 	padding: 0.1ex 0.5ex 0.25ex 0.25ex;
 	margin: 0.75ex;
 	font-weight: 700;
 }
 
-#clock.time {
+#clock.time, #custom-track {
 	background: transparent;
 	color: @theme_fg_color;
 	border-radius: 0.3ex;
@@ -52,6 +52,10 @@ tooltip {
 	padding: 0;
 	padding: 0.25ex 0.75ex 0.25ex 0.75ex;
 	border: 1pt solid @theme_fg_color;
+}
+
+#custom-track {
+    font-family: monospace;
 }
 
 #clock.week {

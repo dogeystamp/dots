@@ -10,6 +10,12 @@
 			"interval": 60,
 			"escape": true,
 		},
+		"custom/track": {
+			"format": "{}",
+			"exec": "$HOME/.local/bin/track-timer.fish",
+			"interval": 1,
+			"escape": true,
+		},
 		"clock#time": {
 			"format": "{:%H:%M}",
 			"tooltip": false,
