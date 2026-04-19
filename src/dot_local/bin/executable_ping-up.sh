@@ -4,7 +4,7 @@
 while true; do
 	if ping -c 1 $1; then
 		echo Ping successful
-		notify-send -a "ping-up" "Ping is successful"
+		notify-send -a "ping-up" "Ping is successful for $1"
 		cat << 'EOF'
    ___ _               _ 
   / _ (_)_ __   __ _  / \
