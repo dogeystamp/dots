@@ -42,6 +42,9 @@ swayimg.viewer.on_key("k", function()
   local pos = swayimg.viewer.get_position()
   swayimg.viewer.set_abs_position(pos.x, math.floor(pos.y + wnd.height / 10));
 end)
+swayimg.viewer.on_key("r", function()
+  swayimg.viewer.rotate(90)
+end)
 
 -- Gallery mode
 swayimg.gallery.set_border_color(0xffaaaaaa)        -- border color for selected thumbnail
