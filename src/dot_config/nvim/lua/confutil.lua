@@ -35,7 +35,8 @@ function M.keymap(key, cmd, params)
 		silent = params.silent,
 		noremap = params.noremap,
 		expr = params.expr,
-		buffer = params.buffer
+		buffer = params.buffer,
+        desc = params.desc,
 	})
 end
 

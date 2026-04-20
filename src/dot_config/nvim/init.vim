@@ -46,25 +46,9 @@ set shortmess+=I
 let mapleader = ","
 let maplocalleader = " "
 
-" " use system clipboard instead of internal
-" set clipboard=unnamedplus
-" " when using c or s, do not overwrite clipboard
-" nnoremap c "-c
-" vnoremap c "-c
-" nnoremap s "-s
-" vnoremap s "-s
-
 " easier binds to use system clipboard with
-nnoremap <C-S>y "+y
-nnoremap <C-S>Y "+Y
-nnoremap <C-S>D "+D
-vnoremap <C-S>y "+y
-nnoremap <C-S>d "+d
-vnoremap <C-S>d "+d
-nnoremap <C-S>c "+c
-nnoremap <C-S>C "+C
-vnoremap <C-S>c "+c
-nnoremap <C-S>p "+p
+nnoremap + "+
+vnoremap + "+
 
 " delete (do not save to register) bind
 vnoremap X "_d
@@ -90,14 +74,7 @@ snoremap 0 0
 inoremap <C-e> <C-o>A
 snoremap <C-e> <C-o>A
 
-" git gutter motions
-nnoremap ]h <Plug>(GitGutterNextHunk)
-nnoremap [h <Plug>(GitGutterPrevHunk)
-
 set shell=/bin/sh
-
-autocmd InsertEnter * hi StatusLine cterm=bold
-autocmd InsertLeave * hi StatusLine cterm=italic
 
 " Disable highlighting when searching
 nnoremap <silent> <esc> :noh<return><esc>
@@ -110,6 +87,8 @@ nnoremap <silent> <C-h> :vertical resize -5<cr>
 nnoremap <silent> <C-l> :vertical resize +5<cr>
 " exit all (akin to ZZ, ZQ)
 nnoremap <silent> ZF :qa<cr>
+" helix-style window management
+nnoremap <Space>w <C-w>
 
 " see .config/nvim/lua/init.lua
 lua require('init')

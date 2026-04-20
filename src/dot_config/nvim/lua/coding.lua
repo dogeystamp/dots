@@ -4,296 +4,137 @@ local confutil = require("confutil")
 local keymap = confutil.keymap
 
 
-------
--- syntax highlighting
-------
+------------------
+-- LSP binds
+-- these are helix-inspired
+------------------
 
-vim.cmd.packadd("nvim-treesitter")
+-- note that LSP is disabled by default until <space>l or :lsp enable.
 
-require 'nvim-treesitter'.setup {
-	sync_install = false,
-	auto_install = false,
-	highlight = {
-		enable = true,
+-- there are also some default binds that are useful:
+-- *  CTRL-s (insert mode): signature help
+-- *  an (visual mode): incremental select
+-- see :help lsp-default for more info.
 
-		disable = function(lang, buf)
-			local max_filesize = 100 * 1024 -- 100 KB
-			local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-			if ok and stats and stats.size > max_filesize then
-				return true
-			end
-		end,
-	},
-	indent = {
-		enable = false
-	},
-	incremental_selection = {
-		enable = true,
-		keymaps = {
-			init_selection = "<CR>", -- set to `false` to disable one of the mappings
-			scope_incremental = "<CR>",
-			node_incremental = "<TAB>",
-			node_decremental = "<S-TAB>",
-		},
-	},
-}
+local opts = { noremap = true, silent = true }
+keymap('<localleader>l', function()
+    vim.cmd [[:lsp enable]]
+    vim.notify("Enabled LSP.")
+end, opts)
+
+-- unset default LSP binds that conflict with ours
+vim.cmd [[nnoremap <nowait> gr gr]]
+
+keymap('gr', vim.lsp.buf.references, opts)
+keymap('gd', vim.lsp.buf.definition, opts)
+keymap('gy', vim.lsp.buf.type_definition, opts)
+keymap('gi', vim.lsp.buf.implementation, opts)
+
+keymap('<localleader>r', vim.lsp.buf.rename, opts)
+keymap('<localleader>a', vim.lsp.buf.code_action, opts)
+keymap('<localleader>x', vim.lsp.codelens.run, opts)
+keymap('<leader>f', vim.lsp.buf.format, opts)
 
 
---------
--- auto-pairs for brackets
---------
-vim.cmd.packadd("nvim-autopairs")
-local npairs = require("nvim-autopairs")
-local Rule = require("nvim-autopairs.rule")
-local cond = require("nvim-autopairs.conds")
-npairs.setup { check_ts = true, map_bs = false }
-
-npairs.remove_rule("'")
-
--- https://github.com/windwp/nvim-autopairs/wiki/Rules-API
-npairs.add_rules({
-	Rule("$", "$", "typst"):with_move(cond.done()),
-	Rule("```", "```", "typst"),
-	Rule("{", "}"):with_pair(cond.not_after_regex("[a-zA-Z0-9]")),
-	Rule("(", ")"):with_pair(cond.not_after_regex("[a-zA-Z0-9]")),
-	Rule("[", "]"):with_pair(cond.not_after_regex("[a-zA-Z0-9]")),
-	Rule("'", "'", {"-scheme", "-racket", "-coq"})
-		:with_pair(cond.not_after_regex("[a-zA-Z0-9]"))
-		:with_pair(cond.not_before_regex("[$a-zA-Z]")),
-})
-
---------
--- custom backspace behaviour inspired by JetBrains IDEA
--- deletes lines that are just indents.
--- to circumvent this, use ctrl-backspace.
---
--- depends on: nvim-treesitter, nvim-autopairs (optional)
---------
-keymap('<BS>', function()
-	-- delete lines if they are solely whitespace
-	local orig_linenr = vim.fn.line(".")
-
-	-- WARNING: we're short-circuiting this entire function because
-	-- the latest tree-sitter broke everything...
-	local indent_baseline = -1
-
-	-- local indent_baseline = require("nvim-treesitter.indent").get_indent(orig_linenr)
-	if indent_baseline ~= -1 then
-		local line = vim.api.nvim_get_current_line()
-
-		local WHITESPACE = {
-			[" "] = 1,
-			["\t"] = vim.o.shiftwidth,
-		}
-
-		local indent_size = 0
-		local is_empty = true
-
-		for c = line:len(), 1, -1 do
-			local spaces = WHITESPACE[line:sub(c, c)]
-			if spaces ~= nil then
-				indent_size = indent_size + spaces
-			else
-				is_empty = false
-				break
-			end
-		end
-
-		local feedkeys = function (keys)
-			vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(keys, true, false, true), "n", false)
-		end
-
-		if is_empty and indent_size <= indent_baseline and indent_size > 0 then
-			feedkeys("<C-o>dd")
-			-- if line number hasn't changed, and this isn't the last line in the file, move up to last line
-			if orig_linenr == vim.fn.line(".") and orig_linenr ~= vim.fn.line("$") then
-				feedkeys("<C-o>k")
-			end
-			feedkeys("<C-o>A")
-			return
-		end
-	end
-
-	-- hook into autopairs to actually backspace now.
-	-- if you delete this line you have to replace `npairs.autopairs_bs()`
-	-- so that a backspace is generated.
-	vim.api.nvim_feedkeys(npairs.autopairs_bs(), "n", false)
-end, { noremap = false, mode = { 'i' } })
-
-
-------
--- diagnostics box
-------
+--------------------
+-- diagnostics
+--------------------
+local sev = vim.diagnostic.severity
 vim.diagnostic.config({
-	virtual_text = true,
-	virtual_lines = false,
+    virtual_text = true,
+    virtual_lines = false,
+    signs = {
+        severity_sort = true,
+        text = {
+            [sev.ERROR] = '󰜡',
+            [sev.WARN] = '󰛸',
+            [sev.INFO] = '󰋽',
+            [sev.HINT] = '󰘥',
+        },
+    },
 })
 -- fallback for if virtual text doesn't work
-keymap('<leader>dx', vim.diagnostic.open_float, { noremap = true, silent = true })
+keymap('<localleader>dx', vim.diagnostic.open_float, { noremap = true, silent = true })
 
 local diagnostic_virtual_text = true
 
 -- toggle diagnostic display between virtual text and virtual lines
-keymap('<leader>dv', function()
-	if diagnostic_virtual_text then
-		vim.diagnostic.config({
-			virtual_text = false,
-			virtual_lines = true,
-		})
-		diagnostic_virtual_text = false
-	else
-		vim.diagnostic.config({
-			virtual_text = true,
-			virtual_lines = false,
-		})
-		diagnostic_virtual_text = true
-	end
+keymap('<localleader>dv', function()
+    if diagnostic_virtual_text then
+        vim.diagnostic.config({
+            virtual_text = false,
+            virtual_lines = true,
+        })
+        diagnostic_virtual_text = false
+    else
+        vim.diagnostic.config({
+            virtual_text = true,
+            virtual_lines = false,
+        })
+        diagnostic_virtual_text = true
+    end
 end, { noremap = true, silent = true })
 
 
---------------------------------
---------------------------------
--- language smarts (LSP and completion)
---------------------------------
---------------------------------
 
 ------
 -- language server (LSP)
+-- see ~/.config/nvim/lsp/ for full configurations taken from nvim-lspconfig.
+-- the following options override the lsp/ configurations.
 ------
+vim.lsp.config("rust_analyzer", {
+    settings = {
+        ['rust-analyzer'] = {
+            check = {
+                allTargets = false,
+                command = "clippy",
+            },
+        },
+    },
+})
+vim.lsp.config('lua_ls', {
+    on_init = function(client)
+        if client.workspace_folders then
+            local path = client.workspace_folders[1].name
+            if
+                path ~= vim.fn.stdpath('config')
+                and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
+            then
+                return
+            end
+        end
 
-local opts = { noremap = true, silent = true }
-keymap('gD', vim.lsp.buf.declaration, opts)
-keymap('gd', vim.lsp.buf.definition, opts)
-keymap('gK', vim.lsp.buf.hover, opts)
-keymap('gi', vim.lsp.buf.implementation, opts)
-keymap('gt', vim.lsp.buf.type_definition, opts)
-keymap('<localleader>rn', vim.lsp.buf.rename, opts)
-keymap('<localleader>ss', vim.lsp.buf.workspace_symbol, opts)
-keymap('gr', vim.lsp.buf.references, opts)
-keymap('<localleader>e', vim.lsp.diagnostic.show_line_diagnostics, opts)
-keymap('[d', vim.lsp.diagnostic.goto_prev, opts)
-keymap(']d', vim.lsp.diagnostic.goto_next, opts)
-keymap('<localleader>ca', vim.lsp.buf.code_action, opts)
-keymap('<leader>f', vim.lsp.buf.format, opts)
+        client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+            runtime = {
+                version = 'LuaJIT',
+                -- see `:h lua-module-load`
+                path = {
+                    'lua/?.lua',
+                    'lua/?/init.lua',
+                },
+            },
+            workspace = {
+                checkThirdParty = false,
+                library = {
+                    vim.env.VIMRUNTIME,
+                    -- Depending on the usage, you might want to add additional paths
+                    -- here.
+                    -- '${3rd}/luv/library',
+                    -- '${3rd}/busted/library',
+                },
+                -- Or pull in all of 'runtimepath'.
+                -- NOTE: this is a lot slower and will cause issues when working on
+                -- your own configuration.
+                -- See https://github.com/neovim/nvim-lspconfig/issues/3189
+                -- library = vim.api.nvim_get_runtime_file('', true),
+            },
+        })
+    end,
+    settings = {
+        Lua = {},
+    },
+})
 
--- find ruff config file path
-local ruff_config = vim.fs.root(0, { ".git", "pyproject.toml" }) or ""
-
--- table declares LSPs to be set up
--- as well as settings per server (overrides defaults)
-local servers = {
-	pyright = {
-		cmd = { 'pyright-langserver', '--stdio' },
-		settings = {
-			pyright = {
-				-- defer to ruff
-				disableOrganizeImports = true,
-			},
-		},
-		root_markers = { 'pyproject.toml' },
-		filetypes = { 'python' },
-	},
-	ruff = {
-		cmd = { 'ruff', 'server' },
-		settings = {
-			format = {
-				args = { "--config=" .. ruff_config },
-			},
-			lint = {
-				args = { "--config=" .. ruff_config },
-			},
-		},
-		root_markers = { 'pyproject.toml' },
-		filetypes = { 'python' },
-	},
-	clangd = {
-		cmd = { 'clangd', '--background-index' },
-		root_markers = { 'compile_commands.json', 'compile_flags.txt' },
-		filetypes = { 'c', 'cpp' },
-	},
-	ts_ls = {
-		cmd = { 'typescript-language-server', '--stdio' },
-		filetypes = { 'typescript', 'javascript' },
-	},
-	bashls = {
-		cmd = { 'bash-language-server', 'start' },
-		filetypes = { 'sh' },
-	},
-	cssls = {
-		cmd = { 'vscode-css-language-server', '--stdio' },
-		filetypes = { 'css' },
-	},
-	lua_ls = {
-		cmd = { 'lua-language-server' },
-		filetypes = { 'lua' },
-		settings = {
-			Lua = {
-				runtime = {
-					version = "LuaJIT",
-				},
-				workspace = {
-					checkThirdParty = false,
-					library = {
-						vim.env.VIMRUNTIME,
-					},
-				},
-				diagnostics = {
-					-- get it to stop complaining about luasnip
-					globals = { 's', 'f', 't', "fmt", "c", "sn", "i", "rep", "d", "k", "events" },
-				},
-			}
-		}
-	},
-	nushell = {
-		cmd = { 'nu', '--lsp' },
-		filetypes = { 'nu' },
-	},
-}
-
--- These servers are disabled by default;
--- enable with the keybind (after this table)
-local optional_servers = {
-	tinymist = {
-		-- Typst language server. Battery-intensive
-		root_markers = { '.git' },
-		cmd = { 'tinymist', 'lsp' },
-		filetypes = { 'typst' },
-		settings = {
-			formatterMode = "typstyle",
-			semanticTokens = "disable",
-		},
-	},
-	-- Rust language server. Disabled by default for security reasons
-	rust_analyzer = {
-		cmd = { 'rust-analyzer' },
-		root_markers = { 'Cargo.toml' },
-		filetypes = { 'rust' },
-		settings = {
-			['rust-analyzer'] = {
-				check = {
-					allTargets = false,
-					command = "clippy",
-				},
-			},
-		},
-	},
-}
-
-keymap('<leader>l', function()
-	for lsp, _ in pairs(optional_servers) do
-		vim.lsp.enable(lsp)
-	end
-	vim.notify("Enabled optional language servers.", vim.log.levels.INFO)
-	vim.cmd.doautocmd("BufRead")
-end, { silent = false })
-
-for lsp, sv_settings in pairs(optional_servers) do
-	vim.lsp.config[lsp] = sv_settings
-end
-for lsp, sv_settings in pairs(servers) do
-	vim.lsp.config[lsp] = sv_settings
-	vim.lsp.enable(lsp)
-end
 
 --------
 -- code folding
@@ -308,29 +149,43 @@ vim.o.foldcolumn = '0'
 vim.o.foldtext = ""
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
-------
+-----------------
 -- completions
-------
-vim.cmd.packadd("nvim-cmp")
-vim.cmd.packadd("cmp-nvim-lsp")
+-----------------
+vim.pack.add({
+    { src = "https://github.com/saghen/blink.cmp", version = "78336bc89ee5365633bcf754d93df01678b5c08f" },
+})
+require("blink.cmp").setup({
+    keymap = { preset = "super-tab" },
+    fuzzy = { implementation = "lua" },
+    completion = {
+        documentation = {
+            auto_show = true,
+            auto_show_delay_ms = 0,
+        },
+        menu = {
+            auto_show_delay_ms = 200,
+        },
+        ghost_text = {
+            enabled = true,
+            show_with_menu = true,
+        },
+    },
+    snippets = { preset = "luasnip" },
+    sources = {
+        -- notable exceptions: path, snippet, buffer
+        -- i think these clutter the completions
+        default = { 'lsp' },
+    },
+})
 
-local cmp = require('cmp')
-cmp.setup({
-	window = {
-		completion = cmp.config.window.bordered(),
-		documentation = cmp.config.window.bordered(),
-	},
-	mapping = cmp.mapping.preset.insert({
-		['<C-f>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-	}),
-	snippet = {
-		expand = function(args)
-			require("luasnip").lsp_expand(args.body)
-		end
-	},
-	sources = cmp.config.sources({
-		{ name = 'nvim_lsp' },
-		{ name = 'luasnip' },
-		{ name = 'buffer' },
-	}),
+------------------------------
+--- auto-pair brackets
+------------------------------
+
+require("ultimate-autopair").setup({
+    { '$', '$', ft = { "typst", newline = true } },
+    config_internal_pairs = {
+        { '```', '```', newline = true, ft = { "markdown", "typst" } },
+    },
 })
