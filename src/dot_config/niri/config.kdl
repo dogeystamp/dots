@@ -336,7 +336,6 @@ binds {
     Mod+Shift+D hotkey-overlay-title="Spawn Discord"                 { spawn "qbprof" "dsc"; }
     Mod+Shift+M hotkey-overlay-title="Spawn Navidrome (music)"       { spawn "qbprof" "mus"; }
 	Mod+Shift+T hotkey-overlay-title="Spawn Timetable"               { spawn "zathura" "~/.local/share/schedule.pdf"; }
-    Mod+Ctrl+Shift+M                                                 { spawn-sh "swayimg -c info.show=no ~/.config/max.jpg"; }
 
 	// avoid using ctrl for this bind because ctrl-m counts as enter in swaylock
     Alt+L       hotkey-overlay-title="Lock session"                  { spawn "loginctl" "lock-session"; }
@@ -457,7 +456,7 @@ binds {
 
     Mod+Shift+Q { quit; }
 
-    Mod+Shift+S hotkey-overlay-title="Suspend session" { spawn "suspend.sh"; }
+    Mod+Shift+S hotkey-overlay-title="Suspend session" { spawn "systemctl" "suspend"; }
 }
 
 hotkey-overlay {
