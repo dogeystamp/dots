@@ -1,5 +1,6 @@
 " see https://plaintextaccounting.org/ for more info
 
+vim.cmd.packadd("vim-ledger")
 let g:ledger_date_format = '%Y-%m-%d'
 let g:ledger_maxwidth = 80
 let g:ledger_fillstring = '·'

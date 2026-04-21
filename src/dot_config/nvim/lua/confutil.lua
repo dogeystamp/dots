@@ -49,6 +49,11 @@ M.profile_table = {
 }
 M.dotprofile = M.profile_table[os.getenv("SYSTEM_PROFILE")] or M.profile_table.SLIM
 
+--- True if DOTS_SETUP is set.
+---
+--- When true, headlessly ensure all plugins are up to date.
+M.setup_mode = os.getenv("DOTS_SETUP") and true or false
+
 local lazy_funs = {}
 
 --- Call a function lazily.

@@ -9,27 +9,16 @@ local confutil = require("confutil")
 local keymap = confutil.keymap
 local dotprofile, profile_table, add_lazy = confutil.dotprofile, confutil.profile_table, confutil.add_lazy
 
--------------------------
+
+------------------------
 -- plugin installation
--- (requires nvim v0.12)
---
--- note that other plugins are added in different files; grep for vim.pack.add
--------------------------
-
-vim.pack.add({
-    { src = "https://github.com/ledger/vim-ledger.git",          version = "46b4b1158a6304285cab8917a4cd89f641ad8f0f" },
-    { src = "https://github.com/junegunn/fzf.vim",               version = "b9624aa012ddcbae9e79964bfd30cc1fbe3cf263" },
-})
-
--- lazily loaded
-vim.pack.add(
-    {
-        { src = "https://github.com/L3MON4D3/LuaSnip", version = "642b0c595e11608b4c18219e93b88d7637af27bc" },
-        { src = "https://github.com/saghen/blink.cmp", version = "78336bc89ee5365633bcf754d93df01678b5c08f" },
-        { src = "https://github.com/altermo/ultimate-autopair.nvim", version = "6b58234de921437836efe27714b2026ed2ee235a" },
-    },
-    { load = function() end }
-)
+------------------------
+require("plugins")
+-- headless setup mode
+if confutil.setup_mode then
+    vim.pack.update(nil, { force = true })
+    vim.cmd.quitall()
+end
 
 
 --------------------------------
@@ -38,8 +27,7 @@ vim.pack.add(
 
 -- make all window borders rounded
 vim.o.winborder = "rounded"
-
--- disable modelines (vim headers) in files
+-- disable modelines (vim settings headers) in files
 vim.o.modeline = false
 -- manually trigger modeline
 keymap("<leader>ml", function()
@@ -52,8 +40,10 @@ end)
 keymap("ga", function()
     vim.cmd [[:b#]] -- alternate between files
 end)
+
 -- fzf.vim
 -- see ':h fzf-vim' after plugin installation
+vim.cmd.packadd("fzf.vim")
 keymap("<localleader>f", vim.cmd.GFiles, { desc = "Picker: Git files" })
 keymap("<localleader>F", vim.cmd.Files)
 keymap("<localleader>b", vim.cmd.Buffers)

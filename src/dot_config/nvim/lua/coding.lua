@@ -191,12 +191,10 @@ end, {})
 -- git gutter / sign column
 ----------------------------
 
+vim.cmd.packadd("vim-gitgutter")
 vim.g.gitgutter_sign_added = '▐'
 vim.g.gitgutter_sign_modified = '▐'
 vim.g.gitgutter_sign_removed = '▐'
 vim.g.gitgutter_sign_removed_first_line = '▐'
 vim.g.gitgutter_sign_removed_above_and_below = '▐'
 vim.g.gitgutter_sign_modified_removed = '▐'
-vim.pack.add({
-    { src = "https://github.com/airblade/vim-gitgutter", version = "21c977e8597c468c7dc76001389b0b430d46a4b0" },
-})
