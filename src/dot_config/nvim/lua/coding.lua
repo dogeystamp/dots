@@ -195,6 +195,7 @@ add_lazy(function()
         { '$', '$', ft = { "typst", newline = true } },
         config_internal_pairs = {
             { '```', '```', newline = true, ft = { "markdown", "typst" } },
+            {'[',']',fly=true,dosuround=true,newline=true,space=false},  -- space=false to get [ ] not [  ] (e.g. in checklists)
         },
     })
 end, {})
