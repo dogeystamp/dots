@@ -31,6 +31,7 @@ vim.pack.add(
     { load = function() end }
 )
 
+
 --------------------------------
 -- general plugin configs
 --------------------------------
@@ -61,6 +62,21 @@ keymap("<localleader>g", ":GFiles?<Enter>")
 keymap("<localleader>h", vim.cmd.History) -- notably different from Helix bind here
 keymap("<localleader>/", vim.cmd.RG)
 keymap("<localleader>?", vim.cmd.Lines)
+
+
+--------
+-- code folding
+--
+-- useful binds include zM (close all folds), zA (recursively toggle fold), and zR (open all folds).
+-- see :h usr_28 for more information about folds.
+--------
+vim.o.foldenable = false
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.o.foldcolumn = '0'
+vim.o.foldtext = ""
+vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+
 
 --------------------------------
 -- imports (see .config/nvim/lua/)
