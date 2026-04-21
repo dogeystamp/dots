@@ -49,4 +49,30 @@ M.profile_table = {
 }
 M.dotprofile = M.profile_table[os.getenv("SYSTEM_PROFILE")] or M.profile_table.SLIM
 
+local lazy_funs = {}
+
+--- Call a function lazily.
+---@param f function
+---@param opts table
+---@diagnostic disable-next-line: unused-local
+function M.add_lazy(f, opts)
+    lazy_funs[#lazy_funs+1] = f
+end
+
+vim.api.nvim_create_augroup("Lazy", { clear = true })
+local function dispatch_lazy()
+    for _, f in ipairs(lazy_funs) do
+        f()
+    end
+    vim.api.nvim_del_augroup_by_name("Lazy")
+end
+vim.api.nvim_create_autocmd("InsertEnter", {
+    group = "Lazy",
+    callback = dispatch_lazy,
+})
+vim.api.nvim_create_autocmd("CursorHold", {
+    group = "Lazy",
+    callback = dispatch_lazy,
+})
+
 return M

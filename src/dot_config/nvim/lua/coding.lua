@@ -1,7 +1,7 @@
 -- stuff for coding
 
 local confutil = require("confutil")
-local keymap = confutil.keymap
+local keymap, add_lazy = confutil.keymap, confutil.add_lazy
 
 
 ------------------
@@ -152,55 +152,63 @@ vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 -----------------
 -- completions
 -----------------
-vim.pack.add({
-    { src = "https://github.com/saghen/blink.cmp", version = "78336bc89ee5365633bcf754d93df01678b5c08f" },
-})
-require("blink.cmp").setup({
-    keymap = { preset = "super-tab" },
-    fuzzy = { implementation = "lua" },
-    completion = {
-        documentation = {
-            auto_show = true,
-            auto_show_delay_ms = 0,
+
+add_lazy(function()
+    vim.cmd.packadd("blink.cmp")
+    require("blink.cmp").setup({
+        keymap = { preset = "super-tab" },
+        fuzzy = { implementation = "lua" },
+        completion = {
+            documentation = {
+                auto_show = true,
+                auto_show_delay_ms = 0,
+            },
+            menu = {
+                auto_show_delay_ms = 200,
+            },
+            ghost_text = {
+                enabled = true,
+                show_with_menu = true,
+            },
+            accept = {
+                auto_brackets = {
+                    enabled = false,
+                }
+            },
         },
-        menu = {
-            auto_show_delay_ms = 200,
+        snippets = { preset = "luasnip" },
+        sources = {
+            -- notable exceptions: path, snippet, buffer
+            -- i think these clutter the completions
+            default = { 'lsp' },
         },
-        ghost_text = {
-            enabled = true,
-            show_with_menu = true,
-        },
-    },
-    snippets = { preset = "luasnip" },
-    sources = {
-        -- notable exceptions: path, snippet, buffer
-        -- i think these clutter the completions
-        default = { 'lsp' },
-    },
-})
+    })
+end, {})
 
 ------------------------------
 --- auto-pair brackets
 ------------------------------
 
-require("ultimate-autopair").setup({
-    { '$', '$', ft = { "typst", newline = true } },
-    config_internal_pairs = {
-        { '```', '```', newline = true, ft = { "markdown", "typst" } },
-    },
-})
+add_lazy(function()
+    vim.cmd.packadd("ultimate-autopair.nvim")
+    require("ultimate-autopair").setup({
+        { '$', '$', ft = { "typst", newline = true } },
+        config_internal_pairs = {
+            { '```', '```', newline = true, ft = { "markdown", "typst" } },
+        },
+    })
+end, {})
 
 ----------------------------
 -- git gutter / sign column
 ----------------------------
 
-vim.pack.add({
-    { src = "https://github.com/airblade/vim-gitgutter", version = "21c977e8597c468c7dc76001389b0b430d46a4b0" },
-})
 vim.g.gitgutter_sign_added = '▐'
 vim.g.gitgutter_sign_modified = '▐'
 vim.g.gitgutter_sign_removed = '▐'
 vim.g.gitgutter_sign_removed_first_line = '▐'
 vim.g.gitgutter_sign_removed_above_and_below = '▐'
 vim.g.gitgutter_sign_modified_removed = '▐'
-vim.cmd.packadd("vim-gitgutter")
+vim.pack.add({
+    { src = "https://github.com/airblade/vim-gitgutter", version = "21c977e8597c468c7dc76001389b0b430d46a4b0" },
+})
