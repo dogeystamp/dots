@@ -15,7 +15,7 @@ set list listchars=tab:»\ ,trail:•,leadmultispace:\│\ \ \ ,extends:⇥,prec
 
 " Time neovim saves to swapfile in
 " Also time neovim recognizes cursor inactivity
-set updatetime=800
+set updatetime=100
 
 " terminal settings
 " disable line numbers
@@ -90,6 +90,8 @@ nnoremap <silent> ZF :qa<cr>
 " helix-style window management
 nnoremap <Space>w <C-w>
 
+source $XDG_CONFIG_HOME/nvim/theme.vim
+
 " see .config/nvim/lua/init.lua
 lua require('init')
 
@@ -101,4 +103,3 @@ let g:loaded_ruby_provider = 0
 " see .local/bin/quickcal.fish
 autocmd BufNew,BufNewFile,BufRead *.khal setlocal ft=khal
 
-source $XDG_CONFIG_HOME/nvim/theme.vim
