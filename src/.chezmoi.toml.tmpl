@@ -4,13 +4,15 @@
 {{- $systemprofile := promptChoiceOnce . "systemprofile" "Select a system profile (use capital letter)" $systemprofilechoices "MINIMAL" -}}
 {{- $email := promptStringOnce . "email" "Email address for Git" "jsmith@example.com" -}}
 {{- $fullname := promptStringOnce . "fullname" "Full name for Git" "Johnson"}}
+{{- $filemode := get . "filemode" | default "symlink" }}
 
-mode = "symlink"
+mode = "{{ $filemode }}"
 
 [data]
 systemprofile = {{ $systemprofile | quote }}
 email = {{ $email | quote }}
 fullname = {{ $fullname | quote }}
+filemode = {{ $filemode | quote }}
 opacity = "1.0"
 
 # theme: base16 grayscale light (Alexandre Gavioli (https://github.com/Alexx2/)
