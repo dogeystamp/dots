@@ -27,6 +27,7 @@ end
 
 -- make all window borders rounded
 vim.o.winborder = "rounded"
+vim.o.pumborder = "rounded"
 -- disable modelines (vim settings headers) in files
 vim.o.modeline = false
 -- manually trigger modeline
@@ -53,6 +54,8 @@ keymap("<localleader>h", vim.cmd.History) -- notably different from Helix bind h
 keymap("<localleader>/", vim.cmd.RG)
 keymap("<localleader>?", vim.cmd.Lines)
 
+-- see ftplugin/ledger.vim
+vim.cmd.packadd("vim-ledger")
 
 --------
 -- code folding
