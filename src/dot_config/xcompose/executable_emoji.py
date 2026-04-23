@@ -17,6 +17,7 @@ emoji = r"""
 👁️ eyei
 👄 lips
 🤔 think
+🥺 plead
 👋 wave
 ¯\\\\\\_(ツ)\\_/¯ shrug
 """.strip()
