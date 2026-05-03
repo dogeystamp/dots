@@ -1,4 +1,9 @@
+# Windows specific config
+
 [general]
 import = [
-    "~/.config/alacritty/config.toml",
+    "~/.config/alacritty/alacritty.toml",
 ]
+
+[font]
+normal = { family = "Consolas" }
