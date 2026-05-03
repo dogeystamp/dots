@@ -44,6 +44,7 @@ end)
 
 -- fzf.vim
 -- see ':h fzf-vim' after plugin installation
+vim.cmd.packadd("fzf")
 vim.cmd.packadd("fzf.vim")
 keymap("<localleader>f", vim.cmd.GFiles, { desc = "Picker: Git files" })
 keymap("<localleader>F", vim.cmd.Files)

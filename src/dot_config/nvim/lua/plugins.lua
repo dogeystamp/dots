@@ -9,6 +9,7 @@ local confutil = require("confutil")
 
 vim.pack.add({
         { src = "https://github.com/ledger/vim-ledger.git",          version = "46b4b1158a6304285cab8917a4cd89f641ad8f0f" },
+        { src = "https://github.com/junegunn/fzf",                   version = "6fefe025461b168eac2546ccba3403b70eb5da16" },
         { src = "https://github.com/junegunn/fzf.vim",               version = "b9624aa012ddcbae9e79964bfd30cc1fbe3cf263" },
         { src = "https://github.com/airblade/vim-gitgutter",         version = "21c977e8597c468c7dc76001389b0b430d46a4b0" },
         { src = "https://github.com/L3MON4D3/LuaSnip",               version = "642b0c595e11608b4c18219e93b88d7637af27bc" },
