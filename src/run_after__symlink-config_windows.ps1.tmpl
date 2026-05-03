@@ -9,13 +9,19 @@ $roamingconfdir = ([Environment]::GetFolderPath("ApplicationData"))
 $localconfdir = ([Environment]::GetFolderPath("LocalApplicationData"))
 
 {{ range $roamingconfdirs }}
-New-Item -Force -Path $roamingconfdir\{{ . }} -ItemType Junction -Value $userdir\.config\{{ . }}
+If (-Not (Test-Path $roamingconfdir\{{ . }})) {
+	New-Item -Path $roamingconfdir\{{ . }} -ItemType Junction -Value $userdir\.config\{{ . }}
+}
 {{ end }}
 
 {{ range $localconfdirs }}
-New-Item -Force -Path $localconfdir\{{ . }} -ItemType Junction -Value $userdir\.config\{{ . }}
+If (-Not (Test-Path $localconfdir\{{ . }})) {
+	New-Item -Path $localconfdir\{{ . }} -ItemType Junction -Value $userdir\.config\{{ . }}
+}
 {{ end }}
 
-New-Item -Force -Path $userdir\Documents\PowerShell -ItemType Junction -Value $userdir\.config\powershell
+If (-Not (Test-Path $userdir\Documents\PowerShell\)) {
+    New-Item -Path $userdir\Documents\PowerShell -ItemType Junction -Value $userdir\.config\powershell
+}
 
 {{- end -}}
