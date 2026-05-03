@@ -4,7 +4,7 @@
 {{- $systemprofile := promptChoiceOnce . "systemprofile" "Select a system profile (use capital letter)" $systemprofilechoices "MINIMAL" -}}
 {{- $email := promptStringOnce . "email" "Email address for Git" "jsmith@example.com" -}}
 {{- $fullname := promptStringOnce . "fullname" "Full name for Git" "Johnson"}}
-{{- $filemode := get . "filemode" | default "symlink" }}
+{{- $filemode := get . "filemode" | default (ternary "file" "symlink" (eq .chezmoi.os "windows")) }}
 
 mode = "{{ $filemode }}"
 
