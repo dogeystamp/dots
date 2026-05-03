@@ -1,0 +1,4 @@
+Set-PSReadLineOption -EditMode Vi
+Set-PSReadLineKeyHandler -Key Ctrl+f -Function AcceptSuggestion
+$env:XDG_CONFIG_HOME = "$env:USERPROFILE\.config"
+$env:SYSTEM_PROFILE = {{ .systemprofile | quote }}
