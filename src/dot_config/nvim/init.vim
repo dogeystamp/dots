@@ -73,8 +73,6 @@ snoremap 0 0
 inoremap <C-e> <C-o>A
 snoremap <C-e> <C-o>A
 
-set shell=/bin/sh
-
 " Disable highlighting when searching
 nnoremap <silent> <esc> :noh<return><esc>
 

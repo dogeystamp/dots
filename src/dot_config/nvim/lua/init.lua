@@ -22,7 +22,7 @@ end
 
 
 --------------------------------
--- general plugin configs
+-- general configs
 --------------------------------
 
 -- make all window borders rounded

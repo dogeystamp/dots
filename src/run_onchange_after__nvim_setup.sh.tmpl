@@ -1,6 +1,8 @@
+{{- if ne .chezmoi.os "windows" -}}
 #!/bin/sh
 
 # plugins.lua hash: {{ include "dot_config/nvim/lua/plugins.lua" | sha256sum }}
 
 export DOTS_SETUP=1
 nvim --headless
+{{- end -}}
