@@ -19,6 +19,7 @@ emoji = r"""
 🤔 think
 🥺 plead
 👋 wave
+😒 unamus
 ¯\\\\\\_(ツ)\\_/¯ shrug
 """.strip()
 
