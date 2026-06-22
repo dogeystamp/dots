@@ -31,11 +31,8 @@ if set -q SSH_TTY
 	function fish_prompt
 		set -l usercolor (set_color brblack)
 
-		printf "%s(ssh) %s%s@%s " \
-			$uniquecol \
-			$usercolor \
-			(echo $USER | string shorten -m 5 -c '') \
-			(echo $hostname | string shorten -m 3 -c '')
+		printf "%s(ssh) " \
+			$uniquecol
 		ssh_old_fish_prompt
 	end
 end
