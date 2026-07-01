@@ -1,5 +1,5 @@
 # For all themes, run `bat --list-themes`
---theme="ansi"
+--theme="base16"
 
 # disable decorations
 --plain
