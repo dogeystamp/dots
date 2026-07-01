@@ -142,7 +142,8 @@ vim.lsp.config('lua_ls', {
 
 add_lazy(function()
     vim.cmd.packadd("blink.cmp")
-    require("blink.cmp").setup({
+    local cmp = require("blink.cmp")
+    cmp.setup({
         keymap = { preset = "super-tab" },
         fuzzy = { implementation = "lua" },
         completion = {
@@ -170,6 +171,9 @@ add_lazy(function()
             default = { 'lsp' },
         },
     })
+    keymap("<S-Tab>", function ()
+        cmp.show()
+    end, { noremap = true, silent = true, mode = "i" })
 end, {})
 
 ------------------------------
@@ -182,7 +186,7 @@ add_lazy(function()
         { '$', '$', ft = { "typst", newline = true } },
         config_internal_pairs = {
             { '```', '```', newline = true, ft = { "markdown", "typst" } },
-            {'[',']',fly=true,dosuround=true,newline=true,space=false},  -- space=false to get [ ] not [  ] (e.g. in checklists)
+            { '[',   ']',   fly = true,     dosuround = true,            newline = true, space = false }, -- space=false to get [ ] not [  ] (e.g. in checklists)
         },
     })
 end, {})
