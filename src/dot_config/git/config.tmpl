@@ -54,3 +54,30 @@ verbose = true
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+
+[core]
+pager = delta
+
+[interactive]
+diffFilter = delta --color-only
+
+[delta]
+navigate = true
+syntax-theme = base16
+commit-decoration-style = "ol"
+file-decoration-style = "ul ol"
+file-style = "bold"
+file-modified-label = "~"
+file-removed-label = "-"
+file-renamed-label = "?"
+file-added-label = "+"
+grep-file-style = "bold"
+grep-header-decoration-style = "ol"
+grep-line-number-style = "bold"
+
+hunk-header-decoration-style = "blue ol"
+hunk-header-style = "italic"
+
+[merge]
+conflictStyle = zdiff3
+
