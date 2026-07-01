@@ -1,0 +1,16 @@
+#:schema https://docs.jj-vcs.dev/latest/config-schema.json
+
+[ui]
+diff-formatter = ["difft", "--color=always", "--display=inline", "$left", "$right"]
+diff-expected-exit-codes = [0, 1]
+show-cryptographic-signatures = true
+
+[user]
+name = "{{ .fullname }}"
+email = "{{ .email }}"
+
+[signing]
+backend = "ssh"
+key = "~/.ssh/keys/sign.pub"
+backends.ssh.allowed-signers = "~/.ssh/allowed_signers"
+behavior = "keep"
