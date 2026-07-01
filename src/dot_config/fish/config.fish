@@ -38,8 +38,6 @@ if status is-interactive
 	set fish_color_command white --bold
 	set fish_color_autosuggestion blue --italics
 
-	source ~/.config/fish/functions/extra_prompt.fish
-
 	if test $SYSTEM_PROFILE = "DEFAULT"
 		source ~/.config/fish/functions/fzf_binds.fish
 		fzf_key_bindings

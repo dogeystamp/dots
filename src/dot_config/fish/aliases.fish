@@ -10,6 +10,7 @@ function hide --description "swallow window"
 	end
 end
 
+function rgg --wraps rg; command rg --json $argv | delta; end
 function mpv; hide mpv mpv $argv; end
 function darkmode;
 	niri msg action do-screen-transition
@@ -28,16 +29,32 @@ alias cp='cp -n'
 alias thur='hide org.pwmt.zathura zathura'
 alias zathsec='/usr/bin/zathura-sandbox -c ~/.config/zathura-sec'
 function tmx; tmux -u -2 $argv; end
-function mpvy; mpv --profile=network $argv -- (cb -b | sed 's/yewtu\\.be/www.youtube\\.com/g'); end
+function mpvy; mpv --profile=network $argv -- (cb -b | sed 's/yewtu\\.be/www.youtube\\.com/g' | sed 's/inv\\.nadeko\\.net/www.youtube\\.com/g'); end
 function nvimp; nvim -u NONE -c "setlocal history=0 nobackup nomodeline noshelltemp noswapfile noundofile nowritebackup secure viminfo=\"\"" $argv; end
 alias nvic 'chezmoi edit -a'
 function pdfr; pdftotext $argv - | nvim; end
 function arf; mpv --shuffle --no-resume-playback ~/med/memes/arf; end
+
+# notes
 function xx; $EDITOR  ~/core/not/xx.tsv; end
 function dr; $EDITOR  ~/core/not/dr.txt; end
 function bk; $EDITOR  ~/core/not/bk.txt; end
 function rem; rem.sh edit; end
 function ldg; $EDITOR ~/core/not/journal.ldg; end
+function nt; $EDITOR  ~/core/not/ct/$argv[1].txt; end
+function tl; $EDITOR ~/core/not/tasks.txt; end
+function ct
+    # contains rng seed, changed after every finished session
+    set CT_PATH "$XDG_CACHE_HOME"/ct
+    touch "$CT_PATH"
+
+    set CT_TASK (shuf --random-source "$CT_PATH" -n 1 ~/core/not/tasks.txt)
+    notify-send "$CT_TASK"
+    termdown 50m \
+        && notify-send "DONE" \
+        && head -c 1000 /dev/random > "$CT_PATH"
+end
+
 alias ev "khal list"
 alias units='units -H ""'
 alias xxd='tinyxxd'
