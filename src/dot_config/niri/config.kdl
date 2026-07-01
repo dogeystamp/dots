@@ -38,17 +38,7 @@ input {
 
 output "HDMI-A-1" {
 	focus-at-startup
-	position x=1920 y=0
-    // position x=0 y=0
 	mode "2560x1440@143.912"
-}
-
-output "eDP-1" {
-	position x=4480 y=0 // 1920 + 2560 = 4480
-}
-
-output "DP-1" {
-	position x=2560 y=0
 }
 
 overview {
@@ -457,6 +447,12 @@ binds {
     Mod+Shift+Q { quit; }
 
     Mod+Shift+S hotkey-overlay-title="Suspend session" { spawn "systemctl" "suspend"; }
+}
+
+recent-windows {
+    // i don't use this and it conflicts with Windows alt-tab which is actually
+    // necessary, so turn it off
+    off
 }
 
 hotkey-overlay {
