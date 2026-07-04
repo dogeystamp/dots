@@ -1,35 +1,40 @@
 function fish_prompt
+    # preserve prior command status
 	set -l cmd_status $status
 
-	if fish_is_root_user
-		set letter '#'
-	else
-		set letter '>'
-	end
+	set -l fish_color_cwd (set_color white)
+    set -l fish_color_vcs (set_color white)
+    set -l fish_color_letter (set_color white)
+    set -l fish_color_status (set_color --reverse red)
+    set -l fish_color_login (set_color white)
 
-	set -l fish_color_cwd white
+    set -l components
 
-	set -l stat_code ""
-	if test $cmd_status -ne 0
-		set stat_code (set_color --reverse red)(fish_status_to_signal $cmd_status)(set_color normal)" "
-	end
-
-	set -l git_prompt (string trim (fish_git_prompt))
-	if test -n $fish_git_prompt
-		set git_prompt $git_prompt" "
-	end
-
-    if status is-login
-        set login_prompt (prompt_login)" "
+    # VCS
+    set -l vcs (vcs_prompt)
+    if test -n "$vcs"
+        set -a components $fish_color_vcs$vcs
     end
 
-	printf '%s%s%s%s'\
-		(set_color --italic red) \
-		$git_prompt \
-		$stat_code \
-		(set_color normal)
-		
-	printf '%s%s%s%s%s%s ' $login_prompt (set_color $fish_color_cwd) (prompt_pwd) (set_color cyan) $letter (set_color normal)
+    # Command status
+    if test $cmd_status -ne 0
+        set -a components $fish_color_status(fish_status_to_signal $cmd_status)
+    end
+
+    # User/host
+    if status is-login
+        set -a components $fish_color_login(prompt_login)
+    end
+
+    # PWD + final letter
+    if fish_is_root_user
+        set letter '#'
+    else
+        set letter '>'
+    end
+    set -a components $fish_color_cwd(prompt_pwd)$fish_color_letter$letter
+
+    printf "%s " (string join (set_color normal)" " $components)
 end
 
 # https://fishshell.com/docs/3.2/cmds/fish_mode_prompt.html
