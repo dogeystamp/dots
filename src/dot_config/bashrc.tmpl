@@ -1,5 +1,8 @@
-#!/bin/sh
 # vim: set ft=sh:
+
+# Changes to this config need to be tested on:
+# - Termux
+# - Niri login
 
 {{- $fish_path := "/usr/bin/fish" }}
 
@@ -7,8 +10,10 @@
 {{- $fish_path = "/data/data/com.termux/files/usr/bin/fish" }}
 {{- end }}
 
-# use fish interactively
-[ -x {{ $fish_path }} ] && export SHELL={{ $fish_path }}
-[[ -z $WAYLAND_DISPLAY && $XDG_VTNR -eq 1 ]] && EYECANDY="" exec niri-session
-[[ -z $DISPLAY && $XDG_VTNR -eq 2 ]] && exec startx
-[[ -z $WAYLAND_DISPLAY && $XDG_VTNR -eq 3 ]] && EYECANDY=1 exec niri-session
+test -x "{{ $fish_path }}" && export SHELL="{{ $fish_path }}"
+test -z "$WAYLAND_DISPLAY" && test "$XDG_VTNR" = "1" && exec niri-session
+
+# delegate to fish shell
+if shopt -q login_shell; then
+    exec "{{ $fish_path }}" -l
+fi
