@@ -97,6 +97,8 @@ fzf
 yt-dlp
 brightnessctl
 ripgrep
+fd
+sd
 netcat
 nmap
 remmina
