@@ -1,3 +1,13 @@
+alias mv='mv -n'
+alias cp='cp -n'
+alias ls='ls -a --color=auto'
+
+function _git_root --description "Convenience variable for git root." --on-event fish_postexec
+    # Git root dir is accessible as $g.
+    # Fish completions just work with this.
+    set -g g (git rev-parse --show-toplevel 2>/dev/null)
+end
+
 function hide --description "swallow window"
     if test $argv[-1] = "--list-options"
         return
@@ -10,8 +20,6 @@ function hide --description "swallow window"
 	end
 end
 
-function rgg --wraps rg; command rg --json $argv | delta; end
-function mpv; hide mpv mpv $argv; end
 function darkmode;
 	niri msg action do-screen-transition
 	gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
@@ -20,16 +28,19 @@ function lightmode
 	niri msg action do-screen-transition
 	gsettings set org.gnome.desktop.interface color-scheme 'default'
 end
+
+function rg --wraps /usr/bin/rg; command rg --json $argv | delta; end
+function mpv --wraps /usr/bin/mpv; hide mpv mpv $argv; end
+function mpvy; mpv --profile=network $argv -- (cb -b | sed 's/yewtu\\.be/www.youtube\\.com/g' | sed 's/inv\\.nadeko\\.net/www.youtube\\.com/g'); end
+
 function imvi --wraps swayimg; hide swayimg swayimg $argv; end
 alias neofetch='fastfetch'
-function mann --wraps man; nvim "+hide Man $argv"; end
+function man --wraps /usr/bin/man; nvim "+hide Man $argv"; end
 alias hx='helix'
-alias mv='mv -n'
-alias cp='cp -n'
+
 alias thur='hide org.pwmt.zathura zathura'
 alias zathsec='/usr/bin/zathura-sandbox -c ~/.config/zathura-sec'
 function tmx; tmux -u -2 $argv; end
-function mpvy; mpv --profile=network $argv -- (cb -b | sed 's/yewtu\\.be/www.youtube\\.com/g' | sed 's/inv\\.nadeko\\.net/www.youtube\\.com/g'); end
 function nvimp; nvim -u NONE -c "setlocal history=0 nobackup nomodeline noshelltemp noswapfile noundofile nowritebackup secure viminfo=\"\"" $argv; end
 alias nvic 'chezmoi edit -a'
 function pdfr; pdftotext $argv - | nvim; end
@@ -41,7 +52,6 @@ function dr; $EDITOR  ~/core/not/dr.txt; end
 function bk; $EDITOR  ~/core/not/bk.txt; end
 function rem; rem.sh edit; end
 function ldg; $EDITOR ~/core/not/journal.ldg; end
-function nt; $EDITOR  ~/core/not/ct/$argv[1].txt; end
 function tl; $EDITOR ~/core/not/tasks.txt; end
 function ct
     # contains rng seed, changed after every finished session
