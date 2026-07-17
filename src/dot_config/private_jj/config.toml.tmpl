@@ -23,6 +23,7 @@ sign-on-push = true
 draft_commit_description= '''
 separate("\n",
     coalesce(description, "\n"),
-    indent("JJ:  ", diff.summary())
+    indent("JJ:  ", diff.summary()),
+    indent("JJ:  ", diff.git()),
 )
 '''
