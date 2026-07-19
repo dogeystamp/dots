@@ -20,7 +20,7 @@ function hide --description "swallow window"
 	end
 end
 
-function darkmode;
+function darkmode
 	niri msg action do-screen-transition
 	gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 end
@@ -40,7 +40,6 @@ alias hx='helix'
 
 alias thur='hide org.pwmt.zathura zathura'
 alias zathsec='/usr/bin/zathura-sandbox -c ~/.config/zathura-sec'
-function tmx; tmux -u -2 $argv; end
 function nvimp; nvim -u NONE -c "setlocal history=0 nobackup nomodeline noshelltemp noswapfile noundofile nowritebackup secure viminfo=\"\"" $argv; end
 alias nvic 'chezmoi edit -a'
 function pdfr; pdftotext $argv - | nvim; end
@@ -89,21 +88,9 @@ end
 function lstb; qbprof lstb; end
 # paperless
 function papr; qbprof papr; end
-function work; qbprof work; end
-function chat; qbprof chat; end
-function zoom; qbprof zoom; end
 
 # git stuff
-abbr -a -- gs git status
 abbr -a -- gt git switch
-abbr -a -- gl git log
-abbr -a -- ga git add
-abbr -a -- gcs git commit -S
-abbr -a -- gc git commit
-abbr -a -- gca git commit -a
-abbr -a -- gas git commit -aS
-abbr -a -- gp git push
-abbr -a --position anywhere -- pgh "&& git push gh"
 abbr -a --position anywhere -- rbsign "--exec 'git commit --amend --no-edit -n -S'"
 
 # datetime
