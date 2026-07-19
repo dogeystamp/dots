@@ -1,6 +1,6 @@
 alias mv='mv -n'
 alias cp='cp -n'
-alias ls='ls -a --color=auto'
+alias ls='ls -vA --color=auto'
 
 function _git_root --description "Convenience variable for git root." --on-event fish_postexec
     # Git root dir is accessible as $g.
