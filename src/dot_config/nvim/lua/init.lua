@@ -46,8 +46,8 @@ end)
 -- see ':h fzf-vim' after plugin installation
 vim.cmd.packadd("fzf")
 vim.cmd.packadd("fzf.vim")
-keymap("<localleader>f", vim.cmd.GFiles, { desc = "Picker: Git files" })
-keymap("<localleader>F", vim.cmd.Files)
+-- fzf is configured to use fd on this system, which respects gitignore
+keymap("<localleader>f", vim.cmd.Files)
 keymap("<localleader>b", vim.cmd.Buffers)
 keymap("<localleader>j", vim.cmd.Jumps)
 keymap("<localleader>g", ":GFiles?<Enter>")
