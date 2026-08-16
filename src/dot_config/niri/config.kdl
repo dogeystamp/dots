@@ -8,6 +8,7 @@ spawn-at-startup "waybar"
 spawn-at-startup "swayidle"
 spawn-sh-at-startup "wlsunset -l 45.5 -L -73.5 -t 3000"
 
+include "wallpaper.kdl"
 
 input {
     keyboard {
@@ -26,8 +27,9 @@ input {
 
     touchpad {
         tap
-		// disable while typing
-		dwt
+        // disable while typing
+        dwt
+        off
     }
 
 	mouse {}
@@ -41,8 +43,8 @@ output "HDMI-A-1" {
 	mode "2560x1440@143.912"
 }
 
-overview {
-	backdrop-color "#eeeeee"
+output "eDP-1" {
+    scale 1.5
 }
 
 layout {
@@ -73,17 +75,17 @@ layout {
     default-column-width { proportion 0.333333; }
 
 	preset-column-widths {
-		fixed 640
         proportion 0.33333
         proportion 0.5
+        proportion 0.25
+        fixed 640
         proportion 0.66667
 	}
 
 	preset-window-heights {
+        proportion 1.0
 		fixed 360
         proportion 0.5
-        proportion 0.66667
-        proportion 1.0
 	}
 
 	focus-ring {
@@ -325,7 +327,7 @@ binds {
     Mod+Shift+P                                                      { spawn "keepassxc"; }
     Mod+Shift+D hotkey-overlay-title="Spawn Discord"                 { spawn "qbprof" "dsc"; }
     Mod+Shift+M hotkey-overlay-title="Spawn Navidrome (music)"       { spawn "qbprof" "mus"; }
-	Mod+Shift+T hotkey-overlay-title="Spawn Timetable"               { spawn "zathura" "~/.local/share/schedule.pdf"; }
+	Mod+Shift+T hotkey-overlay-title="Spawn Timetable"               { spawn-sh "zathura ~/.local/share/schedule.pdf"; }
 
 	// avoid using ctrl for this bind because ctrl-m counts as enter in swaylock
     Alt+L       hotkey-overlay-title="Lock session"                  { spawn "loginctl" "lock-session"; }
@@ -422,8 +424,10 @@ binds {
     Mod+BracketLeft  { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
 
-    Mod+R { switch-preset-column-width; }
-    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Minus { switch-preset-column-width-back; }
+    Mod+Equal { switch-preset-column-width; }
+    Mod+R { set-column-width "+10%"; }
+    Mod+Shift+R { set-column-width "-10%"; }
     Mod+Ctrl+R { reset-window-height; }
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
@@ -434,8 +438,6 @@ binds {
 	Mod+F2 { set-dynamic-cast-monitor; }
 	Mod+F3 { clear-dynamic-cast-target; }
 
-    Mod+Minus { set-column-width "-10%"; }
-    Mod+Equal { set-column-width "+10%"; }
 
     Mod+Shift+Minus { set-window-height "-10%"; }
     Mod+Shift+Equal { set-window-height "+10%"; }
