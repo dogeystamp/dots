@@ -27,16 +27,22 @@ function GitRoot()
 	return fnamemodify(finddir('.git', ";"), ":h")
 endfunc
 
-" compile typst doc on write
+" compile typst doc on write.
+"
+" use the gt/gT (go to next/prev tab) binds to switch to/from the compile
+" output buffer.
 function TypstWatch()
-       vsp
-       vertical resize 20
-       exec 'terminal ' .. 'typst watch --root ' .. GitRoot() .. " " .. expand("%:")
-       exec "norm \<c-w>h"
+    let file_path = GitRoot() .. " " .. expand("%:")
+    tabnew
+    exec 'terminal ' .. 'typst watch --root ' .. file_path
+    tabprev
 endfunc
 
-nnoremap <silent> <leader>fc :call TypstWatch()<cr>
+function OpenZathura()
+    silent exec "!zathura --fork " . expand("%:p:r") . ".pdf &"
+endfunc
 
-nnoremap <silent><leader>fr :silent exec "!zathura --fork " . expand("%:p:r") . ".pdf &"<cr>
+nnoremap <silent> <leader>fc :call TypstWatch()<cr>:call OpenZathura()<cr>
+nnoremap <silent><leader>fr :call OpenZathura()<cr>
 
 let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '$':'$', "```" : "```", "`": "`"}
