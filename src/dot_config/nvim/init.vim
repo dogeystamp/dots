@@ -87,6 +87,11 @@ nnoremap <silent> ZF :qa<cr>
 " helix-style window management
 nnoremap <Space>w <C-w>
 
+" scroll horizontally
+set nowrap
+nnoremap <C-h> 20zh
+nnoremap <C-l> 20zl
+
 source $XDG_CONFIG_HOME/nvim/theme.vim
 
 " see .config/nvim/lua/init.lua
@@ -100,3 +105,6 @@ let g:loaded_ruby_provider = 0
 " see .local/bin/quickcal.fish
 autocmd BufNew,BufNewFile,BufRead *.khal setlocal ft=khal
 
+" this annoys me
+nnoremap H <Nop>
+nnoremap L <Nop>
