@@ -4,7 +4,6 @@
 M = {}
 
 vim.cmd.packadd("LuaSnip")
-
 local ls = require("luasnip")
 
 -- see coding.lua because it also uses luasnip

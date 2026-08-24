@@ -142,9 +142,24 @@ vim.lsp.config('lua_ls', {
 
 add_lazy(function()
     vim.cmd.packadd("blink.cmp")
+    vim.cmd.packadd("luasnip")
     local cmp = require("blink.cmp")
+    local ls = require("luasnip")
+
     cmp.setup({
-        keymap = { preset = "super-tab" },
+        keymap = {
+            preset = "enter",
+            ['<Tab>'] = {
+                function()
+                    if ls.in_snippet() and ls.locally_jumpable(1) then
+                        ls.jump(1)
+                        return true
+                    end
+                    return false
+                end,
+                'fallback',
+            }
+        },
         fuzzy = { implementation = "lua" },
         completion = {
             documentation = {
@@ -171,7 +186,7 @@ add_lazy(function()
             default = { 'lsp' },
         },
     })
-    keymap("<S-Tab>", function ()
+    keymap("<S-Tab>", function()
         cmp.show()
     end, { noremap = true, silent = true, mode = "i" })
 end, {})
