@@ -1,6 +1,6 @@
 alias mv='mv -n'
 alias cp='cp -n'
-alias ls='ls -vA --color=auto'
+alias ls='ls -v --color=auto'
 
 function _git_root --description "Convenience variable for git root." --on-event fish_postexec
     # Git root dir is accessible as $g.
@@ -29,7 +29,7 @@ function lightmode
 	gsettings set org.gnome.desktop.interface color-scheme 'default'
 end
 
-function rg --wraps /usr/bin/rg; command rg --json $argv | delta; end
+# function rg --wraps /usr/bin/rg; command rg --json $argv | delta; end
 function mpv --wraps /usr/bin/mpv; hide mpv mpv $argv; end
 function mpvy; mpv --profile=network $argv -- (cb -b | sed 's/yewtu\\.be/www.youtube\\.com/g' | sed 's/inv\\.nadeko\\.net/www.youtube\\.com/g'); end
 
@@ -96,3 +96,11 @@ abbr -a --position anywhere -- rbsign "--exec 'git commit --amend --no-edit -n -
 # datetime
 function __date_today; date "+%Y-%m-%d"; end
 abbr -a --position anywhere today --function __date_today
+
+# erase sandbox, preserving files given in arguments
+function preserve
+    mkdir ~/.cache/zoo2 \
+    && cp -r $argv ~/.cache/zoo2 \
+    && trash ~/zoo \
+    && mv ~/.cache/zoo2 ~/zoo
+end
