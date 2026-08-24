@@ -1,3 +1,8 @@
+# modifications:
+# - ctrl-t rebound as ctrl-e
+# - ctrl-t command set to fd instead of default fzf walker
+# - pass search root directory to fd
+
 ### key-bindings.fish ###
 #     ____      ____
 #    / __/___  / __/
@@ -113,7 +118,7 @@ function fzf_key_bindings
       "--reverse --walker=file,dir,follow,hidden --scheme=path" \
       "--multi $FZF_CTRL_T_OPTS --print0")
 
-    set -lx FZF_DEFAULT_COMMAND "$FZF_CTRL_T_COMMAND"
+    set -lx FZF_DEFAULT_COMMAND "fd . $dir"
     set -lx FZF_DEFAULT_OPTS_FILE
 
     set -l result (eval (__fzfcmd) --walker-root=$dir --query=$fzf_query | string split0)
@@ -202,8 +207,8 @@ function fzf_key_bindings
   end
 
   if not set -q FZF_CTRL_T_COMMAND; or test -n "$FZF_CTRL_T_COMMAND"
-    bind \ct fzf-file-widget
-    bind -M insert \ct fzf-file-widget
+    bind \ce fzf-file-widget
+    bind -M insert \ce fzf-file-widget
   end
 
   if not set -q FZF_ALT_C_COMMAND; or test -n "$FZF_ALT_C_COMMAND"
