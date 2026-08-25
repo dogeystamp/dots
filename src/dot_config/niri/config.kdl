@@ -424,10 +424,10 @@ binds {
     Mod+BracketLeft  { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
 
-    Mod+Minus { switch-preset-column-width-back; }
-    Mod+Equal { switch-preset-column-width; }
-    Mod+R { set-column-width "+10%"; }
-    Mod+Shift+R { set-column-width "-10%"; }
+    Mod+Shift+R { switch-preset-column-width-back; }
+    Mod+R { switch-preset-column-width; }
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
     Mod+Ctrl+R { reset-window-height; }
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
