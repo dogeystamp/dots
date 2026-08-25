@@ -147,15 +147,6 @@ window-rule {
 	clip-to-geometry true
 }
 
-window-rule {
-	match title="swayimg: max.jpg"
-	baba-is-float true
-	open-floating true
-	tiled-state false
-	default-window-height { fixed 412; }
-	default-column-width { fixed 353; }
-}
-
 // clipedit.sh alacritty popup
 window-rule {
     match app-id=r#"popup-bottom-center"#
@@ -286,13 +277,10 @@ window-rule {
 }
 
 window-rule {
-	match title="Navidrome"
-	open-maximized true
-}
-
-window-rule {
-	match title="Discord"
-	open-maximized true
+	match title="mus.dogeystamp.com"
+	match title="app.discord.com"
+	match title="mail.google.com"
+    default-column-width { proportion 0.5; }
 }
 
 binds {
@@ -322,11 +310,12 @@ binds {
 
     Mod+Shift+Return hotkey-overlay-title="Spawn Terminal"           { spawn "newterm.sh"; }
     Mod+P                                                            { spawn "fuzzel"; }
-    Mod+Shift+B                                                      { spawn "qutebrowser"; }
+    Mod+Shift+B                                                      { spawn "chrome_profile.fish" "transient"; }
     Mod+B                                                            { spawn "chromium"; }
     Mod+Shift+P                                                      { spawn "keepassxc"; }
-    Mod+Shift+D hotkey-overlay-title="Spawn Discord"                 { spawn "qbprof" "dsc"; }
-    Mod+Shift+M hotkey-overlay-title="Spawn Navidrome (music)"       { spawn "qbprof" "mus"; }
+    Mod+Shift+D hotkey-overlay-title="Spawn Discord"                 { spawn "chrome_profile.fish" "discord"; }
+    Mod+Shift+M hotkey-overlay-title="Spawn Navidrome (music)"       { spawn "chrome_profile.fish" "mus"; }
+    Mod+M hotkey-overlay-title="Spawn Mail"                          { spawn "chrome_profile.fish" "mail"; }
 	Mod+Shift+T hotkey-overlay-title="Spawn Timetable"               { spawn-sh "zathura ~/.local/share/schedule.pdf"; }
 
 	// avoid using ctrl for this bind because ctrl-m counts as enter in swaylock

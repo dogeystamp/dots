@@ -28,10 +28,11 @@ chezmoi will prompt you for a choice.
 
 - The `input` section of `.config/niri/config.kdl` provides changes I like, such as swapping escape and caps lock, which you should remove if you don't need.
 
-- My qutebrowser configuration emphasizes privacy over usability, and you might need to edit it to suit your needs if you want to use it.
-
 - Neovim v0.12.1 is required; this version makes the configuration much simpler and easier to maintain.
   For older Neovim, use [commit 53ed26117](https://github.com/dogeystamp/dots/commit/53ed261172825f48245191254c98f81109fbfe45).
+
+- Some configurations require you run the `install_root.sh` command as root to
+  be installed.
 
 **Desktop Preview**
 

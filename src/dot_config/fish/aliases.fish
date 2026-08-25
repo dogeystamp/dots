@@ -80,14 +80,7 @@ function musrec
 	end
 end
 
-
-#
-# qutebrowser profiles
-#
-# listenbrainz
-function lstb; qbprof lstb; end
-# paperless
-function papr; qbprof papr; end
+alias c 'chrome_profile.fish'
 
 # git stuff
 abbr -a -- gt git switch
