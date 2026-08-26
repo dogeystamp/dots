@@ -149,16 +149,7 @@ add_lazy(function()
     cmp.setup({
         keymap = {
             preset = "enter",
-            ['<Tab>'] = {
-                function()
-                    if ls.in_snippet() and ls.locally_jumpable(1) then
-                        ls.jump(1)
-                        return true
-                    end
-                    return false
-                end,
-                'fallback',
-            }
+            ['<Tab>'] = false,  -- defer to our snippets.lua Tab bind
         },
         fuzzy = { implementation = "lua" },
         completion = {
@@ -198,10 +189,22 @@ end, {})
 add_lazy(function()
     vim.cmd.packadd("ultimate-autopair.nvim")
     require("ultimate-autopair").setup({
-        { '$', '$', ft = { "typst", newline = true } },
+        {
+            '$',
+            '$',
+            ft = { "typst" },
+            newline = true
+        },
         config_internal_pairs = {
             { '```', '```', newline = true, ft = { "markdown", "typst" } },
-            { '[',   ']',   fly = true,     dosuround = true,            newline = true, space = false }, -- space=false to get [ ] not [  ] (e.g. in checklists)
+            {
+                '[',
+                ']',
+                fly = true,
+                dosuround = true,
+                newline = true,
+                space = false -- space=false to get [ ] not [  ] (e.g. in checklists)
+            },
         },
     })
 end, {})
