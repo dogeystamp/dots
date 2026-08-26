@@ -33,7 +33,7 @@ keymap('gi', vim.lsp.buf.implementation, opts)
 keymap('<localleader>r', vim.lsp.buf.rename, opts)
 keymap('<localleader>a', vim.lsp.buf.code_action, opts)
 keymap('<localleader>x', vim.lsp.codelens.run, opts)
-keymap('<leader>f', vim.lsp.buf.format, opts)
+keymap('<leader>fm', vim.lsp.buf.format, opts)
 
 
 --------------------

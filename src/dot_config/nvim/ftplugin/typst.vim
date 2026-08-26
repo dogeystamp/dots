@@ -31,16 +31,22 @@ endfunc
 "
 " use the gt/gT (go to next/prev tab) binds to switch to/from the compile
 " output buffer.
-function TypstWatch()
-    let file_path = GitRoot() .. " " .. expand("%:")
-    tabnew
-    exec 'terminal ' .. 'typst watch --root ' .. file_path
-    tabprev
-endfunc
+"function TypstWatch()
+"    let git_root = GitRoot()
+"    let file_path = expand("%:p")
+"    let pdf_path = expand("%:p:r") .. '.pdf'
+"    echom pdf_path
+"    return 2342
+"    tabnew
+"    exec 'terminal ' .. 'typst watch --root ' .. GitRoot .. ' ' .. file_path
+"    tabprev
+"endfunc
 
-function OpenZathura()
-    silent exec "!zathura --fork " . expand("%:p:r") . ".pdf &"
-endfunc
+"function OpenZathura()
+"    let pdf_path = expand("%:p:r") .. '.pdf'
+"    call wait(1000, { -> lua vim.uv.fs_stat() })
+"    silent exec "!zathura --fork " .. pdf_path .. " &"
+"endfunc
 
 nnoremap <silent> <leader>fc :call TypstWatch()<cr>:call OpenZathura()<cr>
 nnoremap <silent><leader>fr :call OpenZathura()<cr>
