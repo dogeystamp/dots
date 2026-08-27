@@ -34,13 +34,13 @@ end
 --- Open Zathura for the pdf compiled from this buffer.
 local function typst_zathura()
     local pdf_path = vim.fn.expand("%:p:r") .. ".pdf";
-    local ok = vim.wait(1000, function()
+    local ok = vim.wait(3000, function()
         return vim.uv.fs_stat(pdf_path) ~= nil
     end)
     if ok then
         os.execute("zathura --fork " .. pdf_path .. " &")
     else
-        error("file " .. pdf_path " did not exist")
+        error("file " .. pdf_path .. " did not exist")
     end
 end
 
