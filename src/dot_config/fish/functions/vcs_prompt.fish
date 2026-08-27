@@ -3,14 +3,13 @@ function jj_prompt --description "Jujutsu VCS prompt (custom)"
         # no jj
         return 1
     end
-    if not jj root > /dev/null 2>/dev/null
+    if not jj root --ignore-working-copy > /dev/null 2>/dev/null
         # not in jj repo
         return 1
     end
 
     jj log 2>/dev/null \
         --no-graph \
-        --ignore-working-copy \
         --color=always \
         --revisions @ \
         --template '

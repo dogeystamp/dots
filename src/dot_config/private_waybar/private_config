@@ -8,18 +8,18 @@
 			"format": "󰃭 <small>{}</small>",
 			"exec": "$HOME/.local/bin/next_event.sh",
 			"interval": 60,
-			"escape": true,
+			"escape": true
 		},
 		"custom/track": {
 			"format": "{}",
-			"exec": "$HOME/.local/bin/track-timer.fish",
+			"exec": "$HOME/.local/share/cargo/bin/timer short",
 			"interval": 1,
-			"escape": true,
+			"escape": false
 		},
 		"clock#time": {
 			"format": "{:%H:%M}",
-			"tooltip": false,
-		},
+			"tooltip": false
+		}
 	},
 	{
 		"layer": "top",
@@ -31,24 +31,24 @@
 		"clock": {
 			"format": "{:%a %d %b<small>  </small>%H:%M %Z}",
 			"tooltip-format": "{:%a %b %d, %Y (%Z / UTC%z)}",
-			"tooltip": true,
+			"tooltip": true
 		},
 		"clock#week": {
 			"format": "W{:%V}",
-			"tooltip": false,
+			"tooltip": false
 		},
 		"group/sliders": {
 			"orientation": "horizontal",
 			"transition-left-to-right": false,
 			"drawer": {
-				"transition-duration": 500,
+				"transition-duration": 500
 			},
 			"modules": [
 				"custom/arrow",
 				"backlight",
 				"pulseaudio",
-				"idle_inhibitor",
-			],
+				"idle_inhibitor"
+			]
 		},
 		"niri/window": {
 			"max-length": 50
@@ -67,10 +67,10 @@
 			 "tooltip-format": "{capacity}%",
 			 "format-icons": {
 				 "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-				 "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂋", "󰂅"],
+				 "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂋", "󰂅"]
 			 },
 			 "states": {
-				"critical": 15,
+				"critical": 15
 			 }
 		},
 		"memory": {
@@ -78,16 +78,16 @@
 			 "tooltip-format": "Memory: {percentage}% ({used} / {total} GiB, {avail} GiB left)",
 			 "states": {
 				"high": 50,
-				"critical": 75,
+				"critical": 75
 			 },
-			 "interval": 1,
+			 "interval": 1
 		},
 		"cpu": {
 			 "format": "",
 			 "states": {
 				"high": 70,
-				"critical": 90,
-			 },
+				"critical": 90
+			 }
 		},
 		"bluetooth": {
 			"format": "",
@@ -114,7 +114,7 @@
 				"activated": "",
 				"deactivated": ""
 			},
-			"timeout": 60.5,
+			"timeout": 60.5
 		},
 		"mpris": {
 			"title-len": 65,
@@ -123,7 +123,7 @@
 			"dynamic-order": ["artist", "title"],
 			"tooltip-format": "{dynamic}",
 			"format": "",
-			"format-paused": "",
+			"format-paused": ""
 		},
 		"custom/help": {
 			"format": "󰡾",
@@ -133,7 +133,7 @@
 		"custom/arrow": {
 			"format": "<small> </small>",
 			"exec-on-event": false,
-			"tooltip": false,
+			"tooltip": false
 		},
 		"pulseaudio": {
 			"format": "{icon}",
@@ -144,13 +144,13 @@
 			},
 			"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
 			"on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-",
-			"on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+",
+			"on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"
 		},
 		"backlight": {
 			"device": "intel_backlight",
 			"format": "{icon}",
 			"tooltip-format": "{percent}%",
 			"format-icons": ["󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖"]
-		},
+		}
 	}
 ]

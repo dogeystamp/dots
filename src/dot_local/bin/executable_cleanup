@@ -4,6 +4,7 @@
 
 rm -rf \
 ~/.audacity-data \
+~/.debug \
 ~/.mplayer \
 ~/.w3m \
 ~/.wget-hsts \

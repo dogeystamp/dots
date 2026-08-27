@@ -30,7 +30,7 @@ SCR_BORG_PATHS=""
 SCR_BORG_TIERS=""
 
 if [ -n "$BK_CORE" ]; then
-  SCR_BORG_PATHS="$SCR_BORG_PATHS $HOME/core $HOME/.ssh"
+  SCR_BORG_PATHS="$SCR_BORG_PATHS $HOME/core $HOME/.ssh $HOME/.config/syncthing"
   SCR_BORG_TIERS="$SCR_BORG_TIERS CORE"
 fi
 if [ -n "$BK_STANDARD" ]; then
@@ -57,7 +57,6 @@ info() {
 info "Preparing to perform backup for '$BORG_REPO';"
 info ">>> tiers: $SCR_BORG_TIERS"
 info ">>> paths: $SCR_BORG_PATHS"
-sleep 5
 
 borg create \
 	--list \

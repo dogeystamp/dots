@@ -23,6 +23,7 @@
     "DefaultSearchProviderEnabled": true,
     "DefaultSearchProviderSearchURL": "https://html.duckduckgo.com/html?q={searchTerms}",
     "DevToolsGenAiSettings": 2,
+    "DeveloperToolsAvailability": 1,
     "DomainReliabilityAllowed": false,
     "DownloadDirectory": "/home/${user_name}/quar",
     "ExtensionInstallForcelist": [
@@ -35,6 +36,10 @@
     "GenAiDefaultSettings": 2,
     "HideWebStoreIcon": true,
     "HelpMeWriteSettings": 2,
+    "JavaScriptAllowedForUrls": [
+        "http://127.0.0.1",
+        "http://localhost"
+    ],
     "LiveCaptionEnabled": false,
     "LiveTranslateEnabled": false,
     "MediaRecommendationsEnabled": false,
