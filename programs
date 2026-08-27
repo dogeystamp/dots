@@ -191,7 +191,6 @@ qt6-wayland
 # utilities
 wlr-randr
 wl-clipboard
-swayimg
 wev
 
 # X11 compatibility

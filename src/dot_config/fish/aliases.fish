@@ -33,7 +33,11 @@ end
 function mpv --wraps /usr/bin/mpv; hide mpv mpv $argv; end
 function mpvy; mpv --profile=network $argv -- (cb -b | sed 's/yewtu\\.be/www.youtube\\.com/g' | sed 's/inv\\.nadeko\\.net/www.youtube\\.com/g'); end
 
-function imvi --wraps swayimg; hide swayimg swayimg $argv; end
+# mpv is better maintained than most other Wayland image viewers
+function imvi --description "MPV image viewer" --wraps mpv
+    mpv --no-resume-playback --profile=image $argv
+end
+
 alias neofetch='fastfetch'
 function man --wraps /usr/bin/man; nvim "+hide Man $argv"; end
 alias hx='helix'
