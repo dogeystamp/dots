@@ -61,12 +61,13 @@ color = "#666666"
 # uRls
 [[hints.enabled]]
 action          = "Copy"
-hyperlinks      = true
+# for security reasons, turn off OSC 8 hyperlinks and many of the default regexes
+hyperlinks      = false
 post_processing = true
 persist         = false
 mouse.enabled   = true
 binding         = { key = "R", mods = "Control|Shift" }
-regex           = "(ipfs:|ipns:|magnet:|mailto:|gemini://|go‐pher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩‘]+"
+regex           = "(ipfs:|ipns:|magnet:|gemini://|go‐pher://|https://|http://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩‘]+"
 
 # git coMmits
 [[hints.enabled]]
