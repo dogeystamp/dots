@@ -142,9 +142,7 @@ vim.lsp.config('lua_ls', {
 
 add_lazy(function()
     vim.cmd.packadd("blink.cmp")
-    vim.cmd.packadd("luasnip")
     local cmp = require("blink.cmp")
-    local ls = require("luasnip")
 
     cmp.setup({
         keymap = {
