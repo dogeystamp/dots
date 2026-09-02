@@ -119,6 +119,17 @@ return {
 		i(2),
 	})),
 
+	s({ trig = "fig", desc = "figure (image)" }, fmt([[
+        #figure(
+            image("fig/{}.svg"),
+            caption: {},
+        ) <{}>
+    ]], {
+		i(1),
+        i(2, "none"),
+        rep(1),
+	})),
+
 	--------------------------------
 	--------------------------------
 	-- document templates
