@@ -1,0 +1,15 @@
+# vim: set ft=sh:
+
+# Changes to this config need to be tested on:
+# - Termux
+# - NixOS login
+# - Niri login
+
+test -z "$WAYLAND_DISPLAY" && test "$XDG_VTNR" = "1" && exec niri-session -l
+
+# delegate to fish shell
+if command -v fish > /dev/null; then
+    if shopt -q login_shell; then
+        exec fish -l
+    fi
+fi
