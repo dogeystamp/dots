@@ -35,6 +35,10 @@ function doc
     apps --app="https://doc.dogeystamp.com"
 end
 
+function forgejo
+    apps "https://git.dogeystamp.com/explore"
+end
+
 function listenbrainz
     apps --app="https://listenbrainz.org"
 end
