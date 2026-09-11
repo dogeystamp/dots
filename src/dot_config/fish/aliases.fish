@@ -39,7 +39,7 @@ function imvi --description "MPV image viewer" --wraps mpv
 end
 
 alias neofetch='fastfetch'
-function man --wraps /usr/bin/man; nvim "+hide Man $argv"; end
+function m --wraps /usr/bin/man; nvim "+hide Man $argv"; end
 alias hx='helix'
 
 alias thur='hide org.pwmt.zathura zathura'
