@@ -20,6 +20,8 @@ emoji = r"""
 🥺 plead
 👋 wave
 😒 unamus
+😏 smir
+🫩 eyebag
 ¯\\\\\\_(ツ)\\_/¯ shrug
 """.strip()
 
