@@ -87,11 +87,6 @@ nnoremap <silent> ZF :qa<cr>
 " helix-style window management
 nnoremap <Space>w <C-w>
 
-" scroll horizontally
-set nowrap
-nnoremap <C-h> 20zh
-nnoremap <C-l> 20zl
-
 source $XDG_CONFIG_HOME/nvim/theme.vim
 
 " see .config/nvim/lua/init.lua
