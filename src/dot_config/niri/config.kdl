@@ -29,7 +29,6 @@ input {
         tap
         // disable while typing
         dwt
-        off
     }
 
 	mouse {}
@@ -277,7 +276,6 @@ window-rule {
 }
 
 window-rule {
-	match title="mus.dogeystamp.com"
 	match title="app.discord.com"
 	match title="mail.google.com"
     default-column-width { proportion 0.5; }
@@ -311,6 +309,7 @@ binds {
     Mod+Shift+Return hotkey-overlay-title="Spawn Terminal"           { spawn "newterm.sh"; }
     Mod+P                                                            { spawn "fuzzel"; }
     Mod+Shift+B                                                      { spawn "chrome_profile.fish" "transient"; }
+    Ctrl+Mod+Shift+B                                                 { spawn "chrome_profile.fish" "sch"; }
     Mod+B                                                            { spawn "chromium"; }
     Mod+Shift+P                                                      { spawn "keepassxc"; }
     Mod+Shift+D hotkey-overlay-title="Spawn Discord"                 { spawn "chrome_profile.fish" "discord"; }
@@ -321,7 +320,10 @@ binds {
 	// avoid using ctrl for this bind because ctrl-m counts as enter in swaylock
     Alt+L       hotkey-overlay-title="Lock session"                  { spawn "loginctl" "lock-session"; }
 
-    Mod+A       hotkey-overlay-title="Run Inkscape style switcher"   { spawn "style.sh"; }
+    Mod+A       hotkey-overlay-title="Run Inkscape style switcher"   { spawn "inkscape_shortcuts.py" "style"; }
+    Mod+Shift+A hotkey-overlay-title="Run Inkscape Typst input"      { spawn "inkscape_shortcuts.py" "typst"; }
+    Mod+F1      hotkey-overlay-title="Save Inkscape object"          { spawn "inkscape_shortcuts.py" "favourite-save"; }
+    Mod+F2      hotkey-overlay-title="Load Inkscape object"          { spawn "inkscape_shortcuts.py" "favourite-copy"; }
 
     Mod+Shift+Z hotkey-overlay-title="Edit clipboard contents"       { spawn "clipedit.sh"; }
     Mod+Z       hotkey-overlay-title="Open bookmarks"                { spawn "newterm.sh" "-e" "bookmk"; }
@@ -363,8 +365,8 @@ binds {
     Mod+H              { focus-monitor-left; }
     Mod+L              { focus-monitor-right; }
 
-    Win+M hotkey-overlay-title="Close notification"    { spawn "dunstctl" "close"; }
-    Win+N hotkey-overlay-title="Restore notification"  { spawn "dunstctl" "history-pop"; }
+    Alt+M hotkey-overlay-title="Close notification"    { spawn "dunstctl" "close"; }
+    Alt+N hotkey-overlay-title="Restore notification"  { spawn "dunstctl" "history-pop"; }
 
     Mod+Shift+H        { move-column-to-monitor-left; }
     Mod+Shift+L        { move-column-to-monitor-right; }
@@ -423,9 +425,9 @@ binds {
     Mod+Ctrl+Shift+F { toggle-windowed-fullscreen; }
     Mod+C { center-column; }
 
-	Mod+F1 { set-dynamic-cast-window; }
-	Mod+F2 { set-dynamic-cast-monitor; }
-	Mod+F3 { clear-dynamic-cast-target; }
+	Mod+F4 { set-dynamic-cast-window; }
+	Mod+F5 { set-dynamic-cast-monitor; }
+	Mod+F6 { clear-dynamic-cast-target; }
 
 
     Mod+Shift+Minus { set-window-height "-10%"; }
