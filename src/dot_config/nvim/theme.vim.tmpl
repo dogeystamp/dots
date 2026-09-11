@@ -232,7 +232,7 @@ call <sid>hi("StorageClass", s:gui0A, "", s:cterm0A, "", "", "")
 call <sid>hi("String",       s:gui0F, "", s:cterm0F, "", "bold", "")
 call <sid>hi("Structure",    s:gui0E, "", s:cterm0E, "", "", "")
 call <sid>hi("Tag",          s:gui0A, "", s:cterm0A, "", "", "")
-call <sid>hi("Todo",         s:gui0A, s:gui01, s:cterm0A, s:cterm01, "", "")
+call <sid>hi("Todo",         s:gui05, s:gui00, s:cterm05, s:cterm00, "reverse,bold", "reverse,bold")
 call <sid>hi("Type",         s:gui05, "", s:cterm05, "", "bold", "")
 call <sid>hi("Typedef",      s:gui0A, "", s:cterm0A, "", "", "")
 
@@ -399,6 +399,9 @@ call <sid>hi("StartifySpecial",  s:gui03, "", s:cterm03, "", "", "")
 
 " Java highlighting
 call <sid>hi("javaOperator",     s:gui0D, "", s:cterm0D, "", "", "")
+
+" Rocq/Coq highlighting
+call <sid>hi("CoqtailChecked",   s:gui05, s:gui03, s:cterm05, s:cterm03, "italic", "italic")
 
 " Remove functions
 delf <sid>hi
