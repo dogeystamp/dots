@@ -7,7 +7,7 @@ end
 # Disable fish greeting
 set fish_greeting ""
 
-umask 007
+umask 077
 
 if status is-interactive
 	# prevent mistakes. use -f (or -I) to override
