@@ -119,11 +119,13 @@ return {
 		i(2),
 	})),
 
+	s({ trig = "tr", name = "transpose", wordTrig = false }, t("^tr")),
+
 	s({ trig = "fig", desc = "figure (image)" }, fmt([[
         #figure(
             image("fig/{}.svg"),
             caption: {},
-        ) <{}>
+        ) <fig_{}>
     ]], {
 		i(1),
         i(2, "none"),
@@ -136,16 +138,18 @@ return {
 	--------------------------------
 	--------------------------------
 	s({ trig = "book", desc = "New notes template" }, fmt([[
-	#import "@preview/mousse-notes:1.1.0": *
-	#set page(paper: "us-letter")
-	#show: book.with(
-	  title: [{}],
-	  subtitle: {},
-	  subsubtitle: {},
-	  subsubsubtitle: {},
-	  author: {},
-	)
+    #import "@preview/mousse-notes:2.0.1": *
+    #set document(title: none, author: ())
+    #set page(height: 215.9mm, width: 279.4mm / 2)
+    #show: style
+
+    #title-page(
+      subtitle: upper[],
+      primary: upper[],
+      secondary: upper[],
+    )
 
 
-	]], { i(1), i(2, "none"), i(3, "none"), i(4, "none"), i(5, "none") })),
+
+	]], {})),
 }
