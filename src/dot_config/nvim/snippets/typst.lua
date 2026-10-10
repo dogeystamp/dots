@@ -103,8 +103,11 @@ return {
 	s({ trig = "plus", name = "plus exponent", wordTrig = false }, t("^+")),
 	s({ trig = "min", name = "minus exponent", wordTrig = false }, t("^-")),
 	s({ trig = "lim", name = "limit", wordTrig = true }, fmt("lim_({}) ", { i(1) })),
+
 	s({ trig = "integral", name = "integral (definite)", wordTrig = true }, fmt("integral_({})^({}) ", { i(1), i(2) })),
 	s({ trig = "sum", name = "summation", wordTrig = true }, fmt("sum_({})^({}) ", { i(1), i(2) })),
+	s({ trig = "union", name = "big union", wordTrig = true }, fmt("union.big_({})^({}) ", { i(1), i(2) })),
+	s({ trig = "inter", name = "big intersection", wordTrig = true }, fmt("inter.big_({})^({}) ", { i(1), i(2) })),
 
 	s({ trig = "link", desc = "labelled link" }, fmt('#link("{}{}")[{}]', {
 		i(1),
