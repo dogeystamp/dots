@@ -417,6 +417,7 @@ binds {
 
     Mod+Shift+R { switch-preset-column-width-back; }
     Mod+R { switch-preset-column-width; }
+    Ctrl+Shift+Mod+R { switch-preset-window-height; }
     Mod+Minus { set-column-width "-10%"; }
     Mod+Equal { set-column-width "+10%"; }
     Mod+Ctrl+R { reset-window-height; }
