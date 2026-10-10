@@ -46,6 +46,15 @@ return {
   cmd = { 'tinymist' },
   filetypes = { 'typst' },
   root_markers = { '.git' },
+  settings = {
+    preview = {
+      browsing = {
+          args = {
+              "--open",
+          }
+      }
+    }
+  },
   on_attach = function(client, bufnr)
     for _, command in ipairs {
       'tinymist.exportSvg',
