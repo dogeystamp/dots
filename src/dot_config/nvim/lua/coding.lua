@@ -147,7 +147,7 @@ add_lazy(function()
     cmp.setup({
         keymap = {
             preset = "enter",
-            ['<Tab>'] = false,      -- defer to our snippets.lua Tab bind
+            ['<Tab>'] = false,                   -- defer to our snippets.lua Tab bind
             ['<C-f>'] = { "select_and_accept" }, -- match fish. tab is meh because it conflicts with snippets
         },
         fuzzy = { implementation = "lua" },
@@ -193,6 +193,9 @@ add_lazy(function()
             '$',
             ft = { "typst" },
             newline = true
+        },
+        extensions = {
+            alpha = { p = 30, after = true, alpha = false },
         },
         config_internal_pairs = {
             { '```', '```', newline = true, ft = { "markdown", "typst" } },
