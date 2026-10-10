@@ -13,9 +13,6 @@ if status is-interactive
 	# prevent mistakes. use -f (or -I) to override
 	alias rm 'rm -i'
 
-    # enable wall messages
-    mesg y
-
 	if not test $SYSTEM_PROFILE = "MINIMAL"
 		rem.sh show
 	end
