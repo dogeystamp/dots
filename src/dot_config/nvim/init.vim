@@ -11,7 +11,7 @@ set noshowmode
 set undofile
 
 " visible whitespace
-set list listchars=tab:»\ ,trail:•,leadmultispace:\│\ \ \ ,extends:⇥,precedes:⇤
+set list listchars=tab:»\ ,trail:•,extends:⇥,precedes:⇤
 
 " Time neovim saves to swapfile in
 " Also time neovim recognizes cursor inactivity
@@ -87,7 +87,8 @@ nnoremap <silent> ZF :qa<cr>
 " helix-style window management
 nnoremap <Space>w <C-w>
 
-source $XDG_CONFIG_HOME/nvim/theme.vim
+" silence error if XDG_CONFIG_HOME is not set
+silent! source $XDG_CONFIG_HOME/nvim/theme.vim
 
 " see .config/nvim/lua/init.lua
 lua require('init')
