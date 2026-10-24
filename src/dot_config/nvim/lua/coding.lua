@@ -211,6 +211,25 @@ add_lazy(function()
     })
 end, {})
 
+------------------------------
+-- code folding
+-- see :h fold for binds
+------------------------------
+
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldcolumn = "1"
+vim.opt.foldlevel = 99
+vim.opt.foldnestmax = 4
+vim.opt.fillchars:append({ foldinner = " " })
+-- swap the most used ones to lowercase letters
+vim.cmd[[
+    nnoremap zm zM
+    nnoremap zM zm
+    nnoremap zo zO
+    nnoremap zO zo
+]]
+
 ----------------------------
 -- git gutter / sign column
 ----------------------------
