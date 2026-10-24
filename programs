@@ -41,7 +41,6 @@ pipewire-pulse
 # utility
 #
 tlp
-git-delta
 difftastic
 smartmontools
 dust

@@ -29,7 +29,6 @@ function lightmode
 	gsettings set org.gnome.desktop.interface color-scheme 'default'
 end
 
-# function rg --wraps /usr/bin/rg; command rg --json $argv | delta; end
 function mpv --wraps /usr/bin/mpv; hide mpv mpv $argv; end
 function mpvy
     printf "%s\n" (cb -b)
