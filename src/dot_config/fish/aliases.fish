@@ -31,7 +31,10 @@ end
 
 # function rg --wraps /usr/bin/rg; command rg --json $argv | delta; end
 function mpv --wraps /usr/bin/mpv; hide mpv mpv $argv; end
-function mpvy; mpv --profile=network $argv -- (cb -b | sed 's/yewtu\\.be/www.youtube\\.com/g' | sed 's/inv\\.nadeko\\.net/www.youtube\\.com/g'); end
+function mpvy
+    printf "%s\n" (cb -b)
+    mpv --profile=network $argv -- (cb -b | sed 's/yewtu\\.be/www.youtube\\.com/g' | sed 's/inv\\.nadeko\\.net/www.youtube\\.com/g')
+end
 
 # mpv is better maintained than most other Wayland image viewers
 function imvi --description "MPV image viewer" --wraps mpv
@@ -42,8 +45,9 @@ alias neofetch='fastfetch'
 function m --wraps /usr/bin/man; nvim "+hide Man $argv"; end
 alias hx='helix'
 
-alias thur='hide org.pwmt.zathura zathura'
-alias zathsec='/usr/bin/zathura-sandbox -c ~/.config/zathura-sec'
+alias valgrind_='valgrind --error-exitcode=1 --leak-check=full'
+
+alias thur='hide org.pwmt.zathura zathura-sandbox'
 function nvimp; nvim -u NONE -c "setlocal history=0 nobackup nomodeline noshelltemp noswapfile noundofile nowritebackup secure viminfo=\"\"" $argv; end
 alias nvic 'chezmoi edit -a'
 function pdfr; pdftotext $argv - | nvim; end
@@ -72,6 +76,7 @@ alias ev "khal list"
 alias units='units -H ""'
 alias xxd='tinyxxd'
 alias sched='~/src/kindle-schedule/kindle_schedule.py ~/.local/share/schedule.pdf'
+alias sched_upload='scp .local/share/schedule.pdf liber:/mnt/us/documents/'
 
 # music recognition
 # an alternative is available at ~/.local/bin/msrec
@@ -100,4 +105,8 @@ function preserve
     && cp -r $argv ~/.cache/zoo2 \
     && trash ~/zoo \
     && mv ~/.cache/zoo2 ~/zoo
+end
+
+function done
+    trash ~/ct/now && touch ~/ct/now
 end
