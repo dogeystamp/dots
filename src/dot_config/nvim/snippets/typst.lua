@@ -1,146 +1,152 @@
 local MATH_NODES = {
-	formula = true,
-	math = true,
+    formula = true,
+    math = true,
 }
 
 local NON_MATH_NODES = {
-	code = true,
-	text = true,
-	raw_blck = true,
-	source_file = true,
+    code = true,
+    text = true,
+    raw_blck = true,
+    source_file = true,
 }
 
 local function is_math_mode()
     -- this is not currently working
-	local node = vim.treesitter.get_node({ ignore_injections = false })
-	while node do
-		if NON_MATH_NODES[node:type()] then
-			return false
-		elseif MATH_NODES[node:type()] then
-			return true
-		end
-		node = node:parent()
-	end
-	return true
+    local node = vim.treesitter.get_node({ ignore_injections = false })
+    while node do
+        if NON_MATH_NODES[node:type()] then
+            return false
+        elseif MATH_NODES[node:type()] then
+            return true
+        end
+        node = node:parent()
+    end
+    return true
 end
 
 return {
-	--------------------------------
-	--------------------------------
-	-- quick markup utilities
-	--------------------------------
-	--------------------------------
+    --------------------------------
+    --------------------------------
+    -- quick markup utilities
+    --------------------------------
+    --------------------------------
 
-	-- if you don't want to trigger some of these automatic snippets,
-	-- for example to type a literaly 'uq', type ctrl-v q and it will type
-	-- a 'q' without triggering
+    -- if you don't want to trigger some of these automatic snippets,
+    -- for example to type a literaly 'uq', type ctrl-v q and it will type
+    -- a 'q' without triggering
 
-	s(
-		{
-			-- this is python's exponentiation syntax
-			trig = "**",
-			name = "superscript",
-			wordTrig = false,
-			snippetType = "autosnippet",
-			condition = function(_, _, _)
-				return is_math_mode()
-			end
-		}, fmt("^({})", { i(1) })),
+    s(
+        {
+            -- this is python's exponentiation syntax
+            trig = "**",
+            name = "superscript",
+            wordTrig = false,
+            snippetType = "autosnippet",
+            condition = function(_, _, _)
+                return is_math_mode()
+            end
+        }, fmt("^({})", { i(1) })),
 
-	-- note there is no subscript snippet because unlike the ^ key, _ is pretty easy to reach
-	s(
-		{
-			trig = "*2",
-			name = "square exponent",
-			wordTrig = false,
-			snippetType = "autosnippet",
-			condition = function(_, _, _)
-				return is_math_mode()
-			end
-		}, t("^2")),
-	s(
-		{
-			trig = "*3",
-			name = "cubed exponent",
-			wordTrig = false,
-			snippetType = "autosnippet",
-			condition = function(_, _, _)
-				return is_math_mode()
-			end
-		}, t("^3")),
-	s(
-		{
-			trig = "*4",
-			name = "quartic exponent",
-			wordTrig = false,
-			snippetType = "autosnippet",
-			condition = function(_, _, _)
-				return is_math_mode()
-			end
-		}, t("^4")),
-	s(
-		{
-			trig = "*5",
-			name = "quintic exponent",
-			wordTrig = false,
-			snippetType = "autosnippet",
-			condition = function(_, _, _)
-				return is_math_mode()
-			end
-		}, t("^5")),
-	s(
-		{
-			trig = "#",
-			name = "code (inline math)",
-			desc = "Tells tree-sitter that we are in a code block, to prevent completing math elements.",
-			wordTrig = false,
-			condition = function(_, _, _)
-				return is_math_mode()
-			end
-		}, fmt("#({})", { i(1) })),
+    -- note there is no subscript snippet because unlike the ^ key, _ is pretty easy to reach
+    s(
+        {
+            trig = "*2",
+            name = "square exponent",
+            wordTrig = false,
+            snippetType = "autosnippet",
+            condition = function(_, _, _)
+                return is_math_mode()
+            end
+        }, t("^2")),
+    s(
+        {
+            trig = "*3",
+            name = "cubed exponent",
+            wordTrig = false,
+            snippetType = "autosnippet",
+            condition = function(_, _, _)
+                return is_math_mode()
+            end
+        }, t("^3")),
+    s(
+        {
+            trig = "*4",
+            name = "quartic exponent",
+            wordTrig = false,
+            snippetType = "autosnippet",
+            condition = function(_, _, _)
+                return is_math_mode()
+            end
+        }, t("^4")),
+    s(
+        {
+            trig = "*5",
+            name = "quintic exponent",
+            wordTrig = false,
+            snippetType = "autosnippet",
+            condition = function(_, _, _)
+                return is_math_mode()
+            end
+        }, t("^5")),
+    s(
+        {
+            trig = "#",
+            name = "code (inline math)",
+            desc = "Tells tree-sitter that we are in a code block, to prevent completing math elements.",
+            wordTrig = false,
+            condition = function(_, _, _)
+                return is_math_mode()
+            end
+        }, fmt("#({})", { i(1) })),
 
-	-- limits
-	s({ trig = "plus", name = "plus exponent", wordTrig = false }, t("^+")),
-	s({ trig = "min", name = "minus exponent", wordTrig = false }, t("^-")),
-	s({ trig = "lim", name = "limit", wordTrig = true }, fmt("lim_({}) ", { i(1) })),
+    -- limits
+    s({ trig = "plus", name = "plus exponent", wordTrig = false }, t("^+")),
+    s({ trig = "min", name = "minus exponent", wordTrig = false }, t("^-")),
+    s({ trig = "lim", name = "limit", wordTrig = true }, fmt("lim_({}) ", { i(1) })),
 
-	s({ trig = "integral", name = "integral (definite)", wordTrig = true }, fmt("integral_({})^({}) ", { i(1), i(2) })),
-	s({ trig = "sum", name = "summation", wordTrig = true }, fmt("sum_({})^({}) ", { i(1), i(2) })),
-	s({ trig = "union", name = "big union", wordTrig = true }, fmt("union.big_({})^({}) ", { i(1), i(2) })),
-	s({ trig = "inter", name = "big intersection", wordTrig = true }, fmt("inter.big_({})^({}) ", { i(1), i(2) })),
+    s({ trig = "integral", name = "integral (definite)", wordTrig = true }, fmt("integral_({})^({}) ", { i(1), i(2) })),
+    s({ trig = "sum", name = "summation", wordTrig = true }, fmt("sum_({})^({}) ", { i(1), i(2) })),
+    s({ trig = "union", name = "big union", wordTrig = true }, fmt("union.big_({})^({}) ", { i(1), i(2) })),
+    s({ trig = "inter", name = "big intersection", wordTrig = true }, fmt("inter.big_({})^({}) ", { i(1), i(2) })),
 
-	s({ trig = "link", desc = "labelled link" }, fmt('#link("{}{}")[{}]', {
-		i(1),
-		f(function(args, _)
-			-- use clipboard contents as a placeholder
-			if not args[1][1] or args[1][1] == "" then
-				return vim.fn.getreg("+")
-			else
-				return ""
-			end
-		end, { 1 }),
-		i(2),
-	})),
+    s({ trig = "link", desc = "labelled link" }, fmt('#link("{}{}")[{}]', {
+        i(1),
+        f(function(args, _)
+            -- use clipboard contents as a placeholder
+            if not args[1][1] or args[1][1] == "" then
+                return vim.fn.getreg("+")
+            else
+                return ""
+            end
+        end, { 1 }),
+        i(2),
+    })),
 
-	s({ trig = "tr", name = "transpose", wordTrig = false }, t("^tr")),
+    s({ trig = "raw", name = "code block" }, fmt([[
+        ```
+        {}
+        ```
+    ]], { i(1) })),
 
-	s({ trig = "fig", desc = "figure (image)" }, fmt([[
+    s({ trig = "tr", name = "transpose", wordTrig = false }, t("^tr")),
+
+    s({ trig = "fig", desc = "figure (image)" }, fmt([[
         #figure(
             image("fig/{}.svg"),
             caption: {},
         ) <fig_{}>
     ]], {
-		i(1),
+        i(1),
         i(2, "none"),
         rep(1),
-	})),
+    })),
 
-	--------------------------------
-	--------------------------------
-	-- document templates
-	--------------------------------
-	--------------------------------
-	s({ trig = "book", desc = "New notes template" }, fmt([[
+    --------------------------------
+    --------------------------------
+    -- document templates
+    --------------------------------
+    --------------------------------
+    s({ trig = "book", desc = "New notes template" }, fmt([[
     #import "@preview/mousse-notes:2.0.1": *
     #set document(title: none, author: ())
     #set page(height: 215.9mm, width: 279.4mm / 2)

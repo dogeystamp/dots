@@ -186,28 +186,56 @@ end, {})
 ------------------------------
 
 add_lazy(function()
-    vim.cmd.packadd("ultimate-autopair.nvim")
-    require("ultimate-autopair").setup({
+    vim.cmd.packadd("mini.pairs")
+    local MiniPairs = require("mini.pairs")
+
+    -- principles for completion:
+    -- * complete conservatively
+    -- * avoid having to use CTRL-V to cancel completion
+    -- * do what's expected
+
+    -- allow completing open brackets when:
+    -- * (|)
+    -- * abcd|
+    -- * |
+    -- but not:
+    -- * |()
+    -- * |abcd
+    -- * \|
+    local patt = '^[^\\][%s%)%]%}%]]+$'
+
+    -- allow completing open/close quotes when:
+    -- * (|)
+    -- * |
+    -- but not:
+    -- * |()
+    -- * |abcd
+    -- * abcd|
+    -- * \|
+    local patt_closeopen = '^[^\\%a%)%]%}%]][^%(%[%{%[%w]$'
+    MiniPairs.setup(
         {
-            '$',
-            '$',
-            ft = { "typst" },
-            newline = true
-        },
-        extensions = {
-            alpha = { p = 30, after = true, alpha = false },
-        },
-        config_internal_pairs = {
-            { '```', '```', newline = true, ft = { "markdown", "typst" } },
-            {
-                '[',
-                ']',
-                fly = true,
-                dosuround = true,
-                newline = true,
-                space = false -- space=false to get [ ] not [  ] (e.g. in checklists)
+            modes = { insert = true, command = false, terminal = false },
+
+            -- see |MiniPairs.map| for help.
+            mappings = {
+                ['('] = { action = 'open', pair = '()', neigh_pattern = patt },
+                ['['] = { action = 'open', pair = '[]', neigh_pattern = patt },
+                ['{'] = { action = 'open', pair = '{}', neigh_pattern = patt },
+
+                [')'] = { action = 'close', pair = '()', neigh_pattern = patt },
+                [']'] = { action = 'close', pair = '[]', neigh_pattern = patt },
+                ['}'] = { action = 'close', pair = '{}', neigh_pattern = patt },
+
+                ['$'] = { action = 'closeopen', pair = '$$', neigh_pattern = patt_closeopen },
+                ['"'] = { action = 'closeopen', pair = '""', neigh_pattern = patt_closeopen, register = { cr = false } },
+                ["'"] = { action = 'closeopen', pair = "''", neigh_pattern = patt_closeopen, register = { cr = false } },
+                ['`'] = { action = 'closeopen', pair = '``', neigh_pattern = patt_closeopen, register = { cr = false } },
             },
-        },
+        }
+    )
+    MiniPairs.map_buf(0, 'i', '$', {
+        action = 'closeopen', pair = '$$',
     })
 end, {})
 
@@ -223,7 +251,7 @@ vim.opt.foldlevel = 99
 vim.opt.foldnestmax = 4
 vim.opt.fillchars:append({ foldinner = " " })
 -- swap the most used ones to lowercase letters
-vim.cmd[[
+vim.cmd [[
     nnoremap zm zM
     nnoremap zM zm
     nnoremap zo zO
