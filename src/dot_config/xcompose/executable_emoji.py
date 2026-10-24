@@ -10,7 +10,10 @@ emoji = r"""
 😭 sob
 🐸 frog
 😇 innoc
-✌️  v
+✌️ vic
+🫵 point
+🫳 palmd
+🤮 vomit
 😌 reliev
 💀 skul
 👀 eyes
@@ -22,6 +25,8 @@ emoji = r"""
 😒 unamus
 😏 smir
 🫩 eyebag
+😩 weary
+🤤 drool
 ¯\\\\\\_(ツ)\\_/¯ shrug
 """.strip()
 
