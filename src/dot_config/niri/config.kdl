@@ -71,7 +71,7 @@ layout {
 		bottom -15 // space for the bar
 	}
 
-    default-column-width { proportion 0.333333; }
+    default-column-width { proportion 0.33333; }
 
 	preset-column-widths {
         proportion 0.33333
