@@ -6,7 +6,7 @@
 		"modules-center": ["custom/next-event", "clock#time", "custom/track"],
 		"custom/next-event": {
 			"format": "󰃭 <small>{}</small>",
-			"exec": "$HOME/.local/bin/next_event.sh",
+			"exec": "$HOME/.local/bin/next_event.fish",
 			"interval": 60,
 			"escape": true
 		},
