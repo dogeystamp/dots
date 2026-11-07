@@ -20,6 +20,10 @@ function die -d "Clean up temp files, then exit with a certain status code."
 	exit $argv
 end
 
+if test -n "$argv"
+    printf "\n\n# %s" "$argv" > "$TMPFILE"
+end
+
 "$EDITOR" "$TMPFILE"; or die $status
 
 if not test -s "$TMPFILE"
@@ -28,6 +32,9 @@ end
 
 cat "$TMPFILE" | cb -i
 for line in (cat "$TMPFILE" | string trim | string split "\n")
+    if printf "$line" | grep -c "#" > /dev/null
+        continue
+    end
 	if test -n "$line"
 		khal new $argv (echo "$line" | string split (printf "\t")); or die $status
 	end
