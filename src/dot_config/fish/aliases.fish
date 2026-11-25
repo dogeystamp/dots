@@ -109,3 +109,22 @@ end
 function done
     trash ~/ct/now && touch ~/ct/now
 end
+
+# directory notes
+function dn --description "edit directory notes"
+    if ! test -d .dirnotes
+        mkdir .dirnotes
+        printf "**" > .dirnotes/.gitignore
+    end
+    $EDITOR ./.dirnotes/notes.txt
+end
+
+function dnl --description "list directories with notes"
+    # find -type f -name "notes.txt" | xargs dirname | xargs dirname
+    fd --type f --hidden --no-ignore --full-path --glob "**/.dirnotes/notes.txt" . \
+        | xargs -r dirname | xargs -r dirname
+end
+
+function mtx --description "open matrix in single instance"
+    pgrep -u $USER iamb; or iamb
+end
