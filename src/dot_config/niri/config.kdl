@@ -153,6 +153,17 @@ window-rule {
 	tiled-state false
 }
 
+// timetable
+window-rule {
+    match title=r#".local/share/schedule.pdf$"#
+	open-floating false
+	tiled-state false
+    min-width 576;
+    min-height 765;
+    max-width 576;
+    max-height 765;
+}
+
 animations {
 	window-resize {
 		spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
@@ -293,7 +304,6 @@ binds {
     Mod+7 { focus-workspace 7; }
     Mod+8 { focus-workspace 8; }
     Mod+9 { focus-workspace 9; }
-    Mod+0 { focus-workspace 10; }
     Mod+Shift+1 { move-column-to-workspace focus=false 1; }
     Mod+Shift+2 { move-column-to-workspace focus=false 2; }
     Mod+Shift+3 { move-column-to-workspace focus=false 3; }
@@ -303,7 +313,6 @@ binds {
     Mod+Shift+7 { move-column-to-workspace focus=false 7; }
     Mod+Shift+8 { move-column-to-workspace focus=false 8; }
     Mod+Shift+9 { move-column-to-workspace focus=false 9; }
-    Mod+Shift+0 { move-column-to-workspace focus=false 10; }
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+Shift+Return hotkey-overlay-title="Spawn Terminal"           { spawn "newterm.sh"; }
@@ -315,7 +324,7 @@ binds {
     Mod+Shift+D hotkey-overlay-title="Spawn Discord"                 { spawn "chrome_profile.fish" "discord"; }
     Mod+Shift+M hotkey-overlay-title="Spawn Navidrome (music)"       { spawn "chrome_profile.fish" "mus"; }
     Mod+M hotkey-overlay-title="Spawn Mail"                          { spawn "chrome_profile.fish" "mail"; }
-	Mod+Shift+T hotkey-overlay-title="Spawn Timetable"               { spawn-sh "zathura ~/.local/share/schedule.pdf"; }
+	Mod+Shift+T hotkey-overlay-title="Spawn Timetable"               { spawn-sh "zathura -c $XDG_CONFIG_HOME/zathura-calendar --cache-dir /dev/null ~/.local/share/schedule.pdf"; }
 
 	// avoid using ctrl for this bind because ctrl-m counts as enter in swaylock
     Alt+L       hotkey-overlay-title="Lock session"                  { spawn "loginctl" "lock-session"; }
@@ -425,6 +434,7 @@ binds {
     Mod+Shift+F { fullscreen-window; }
     Mod+Ctrl+Shift+F { toggle-windowed-fullscreen; }
     Mod+C { center-column; }
+    Mod+0 { center-column; }
 
 	Mod+F4 { set-dynamic-cast-window; }
 	Mod+F5 { set-dynamic-cast-monitor; }
@@ -444,9 +454,6 @@ binds {
 }
 
 recent-windows {
-    // i don't use this and it conflicts with Windows alt-tab which is actually
-    // necessary, so turn it off
-    off
 }
 
 hotkey-overlay {
