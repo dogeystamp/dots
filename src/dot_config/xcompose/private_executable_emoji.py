@@ -12,7 +12,7 @@ emoji = r"""
 😇 innoc
 ✌️ vic
 🫵 point
-🫳 palmd
+🫳 pat
 🤮 vomit
 😌 reliev
 💀 skul
