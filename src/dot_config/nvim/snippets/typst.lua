@@ -126,7 +126,7 @@ return {
         ```
         {}
         ```
-    ]], { i(1) })),
+    ]], { i(0) })),
 
     s({ trig = "tr", name = "transpose", wordTrig = false }, t("^tr")),
 
