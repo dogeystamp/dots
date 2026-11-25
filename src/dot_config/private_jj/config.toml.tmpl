@@ -17,7 +17,6 @@ backends.ssh.allowed-signers = "~/.ssh/allowed_signers"
 behavior = "keep"
 
 [git]
-sign-on-push = true
 push = ["origin", "gh"]
 
 [templates]
@@ -28,3 +27,6 @@ separate("\n",
     indent("JJ:  ", diff.git()),
 )
 '''
+
+[revsets]
+git-sign-on-push = "~signed() & mine()"
